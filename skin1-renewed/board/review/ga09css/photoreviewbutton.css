@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+
+
+html, body a { color:#3b3b3b;}
+html, body a:hover {text-decoration:none;}
+
+/* 진한배경 */
+.photoreview-bt {font-size:11px; font-family: 'Nanum Gothic', sans-serif; background:#555555; line-height:15px; border: 1px solid #555555; color:#fff; -webkit-transition-duration: 0.5s; transition-duration: 0.5s;}
+.photoreview-bt:hover {background:#000000; border: 1px solid #000000; color:#fff; text-decoration:none;}
+.photoreview-bt a { color:#fff; }
+.photoreview-bt:link {color:#fff}
+.photoreview-bt:visited {color:#fff}
+
+
+/* 하얀배경, 회색 테두리 */
+.photoreview-bt2 {font-size:11px; font-family: 'Nanum Gothic', sans-serif; background:#fff;line-height:15px; border:1px solid #eaeaea; color:#323232;  -webkit-transition-duration: 0.5s; transition-duration: 0.5s;}
+.photoreview-bt2 a {color:#323232}
+.photoreview-bt2:hover {background:#fff; border: 1px solid #878787; color:#323232; text-decoration:none; cursor:pointer;}
+.photoreview-bt2:link {color:#323232}
+.photoreview-bt2:visited {color:#323232}
+
+
+/* 폰트만 더 크게 */
+.bt-font12 {font-size:12px; font-family: 'Nanum Gothic', sans-serif;}
+.bt-font13 {font-size:13px; font-family: 'Nanum Gothic', sans-serif;}
+
+.size1 {padding:4px 5px 5px 5px;}
+.size2 {padding:14px 15px 15px 15px;}
+.size3 {line-height:48px; width:78px; font-size:10px; text-align:center; height:48px}
+.size4 {padding:12px 25px 15px 25px;}
+.size5 {padding:5px 12px 8px 12px}
+.searchsize {padding:6px 12px 8px 12px;}
+
+/* 하얀배경, 테두리 X */
+.photoreview-bt3 {font-size:11.5px; font-family: 'Nanum Gothic', sans-serif; color:#ccc}
+.photoreview-bt3 a {color:#ccc}
+.photoreview-bt3 a:hover {color:#ccc}
+.photoreview-bt3:link {color:#ccc}
+.photoreview-bt3:link:hover {color:#828282}
+.photoreview-bt3:visited {color:#ccc}
+
+
+
+.ga09-review-bt6 {font-size:11px; font-family: 'Nanum Gothic', sans-serif; padding:14px 15px 15px 15px; background:#fff;line-height:15px; border:1px solid #eaeaea; color:#323232;  -webkit-transition-duration: 0.5s; transition-duration: 0.5s;}
+.ga09-review-bt6 a {color:#323232}
+.ga09-review-bt6:hover {background:#fff; border: 1px solid #878787; color:#323232; text-decoration:none; cursor:pointer;}
+.ga09-review-bt6:link {color:#323232}
+.ga09-review-bt6:visited {color:#323232}
+
+
+
+/* 타이틀 */
+.photoreview-title {text-align:center; font-size:13px; font-family: 'Nanum Gothic', sans-serif; font-weight:600; margin-bottom:40px; letter-spacing:0}
+.photoreview-title .small {font-size:11px; font-weight:400; margin-top:10px}
+
+
+
+/* 상품정보 (쓰기, 수정, 상세보기 모두 공통) */
+.review_prd { margin:0 0 20px; padding:15px 20px; border:1px solid #eaeaea;}
+.review_prd .prdThumb {float:left; width:70}
+.review_prd .prdThumb img { width:80px; height:80px; object-fit: cover; border:1px solid #eaeaea; }
+.review_prd .prdInfo { float:left; padding:5px 0 0 20px; width:200px;}
+.review_prd .prdInfo .name img { margin-left:5px; vertical-align:middle }
+.review_prd .prdInfo .name { color:#2e2e2e; font-weight:bold; font-family: 'Nanum Gothic', sans-serif; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; width:200px}
+.review_prd .prdInfo .name a { color:#2e2e2e;}
+.review_prd .prdInfo .price { color:#aaa; line-height:25px}
+.review_prd .prdInfo .button { margin-top:8px}
+
+
+
+/* 페이징 */
+.photoreview-paging { margin:30px 0; text-align:center; line-height:0;font-size:12px; font-family: 'Nanum Gothic', sans-serif; }
+.photoreview-paging ol { display:inline-block; vertical-align:top; *display:inline; *zoom:1; *margin:0; }
+.photoreview-paging li { display:inline-block; vertical-align:top; *display:inline; *zoom:1; }
+.photoreview-paging li:first-child { margin-left:0; }
+.photoreview-paging img { vertical-align:top; }
+.photoreview-paging li a { display:block; padding:15px 7px; color:#979797; border-bottom:solid 2px #fff; -webkit-transition-duration: 0.2s; transition-duration: 0.2s;}
+.photoreview-paging li a:hover { text-decoration:none; border-bottom:solid 2px #000; color:#000 }
+.photoreview-paging li a.this {font-weight:bold; color:#000}
+.photoreview-paging a.nolink { cursor:default; }

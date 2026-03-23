@@ -1,0 +1,38 @@
+<!--@css(/css/left.css)-->
+<!--@js(/js/left.js)-->
+
+<div id="logo"><a href="/"><img src=/web/upload/ga09/logo.png></a></div>
+
+<div id="menulist">
+    
+    <button class="accordionmenu"><span>BRAND</span></button>
+    <div class="panel">
+        <ul>
+            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/about2.html">OUR STORY</a></li>
+        </ul>
+    </div>
+    
+	<!-- 상품관리 메뉴와 자동으로 연동 -->
+    <button class="accordionmenu"><span>SHOP</span></button>
+    <div class="panel2">
+        <ul module="Layout_category">
+            <li><a href="/product/list.html{$param}">{$name}</a></li>
+            <li><a href="/product/list.html{$param}">{$name}</a></li>
+        </ul>
+    </div>
+
+ 
+    <button class="accordionmenu2" onclick="location.href='/collection.html?cate_no=50'"><span>Collection</span></button>
+
+    <button class="accordionmenu"><span>BOARD</span></button>
+    <div class="panel">
+        <ul>
+            <li><a href="/board/free/list.html?board_no=1">NOTICE</a></li>
+            <li><a href="/front/php/b/board_list.php?board_no=6&is_pcver=T/">Q&amp;A</a></li>
+            <li><a href="/board/review/list.html?board_no=4">REVIEW</a></li>
+            <li><a href="/collectionread.html?product_no=1793&cate_no=50&display_group=1">Collection</a></li>
+        </ul>
+    </div>
+
+</div>

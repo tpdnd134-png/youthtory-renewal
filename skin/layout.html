@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!--@js(/cafe24pro/locale_popup.js)-->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!--PG크로스브라우징필수내용 시작-->
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<!--PG크로스브라우징필수내용 끝-->
+
+<!--@css(/layout/basic/css/common.css)--><!--해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
+<!--@css(/layout/basic/css/layout.css)-->
+<!--@css(/layout/basic/css/ec-base-ui.css)-->
+<!--@css(/layout/basic/css/ec-base-tooltip.css)-->
+<!--@css(/layout/basic/css/ec-base-help.css)-->
+<!--@css(/layout/basic/css/ec-base-product.css)-->
+<!--@css(/layout/basic/css/ec-base-paginate.css)-->
+<!--@css(/layout/basic/css/ec-base-tab.css)-->
+<!--@css(/layout/basic/css/ec-base-button.css)-->
+<!--@css(/layout/basic/css/ec-base-box.css)-->
+<!--@css(/layout/basic/css/ec-base-table.css)-->
+<!--@css(/layout/basic/css/ec-base-desc.css)-->
+
+<!-- 스마트디자인에서는 JQuery 1.4.4 버전이 내장되어있습니다. 추가로 호출하면 충돌이 생길 수 있습니다. -->
+<!--@js(/layout/basic/js/basic.js)-->
+<!--@js(/js/common.js)-->
+
+<!-- Pretendard Font -->
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
+<!-- Custom CSS (must be AFTER all cafe24 base CSS) -->
+<!--@css(/css/override.css)-->
+
+<script type="text/javascript" src="/ec-js/common.js"></script>
+</head>
+<body>
+
+<div id="toparea"></div>
+<div id="loginpopup"><!--@import(/loginpopup.html)--></div>
+
+<!-- Header -->
+<header id="header" class="header">
+    <!--@import(/top.html)-->
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<aside id="mobile-nav-wrap" class="mobile-nav-wrap">
+    <!--@import(/right.html)-->
+</aside>
+<div class="mobile-nav__backdrop" id="mobileNavBackdrop"></div>
+
+<!-- Main Content -->
+<div id="contentsWrap">
+    <div id="content"><!--@contents--></div>
+</div>
+
+<!-- Footer -->
+<div id="bottom-wrap">
+    <div id="bottom"><!--@import(/bottom.html)--></div>
+</div>
+
+<!-- Scroll to Top -->
+<button type="button" class="scroll-top" id="scrollTopBtn" aria-label="맨 위로">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+</button>
+
+<!-- 참고: 결제를 위한 필수 영역 -->
+<div id="progressPaybar" style="display:none;">
+    <div id="progressPaybarBackground" class="layerProgress"></div>
+    <div id="progressPaybarView">
+        <div class="box">
+            <p class="graph">
+                <span><img src="//img.echosting.cafe24.com/skin/base_ko_KR/layout/txt_progress.gif" alt="현재 결제가 진행중입니다." /></span>
+                <span><img src="//img.echosting.cafe24.com/skin/base/layout/img_loading.gif" alt="" /></span>
+            </p>
+            <p class="txt">
+                본 결제 창은 결제완료 후 자동으로 닫히며,결제 진행 중에 본 결제 창을 닫으시면<br />
+                주문이 되지 않으니 결제 완료 될 때 까지 닫지 마시기 바랍니다.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- //참고 -->
+
+<div module="Layout_multishopShipping">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/layout/multishopShipping.css)-->
+    <!--@js(/js/module/layout/multishopShipping.js)-->
+    <div class="dimmed"></div>
+    <div class="worldshipLayer ec-base-layer">
+        <div class="header">
+            <h3>WORLD SHIPPING</h3>
+        </div>
+        <div class="content">
+            <p class="desc">PLEASE SELECT THE DESTINATION COUNTRY AND LANGUAGE :</p>
+            <div class="select">
+                <select module="Layout_multishopShippingCountrylist">
+                    <option value="{$country_code}"{$country_default_selected}>SHIPPING TO : {$country_name}</option>
+                    <option value="{$country_code}"{$country_default_selected}>SHIPPING TO : {$country_name}</option>
+                </select>
+            </div>
+            <div class="select">
+                <select module="Layout_multishopShippingLanguagelist">
+                    <option value="{$shop_domain}"{$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+                    <option value="{$shop_domain}"{$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+                </select>
+            </div>
+        </div>
+        <div class="ec-base-button">
+            <a href="#none"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/link/btn_go.gif" alt="GO" /></a>
+        </div>
+        <a href="#none" class="close"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" width="13" height="13" alt="close" /></a>
+    </div>
+</div>
+
+<div module="Layout_conversionPc">
+    <!--@css(/css/module/layout/conversionpc.css)-->
+    <a href="{$mobile_url}">모바일 화면보기</a>
+</div>
+
+<div id="wrap_dialog"></div>
+
+<!-- Layout JS -->
+<script type="text/javascript">
+(function() {
+    'use strict';
+
+    // =========================================
+    // Header Scroll Behavior
+    // =========================================
+    var header = document.getElementById('header');
+    var lastScrollY = 0;
+    var ticking = false;
+
+    function onScroll() {
+        var currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Add shadow/background when scrolled past 60px
+        if (currentScrollY > 60) {
+            header.classList.add('is-scrolled');
+        } else {
+            header.classList.remove('is-scrolled');
+        }
+
+        // Hide header on scroll down past 200px, show on scroll up
+        if (currentScrollY > 200) {
+            if (currentScrollY > lastScrollY) {
+                header.classList.add('is-hidden');
+            } else {
+                header.classList.remove('is-hidden');
+            }
+        } else {
+            header.classList.remove('is-hidden');
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(onScroll);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    // =========================================
+    // Mobile Navigation
+    // =========================================
+    var mobileNavWrap = document.getElementById('mobile-nav-wrap');
+    var mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+    var mobileNavToggle = document.getElementById('mobileNavToggle');
+    var mobileNavClose = document.getElementById('mobileNavClose');
+
+    function openMobileNav() {
+        if (mobileNavWrap) {
+            mobileNavWrap.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeMobileNav() {
+        if (mobileNavWrap) {
+            mobileNavWrap.classList.remove('is-open');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (mobileNavWrap && mobileNavWrap.classList.contains('is-open')) {
+                closeMobileNav();
+            } else {
+                openMobileNav();
+            }
+        });
+    }
+
+    if (mobileNavClose) {
+        mobileNavClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeMobileNav();
+        });
+    }
+
+    if (mobileNavBackdrop) {
+        mobileNavBackdrop.addEventListener('click', function() {
+            closeMobileNav();
+        });
+    }
+
+    // =========================================
+    // Search Overlay
+    // =========================================
+    var searchToggle = document.getElementById('searchToggle');
+    var searchOverlay = document.getElementById('searchOverlay');
+    var searchClose = document.getElementById('searchClose');
+
+    function openSearch() {
+        if (searchOverlay) {
+            searchOverlay.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+            var searchInput = searchOverlay.querySelector('input[type="text"]');
+            if (searchInput) {
+                setTimeout(function() { searchInput.focus(); }, 100);
+            }
+        }
+    }
+
+    function closeSearch() {
+        if (searchOverlay) {
+            searchOverlay.classList.remove('is-open');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (searchToggle) {
+        searchToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            openSearch();
+        });
+    }
+
+    if (searchClose) {
+        searchClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeSearch();
+        });
+    }
+
+    // =========================================
+    // Scroll to Top
+    // =========================================
+    var scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    if (scrollTopBtn) {
+        window.addEventListener('scroll', function() {
+            if ((window.pageYOffset || document.documentElement.scrollTop) > 400) {
+                scrollTopBtn.classList.add('is-visible');
+            } else {
+                scrollTopBtn.classList.remove('is-visible');
+            }
+        }, { passive: true });
+
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // =========================================
+    // ESC Key Handler
+    // =========================================
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' || e.keyCode === 27) {
+            closeMobileNav();
+            closeSearch();
+        }
+    });
+
+    // Expose functions globally for use in imported templates
+    window.YOUTHTORY = {
+        openMobileNav: openMobileNav,
+        closeMobileNav: closeMobileNav,
+        openSearch: openSearch,
+        closeSearch: closeSearch
+    };
+})();
+</script>
+
+<script type="text/javascript" src="/js/ga09.js"></script>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHOP YOUTHTORY — NOTICE</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<style>
+/* ===== Global ===== */
+* { box-sizing: border-box; }
+body { font-family: helvetica, 'Noto Sans KR', sans-serif; color: #212121; background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+a { color: #212121; text-decoration: none; transition: all 0.3s ease; }
+a:hover { opacity: 0.7; }
+img { max-width: 100%; height: auto; }
+ul { list-style: none; margin: 0; padding: 0; }
+button, .btn { font-family: helvetica, 'Noto Sans KR', sans-serif; cursor: pointer; transition: all 0.3s ease; }
+input, select, textarea { font-family: helvetica, 'Noto Sans KR', sans-serif; }
+
+/* Promo + GNB floating wrapper */
+.gnb-float-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 100; pointer-events: none; }
+.gnb-float-wrap > * { pointer-events: auto; }
+
+/* Promo marquee bar */
+.promo-wrap { padding: 5px 8px 0; }
+.promo-bar { height: 24px; background: rgba(42,41,41,0.4); overflow: hidden; display: flex; align-items: center; position: relative; z-index: 101; border-radius: 100px; }
+.promo-track { display: flex; white-space: nowrap; animation: marquee 60s linear infinite; will-change: transform; }
+.promo-item { color: rgba(255,255,255,0.9); font-size: 11px; margin-right: 40vw; letter-spacing: 0.03em; font-weight: 300; }
+.promo-item a { color: rgba(255,255,255,0.9); text-decoration: none; }
+.promo-item a:hover { color: #fff; opacity: 1; }
+.promo-bar:hover .promo-track { animation-play-state: paused; }
+@keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+
+/* GNB header */
+.gnb-header { position: relative; overflow: visible; height: 36px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border: none; border-radius: 10px; margin: 3px 8px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: background 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1); }
+.gnb-header.scrolled { background: rgba(255,255,255,0.97); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.gnb-inner { max-width: 1920px; margin: 0 auto; display: flex; align-items: center; height: 100%; padding: 0 28px; }
+.gnb-logo { display: flex; align-items: center; margin-right: 40px; text-decoration: none; }
+.gnb-logo:hover { opacity: 0.7; }
+.gnb-logo img { height: 16px; display: block; }
+.gnb-nav { display: flex; align-items: center; height: 100%; gap: 0; }
+.gnb-item { font-family: helvetica, 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 600; color: #212121; padding: 0 14px; line-height: 36px; cursor: pointer; position: static; text-decoration: none; letter-spacing: 0.03em; white-space: nowrap; }
+.gnb-item:hover { opacity: 0.6; }
+
+/* Mega dropdown */
+.gnb-mega-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.18); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 98; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-overlay.active { opacity: 1; pointer-events: auto; }
+.gnb-mega { position: absolute; top: calc(100% + 2px); left: 0; right: 0; width: auto; background: rgba(246,245,241,0.97); backdrop-filter: saturate(120%) blur(16px); -webkit-backdrop-filter: saturate(120%) blur(16px); visibility: hidden; opacity: 0; transform: translateY(-6px); transition: visibility 0s 0.35s, opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1); padding: 28px 0 32px; z-index: 101; border: none; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.gnb-item.has-sub:hover .gnb-mega { visibility: visible; opacity: 1; transform: translateY(0); transition: visibility 0s, opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-inner { max-width: 1920px; margin: 0 auto; padding: 0 28px; display: flex; gap: 80px; }
+.gnb-mega-col { min-width: 120px; }
+.gnb-mega-col .mega-title { font-size: 11px; font-weight: 700; color: #212121; margin-bottom: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+.gnb-mega-col a { display: block; font-size: 12px; font-weight: 400; color: #555; padding: 3px 0; text-decoration: none; line-height: 1.8; transition: color 0.25s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-col a:hover { color: #212121; opacity: 1; }
+.gnb-right { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+.gnb-right a, .gnb-link { font-size: 11px; font-weight: 600; color: #212121; text-decoration: none; cursor: pointer; letter-spacing: 0.03em; }
+
+/* ===== Content area ===== */
+.content-area { max-width: 900px; margin: 100px auto 0; padding: 0 24px; }
+
+/* Board detail header */
+.board-detail-header { border-bottom: 1px solid #212121; padding-bottom: 20px; margin-bottom: 40px; }
+.board-detail-header .category { font-size: 11px; color: #999; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+.board-detail-header .title { font-size: 20px; font-weight: 500; margin-bottom: 12px; }
+.board-detail-header .meta { font-size: 11px; color: #bbb; }
+.board-detail-header .meta span { margin-right: 16px; }
+
+/* Board detail content */
+.board-detail-content { font-size: 14px; line-height: 2; color: #444; padding: 0 0 60px; min-height: 300px; white-space: pre-line; }
+
+/* Board navigation (prev/next) */
+.board-nav { border-top: 1px solid #e6e3db; }
+.board-nav-item { display: flex; padding: 14px 0; border-bottom: 1px solid #f1f1f1; font-size: 12px; }
+.board-nav-item .label { width: 80px; color: #999; flex-shrink: 0; }
+.board-nav-item a { color: #212121; }
+.board-nav-item a:hover { opacity: 0.7; }
+
+/* Button */
+.board-actions { text-align: center; margin-top: 40px; }
+.btn-list { display: inline-block; padding: 10px 32px; border: 1px solid #e6e3db; border-radius: 8px; font-size: 12px; color: #212121; background: #fff; transition: all 0.3s ease; text-decoration: none; }
+.btn-list:hover { background: #f1f1f1; border-color: #f1f1f1; opacity: 1; }
+
+/* ===== Footer ===== */
+#bottom-wrap { background: #f6f5f1; margin-top: 120px; border: none; }
+#bottom { max-width: 1400px; margin: 0 auto; font-family: helvetica, 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 400; line-height: 1.7; color: #999; }
+#bottom a { transition: all 0.3s ease; color: #999; }
+#bottom a:hover { text-decoration: none; color: #212121; }
+#bottom .inner { padding: 56px 40px 40px; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 40px; border-bottom: 1px solid rgba(0,0,0,0.06); gap: 40px; }
+.footer-brand { flex-shrink: 0; }
+.footer-brand .logo-text { line-height: 0; }
+.footer-brand .logo-text img { height: 24px; display: block; }
+.footer-brand .brand-desc { font-size: 11px; color: #bbb; margin-top: 8px; letter-spacing: 0.02em; }
+.footer-cols { display: flex; gap: 64px; }
+.footer-col h4 { font-size: 11px; font-weight: 600; color: #212121; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 14px; }
+.footer-col ul { list-style: none; margin: 0; padding: 0; }
+.footer-col li { padding: 2px 0; }
+.footer-col a { font-size: 11px; color: #999; }
+.footer-col a:hover { color: #212121; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: flex-start; padding-top: 28px; gap: 40px; flex-wrap: wrap; }
+.footer-info { font-size: 10px; color: #bbb; line-height: 1.8; }
+.footer-info span { color: #999; margin-right: 2px; }
+.footer-copyright { font-size: 10px; color: #ccc; letter-spacing: 0.02em; margin-top: 20px; }
+.footer-sns { display: flex; gap: 16px; align-items: center; }
+.footer-sns a { font-size: 11px; color: #bbb; letter-spacing: 0.06em; text-transform: uppercase; }
+.footer-sns a:hover { color: #212121; }
+.footer-links { margin-top: 24px; }
+.footer-links ul { display: flex; gap: 20px; }
+.footer-links a { font-size: 10px; color: #bbb; }
+.footer-links a:hover { color: #212121; }
+
+/* Scroll top */
+.scrollTop a { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: rgba(33,33,33,0.1); color: #212121; border-radius: 0; transition: all 0.3s ease; }
+.scrollTop a:hover { background: rgba(33,33,33,0.2); }
+
+/* ===== POLISH: Animations & Micro-interactions ===== */
+
+@keyframes pageIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+body { animation: pageIn 0.5s ease-out; }
+
+@keyframes revealUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; }
+.reveal.visible { animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* Input focus */
+input:focus, select:focus, textarea:focus {
+    border-color: #212121 !important;
+    box-shadow: 0 0 0 3px rgba(33,33,33,0.06);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Button press */
+button:active, a[class*="btn"]:active { transform: scale(0.97); }
+
+html { scroll-behavior: smooth; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(33,33,33,0.15); border-radius: 3px; }
+
+/* Scroll progress */
+.scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: #212121; z-index: 9999; width: 0%; }
+
+/* GNB polish */
+.gnb-logo img { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s; }
+.gnb-logo:hover img { transform: scale(1.05); opacity: 0.8; }
+.gnb-mega-col a { transition: padding-left 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s; }
+.gnb-mega-col a:hover { padding-left: 8px; color: #212121; opacity: 1; }
+.promo-bar:hover { box-shadow: 0 0 20px rgba(42,41,41,0.15); }
+
+/* Board table row hover */
+.board-table tbody tr { transition: background 0.2s ease; }
+.board-table tbody tr:hover { background: rgba(246,245,241,0.5); }
+.board-table tbody tr:hover td.title a { opacity: 0.8; }
+
+/* Board nav hover */
+.board-nav-item:hover { background: rgba(246,245,241,0.3); }
+.board-nav-item a { transition: padding-left 0.3s ease, color 0.3s; }
+.board-nav-item:hover a { padding-left: 8px; }
+
+/* Pill tabs enhanced */
+.tab-nav a, .pill-tab {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tab-nav a:hover, .pill-tab:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* Search input glow */
+.search-large:focus, .search-input:focus {
+    box-shadow: 0 2px 0 #212121;
+}
+
+/* Search pill tags */
+.search-tag, .popular-tag {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.search-tag:hover, .popular-tag:hover {
+    background: #f1f1f1;
+    border-color: #f1f1f1;
+    transform: translateY(-1px);
+}
+
+/* Product card hover (search results) */
+.prdpadding, [class*="prd-item"] { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.prdpadding:hover, [class*="prd-item"]:hover { transform: translateY(-4px); }
+
+/* Color swatch hover */
+.chips { transition: transform 0.2s ease; cursor: pointer; }
+.chips:hover { transform: scale(1.4); }
+
+/* Pagination hover */
+.ga09-paging ol li a:hover { transform: scale(1.1); }
+
+/* Board detail: paragraph fade-in */
+.board-detail-content p, .board-detail-content li {
+    opacity: 0;
+    animation: revealUp 0.5s ease forwards;
+}
+.board-detail-content p:nth-child(1) { animation-delay: 0.1s; }
+.board-detail-content p:nth-child(2) { animation-delay: 0.2s; }
+.board-detail-content p:nth-child(3) { animation-delay: 0.3s; }
+.board-detail-content p:nth-child(4) { animation-delay: 0.4s; }
+
+/* ===== RESPONSIVE — Mobile ===== */
+.m-header { display: none; }
+.m-sidebar-overlay, .m-sidebar { display: none; }
+
+@media (max-width: 768px) {
+    .gnb-header { display: none !important; }
+    .gnb-mega-overlay { display: none !important; }
+    .m-header {
+        display: flex !important; position: fixed; top: 32px; left: 8px; right: 8px;
+        height: 36px; background: rgba(255,255,255,0.88);
+        backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+        align-items: center; justify-content: space-between;
+        padding: 0 20px; z-index: 100; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); border: none;
+    }
+    .m-header .m-menu-btn { background: none; border: none; font-size: 16px; color: #212121; padding: 4px; cursor: pointer; letter-spacing: 0.03em; }
+    .m-header .m-logo img { height: 13px; }
+    .m-header .m-cart { font-size: 11px; font-weight: 600; color: #212121; text-decoration: none; letter-spacing: 0.03em; }
+    .promo-bar { height: 28px; }
+    .promo-item { font-size: 10px; }
+    #content { padding-top: 90px !important; }
+    .section-area { padding: 48px 16px 0; }
+    .ga09list ul.grid4 > li { width: 50%; }
+    .hoverimg { border-radius: 8px; }
+    .board-wrap { padding: 0 16px !important; }
+    .board-wrap table { font-size: 11px; }
+    .complete-wrap { padding: 0 16px !important; text-align: center; }
+    .footer-top { flex-direction: column; gap: 24px; }
+    .footer-cols { flex-wrap: wrap; gap: 24px; }
+    .footer-col { min-width: 45%; }
+    .footer-bottom { flex-direction: column; gap: 16px; }
+    #bottom .inner { padding: 32px 16px 24px; }
+    .footer-links ul { flex-wrap: wrap; gap: 12px; }
+    .scrollTop { bottom: 16px; right: 16px; }
+    .scrollTop a { width: 36px; height: 36px; }
+    .m-sidebar-overlay {
+        display: block; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.4); z-index: 200; opacity: 0; pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+    .m-sidebar-overlay.active { opacity: 1; pointer-events: auto; }
+    .m-sidebar {
+        display: block; position: fixed; top: 0; left: -300px; bottom: 0;
+        width: 300px; background: #fff; z-index: 201; transition: left 0.3s ease; overflow-y: auto;
+    }
+    .m-sidebar.active { left: 0; }
+    .m-sidebar .sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 16px; border-bottom: 1px solid #f1f1f1; }
+    .m-sidebar .sidebar-header .close-btn { background: none; border: none; font-size: 24px; color: #212121; cursor: pointer; }
+    .m-sidebar .sidebar-search { padding: 16px; }
+    .m-sidebar .sidebar-search input { width: 100%; padding: 10px 12px; border: 1px solid #e6e3db; border-radius: 8px; font-size: 12px; outline: none; }
+    .m-sidebar .menu-group { border-bottom: 1px solid #f1f1f1; }
+    .m-sidebar .menu-title { display: flex; align-items: center; justify-content: space-between; padding: 16px; font-size: 13px; font-weight: 600; color: #212121; cursor: pointer; letter-spacing: 0.05em; }
+    .m-sidebar .menu-title .arrow { transition: transform 0.3s ease; font-size: 10px; color: #999; }
+    .m-sidebar .menu-title.active .arrow { transform: rotate(180deg); }
+    .m-sidebar .menu-sub { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: #fafafa; }
+    .m-sidebar .menu-sub.active { max-height: 300px; }
+    .m-sidebar .menu-sub a { display: block; padding: 10px 24px; font-size: 12px; color: #666; text-decoration: none; }
+    .m-sidebar .menu-sub a:hover { color: #212121; }
+    .m-sidebar .sidebar-auth { padding: 16px; border-top: 1px solid #f1f1f1; margin-top: 16px; }
+    .m-sidebar .sidebar-auth a { display: block; padding: 8px 0; font-size: 12px; color: #999; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Mobile Header -->
+<div class="m-header">
+    <button class="m-menu-btn" onclick="toggleSidebar()">&#9776;</button>
+    <a href="preview-index.html" class="m-logo"><img src="logo-C-refined-header.svg" alt="YOUTHTORY"></a>
+    <a href="preview-cart.html" class="m-cart">BAG</a>
+</div>
+<div class="m-sidebar-overlay" onclick="toggleSidebar()"></div>
+<div class="m-sidebar">
+    <div class="sidebar-header">
+        <a href="preview-index.html"><img src="logo-C-refined-header.svg" alt="YOUTHTORY" style="height:14px;"></a>
+        <button class="close-btn" onclick="toggleSidebar()">&times;</button>
+    </div>
+    <div class="sidebar-search"><input type="text" placeholder="Search" onclick="location.href='preview-search.html'" readonly></div>
+    <div class="sidebar-menu">
+        <div class="menu-group"><div class="menu-title" onclick="toggleAccordion(this)">SHOP <span class="arrow">&#9660;</span></div><div class="menu-sub"><a href="preview-list.html">STYLING</a><a href="preview-list.html">NEW</a><a href="preview-list.html">EXCLUSIVE</a><a href="preview-list.html">SALE</a></div></div>
+        <div class="menu-group"><div class="menu-title" onclick="toggleAccordion(this)">MEN <span class="arrow">&#9660;</span></div><div class="menu-sub"><a href="preview-list.html">All</a><a href="preview-list.html">Outwear</a><a href="preview-list.html">Top</a><a href="preview-list.html">Bottom</a><a href="preview-list.html">Accessories</a></div></div>
+        <div class="menu-group"><div class="menu-title" onclick="toggleAccordion(this)">WOMEN <span class="arrow">&#9660;</span></div><div class="menu-sub"><a href="preview-list.html">All</a><a href="preview-list.html">Outwear</a><a href="preview-list.html">Top</a><a href="preview-list.html">Bottom</a><a href="preview-list.html">Dress</a><a href="preview-list.html">Accessories</a></div></div>
+        <div class="menu-group"><div class="menu-title" onclick="toggleAccordion(this)">BOARD <span class="arrow">&#9660;</span></div><div class="menu-sub"><a href="preview-board.html">Notice</a><a href="preview-board.html">Q&amp;A</a><a href="preview-board.html">Review</a></div></div>
+        <div class="menu-group"><div class="menu-title"><a href="preview-mypage.html" style="color:#212121;text-decoration:none;">MY PAGE</a></div></div>
+    </div>
+    <div class="sidebar-auth"><a href="preview-login.html">LOGIN</a><a href="preview-register.html">REGISTER</a></div>
+</div>
+
+<!-- Promo + GNB -->
+<div class="gnb-float-wrap">
+<div class="promo-wrap">
+<div class="promo-bar">
+    <div class="promo-track">
+        <span class="promo-item"><a href="#">회원가입 시 즉시 사용 가능한 3,000 포인트가 지급됩니다.</a></span>
+        <span class="promo-item"><a href="#">매주 선보이는 트렌디한 뉴 아이템과 스타일링을 확인해 보세요.</a></span>
+        <span class="promo-item"><a href="#">회원가입 시 즉시 사용 가능한 3,000 포인트가 지급됩니다.</a></span>
+        <span class="promo-item"><a href="#">매주 선보이는 트렌디한 뉴 아이템과 스타일링을 확인해 보세요.</a></span>
+    </div>
+</div>
+</div>
+
+<header class="gnb-header">
+    <div class="gnb-inner">
+        <a href="preview-index.html" class="gnb-logo"><img src="logo-C-refined-header.svg" alt="SHOP YOUTHTORY"></a>
+        <nav class="gnb-nav">
+            <a href="#" class="gnb-item">STYLING</a>
+            <a href="preview-list.html" class="gnb-item">NEW</a>
+            <div class="gnb-item has-sub">MEN
+                <div class="gnb-mega">
+                    <div class="gnb-mega-inner">
+                        <div class="gnb-mega-col">
+                            <div class="mega-title">Style</div>
+                            <a href="preview-list.html">Minimal</a>
+                            <a href="preview-list.html">Casual</a>
+                            <a href="preview-list.html">Street</a>
+                            <a href="preview-list.html">Dandy</a>
+                        </div>
+                        <div class="gnb-mega-col">
+                            <div class="mega-title">Item</div>
+                            <a href="preview-list.html">Outwear</a>
+                            <a href="preview-list.html">Top</a>
+                            <a href="preview-list.html">Bottom</a>
+                            <a href="preview-list.html">Accessories</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gnb-item has-sub">WOMEN
+                <div class="gnb-mega">
+                    <div class="gnb-mega-inner">
+                        <div class="gnb-mega-col">
+                            <div class="mega-title">Style</div>
+                            <a href="preview-list.html">Minimal</a>
+                            <a href="preview-list.html">Casual</a>
+                            <a href="preview-list.html">Street</a>
+                            <a href="preview-list.html">Chic</a>
+                        </div>
+                        <div class="gnb-mega-col">
+                            <div class="mega-title">Item</div>
+                            <a href="preview-list.html">Outwear</a>
+                            <a href="preview-list.html">Top</a>
+                            <a href="preview-list.html">Bottom</a>
+                            <a href="preview-list.html">Dress</a>
+                            <a href="preview-list.html">Accessories</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="gnb-item">EXCLUSIVE</a>
+            <a href="#" class="gnb-item">SALE</a>
+        </nav>
+        <div class="gnb-right">
+            <a href="preview-login.html">LOGIN</a>
+            <a href="preview-cart.html">CART(2)</a>
+        </div>
+    </div>
+</header>
+</div>
+
+<!-- Mega dropdown overlay -->
+<div class="gnb-mega-overlay" id="gnbOverlay"></div>
+
+<!-- Content -->
+<div class="content-area">
+
+    <!-- Board Detail Header -->
+    <div class="board-detail-header">
+        <div class="category">NOTICE</div>
+        <div class="title">2026 S/S 시즌 배송 안내</div>
+        <div class="meta">
+            <span>관리자</span>
+            <span>2026.03.10</span>
+            <span>조회 247</span>
+        </div>
+    </div>
+
+    <!-- Board Detail Content -->
+    <div class="board-detail-content">안녕하세요, SHOP YOUTHTORY입니다.
+
+2026 S/S 시즌 배송에 대해 안내드립니다.
+
+■ 배송 소요 기간
+- 일반 배송: 결제 완료 후 1~3일 (영업일 기준)
+- 예약 상품: 상품 상세 페이지 내 안내된 일정에 준합니다.
+
+■ 무료 배송 조건
+- 5만원 이상 구매 시 무료 배송
+- 5만원 미만: 배송비 3,000원
+
+■ 교환/반품
+- 수령 후 7일 이내 교환/반품 가능
+- 단, 착용 흔적이 있는 경우 불가
+
+감사합니다.
+SHOP YOUTHTORY 드림</div>
+
+    <!-- Prev / Next Navigation -->
+    <div class="board-nav">
+        <div class="board-nav-item">
+            <span class="label">이전글</span>
+            <a href="preview-board-detail.html">설 연휴 배송 스케줄 안내</a>
+        </div>
+        <div class="board-nav-item">
+            <span class="label">다음글</span>
+            <a href="preview-board-detail.html">교환/반품 정책 변경 안내 (2026년)</a>
+        </div>
+    </div>
+
+    <!-- List Button -->
+    <div class="board-actions">
+        <a href="preview-board.html" class="btn-list">목록</a>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<div id="bottom-wrap">
+    <div id="bottom">
+        <div class="inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo-text"><img src="logo-C-refined-header.svg" alt="SHOP YOUTHTORY"></div>
+                    <p class="brand-desc">Contemporary Fashion Label</p>
+                </div>
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h4>Shop</h4>
+                        <ul>
+                            <li><a href="preview-list.html">New Arrivals</a></li>
+                            <li><a href="preview-list.html">Men</a></li>
+                            <li><a href="preview-list.html">Women</a></li>
+                            <li><a href="#">Sale</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Help</h4>
+                        <ul>
+                            <li><a href="preview-board.html">FAQ</a></li>
+                            <li><a href="preview-board.html">배송안내</a></li>
+                            <li><a href="preview-board.html">교환/반품</a></li>
+                            <li><a href="#">1:1문의</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>About</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Instagram</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li>H.P 010-5648-7558</li>
+                            <li>am 11 — pm 17</li>
+                            <li>lunch pm 13 — 14</li>
+                            <li>sat · sun · holiday off</li>
+                            <li style="margin-top:8px;"><a href="mailto:Contact@youthtory.kr">Contact@youthtory.kr</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <span>Company</span> 유스컴퍼니 · <span>Owner &amp; Admin</span> 한유승 · <span>Business no.</span> 595-38-00307<br>
+                    <span>Online-order no.</span> 제2019-서울마포-1897호<br>
+                    <span>Address</span> 서울시 마포구 망원동 421-10 · <span>Tel</span> 070-8673-7558 / H.P 010-5648-7558<br>
+                    <span>E.mail</span> Contact@youthtory.kr<br>
+                    <span>Bank</span> 신한은행 110-398-259805 예금주 : 한유승
+                </div>
+                <div class="footer-sns">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Blog</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">Company</a></li>
+                    <li><a href="#">Agreement</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Site guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-copyright">
+                Copyright &copy; 2019 <b>유스컴퍼니</b> all rights reserved / designed by GA09 DESIGN
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scroll top -->
+<div class="scrollTop" style="position:fixed; bottom:40px; right:40px; z-index:100;"><a href="#"><i class="fas fa-arrow-up"></i></a></div>
+
+<!-- GNB Mega Dropdown JS -->
+<script>
+function toggleSidebar() {
+    document.querySelector('.m-sidebar').classList.toggle('active');
+    document.querySelector('.m-sidebar-overlay').classList.toggle('active');
+    document.body.style.overflow = document.querySelector('.m-sidebar').classList.contains('active') ? 'hidden' : '';
+}
+function toggleAccordion(el) {
+    el.classList.toggle('active');
+    var sub = el.nextElementSibling;
+    if (sub) sub.classList.toggle('active');
+}
+(function(){
+    var overlay = document.getElementById('gnbOverlay');
+    var header = document.querySelector('.gnb-header');
+    var subs = document.querySelectorAll('.gnb-item.has-sub');
+    var hideTimer;
+    subs.forEach(function(el){
+        el.addEventListener('mouseenter', function(){
+            clearTimeout(hideTimer);
+            overlay.classList.add('active');
+        });
+        el.addEventListener('mouseleave', function(){
+            hideTimer = setTimeout(function(){ overlay.classList.remove('active'); }, 120);
+        });
+    });
+    var ticking = false;
+    window.addEventListener('scroll', function(){
+        if(!ticking){
+            requestAnimationFrame(function(){
+                if(window.scrollY > 30) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+})();
+</script>
+
+<script>
+(function() {
+    document.querySelectorAll('.content-area, .content-area > *, table, .board-detail-content, .board-nav, .search-results, .popular-searches, .footer-top, .footer-bottom').forEach(function(el) {
+        if (!el.classList.contains('reveal') && el.offsetHeight > 20) el.classList.add('reveal');
+    });
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    document.body.prepend(bar);
+    window.addEventListener('scroll', function() {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        if (h > 0) bar.style.width = (window.scrollY / h * 100) + '%';
+    });
+})();
+</script>
+
+</body>
+</html>

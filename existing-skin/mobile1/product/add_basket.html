@@ -1,0 +1,97 @@
+<style type="text/css">
+    .xans-product-basketadd {
+        z-index: 10000;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(100vw - 40px);
+        max-width: 320px;
+        margin: 0;
+        border-radius: 0;
+        background: #fff;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+    }
+    .xans-product-basketadd .basket-popup-inner {
+        position: relative;
+        padding: 28px 20px 20px;
+    }
+    .xans-product-basketadd .basket-popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 32px;
+        height: 32px;
+        border: none;
+        background: none;
+        font-size: 22px;
+        color: #999;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        line-height: 1;
+    }
+    .xans-product-basketadd .basket-popup-content {
+        text-align: center;
+        padding: 4px 0 20px;
+    }
+    .xans-product-basketadd .basket-popup-icon {
+        display: block;
+        margin: 0 auto 10px;
+    }
+    .xans-product-basketadd .basket-popup-message {
+        font-size: 14px;
+        font-weight: 500;
+        color: #212121;
+        margin: 0;
+        letter-spacing: -0.02em;
+    }
+    .xans-product-basketadd .basket-popup-buttons {
+        display: flex;
+        gap: 8px;
+    }
+    .xans-product-basketadd .basket-popup-btn {
+        flex: 1;
+        display: block;
+        padding: 12px 0;
+        font-size: 12px;
+        font-weight: 500;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        letter-spacing: 0.02em;
+        font-family: inherit;
+        line-height: 1;
+    }
+    .xans-product-basketadd .basket-popup-btn-primary {
+        background: #212121;
+        color: #fff;
+    }
+    .xans-product-basketadd .basket-popup-btn-secondary {
+        background: #f5f5f5;
+        color: #212121;
+    }
+    #confirmLayer ~ .dimmed,
+    .dimmed {
+        background: rgba(0, 0, 0, 0.3) !important;
+        z-index: 9999 !important;
+    }
+</style>
+<div module="Product_BasketAdd" class="ec-base-layer">
+    <div class="basket-popup-inner">
+        <button type="button" class="basket-popup-close" onclick="$('#confirmLayer').hide(); $('.dimmed').hide();">&times;</button>
+        <div class="basket-popup-content">
+            <svg class="basket-popup-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <p class="basket-popup-message">장바구니에 담겼습니다.</p>
+        </div>
+        <div class="basket-popup-buttons">
+            <a href="#none" class="basket-popup-btn basket-popup-btn-primary" onclick="{$move_basket_page}">장바구니 보기</a>
+            <button type="button" class="basket-popup-btn basket-popup-btn-secondary" onclick="$('#confirmLayer').hide(); $('.dimmed').hide();">쇼핑 계속하기</button>
+        </div>
+    </div>
+</div>

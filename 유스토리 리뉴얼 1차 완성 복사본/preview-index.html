@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHOP YOUTHTORY — HOME</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<style>
+/* ===== layout.html 글로벌 스타일 (기존 작업 그대로) ===== */
+* { box-sizing: border-box; }
+body { font-family: helvetica, 'Noto Sans KR', sans-serif; color: #212121; background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+a { color: #212121; text-decoration: none; transition: all 0.3s ease; }
+a:hover { opacity: 0.7; }
+img { max-width: 100%; height: auto; }
+ul { list-style: none; margin: 0; padding: 0; }
+button, .btn { font-family: helvetica, 'Noto Sans KR', sans-serif; cursor: pointer; transition: all 0.3s ease; }
+input, select, textarea { font-family: helvetica, 'Noto Sans KR', sans-serif; }
+
+/* 프로모션+GNB 플로팅 래퍼 */
+.gnb-float-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 100; pointer-events: none; }
+.gnb-float-wrap > * { pointer-events: auto; }
+
+/* 프로모션 마키 바 — pill shape compact */
+.promo-wrap { padding: 5px 8px 0; }
+.promo-bar { height: 24px; background: rgba(42,41,41,0.4); overflow: hidden; display: flex; align-items: center; position: relative; z-index: 101; border-radius: 100px; }
+.promo-track { display: flex; white-space: nowrap; animation: marquee 60s linear infinite; will-change: transform; }
+.promo-item { color: rgba(255,255,255,0.9); font-size: 11px; margin-right: 40vw; letter-spacing: 0.03em; font-weight: 300; }
+.promo-item a { color: rgba(255,255,255,0.9); text-decoration: none; }
+.promo-item a:hover { color: #fff; opacity: 1; }
+.promo-bar:hover .promo-track { animation-play-state: paused; }
+@keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+
+/* GNB 헤더 — compact floating card */
+.gnb-header { position: relative; overflow: visible; height: 36px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border: none; border-radius: 10px; margin: 3px 8px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: background 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1); }
+.gnb-header.scrolled { background: rgba(255,255,255,0.97); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.gnb-inner { max-width: 1920px; margin: 0 auto; display: flex; align-items: center; height: 100%; padding: 0 28px; }
+.gnb-logo { display: flex; align-items: center; margin-right: 40px; text-decoration: none; }
+.gnb-logo:hover { opacity: 0.7; }
+.gnb-logo img { height: 16px; display: block; }
+.gnb-nav { display: flex; align-items: center; height: 100%; gap: 0; }
+.gnb-item { font-family: helvetica, 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 600; color: #212121; padding: 0 14px; line-height: 36px; cursor: pointer; position: static; text-decoration: none; letter-spacing: 0.03em; white-space: nowrap; }
+.gnb-item:hover { opacity: 0.6; }
+
+/* 메가 드롭다운 */
+.gnb-mega-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.18); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 98; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-overlay.active { opacity: 1; pointer-events: auto; }
+.gnb-mega { position: absolute; top: calc(100% + 2px); left: 0; right: 0; width: auto; background: rgba(246,245,241,0.97); backdrop-filter: saturate(120%) blur(16px); -webkit-backdrop-filter: saturate(120%) blur(16px); visibility: hidden; opacity: 0; transform: translateY(-6px); transition: visibility 0s 0.35s, opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1); padding: 28px 0 32px; z-index: 101; border: none; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.gnb-item.has-sub:hover .gnb-mega { visibility: visible; opacity: 1; transform: translateY(0); transition: visibility 0s, opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-inner { max-width: 1920px; margin: 0 auto; padding: 0 28px; display: flex; gap: 80px; }
+.gnb-mega-col { min-width: 120px; }
+.gnb-mega-col .mega-title { font-size: 11px; font-weight: 700; color: #212121; margin-bottom: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+.gnb-mega-col a { display: block; font-size: 12px; font-weight: 400; color: #555; padding: 3px 0; text-decoration: none; line-height: 1.8; transition: color 0.25s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-col a:hover { color: #212121; opacity: 1; }
+.gnb-right { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+.gnb-right a, .gnb-link { font-size: 11px; font-weight: 600; color: #212121; text-decoration: none; cursor: pointer; letter-spacing: 0.03em; }
+
+/* ===== fullpage.css 히어로 (기존 작업 그대로) ===== */
+.hero-section { width: 100%; height: 100vh; background-size: cover; background-position: center; cursor: pointer; position: relative; }
+.hero-section .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.15); }
+#section2 .intro {
+    position: absolute; top: 47%; left: 50%; width: 100%;
+    text-align: center; color: #fff;
+    font-family: helvetica, 'Noto Sans KR', sans-serif;
+    transform: translateX(-50%); opacity: 1;
+}
+#section2 .title {
+    letter-spacing: 0.15em; border: 1px solid rgba(255,255,255,0.6);
+    font-size: 14px; font-weight: 300; padding: 14px 28px;
+    display: inline-block; margin: 0 auto 24px;
+    transition: all 0.3s ease; color: #fff; text-transform: uppercase;
+}
+#section2 .title:hover { color: #212121; border-color: #fff; background: #fff; letter-spacing: 0.2em; cursor: pointer; }
+#section2 .sub {
+    font-size: 12px; font-weight: 300; line-height: 1.8;
+    letter-spacing: 0.08em; opacity: 0.8; color: #fff;
+}
+
+/* ===== 프리뷰용 fullpage 대체 — 히어로 슬라이더 ===== */
+#fullpage { position: relative; }
+.hero-section { display: none; }
+.hero-section.active { display: block; }
+.hero-section { animation: heroFade 1s ease; }
+@keyframes heroFade { from { opacity: 0; } to { opacity: 1; } }
+.hero-indicators { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
+.hero-indicators span { width: 24px; height: 2px; background: rgba(255,255,255,0.4); cursor: pointer; transition: all 0.4s ease; }
+.hero-indicators span.active { width: 40px; background: #fff; }
+.hero-scroll-hint { position: absolute; bottom: 56px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 10; }
+@keyframes scrollBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+/* ===== 섹션 타이틀 ===== */
+.section-area { max-width: 1920px; margin: 0 auto; padding: 80px 24px 0; }
+.section-title { text-align: center; margin-bottom: 48px; }
+.section-title h2 { font-family: 'Unbounded', sans-serif; font-size: 48px; font-weight: 900; color: #212121; letter-spacing: -0.02em; margin: 0; text-transform: uppercase; line-height: 1; }
+.section-title p { font-size: 11px; color: #aaa; margin-top: 12px; letter-spacing: 0.12em; font-weight: 400; text-transform: uppercase; }
+
+/* ===== ga09product.css 상품 그리드 (기존 작업 그대로) ===== */
+.ga09list { margin: 0 auto; font-family: helvetica, 'Noto Sans KR', sans-serif; }
+.ga09list ul { zoom: 1; width: 100%; margin: 0 -4px; display: flex; flex-wrap: wrap; font-size: 0; }
+.ga09list ul:after { content: ""; display: block; clear: both; }
+.ga09list ul li { display: inline-block; vertical-align: top; }
+.ga09list ul.grid4 > li { width: 25%; padding: 0 4px; text-align: left; }
+.ga09list .prdpadding { margin: 0 0 32px 0; display: flex; flex-direction: column; }
+.ga09list .prdline { margin-bottom: 0; position: relative; }
+.hoverimg { overflow: hidden; border-radius: 16px; position: relative; }
+.hoverimg img { width: 100%; object-fit: cover; aspect-ratio: 3/4; display: block; transform: scale(1); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s; }
+.hoverimg:hover img { transform: scale(1.03); opacity: 0.94; }
+.ga09list .name { clear: both; font-size: 13px; font-weight: 400; color: #212121; margin: 10px 0 0; line-height: 1.4; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ga09list .name a { color: #212121; }
+.ga09list .colorWrap { margin-top: 6px; height: auto; min-height: 0; }
+.ga09list .color { text-align: left; }
+.ga09list .color ul { display: inline-flex; gap: 3px; margin: 0; padding: 0; }
+.ga09list .chips { width: 9px; height: 9px; border-radius: 50%; font-size: 0; line-height: 0; display: inline-block; }
+.ga09list .prices { line-height: 1.4; color: #212121; font-size: 14px; margin-top: 4px; }
+.ga09list .price { font-size: 11px; color: #999; margin-right: 5px; text-decoration: line-through; opacity: 0.7; }
+.ga09list .normal { font-size: 14px; color: #212121; font-weight: 400; text-decoration: none; }
+.ga09list .sale-pct { font-size: 14px; color: #db7e7e; margin-right: 5px; font-weight: 400; }
+.prd-badge { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 2px 14px; border-radius: 24px; font-size: 11px; font-weight: 400; letter-spacing: 0.02em; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.badge-new { background: rgba(237,237,237,0.7); color: #212121; }
+.badge-best { background: rgba(0,0,0,0.5); color: #fff; }
+
+/* ===== 푸터 (bottom.html/bottom.css 기존 작업 그대로) ===== */
+#bottom-wrap { background: #f6f5f1; margin-top: 120px; border: none; }
+#bottom { max-width: 1400px; margin: 0 auto; font-family: helvetica, 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 400; line-height: 1.7; color: #999; }
+#bottom a { transition: all 0.3s ease; color: #999; }
+#bottom a:hover { text-decoration: none; color: #212121; }
+#bottom .inner { padding: 56px 40px 40px; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 40px; border-bottom: 1px solid rgba(0,0,0,0.06); gap: 40px; }
+.footer-brand { flex-shrink: 0; }
+.footer-brand .logo-text { line-height: 0; }
+.footer-brand .logo-text img { height: 24px; display: block; }
+.footer-brand .brand-desc { font-size: 11px; color: #bbb; margin-top: 8px; letter-spacing: 0.02em; }
+.footer-cols { display: flex; gap: 64px; }
+.footer-col h4 { font-size: 11px; font-weight: 600; color: #212121; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 14px; }
+.footer-col ul { list-style: none; margin: 0; padding: 0; }
+.footer-col li { padding: 2px 0; }
+.footer-col a { font-size: 11px; color: #999; }
+.footer-col a:hover { color: #212121; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: flex-start; padding-top: 28px; gap: 40px; flex-wrap: wrap; }
+.footer-info { font-size: 10px; color: #bbb; line-height: 1.8; }
+.footer-info span { color: #999; margin-right: 2px; }
+.footer-copyright { font-size: 10px; color: #ccc; letter-spacing: 0.02em; margin-top: 20px; }
+.footer-sns { display: flex; gap: 16px; align-items: center; }
+.footer-sns a { font-size: 11px; color: #bbb; letter-spacing: 0.06em; text-transform: uppercase; }
+.footer-sns a:hover { color: #212121; }
+.footer-links { margin-top: 24px; }
+.footer-links ul { display: flex; gap: 20px; }
+.footer-links a { font-size: 10px; color: #bbb; }
+.footer-links a:hover { color: #212121; }
+
+/* 콘텐츠 영역 */
+#contentsWrap { position: relative; z-index: 1; }
+#content { max-width: 1920px; margin: 0 auto; padding: 0 24px; }
+
+/* 스크롤 탑 */
+.scrollTop { position: fixed; bottom: 32px; right: 32px; z-index: 90; }
+.scrollTop a { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: rgba(33,33,33,0.1); color: #212121; border-radius: 0; transition: all 0.3s ease; }
+.scrollTop a:hover { background: rgba(33,33,33,0.2); }
+
+/* ===== 프리뷰 전용 애니메이션 ===== */
+@keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+body { animation: pageIn 0.6s ease-out; }
+
+@keyframes revealUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; }
+.reveal.visible { animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@keyframes cardIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.stagger-item { opacity: 0; }
+.stagger-item.visible { animation: cardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+.prdpadding { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.prdpadding:hover { transform: translateY(-4px); }
+
+@keyframes badgePulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+.prd-badge { animation: badgePulse 3s ease-in-out infinite; }
+
+.chips { transition: transform 0.2s ease; cursor: pointer; }
+.chips:hover { transform: scale(1.4); }
+
+.scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: #212121; z-index: 9999; width: 0%; transition: width 0.1s linear; }
+
+.gnb-mega-col a { position: relative; padding-left: 0; transition: padding-left 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s; }
+.gnb-mega-col a:hover { padding-left: 8px; color: #212121; opacity: 1; }
+
+.footer-col a::after, .footer-sns a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -1px; left: 0; background: #212121; transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+.footer-col a:hover::after, .footer-sns a:hover::after { width: 100%; }
+.footer-col a, .footer-sns a { position: relative; }
+.footer-col a:hover, .footer-sns a:hover { opacity: 1; }
+
+.promo-bar:hover { box-shadow: 0 0 20px rgba(42,41,41,0.15); }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(33,33,33,0.15); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(33,33,33,0.3); }
+html { scroll-behavior: smooth; }
+
+/* ===== RESPONSIVE — Mobile ===== */
+.m-header { display: none; }
+.m-sidebar-overlay, .m-sidebar { display: none; }
+
+@media (max-width: 768px) {
+    .gnb-header { display: none !important; }
+    .gnb-mega-overlay { display: none !important; }
+    .m-header {
+        display: flex !important; position: fixed; top: 32px; left: 8px; right: 8px;
+        height: 36px; background: rgba(255,255,255,0.88);
+        backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+        align-items: center; justify-content: space-between;
+        padding: 0 20px; z-index: 100; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); border: none;
+    }
+    .m-header .m-menu-btn { background: none; border: none; font-size: 16px; color: #212121; padding: 4px; cursor: pointer; letter-spacing: 0.03em; }
+    .m-header .m-logo img { height: 13px; }
+    .m-header .m-cart { font-size: 11px; font-weight: 600; color: #212121; text-decoration: none; letter-spacing: 0.03em; }
+    .promo-bar { height: 28px; }
+    .promo-item { font-size: 10px; }
+    #content { padding-top: 90px !important; }
+    .hero-section { height: 70vh !important; }
+    .section-area { padding: 48px 16px 0; }
+    .section-title h2 { font-size: 28px; }
+    .section-title p { font-size: 10px; }
+    .ga09list ul.grid4 > li { width: 50%; }
+    .hoverimg { border-radius: 8px; }
+    .ga09list .name { font-size: 12px; }
+    .ga09list .prices, .ga09list .normal, .ga09list .sale-pct { font-size: 12px; }
+    .ga09list .price { font-size: 10px; }
+    #catetitle h2 { font-size: 24px; }
+    .xans-product-menupackage #subcate ul { flex-wrap: wrap; justify-content: center; }
+    .xans-product-normalmenu { margin: 0 16px; }
+    .footer-top { flex-direction: column; gap: 24px; }
+    .footer-cols { flex-wrap: wrap; gap: 24px; }
+    .footer-col { min-width: 45%; }
+    .footer-bottom { flex-direction: column; gap: 16px; }
+    #bottom .inner { padding: 32px 16px 24px; }
+    .footer-links ul { flex-wrap: wrap; gap: 12px; }
+    .scrollTop { bottom: 16px; right: 16px; }
+    .scrollTop a { width: 36px; height: 36px; }
+    .m-sidebar-overlay {
+        display: block; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.4); z-index: 200; opacity: 0; pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+    .m-sidebar-overlay.active { opacity: 1; pointer-events: auto; }
+    .m-sidebar {
+        display: block; position: fixed; top: 0; left: -300px; bottom: 0;
+        width: 300px; background: #fff; z-index: 201; transition: left 0.3s ease; overflow-y: auto;
+    }
+    .m-sidebar.active { left: 0; }
+    .m-sidebar .sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 16px; border-bottom: 1px solid #f1f1f1; }
+    .m-sidebar .sidebar-header .close-btn { background: none; border: none; font-size: 24px; color: #212121; cursor: pointer; }
+    .m-sidebar .sidebar-search { padding: 16px; }
+    .m-sidebar .sidebar-search input { width: 100%; padding: 10px 12px; border: 1px solid #e6e3db; border-radius: 8px; font-size: 12px; outline: none; }
+    .m-sidebar .menu-group { border-bottom: 1px solid #f1f1f1; }
+    .m-sidebar .menu-title { display: flex; align-items: center; justify-content: space-between; padding: 16px; font-size: 13px; font-weight: 600; color: #212121; cursor: pointer; letter-spacing: 0.05em; }
+    .m-sidebar .menu-title .arrow { transition: transform 0.3s ease; font-size: 10px; color: #999; }
+    .m-sidebar .menu-title.active .arrow { transform: rotate(180deg); }
+    .m-sidebar .menu-sub { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: #fafafa; }
+    .m-sidebar .menu-sub.active { max-height: 300px; }
+    .m-sidebar .menu-sub a { display: block; padding: 10px 24px; font-size: 12px; color: #666; text-decoration: none; }
+    .m-sidebar .menu-sub a:hover { color: #212121; }
+    .m-sidebar .sidebar-auth { padding: 16px; border-top: 1px solid #f1f1f1; margin-top: 16px; }
+    .m-sidebar .sidebar-auth a { display: block; padding: 8px 0; font-size: 12px; color: #999; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Mobile Header -->
+<div class="m-header">
+    <button class="m-menu-btn" onclick="toggleSidebar()">&#9776;</button>
+    <a href="preview-index.html" class="m-logo"><img src="logo-C-refined-header.svg" alt="YOUTHTORY"></a>
+    <a href="preview-cart.html" class="m-cart">BAG</a>
+</div>
+<div class="m-sidebar-overlay" onclick="toggleSidebar()"></div>
+<div class="m-sidebar">
+    <div class="sidebar-header">
+        <a href="preview-index.html"><img src="logo-C-refined-header.svg" alt="YOUTHTORY" style="height:14px;"></a>
+        <button class="close-btn" onclick="toggleSidebar()">&times;</button>
+    </div>
+    <div class="sidebar-search"><input type="text" placeholder="Search" onclick="location.href='preview-search.html'" readonly></div>
+    <div class="sidebar-menu">
+        <div class="menu-group"><div class="menu-title" onclick="toggleAccordion(this)">SHOP <span class="arrow">&#9660;</span></div><div class="menu-sub"><a href="preview-list.html">STYLING</a><a href="preview-list.html">NEW</a><a href="preview-list.html">EXCLUSIVE</a><a href="preview-list.html">SALE</a></div></div>
+        <div class="menu-group"><div class="menu-title" onclick="toggleAccordion(this)">MEN <span class="arrow">&#9660;</span></div><div class="menu-sub"><a href="preview-list.html">All</a><a href="preview-list.html">Outwear</a><a href="preview-list.html">Top</a><a href="preview-list.html">Bottom</a><a href="preview-list.html">Accessories</a></div></div>
+        <div class="menu-group"><div class="menu-title" onclick="toggleAccordion(this)">WOMEN <span class="arrow">&#9660;</span></div><div class="menu-sub"><a href="preview-list.html">All</a><a href="preview-list.html">Outwear</a><a href="preview-list.html">Top</a><a href="preview-list.html">Bottom</a><a href="preview-list.html">Dress</a><a href="preview-list.html">Accessories</a></div></div>
+        <div class="menu-group"><div class="menu-title" onclick="toggleAccordion(this)">BOARD <span class="arrow">&#9660;</span></div><div class="menu-sub"><a href="preview-board.html">Notice</a><a href="preview-board.html">Q&amp;A</a><a href="preview-board.html">Review</a></div></div>
+        <div class="menu-group"><div class="menu-title"><a href="preview-mypage.html" style="color:#212121;text-decoration:none;">MY PAGE</a></div></div>
+    </div>
+    <div class="sidebar-auth"><a href="preview-login.html">LOGIN</a><a href="preview-register.html">REGISTER</a></div>
+</div>
+
+<!-- ===== 프로모션 + GNB (layout.html 구조 그대로) ===== -->
+<div class="gnb-float-wrap">
+
+<div class="promo-wrap">
+<div class="promo-bar">
+    <div class="promo-track">
+        <span class="promo-item"><a href="#">회원가입 시 즉시 사용 가능한 3,000 포인트가 지급됩니다.</a></span>
+        <span class="promo-item"><a href="#">매주 선보이는 트렌디한 뉴 아이템과 스타일링을 확인해 보세요.</a></span>
+        <span class="promo-item"><a href="#">회원가입 시 즉시 사용 가능한 3,000 포인트가 지급됩니다.</a></span>
+        <span class="promo-item"><a href="#">매주 선보이는 트렌디한 뉴 아이템과 스타일링을 확인해 보세요.</a></span>
+    </div>
+</div>
+</div>
+
+<!-- GNB 헤더 (layout.html + left.html + top.html 합침) -->
+<header class="gnb-header">
+    <div class="gnb-inner">
+        <a href="preview-index.html" class="gnb-logo"><img src="logo-C-refined-header.svg" alt="SHOP YOUTHTORY"></a>
+        <nav class="gnb-nav">
+            <!-- left.html 내용 (카페24 링크 → 프리뷰 링크로 치환) -->
+            <a href="preview-list.html" class="gnb-item">STYLING</a>
+            <a href="preview-list.html" class="gnb-item">NEW</a>
+            <div class="gnb-item has-sub">MEN
+                <div class="gnb-mega">
+                    <div class="gnb-mega-inner">
+                        <div class="gnb-mega-col">
+                            <div class="mega-title">MEN</div>
+                            <a href="preview-list.html">All</a>
+                        </div>
+                        <div class="gnb-mega-col">
+                            <a href="preview-list.html">Outwear</a>
+                            <a href="preview-list.html">Top</a>
+                            <a href="preview-list.html">Bottom</a>
+                        </div>
+                        <div class="gnb-mega-col">
+                            <a href="preview-list.html">Accessories</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gnb-item has-sub">WOMEN
+                <div class="gnb-mega">
+                    <div class="gnb-mega-inner">
+                        <div class="gnb-mega-col">
+                            <div class="mega-title">WOMEN</div>
+                            <a href="preview-list.html">All</a>
+                        </div>
+                        <div class="gnb-mega-col">
+                            <a href="preview-list.html">Outwear</a>
+                            <a href="preview-list.html">Top</a>
+                            <a href="preview-list.html">Bottom</a>
+                        </div>
+                        <div class="gnb-mega-col">
+                            <a href="preview-list.html">Dress</a>
+                            <a href="preview-list.html">Accessories</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="preview-list.html" class="gnb-item">EXCLUSIVE</a>
+            <a href="preview-list.html" class="gnb-item">SALE</a>
+        </nav>
+        <div class="gnb-right">
+            <!-- top.html 내용 (카페24 모듈 → 프리뷰 링크로 치환) -->
+            <a href="preview-search.html"><i class="fas fa-search" style="font-size:14px;color:#212121;"></i></a>
+            <a href="preview-login.html" class="gnb-link">LOGIN</a>
+            <a href="preview-cart.html" class="gnb-link">CART (2)</a>
+        </div>
+    </div>
+</header>
+
+</div><!-- gnb-float-wrap -->
+
+<!-- ===== index.html 구조 (기존 작업 그대로, fullpage→슬라이더로 프리뷰 치환) ===== -->
+<div id="fullpage">
+
+    <!-- Hero 1 — index.html의 section1 (0616pc-01.jpg → Unsplash 패션) -->
+    <div class="section hero-section active" id="section1" style="background-image: url(https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&h=1080&fit=crop&q=80); background-size: cover; background-position: center;" onclick="location.href='preview-list.html'">
+        <div class="overlay"></div>
+    </div>
+
+    <!-- Hero 2 — index.html의 section2 (0719pc-02.jpg) OFFLINE CLUB SERVICE -->
+    <div class="section hero-section" id="section2" style="background-image: url(https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1920&h=1080&fit=crop&q=80); background-size: cover; background-position: center;">
+        <div class="overlay"></div>
+        <div class="intro" onclick="location.href='preview-list.html'" style="cursor:pointer;">
+            <p class="title">OFFLINE CLUB SERVICE</p>
+            <p class="sub">FIND YOUR STYLE , FIND YOUR VALUE , FIND YOUR LIFE.</p>
+        </div>
+    </div>
+
+    <!-- Hero 3 — index.html의 section3 (0719pc-03.jpg) -->
+    <div class="section hero-section" id="section3" style="background-image: url(https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1920&h=1080&fit=crop&q=80); background-size: cover; background-position: center;" onclick="location.href='preview-list.html'">
+        <div class="overlay"></div>
+    </div>
+
+    <!-- 히어로 인디케이터 + 스크롤 힌트 -->
+    <div class="hero-indicators">
+        <span class="active" onclick="goSlide(0)"></span>
+        <span onclick="goSlide(1)"></span>
+        <span onclick="goSlide(2)"></span>
+    </div>
+    <div class="hero-scroll-hint">
+        <span style="display:block;font-size:10px;color:rgba(255,255,255,0.6);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px;">Scroll</span>
+        <i class="fas fa-chevron-down" style="color:rgba(255,255,255,0.6);font-size:14px;animation:scrollBounce 2s ease infinite;"></i>
+    </div>
+
+    <!-- ===== MEN BEST ITEMS — index.html의 product_listmain_1 (샘플 데이터로 치환) ===== -->
+    <div class="section fp-auto-height" id="section-men">
+        <div class="section-area">
+            <div class="section-title">
+                <h2>MEN</h2>
+                <p>BEST ITEMS FOR HIM</p>
+            </div>
+            <div class="ga09list">
+                <ul class="grid4 prdList">
+                    <!-- prdlist.html 샘플 1 -->
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline"><a href="preview-detail.html"><div class="hoverimg"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop&q=80" alt="워셔블 오버핏 블레이저"></div></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background:#222"></li><li class="chips" style="background:#1a2744"></li></ul></div></div>
+                            <p class="name"><a href="preview-detail.html">워셔블 오버핏 블레이저</a></p>
+                            <p class="prices"><span class="normal">&#8361;89,000</span></p>
+                        </div>
+                    </li>
+                    <!-- prdlist.html 샘플 2 -->
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline"><a href="preview-detail.html"><div class="hoverimg"><img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&h=800&fit=crop&q=80" alt="세미와이드 슬랙스"></div></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background:#222"></li><li class="chips" style="background:#888"></li><li class="chips" style="background:#c8b99a"></li></ul></div></div>
+                            <p class="name"><a href="preview-detail.html">세미와이드 슬랙스</a></p>
+                            <p class="prices"><span class="sale-pct">20%</span><span class="price">&#8361;49,000</span><span class="normal">&#8361;39,000</span></p>
+                        </div>
+                    </li>
+                    <!-- prdlist.html 샘플 3 -->
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline"><a href="preview-detail.html"><div class="hoverimg"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=800&fit=crop&q=80" alt="프리미엄 코튼 티셔츠"></div></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background:#fff; border:1px solid #dadada"></li><li class="chips" style="background:#222"></li></ul></div></div>
+                            <p class="name"><a href="preview-detail.html">프리미엄 코튼 티셔츠</a></p>
+                            <p class="prices"><span class="normal">&#8361;29,000</span></p>
+                        </div>
+                    </li>
+                    <!-- prdlist.html 샘플 4 -->
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline"><a href="preview-detail.html"><div class="hoverimg"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&h=800&fit=crop&q=80" alt="레더 크로스백"></div></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background:#222"></li><li class="chips" style="background:#6b4226"></li></ul></div></div>
+                            <p class="name"><a href="preview-detail.html">레더 크로스백</a></p>
+                            <p class="prices"><span class="normal">&#8361;69,000</span></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== WOMEN BEST ITEMS — index.html의 product_listmain_2 ===== -->
+    <div class="section fp-auto-height" id="section-women">
+        <div class="section-area">
+            <div class="section-title">
+                <h2>WOMEN</h2>
+                <p>BEST ITEMS FOR HER</p>
+            </div>
+            <div class="ga09list">
+                <ul class="grid4 prdList">
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline"><a href="preview-detail.html"><div class="hoverimg"><img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=800&fit=crop&q=80" alt="크롭 트위드 자켓"></div></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background:#f5f0e8"></li><li class="chips" style="background:#e8b4b8"></li></ul></div></div>
+                            <p class="name"><a href="preview-detail.html">크롭 트위드 자켓</a></p>
+                            <p class="prices"><span class="normal">&#8361;119,000</span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline"><a href="preview-detail.html"><div class="hoverimg"><img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&h=800&fit=crop&q=80" alt="플리츠 롱 스커트"></div></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background:#222"></li><li class="chips" style="background:#f5f0e0"></li></ul></div></div>
+                            <p class="name"><a href="preview-detail.html">플리츠 롱 스커트</a></p>
+                            <p class="prices"><span class="normal">&#8361;59,000</span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline"><a href="preview-detail.html"><div class="hoverimg"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&h=800&fit=crop&q=80" alt="캐시미어 니트 탑"></div></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background:#c8b99a"></li><li class="chips" style="background:#888"></li></ul></div></div>
+                            <p class="name"><a href="preview-detail.html">캐시미어 니트 탑</a></p>
+                            <p class="prices"><span class="sale-pct">30%</span><span class="price">&#8361;79,000</span><span class="normal">&#8361;55,300</span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline"><a href="preview-detail.html"><div class="hoverimg"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=800&fit=crop&q=80" alt="미니 숄더백"></div></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background:#222"></li><li class="chips" style="background:#f5f0e8"></li></ul></div></div>
+                            <p class="name"><a href="preview-detail.html">미니 숄더백</a></p>
+                            <p class="prices"><span class="normal">&#8361;89,000</span></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== NEW ARRIVALS — index.html의 product_listmain_3 ===== -->
+    <div class="section fp-auto-height" id="section-new">
+        <div class="section-area">
+            <div class="section-title">
+                <h2>NEW ARRIVALS</h2>
+                <p>LATEST COLLECTION</p>
+            </div>
+            <div class="ga09list">
+                <ul class="grid4 prdList">
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline"><a href="preview-detail.html"><div class="hoverimg"><span class="prd-badge badge-new">NEW</span><img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&h=800&fit=crop&q=80" alt="유틸리티 카고 팬츠"></div></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background:#6b6b4e"></li><li class="chips" style="background:#222"></li></ul></div></div>
+                            <p class="name"><a href="preview-detail.html">유틸리티 카고 팬츠</a></p>
+                            <p class="prices"><span class="normal">&#8361;59,000</span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline"><a href="preview-detail.html"><div class="hoverimg"><span class="prd-badge badge-new">NEW</span><img src="https://images.unsplash.com/photo-1495105787522-5334e3ffa0ef?w=600&h=800&fit=crop&q=80" alt="오버사이즈 데님 자켓"></div></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background:#4a6fa5"></li></ul></div></div>
+                            <p class="name"><a href="preview-detail.html">오버사이즈 데님 자켓</a></p>
+                            <p class="prices"><span class="normal">&#8361;99,000</span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline"><a href="preview-detail.html"><div class="hoverimg"><span class="prd-badge badge-new">NEW</span><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&h=800&fit=crop&q=80" alt="리넨 블렌드 셔츠"></div></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background:#fff; border:1px solid #dadada"></li><li class="chips" style="background:#87ceeb"></li></ul></div></div>
+                            <p class="name"><a href="preview-detail.html">리넨 블렌드 셔츠</a></p>
+                            <p class="prices"><span class="normal">&#8361;45,000</span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline"><a href="preview-detail.html"><div class="hoverimg"><span class="prd-badge badge-best">BEST</span><img src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a7a?w=600&h=800&fit=crop&q=80" alt="스트라이프 니트 베스트"></div></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background:#1a2744"></li><li class="chips" style="background:#f5f0e0"></li></ul></div></div>
+                            <p class="name"><a href="preview-detail.html">스트라이프 니트 베스트</a></p>
+                            <p class="prices"><span class="normal">&#8361;39,000</span></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 푸터 — bottom.html 내용 그대로 ===== -->
+    <div class="section fp-auto-height" id="section-footer">
+        <div id="bottom-wrap">
+            <div id="bottom">
+                <div class="inner">
+                    <div class="footer-top">
+                        <div class="footer-brand">
+                            <div class="logo-text"><img src="logo-C-refined.svg" alt="SHOP YOUTHTORY"></div>
+                            <p class="brand-desc">Contemporary Fashion Label</p>
+                        </div>
+                        <div class="footer-cols">
+                            <div class="footer-col">
+                                <h4>Shop</h4>
+                                <ul>
+                                    <li><a href="preview-list.html">New Arrivals</a></li>
+                                    <li><a href="preview-list.html">Men</a></li>
+                                    <li><a href="preview-list.html">Women</a></li>
+                                    <li><a href="preview-list.html">Sale</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-col">
+                                <h4>Help</h4>
+                                <ul>
+                                    <li><a href="preview-board.html">FAQ</a></li>
+                                    <li><a href="#">배송안내</a></li>
+                                    <li><a href="#">교환/반품</a></li>
+                                    <li><a href="#">1:1문의</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-col">
+                                <h4>About</h4>
+                                <ul>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Instagram</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-col">
+                                <h4>Contact</h4>
+                                <ul>
+                                    <li>H.P 010-5648-7558</li>
+                                    <li>am 11 — pm 17</li>
+                                    <li>lunch pm 13 — 14</li>
+                                    <li>sat · sun · holiday off</li>
+                                    <li style="margin-top:8px;"><a href="mailto:Contact@youthtory.kr">Contact@youthtory.kr</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <div class="footer-info">
+                            <span>Company</span> 유스컴퍼니 · <span>Owner &amp; Admin</span> 한유승 · <span>Business no.</span> 595-38-00307<br>
+                            <span>Online-order no.</span> 제2019-서울마포-1897호<br>
+                            <span>Address</span> 서울시 마포구 망원동 421-10 · <span>Tel</span> 070-8673-7558 / H.P 010-5648-7558<br>
+                            <span>E.mail</span> Contact@youthtory.kr<br>
+                            <span>Bank</span> 신한은행 110-398-259805 예금주 : 한유승
+                        </div>
+                        <div class="footer-sns">
+                            <a href="#">Facebook</a>
+                            <a href="#">Instagram</a>
+                            <a href="#">Blog</a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Agreement</a></li>
+                            <li><a href="#">Privacy policy</a></li>
+                            <li><a href="#">Site guide</a></li>
+                            <li><a href="#">Business license</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-copyright">
+                        Copyright &copy; 2019 <b>유스컴퍼니</b> all rights reserved / designed by GA09 DESIGN
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- #fullpage -->
+
+<!-- Scroll to top -->
+<div class="scrollTop"><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;"><i class="fas fa-arrow-up"></i></a></div>
+
+<!-- GNB 메가 드롭다운 오버레이 (layout.html 그대로) -->
+<div class="gnb-mega-overlay" id="gnbOverlay"></div>
+
+<script>
+// ===== 히어로 슬라이더 (fullpage.js 프리뷰 대체) =====
+(function(){
+    var slides = document.querySelectorAll('.hero-section');
+    var dots = document.querySelectorAll('.hero-indicators span');
+    var current = 0;
+    var total = slides.length;
+    window.goSlide = function(n) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = n;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+    };
+    setInterval(function(){ window.goSlide((current + 1) % total); }, 5000);
+})();
+
+// ===== Scroll reveal (프리뷰 애니메이션) =====
+(function() {
+    document.querySelectorAll('.section-area, .ga09list, #bottom-wrap, .footer-top, .footer-bottom').forEach(function(el) {
+        if (!el.classList.contains('reveal')) el.classList.add('reveal');
+    });
+    document.querySelectorAll('.ga09list ul > li, .grid4 > li').forEach(function(el, i) {
+        el.classList.add('stagger-item');
+        el.style.animationDelay = (i % 4) * 0.1 + 's';
+    });
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                entry.target.querySelectorAll('.stagger-item').forEach(function(item, i) {
+                    setTimeout(function() { item.classList.add('visible'); }, i * 100);
+                });
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal, .stagger-item').forEach(function(el) {
+        observer.observe(el);
+    });
+})();
+
+// ===== Scroll progress bar =====
+(function() {
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    document.body.prepend(bar);
+    window.addEventListener('scroll', function() {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        if (h > 0) bar.style.width = (window.scrollY / h * 100) + '%';
+    });
+})();
+
+// ===== GNB 메가 드롭다운 + 스크롤 효과 (layout.html 그대로) =====
+(function(){
+    var overlay = document.getElementById('gnbOverlay');
+    var header = document.querySelector('.gnb-header');
+    var subs = document.querySelectorAll('.gnb-item.has-sub');
+    var hideTimer;
+    subs.forEach(function(el){
+        el.addEventListener('mouseenter', function(){
+            clearTimeout(hideTimer);
+            overlay.classList.add('active');
+        });
+        el.addEventListener('mouseleave', function(){
+            hideTimer = setTimeout(function(){ overlay.classList.remove('active'); }, 120);
+        });
+    });
+    var ticking = false;
+    window.addEventListener('scroll', function(){
+        if(!ticking){
+            requestAnimationFrame(function(){
+                if(window.scrollY > 30) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+})();
+
+// Mobile sidebar
+function toggleSidebar() {
+    document.querySelector('.m-sidebar').classList.toggle('active');
+    document.querySelector('.m-sidebar-overlay').classList.toggle('active');
+    document.body.style.overflow = document.querySelector('.m-sidebar').classList.contains('active') ? 'hidden' : '';
+}
+function toggleAccordion(el) {
+    el.classList.toggle('active');
+    var sub = el.nextElementSibling;
+    if (sub) sub.classList.toggle('active');
+}
+</script>
+</body>
+</html>

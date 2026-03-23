@@ -1,0 +1,551 @@
+<!--@layout(/layout-list.html)-->
+<!--@css(/css/ga09product.css)-->
+<!--@js(/js/jquery-ui.min.js)-->
+<!--@js(/js/detail-scroll.js)-->
+
+<!--
+    $category_page = /product/list.html
+    $project_page = /product/project.html
+    $jointbuy_page = /product/jointbuy.html
+-->
+
+<!-- 상단 제품 정보  -->
+<div module="product_detail">
+    <!--@css(/css/module/product/detail.css)-->
+    <!--@css(/board/review/ga09css/review.css)-->
+    <!--@css(/board/review/ga09css/jquery.bxslider.css)-->
+    <!--@js(/board/review/ga09js/review.js)-->
+    <!--@js(/board/review/ga09js/ga09.review.js)-->
+    <!--@js(/js/detailguide.js)-->
+	<!--@css(/css/detailguide.css)--> 
+	<div style="font-size:0; line-height:0;">
+    <input id="txtProductNo" type="hidden" value="{$product_no}" />
+    <div id="review_popup">
+        <div class="content"></div>
+    </div>
+    </div>
+    
+    <!-- 카테고리 내비게이션 — JS 기반 breadcrumb -->
+    <nav class="detail-cate-nav" id="detailBreadcrumb">
+        <a href="/">Home</a>
+    </nav>
+    <script>
+    (function(){
+        // URL에서 cate_no 추출
+        var params = new URLSearchParams(window.location.search);
+        var cateNo = params.get('cate_no');
+        if(!cateNo) return;
+        // 카테고리 매핑 (left.html 기준)
+        var cateMap = {
+            '42': {name:'NEW', link:'/product/list.html?cate_no=42'},
+            '176': {name:'MEN', link:'/product/list.html?cate_no=176', sub:'All'},
+            '177': {name:'MEN', link:'/product/list.html?cate_no=176', sub:'Top'},
+            '178': {name:'MEN', link:'/product/list.html?cate_no=176', sub:'Bottom'},
+            '179': {name:'MEN', link:'/product/list.html?cate_no=176', sub:'Accessories'},
+            '180': {name:'WOMEN', link:'/product/list.html?cate_no=180', sub:'All'},
+            '181': {name:'WOMEN', link:'/product/list.html?cate_no=180', sub:'Top'},
+            '182': {name:'WOMEN', link:'/product/list.html?cate_no=180', sub:'Bottom'},
+            '183': {name:'WOMEN', link:'/product/list.html?cate_no=180', sub:'Dress'},
+            '184': {name:'WOMEN', link:'/product/list.html?cate_no=180', sub:'Accessories'},
+            '50': {name:'EXCLUSIVE', link:'/product/list.html?cate_no=50'},
+            '185': {name:'SALE', link:'/product/list.html?cate_no=185'}
+        };
+        var nav = document.getElementById('detailBreadcrumb');
+        var info = cateMap[cateNo];
+        if(info){
+            nav.innerHTML = '<a href="/">Home</a><span class="cate-sep">&gt;</span><a href="'+info.link+'">'+info.name+'</a>';
+            if(info.sub){
+                nav.innerHTML += '<span class="cate-sep">&gt;</span><a href="/product/list.html?cate_no='+cateNo+'">'+info.sub+'</a>';
+            }
+        }
+    })();
+    </script>
+
+    <div class="detailArea">
+
+        <!-- 이미지 영역 (좌측) -->
+        <div class="imgArea" module="product_image">
+
+            <!-- 추가이미지 처리 -->
+            <div class="listImg" module="product_addimage">
+                <ul>
+                    <li style="display:none">{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                </ul>
+                <!-- Mobile slider controls -->
+                <button class="img-slider-arrow img-slider-prev" aria-label="Previous image">&#8249;</button>
+                <button class="img-slider-arrow img-slider-next" aria-label="Next image">&#8250;</button>
+                <div class="img-slider-counter"><span class="img-slider-current">1</span> / <span class="img-slider-total">1</span></div>
+            </div>
+            <!-- 추가이미지 처리 -->
+
+        </div><!-- 이미지 영역닫기 -->
+
+        <!-- 상세정보 (우측) -->
+        <div id="detail-right">
+            <div id="detailinfo">
+            <!--@import(/detail_infoarea.html)-->
+            </div>
+        </div>
+
+    </div><!-- detailArea 영역 -->
+
+    <!-- 상품상세/관련상품/후기/문의 게시판 (풀 너비, detailArea 바깥) -->
+    <div class="detailBelowArea" module="product_additional">
+        <!--@css(/css/module/product/additional.css)-->
+        <!--@css(/board/review/ga09css/photoreviewbutton.css)-->
+
+
+        <!-- 상품상세정보 -->
+          <!--@import(/smart-banner/shop1/smart-banner-admin-MO00001.html)-->
+        <div id="prdDetail">
+            <div id="prddetailimg">{$product_detail}</div>
+        </div>
+        <!-- 상품상세정보 -->
+
+        <!-- 탭 내비게이션 (pill tabs) -->
+        <nav class="prod-tab-nav" id="prodTabNav">
+            <ul>
+                <li><a href="#prdDetail" class="active" data-tab="detail">DETAIL</a></li>
+                <li><a href="#prdReview" data-tab="review">REVIEW</a></li>
+                <li><a href="#prdQnA" data-tab="qna">Q&A</a></li>
+            </ul>
+        </nav>
+
+        <!-- 상품 사용 후기 -->
+        <div id="prdReview" style="margin-top:150px">
+            <div id="detailboardtext" class="">
+                <div style="float:left;">Review</div>
+                <div style="float:right; text-align:right;" class="bt"><a href="{$review_write|replace:/product,/review}">Write</a><a href="{$review_list|replace:/product,/review}" style="margin-left:15px">View all</a></div>
+                <div style="clear:both"></div>
+            </div>
+
+
+
+            <div class="board ">
+                <!--@js(/js/module/product/review.js)-->
+
+                <a name="use_review"></a>
+
+                <div id="ga09photoreview-detail" module="product_review">
+                    <table border="1" summary="">
+                        <caption>상품 게시판 목록</caption>
+                        <colgroup module="board_listheader_4">
+                            <col style="width:70px;" />
+                            <col style="width:auto;" />
+                            <col style="width:auto;" />
+                        </colgroup>
+                        <tbody>
+
+                            <tr>
+                                <td class="number">{$no}</td>
+
+                                <td class="infobox">
+                                    <div onclick="{$action_content_spread}" style="cursor:pointer;">
+                                        <span class="subject">{$subject}{$icon_lock}{$icon_new}{$icon_hit}</span>
+                                        <span class="{$spread_display|display} openbt"><a href="#none"><img src="/board/review/img/btn_unfold.gif" alt="내용 보기" /></a></span>
+                                        <div style="clear:both"></div>
+                                    </div>
+                                    <div class="{$use_point_display|display} point"><img src="/board/review/img/star/ico_point{$point_count}.gif" alt="{$point_count}점"></div>
+                                    <div class="writer">{$member_icon}{$writer}<span class="comment">{$comment_count}</span></div>
+                                </td>
+
+                                <td style="text-align:right; padding-right:20px">
+                                    <div class="date"><span class="{$date_display|display}">{$write_date|date:Y-m-d}</span></div>
+                                    <div><img src="{$img_src}" style="cursor:pointer; width:50px; height:50px; border-radius:50px; margin-top:8px; object-fit: cover;" href="/board/review/review_pop.html{$param_read}" onclick="ga09review.popReview(this);" onError="img_error(this);" /></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="number">{$no}</td>
+
+                                <td class="infobox">
+                                    <div onclick="{$action_content_spread}" style="cursor:pointer">
+                                        <span class="subject">{$subject}{$icon_lock}{$icon_new}{$icon_hit}</span>
+                                        <span class="{$spread_display|display} openbt"><a href="#none"><img src="/board/review/img/btn_unfold.gif" alt="내용 보기" /></a></span>
+                                        <div style="clear:both"></div>
+                                    </div>
+                                    <div class="{$use_point_display|display} point"><img src="/board/review/img/star/ico_point{$point_count}.gif" alt="{$point_count}점"></div>
+                                    <div class="writer">{$member_icon}{$writer}<span class="comment">{$comment_count}</span></div>
+                                </td>
+
+                                <td style="text-align:right; padding-right:20px">
+                                    <div class="date"><span class="{$date_display|display}">{$write_date|date:Y-m-d}</span></div>
+                                    <div><img src="{$img_src}" style="cursor:pointer; width:50px; height:50px; border-radius:50px; margin-top:8px; object-fit: cover;" href="/board/review/review_pop.html{$param_read}" onclick="ga09review.popReview(this);" onError="img_error(this);" /></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="licensetext" style="text-align:right">Photoreview skin designed by <a href=http://ga09design.com target="_blank">GA09 DESIGN</a></div>
+
+                <div module="product_reviewpaging" class="photoreview-paging">
+                    <a href="{$param_first}"class="first"><img src="/board/review/img/page_first.gif" alt="첫 페이지" /></a>
+                    <a href="{$param_before}"><img src="/board/review/img/page_prev.gif" alt="이전 페이지" /></a>
+                    <ol>
+                        <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                        <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                        <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                        <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                        <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                    </ol>
+                    <a href="{$param_next}"><img src="/board/review/img/page_next.gif" alt="다음 페이지" /></a>
+                    <a href="{$param_last}" class="last"><img src="/board/review/img/page_last.gif" alt="마지막 페이지" /></a>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- //상품 사용 후기 -->
+
+
+        <!-- 상품 Q&A -->
+        <div id="prdQnA" style="margin-top:100px">
+            <div id="detailboardtext">
+                <div style="float:left;">Q&A</div>
+                <div style="float:right; text-align:right;"class="bt"><a href="{$qna_write}">Write</a><a href="{$qna_list}" style="margin-left:15px">View all</a></div>
+                <div style="clear:both"></div>
+            </div>
+
+            <div id="qnaArea">
+                <div module="product_qna">
+                    <!--@js(/js/module/product/qna.js)-->
+                    <table border="1" summary="" class="board {$list_display|display}">
+                        <caption>상품 Q&amp;A</caption>
+                        <colgroup>
+                            <col style="width:70px;" />
+                            <col style="width:auto" />
+                            <col style="width:100px;" />
+                        </colgroup>
+                        <thead>
+                            <tr id="detailboardtext2">
+                                <th scope="col">NO</th>
+                                <th scope="col">TITLE</th>
+                                <th scope="col">WRITER</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{$no}</td>
+                                <td class="subject">{$icon_re}{$icon_lock} <a href="/product/provider/review_read.xml{$param_read}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}{$comment_count}</td>
+                                <td>{$member_icon} {$writer}</td>
+                            </tr>
+                            <tr>
+                                <td>{$no}</td>
+                                <td class="subject">{$icon_re}{$icon_lock} <a href="/product/provider/review_read.xml{$param_read}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}{$comment_count}</td>
+                                <td>{$member_icon} {$writer}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div module="product_qnapaging" class="photoreview-paging">
+                    <a href="{$param_first}"class="first"><img src="/board/review/img/page_first.gif" alt="첫 페이지" /></a>
+                    <a href="{$param_before}"><img src="/board/review/img/page_prev.gif" alt="이전 페이지" /></a>
+                    <ol>
+                        <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                        <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                        <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                        <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                        <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                    </ol>
+                    <a href="{$param_next}"><img src="/board/review/img/page_next.gif" alt="다음 페이지" /></a>
+                    <a href="{$param_last}" class="last"><img src="/board/review/img/page_last.gif" alt="마지막 페이지" /></a>
+                </div>
+           </div>
+
+        </div>
+        <!-- 상품 Q&A -->
+
+    </div><!-- detailBelowArea / product_additional 모듈닫기 -->
+
+        <div style="clear:both"></div>
+
+</div><!-- //상단 제품 정보 -->
+
+
+
+<!--@define(cmc_log)-->
+ 
+   
+
+<!-- Enliple Common Tracker v3.6 [공용] start -->
+<script type="text/javascript">
+<!--
+function mobRf() {
+    var rf = new EN();
+    rf.setData("userid", "tpdnd134");
+    rf.setSSL(true);
+    rf.sendRf();
+}
+//-->
+</script>
+<script src="https://cdn.megadata.co.kr/js/en_script/3.6/enliple_min3.6.js" defer="defer" onload="mobRf()"></script>
+<!-- Enliple Common Tracker v3.6 [공용] end -->
+
+
+<!-- Bottom Sheet for mobile option selection -->
+<div id="optionBottomSheet" class="option-bottom-sheet">
+    <div class="option-sheet-backdrop"></div>
+    <div class="option-sheet-panel">
+        <div class="option-sheet-header">
+            <span class="option-sheet-title">옵션 선택</span>
+            <button class="option-sheet-close" aria-label="Close">&times;</button>
+        </div>
+        <div class="option-sheet-body" id="optionSheetBody">
+        </div>
+        <div class="option-sheet-footer">
+            <button type="button" class="option-sheet-buy" id="optionSheetCartBtn">CART</button>
+            <button type="button" class="option-sheet-buy option-sheet-buy-primary" id="optionSheetBuyBtn">BUY NOW</button>
+        </div>
+    </div>
+</div>
+
+<!-- Image Zoom (lightbox on click) -->
+<div id="imgZoomOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; cursor:zoom-out; align-items:center; justify-content:center;">
+    <img id="imgZoomLarge" src="" alt="" style="max-width:90vw; max-height:90vh; object-fit:contain; border-radius:4px; user-select:none;" />
+    <button onclick="document.getElementById('imgZoomOverlay').style.display='none'; document.body.style.overflow='';" style="position:absolute; top:20px; right:24px; background:none; border:none; color:#fff; font-size:28px; cursor:pointer; line-height:1; font-weight:300;">✕</button>
+</div>
+<script>
+(function(){
+    // Main image click → zoom overlay
+    var mainImg = document.querySelector('.prd-main-img img');
+    var overlay = document.getElementById('imgZoomOverlay');
+    var zoomImg = document.getElementById('imgZoomLarge');
+    if(mainImg && overlay){
+        overlay.style.display = 'none';
+        mainImg.addEventListener('click', function(){
+            zoomImg.src = this.src;
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        overlay.addEventListener('click', function(e){
+            if(e.target === overlay){
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+        document.addEventListener('keydown', function(e){
+            if((e.key === 'Escape' || e.keyCode === 27) && overlay.style.display === 'flex'){
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+        // Thumbnail click → update main image
+        var thumbs = document.querySelectorAll('.listImg ul li img');
+        thumbs.forEach(function(thumb){
+            thumb.addEventListener('click', function(){
+                if(mainImg) mainImg.src = this.src.replace('_medium', '_big').replace('_small', '_big');
+                thumbs.forEach(function(t){ t.parentElement.classList.remove('active'); });
+                this.parentElement.classList.add('active');
+            });
+        });
+
+        // Tab nav smooth scroll
+        var tabLinks = document.querySelectorAll('.prod-tab-nav a[data-tab]');
+        tabLinks.forEach(function(link){
+            link.addEventListener('click', function(e){
+                e.preventDefault();
+                tabLinks.forEach(function(l){ l.classList.remove('active'); });
+                this.classList.add('active');
+                var target = document.querySelector(this.getAttribute('href'));
+                if(target){
+                    var top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ===== TASK 2: Hide empty breadcrumb items =====
+        var cateItems = document.querySelectorAll('.detail-cate-nav .cate-item');
+        cateItems.forEach(function(item){
+            var text = item.textContent.trim();
+            if(!text || text === ''){
+                item.style.display = 'none';
+                // Hide the separator before this empty item
+                var prev = item.previousElementSibling;
+                if(prev && prev.classList.contains('cate-sep')){
+                    prev.style.display = 'none';
+                }
+            }
+        });
+
+        // ===== Mobile Bottom Sheet: 옵션 선택 =====
+        var isMobile = function(){ return window.innerWidth <= 768; };
+        var bottomSheet = document.getElementById('optionBottomSheet');
+        var sheetBody = document.getElementById('optionSheetBody');
+        var sheetCartBtn = document.getElementById('optionSheetCartBtn');
+        var sheetBuyBtn = document.getElementById('optionSheetBuyBtn');
+        var backdrop = bottomSheet ? bottomSheet.querySelector('.option-sheet-backdrop') : null;
+        var sheetCloseBtn = bottomSheet ? bottomSheet.querySelector('.option-sheet-close') : null;
+
+        // 옵션 영역을 복제하지 않고 실제 DOM을 이동
+        var _origParent = null;
+        var _origNext = null;
+
+        function openBottomSheet(){
+            if(!bottomSheet) return;
+            var optWrap = document.querySelector('.prd-option-wrap');
+            if(optWrap && sheetBody){
+                _origParent = optWrap.parentNode;
+                _origNext = optWrap.nextSibling;
+                sheetBody.appendChild(optWrap);
+            }
+            bottomSheet.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBottomSheet(){
+            if(!bottomSheet) return;
+            // 옵션 영역 원위치
+            var optWrap = sheetBody ? sheetBody.querySelector('.prd-option-wrap') : null;
+            if(optWrap && _origParent){
+                if(_origNext){
+                    _origParent.insertBefore(optWrap, _origNext);
+                } else {
+                    _origParent.appendChild(optWrap);
+                }
+            }
+            bottomSheet.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // 인라인 버튼(장바구니/구매하기)에서 온 클릭은 바텀시트 안 열리게 플래그 처리
+        var _fromInline = false;
+        var inlineCart = document.querySelector('.prd-btn-cart');
+        var inlineBuy = document.querySelector('.prd-btn-buy');
+        if(inlineCart){
+            inlineCart.addEventListener('click', function(){ _fromInline = true; }, true);
+        }
+        if(inlineBuy){
+            inlineBuy.addEventListener('click', function(){ _fromInline = true; }, true);
+        }
+
+        // 모바일 하단 고정바 CART/BUY NOW 버튼 가로채기
+        var cartBtn = document.getElementById('cartBtn');
+        var buyBtn = document.querySelector('.btnArea a:first-child');
+
+        if(cartBtn){
+            cartBtn.addEventListener('click', function(e){
+                if(isMobile() && !_fromInline){
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    openBottomSheet();
+                    return false;
+                }
+                _fromInline = false;
+            }, true);
+        }
+        if(buyBtn){
+            buyBtn.addEventListener('click', function(e){
+                if(isMobile() && !_fromInline){
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    openBottomSheet();
+                    return false;
+                }
+                _fromInline = false;
+            }, true);
+        }
+
+        // 바텀시트 닫기
+        if(backdrop) backdrop.addEventListener('click', closeBottomSheet);
+        if(sheetCloseBtn) sheetCloseBtn.addEventListener('click', closeBottomSheet);
+
+        // 바텀시트 CART 버튼 → 원래 카페24 장바구니 동작 실행
+        if(sheetCartBtn){
+            sheetCartBtn.addEventListener('click', function(){
+                closeBottomSheet();
+                setTimeout(function(){
+                    var cb = document.getElementById('cartBtn');
+                    if(cb){
+                        var onc = cb.getAttribute('onclick');
+                        if(onc) eval(onc);
+                    }
+                }, 100);
+            });
+        }
+
+        // 바텀시트 BUY NOW 버튼 → 원래 카페24 구매 동작 실행
+        if(sheetBuyBtn){
+            sheetBuyBtn.addEventListener('click', function(){
+                closeBottomSheet();
+                setTimeout(function(){
+                    var bb = document.querySelector('.btnArea a:first-child');
+                    if(bb){
+                        var onc = bb.getAttribute('onclick');
+                        if(onc) eval(onc);
+                    }
+                }, 100);
+            });
+        }
+
+        // ===== TASK 3: Mobile image slider =====
+        var listImgUl = document.querySelector('.listImg ul');
+        var sliderPrev = document.querySelector('.img-slider-prev');
+        var sliderNext = document.querySelector('.img-slider-next');
+        var sliderCurrent = document.querySelector('.img-slider-current');
+        var sliderTotal = document.querySelector('.img-slider-total');
+
+        if(listImgUl){
+            // Count visible images
+            var getVisibleSlides = function(){
+                var items = listImgUl.querySelectorAll('li');
+                var visible = [];
+                items.forEach(function(li){
+                    if(li.style.display !== 'none' && li.offsetParent !== null){
+                        visible.push(li);
+                    }
+                });
+                return visible;
+            };
+
+            var updateCounter = function(){
+                if(!sliderCurrent || !sliderTotal) return;
+                var slides = getVisibleSlides();
+                sliderTotal.textContent = slides.length;
+                if(slides.length === 0) return;
+                var scrollLeft = listImgUl.scrollLeft;
+                var slideWidth = listImgUl.offsetWidth;
+                var idx = Math.round(scrollLeft / slideWidth) + 1;
+                if(idx < 1) idx = 1;
+                if(idx > slides.length) idx = slides.length;
+                sliderCurrent.textContent = idx;
+            };
+
+            // Scroll to slide by index
+            var scrollToSlide = function(idx){
+                var slideWidth = listImgUl.offsetWidth;
+                listImgUl.scrollTo({ left: slideWidth * idx, behavior: 'smooth' });
+            };
+
+            if(sliderPrev){
+                sliderPrev.addEventListener('click', function(){
+                    var slideWidth = listImgUl.offsetWidth;
+                    var current = Math.round(listImgUl.scrollLeft / slideWidth);
+                    if(current > 0) scrollToSlide(current - 1);
+                });
+            }
+            if(sliderNext){
+                sliderNext.addEventListener('click', function(){
+                    var slides = getVisibleSlides();
+                    var slideWidth = listImgUl.offsetWidth;
+                    var current = Math.round(listImgUl.scrollLeft / slideWidth);
+                    if(current < slides.length - 1) scrollToSlide(current + 1);
+                });
+            }
+
+            listImgUl.addEventListener('scroll', function(){
+                requestAnimationFrame(updateCounter);
+            });
+
+            // Initial counter update (delay for images to render)
+            setTimeout(updateCounter, 500);
+        }
+    });
+})();
+</script>

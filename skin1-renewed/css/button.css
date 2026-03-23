@@ -1,0 +1,90 @@
+
+.ga09_button_class {
+	font-size:11px;
+    line-height:20px;
+	font-family:Arial;
+	font-weight:normal;
+	border:1px solid #dcdcdc;
+    text-decoration:none;
+	background-color:#ffffff;
+	display:inline-block;
+}
+
+.ga09_button_class:hover {
+    text-decoration:none;
+	position:relative;
+    border:1px solid #000;
+    color:#000;
+	top:0px;
+}
+
+.ga09_button_class2 {
+	font-size:11px;
+    line-height:20px;
+	font-family:Arial;
+	font-weight:normal;
+	border:1px solid #646464;
+    text-decoration:none;
+	background-color:#646464;
+	background-color:#646464;
+	display:inline-block;
+}
+.ga09_button_class2:link {color:#fff}
+.ga09_button_class2:visited {color:#fff}
+.ga09_button_class2:hover {
+    text-decoration:none;
+	position:relative;
+    background-color:#fa3f51;
+    border:1px solid #000;
+    color:#fff;
+	top:0px;
+}
+
+
+
+
+.bt1 {padding:6px 12px 4px 12px;}
+.bt2 {padding:8px 12px 6px 12px;}
+.bt3 {padding:10px 12px 8px 12px;}
+.bt4 {padding:12px 12px 10px 12px; font-size:12px; font-weight:bold}
+
+.margin1 {margin:3px 0}
+.width1 {width:48px; padding-left:0; padding-right:0; text-align:center; margin-left:-1px}
+
+
+
+.ga09paging { margin:30px 0 0 0; padding:0 0 0;text-align:center; }
+.ga09paging p { display:inline-block; vertical-align:top; *display:inline; *zoom:1; }
+.ga09paging p.first { margin:0 -4px 0 0; }
+.ga09paging p.last { margin:0 0 0 -4px; }
+.ga09paging ol { display:inline-block; margin:0 -4px; font-size:0; line-height:0; vertical-align:top; *display:inline; *zoom:1; *margin:0; }
+.ga09paging li { display:inline-block; margin:0 0 0 -1px; border:1px solid #d7d5d5; font-size:12px; color:#757575; vertical-align:top; *display:inline; *zoom:1; }
+.ga09paging li:first-child { margin-left:0; }
+.ga09paging img { vertical-align:top; }
+.ga09paging li a { display:block; width:33px; padding:9px 0; font-weight:bold; color:#353535; line-height:14px; background:#fff; }
+.ga09paging li a:hover { text-decoration:none; background:#f0f2f2; }
+.ga09paging li a.this { padding-bottom:6px; border-bottom:3px solid #000; color:#000; }
+.ga09paging a.nolink { cursor:default; }
+
+
+
+
+/* 이용안내 */
+.help { margin:40px 0 0; border:1px solid #d6d4d4; line-height:18px; font-size:11px;}
+.help h3 { padding:9px 0 6px 10px; border-bottom:1px solid #e8e7e7; color:#000; font-size:11px; background:#fbfbfb; }
+.help .content { padding:0 9px 12px; }
+.help .content h4 { margin:22px 0 -4px; color:#000; font-size:11px; font-weight:normal; }
+.help .content h4:first-child { margin-top:13px; }
+.help .content p { margin:15px 0 0 10px; color:#000; }
+.help .content ul { margin:15px 0 0 11px; }
+.help .content li { padding:0 0 0 25px; color:#000; background:url("http://img.echosting.cafe24.com/skin/base_ko_KR/common/ico_number.png") no-repeat; }
+.help .content li.item1 { background-position:-484px 0; }
+.help .content li.item2 { background-position:-434px -100px; }
+.help .content li.item3 { background-position:-384px -200px; }
+.help .content li.item4 { background-position:-334px -300px; }
+.help .content li.item5 { background-position:-284px -400px; }
+.help .content li.item6 { background-position:-234px -500px; }
+.help .content li.item7 { background-position:-184px -600px; }
+.help .content li.item8 { background-position:-134px -700px; }
+.help .content li.item9 { background-position:-84px -800px; }
+.help .content li.item10 { background-position:-34px -900px; }

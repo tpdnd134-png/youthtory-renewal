@@ -1,0 +1,586 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="//www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<!--카페24PRO 로케일 팝업 스크립트--><!--@js(/cafe24pro/locale_popup.js)-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!--PG크로스브라우징필수내용 시작-->
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <!--PG크로스브라우징필수내용 끝-->
+
+    <!--@css(/layout/basic/css/common.css)--><!--해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
+    <!--@css(/layout/basic/css/layout.css)-->
+    <!--@css(/layout/basic/css/ec-base-ui.css)-->
+    <!--@css(/layout/basic/css/ec-base-tooltip.css)-->
+    <!--@css(/layout/basic/css/ec-base-help.css)-->
+    <!--@css(/layout/basic/css/ec-base-product.css)-->
+    <!--@css(/layout/basic/css/ec-base-paginate.css)-->
+    <!--@css(/layout/basic/css/ec-base-tab.css)-->
+    <!--@css(/layout/basic/css/ec-base-button.css)-->
+    <!--@css(/layout/basic/css/ec-base-box.css)-->
+    <!--@css(/layout/basic/css/ec-base-table.css)-->
+    <!--@css(/layout/basic/css/ec-base-desc.css)-->
+    <!--@css(/css/common-skin.css)-->
+    <!-- 스마트디자인에서는 JQuery 1.4.4 버전이 내장되어있습니다. 추가로 호출하면 충돌이 생길 수 있습니다. -->
+    <!--@js(/layout/basic/js/basic.js)-->
+    <!--@js(/js/common.js)-->
+    <!--@js(/js/cart-drawer.js)-->
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700;900&family=Bricolage+Grotesque:wght@700;800&family=Instrument+Sans:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<style>
+/* ===== Product list page specific ===== */
+#contentsWrap { margin-top: 80px !important; position: relative !important; z-index: 1 !important; }
+
+/* 리스트 콘텐츠 영역 */
+#listcontentWrap { margin: 0 auto !important; max-width: 1920px !important; padding: 0 24px !important; margin-top: 0 !important; }
+#catetitle { margin-bottom: 16px !important; margin-top: 0 !important; }
+#catetitle h2 { font-size: 18px !important; font-weight: 700 !important; letter-spacing: 2px !important; }
+.xans-product-listnormal, .xans-product-listrecommend { margin-top: 0 !important; }
+#listcontent { width: 100% !important; }
+
+/* ===== MOBILE RESPONSIVE (list page only) ===== */
+@media (max-width: 768px) {
+    #contentsWrap { margin-top: 0 !important; width: 100% !important; float: none !important; overflow: visible !important; box-sizing: border-box !important; }
+    #content { width: 100% !important; margin-left: 0 !important; float: none !important; box-sizing: border-box !important; }
+    #listcontentWrap { padding: 0 12px !important; margin-top: 92px !important; width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; float: none !important; box-sizing: border-box !important; max-width: 100% !important; }
+    #listcontent { width: 100% !important; margin-left: 0 !important; float: none !important; box-sizing: border-box !important; overflow: hidden !important; }
+
+    #catetitle { margin-bottom: 8px !important; }
+    #catetitle h2 { font-size: 16px !important; }
+    .function { padding: 0 !important; }
+    .prdCount { font-size: 12px !important; }
+
+    /* Hide elements */
+    #left, #right, #toggle-right, #top { display: none !important; width: 0 !important; height: 0 !important; margin: 0 !important; padding: 0 !important; float: none !important; }
+}
+
+/* 카테고리 pill 탭 */
+.xans-product-menupackage { margin: 0 0 20px !important; padding: 0 20px !important; }
+.xans-product-menupackage .title .banner { display: none !important; }
+.xans-product-menupackage .title { min-height: 0 !important; margin: 0 0 16px !important; padding: 0 !important; }
+.xans-product-menupackage .title h2 { font-size: 22px !important; font-weight: 700 !important; color: #111 !important; letter-spacing: -0.02em !important; padding: 0 !important; background: none !important; }
+div.menuCategory { overflow-x: auto !important; overflow-y: hidden !important; border: none !important; padding: 0 !important; margin: 0 !important; -webkit-overflow-scrolling: touch !important; scrollbar-width: none !important; }
+div.menuCategory::-webkit-scrollbar { display: none !important; }
+ul.menuCategory { border: none !important; display: inline-flex !important; flex-wrap: nowrap !important; gap: 3px !important; padding: 10px 0 !important; margin: 0 !important; white-space: nowrap !important; min-width: max-content !important; border-top: 1px solid #e8e8e8 !important; }
+.xans-product-menupackage .menuCategory::-webkit-scrollbar { display: none !important; }
+.xans-product-menupackage .menuCategory > li { display: inline-flex !important; width: auto !important; margin: 0 !important; margin-left: 0 !important; padding: 0 !important; flex-shrink: 0 !important; font-size: 11px !important; line-height: 1 !important; vertical-align: middle !important; }
+.xans-product-menupackage .menuCategory > li:first-child { margin-left: 0 !important; }
+.xans-product-menupackage .menuCategory > li > a { display: inline-flex !important; align-items: center !important; justify-content: center !important; padding: 4px 10px !important; font-weight: 400 !important; font-size: 8px !important; color: #777 !important; text-decoration: none !important; white-space: nowrap !important; border: none !important; border-radius: 50px !important; background: #f3f3f3 !important; transition: all 0.2s ease !important; height: 22px !important; box-sizing: border-box !important; }
+.xans-product-menupackage .menuCategory > li > a:hover { color: #333 !important; background: #e8e8e8 !important; text-decoration: none !important; }
+.xans-product-menupackage .menuCategory > li.selected > a { color: #fff !important; font-weight: 400 !important; background: #555 !important; }
+/* 상품 리스트 — 상품명/가격 */
+.ga09list .name, p.name { font-size: 13px !important; font-weight: 600 !important; color: #111 !important; letter-spacing: -0.01em !important; line-height: 1.4 !important; margin: 6px 0 2px !important; font-family: 'Noto Sans KR', helvetica, sans-serif !important; }
+.ga09list .name a, p.name a { font-size: 13px !important; font-weight: 600 !important; color: #111 !important; text-decoration: none !important; }
+.ga09list .prices, p.prices { font-size: 12px !important; color: #888 !important; letter-spacing: 0 !important; font-family: helvetica, 'Noto Sans KR', sans-serif !important; }
+.ga09list .price, .prices .price { font-size: 12px !important; }
+.ga09list .prdpadding { padding: 0 !important; }
+.ga09list .colorWrap { display: none !important; }
+.ga09list .info { display: none !important; }
+.ga09list .prd-keywords { display: none !important; }
+
+/* ===== 리뷰 페이지 리디자인 ===== */
+/* 제목 영역 */
+.xans-board-listheader { display: none !important; }
+
+/* 검색 영역 숨김 */
+.xans-board-search { display: none !important; }
+
+/* 공지 영역 */
+.xans-board-listnotice { margin-bottom: 16px !important; }
+.xans-board-listnotice .notice { display: flex !important; gap: 12px !important; padding: 0 !important; }
+.xans-board-listnotice .notice > div { flex: 1 !important; background: #f8f8f8 !important; padding: 12px !important; border-radius: 0 !important; }
+.xans-board-listnotice .notice > div a { font-size: 11px !important; color: #111 !important; text-decoration: none !important; font-weight: 500 !important; }
+.xans-board-listnotice .notice > div .date { font-size: 10px !important; color: #999 !important; }
+.xans-board-listnotice .notice > div img { display: none !important; }
+
+/* 리뷰 테이블 */
+.xans-board-list table { border: none !important; width: 100% !important; }
+.xans-board-list thead { display: none !important; }
+.xans-board-list tbody tr { border-bottom: 1px solid #f0f0f0 !important; }
+.xans-board-list tbody td { border: none !important; padding: 12px 4px !important; font-size: 11px !important; color: #111 !important; vertical-align: middle !important; }
+.xans-board-list tbody td:first-child { display: none !important; }
+
+/* 상품 이미지 셀 */
+.xans-board-list tbody td:nth-child(2) a img { width: 50px !important; height: 50px !important; object-fit: cover !important; display: block !important; }
+
+/* 리뷰 내용 셀 */
+.xans-board-list tbody td:nth-child(3) { font-size: 11px !important; }
+.xans-board-list tbody td:nth-child(3) > div:first-child { font-size: 12px !important; font-weight: 500 !important; color: #111 !important; margin-bottom: 4px !important; }
+.xans-board-list tbody td:nth-child(3) > div:first-child a { font-size: 12px !important; color: #111 !important; }
+.xans-board-list tbody td:nth-child(3) > div:last-child a { font-size: 11px !important; color: #666 !important; text-decoration: none !important; }
+.xans-board-list tbody td:nth-child(3) > div:last-child img[alt="HIT"] { display: none !important; }
+.xans-board-list tbody td:nth-child(3) img[alt="내용 보기"] { display: none !important; }
+
+/* 날짜 셀 */
+.xans-board-list tbody td:last-child { font-size: 10px !important; color: #999 !important; white-space: nowrap !important; }
+
+/* GA09 크레딧 숨김 */
+.xans-board-list + div[style], .xans-board-list ~ div { }
+.xans-board-list + div a[href*="ga09design"] { display: none !important; }
+.xans-board-list + div { display: none !important; }
+
+/* 페이지네이션 */
+.xans-board-pagination { text-align: center !important; padding: 20px 0 !important; }
+.xans-board-pagination a { font-size: 11px !important; color: #999 !important; padding: 4px 8px !important; }
+.xans-board-pagination a img { display: none !important; }
+.xans-board-pagination li a { color: #999 !important; }
+.xans-board-pagination li a[class*="this"], .xans-board-pagination li:first-child a { color: #111 !important; font-weight: 500 !important; }
+
+/* 리뷰 제목 추가 */
+.xans-board-list::before { content: 'REVIEW' !important; display: block !important; font-size: 20px !important; font-weight: 700 !important; color: #111 !important; letter-spacing: -0.02em !important; padding: 0 0 16px !important; border-bottom: 1px solid #e8e8e8 !important; margin-bottom: 16px !important; }
+
+@media (max-width: 768px) {
+    .xans-board-list::before { font-size: 16px !important; }
+    .xans-board-list tbody td:nth-child(2) a img { width: 40px !important; height: 40px !important; }
+}
+
+.xans-product-menupackage .menuCategory > li .count { display: none !important; }
+.xans-product-menupackage .menuCategory > li .button { display: none !important; }
+.xans-product-menupackage .title .likeButton { display: none !important; }
+@media (max-width: 768px) { .xans-product-menupackage { padding: 0 16px !important; margin: 0 0 16px !important; } .xans-product-menupackage .title h2 { font-size: 18px !important; } .xans-product-menupackage .menuCategory { padding-left: 0 !important; margin-left: 0 !important; } .xans-product-menupackage .menuCategory > li { margin: 0 !important; margin-left: 0 !important; width: auto !important; } .xans-product-menupackage .menuCategory > li > a { padding: 3px 8px !important; font-size: 10px !important; height: 20px !important; } }
+</style>
+    <script type="text/javascript" src="/ec-js/common.js"></script><!-- 해당 JS는 플래시를 사용하기 위한 스크립트입니다. -->
+
+</head>
+<body>
+
+<div id="toparea"></div>
+<div id="loginpopup"><!--@import(/loginpopup.html)--></div>
+
+<!-- 프로모션 + GNB — 이미지 위에 떠있는 구조 -->
+<div class="gnb-float-wrap">
+
+  <!-- Promo bar -->
+  <div class="promo-wrap">
+    <div class="promo-bar">
+      <div class="promo-track">
+        <span class="promo-item"><a href="/member/join.html">회원가입 시 즉시 사용 가능한 3,000 포인트가 지급됩니다.</a></span>
+        <span class="promo-item"><a href="/product/list.html">매주 선보이는 트렌디한 뉴 아이템과 스타일링을 확인해 보세요.</a></span>
+        <span class="promo-item"><a href="/member/join.html">회원가입 시 즉시 사용 가능한 3,000 포인트가 지급됩니다.</a></span>
+        <span class="promo-item"><a href="/product/list.html">매주 선보이는 트렌디한 뉴 아이템과 스타일링을 확인해 보세요.</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile header -->
+  <div class="mobile-header">
+    <button class="mobile-menu-btn" onclick="toggleMenuOverlay()">☰</button>
+    <a href="/" class="mobile-logo"><img src="/web/upload/ga09/logo-C-refined-header.svg" alt="YOUTHTORY"></a>
+    <div class="mobile-icons">
+      <a href="#" onclick="toggleMobileSearch(); return false;"><i class="fas fa-search"></i></a>
+      <span module="Layout_stateLogoff"><a href="/member/login.html"><i class="fas fa-sign-in-alt"></i></a></span>
+      <span module="Layout_stateLogon"><a href="/myshop/index.html"><i class="fas fa-user"></i></a></span>
+      <a href="/order/basket.html"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </div>
+
+  <!-- Menu overlay -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="menu-overlay-bg" onclick="toggleMenuOverlay()"></div>
+    <div class="menu-overlay-card">
+      <button class="menu-overlay-close" onclick="toggleMenuOverlay()">✕</button>
+      <ul class="menu-overlay-nav" module="Layout_category">
+        <li>
+          <button class="menu-sub-toggle" onclick="toggleSubMenu(this)">
+            {$name} <span class="toggle-arrow">+</span>
+          </button>
+          <ul class="menu-overlay-sub" data-cate-href="/product/list.html{$param}">
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+  function toggleMenuOverlay() {
+    document.getElementById('menuOverlay').classList.toggle('open');
+    document.body.style.overflow = document.getElementById('menuOverlay').classList.contains('open') ? 'hidden' : '';
+  }
+  function toggleSubMenu(btn) {
+    btn.classList.toggle('active');
+    var sub = btn.nextElementSibling;
+    sub.classList.toggle('open');
+    if(!sub.dataset.loaded && sub.dataset.cateHref){
+      loadMobileSubs(sub);
+    }
+  }
+  function loadMobileSubs(sub){
+    var href=sub.dataset.cateHref;
+    var m=href.match(/cate_no=(\d+)/);
+    if(!m)return;
+    sub.innerHTML='<li style="padding:8px 0;font-size:11px;color:#bbb;letter-spacing:0.1em;">LOADING...</li>';
+    var xhr=new XMLHttpRequest();
+    xhr.open('GET',href,true);
+    xhr.timeout=5000;
+    xhr.onload=function(){
+      sub.innerHTML='';
+      if(xhr.status!==200)return;
+      var doc=new DOMParser().parseFromString(xhr.responseText,'text/html');
+      doc.querySelectorAll('.xans-product-menupackage ul.menuCategory > li').forEach(function(li){
+        var a=li.querySelector(':scope > a');
+        if(!a)return;
+        var newLi=document.createElement('li');
+        var newA=document.createElement('a');
+        newA.href=a.getAttribute('href');
+        newA.textContent=a.textContent.trim();
+        newLi.appendChild(newA);
+        sub.appendChild(newLi);
+      });
+      sub.dataset.loaded='1';
+    };
+    xhr.onerror=function(){sub.innerHTML='';};
+    xhr.send();
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      var overlay = document.getElementById('menuOverlay');
+      if (overlay && overlay.classList.contains('open')) toggleMenuOverlay();
+    }
+  });
+  function toggleMobileSearch() {
+    var el = document.getElementById('mobileSearch');
+    el.classList.toggle('open');
+    if (el.classList.contains('open')) {
+      document.getElementById('mobileSearchInput').focus();
+    }
+  }
+  </script>
+
+  <!-- Mobile Search Overlay -->
+  <div class="mobile-search-overlay" id="mobileSearch">
+    <form action="/product/search.html" method="get">
+      <input type="text" name="keyword" placeholder="Search" autocomplete="off" id="mobileSearchInput">
+      <button type="submit" class="search-submit"><i class="fas fa-search"></i></button>
+    </form>
+    <button class="search-close" onclick="toggleMobileSearch()">✕</button>
+  </div>
+
+  <!-- GNB Header (PC) -->
+  <header class="gnb-header">
+    <div class="gnb-inner">
+      <a href="/" class="gnb-logo"><img src="/web/upload/ga09/logo-C-refined-header.svg" alt="SHOP YOUTHTORY"></a>
+      <nav class="gnb-nav"><!--@import(/left.html)--></nav>
+      <div class="gnb-right"><!--@import(/top.html)--></div>
+    </div>
+  </header>
+
+</div><!-- gnb-float-wrap -->
+
+<div class="gnb-mega-overlay" id="gnbOverlay"></div>
+<script>
+(function(){
+    var overlay = document.getElementById('gnbOverlay');
+    var header = document.querySelector('.gnb-header');
+    var subs = document.querySelectorAll('.gnb-item.has-sub');
+    var hideTimer;
+    subs.forEach(function(el){
+        el.addEventListener('mouseenter', function(){ clearTimeout(hideTimer); overlay.classList.add('active'); });
+        el.addEventListener('mouseleave', function(){ hideTimer = setTimeout(function(){ overlay.classList.remove('active'); }, 120); });
+    });
+    var ticking = false;
+    window.addEventListener('scroll', function(){
+        if(!ticking){ requestAnimationFrame(function(){ if(window.scrollY > 30) header.classList.add('scrolled'); else header.classList.remove('scrolled'); ticking = false; }); ticking = true; }
+    });
+})();
+</script>
+
+<div id="contentsWrap">
+    <div id="toggle-right"><span></span></div>
+    <div id="right"><!--@import(/right.html)--></div>
+    <div id="listcontentWrap">
+        <div id="listcontent"><!--@contents--></div>
+    </div>
+    <!--@import(/bottom.html)-->
+</div>
+
+<div class="scrollTop" style="position:fixed;"><a id="scrollToTop" href="#toparea"><i class="fas fa-arrow-up"></i></a></div>
+
+<!-- 참고: 결제를 위한 필수 영역 -->
+<div id="progressPaybar" style="display:none;">
+    <div id="progressPaybarBackground" class="layerProgress"></div>
+    <div id="progressPaybarView">
+        <div class="box">
+            <p class="graph">
+                <span><img src="//img.echosting.cafe24.com/skin/base_ko_KR/layout/txt_progress.gif" alt="현재 결제가 진행중입니다." /></span>
+                <span><img src="//img.echosting.cafe24.com/skin/base/layout/img_loading.gif" alt="" /></span>
+            </p>
+            <p class="txt">
+                본 결제 창은 결제완료 후 자동으로 닫히며,결제 진행 중에 본 결제 창을 닫으시면<br />
+                주문이 되지 않으니 결제 완료 될 때 까지 닫지 마시기 바랍니다.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- //참고 -->
+
+<div module="Layout_multishopShipping">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/layout/multishopShipping.css)-->
+    <!--@js(/js/module/layout/multishopShipping.js)-->
+    <div class="dimmed"></div>
+    <div class="worldshipLayer ec-base-layer">
+        <div class="header">
+            <h3>WORLD SHIPPING</h3>
+        </div>
+        <div class="content">
+            <p class="desc">PLEASE SELECT THE DESTINATION COUNTRY AND LANGUAGE :</p>
+            <div class="select">
+                <select module="Layout_multishopShippingCountrylist">
+                    <option value="{$country_code}"{$country_default_selected}>SHIPPING TO : {$country_name}</option>
+                    <option value="{$country_code}"{$country_default_selected}>SHIPPING TO : {$country_name}</option>
+                </select>
+            </div>
+            <div class="select">
+                <select module="Layout_multishopShippingLanguagelist">
+                    <option value="{$shop_domain}"{$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+                    <option value="{$shop_domain}"{$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+                </select>
+            </div>
+        </div>
+        <div class="ec-base-button">
+            <a href="#none"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/link/btn_go.gif" alt="GO" /></a>
+        </div>
+        <a href="#none" class="close"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" width="13" height="13" alt="close" /></a>
+    </div>
+</div>
+
+<div module="Layout_conversionPc">
+    <!--@css(/css/module/layout/conversionpc.css)-->
+    <a href="{$mobile_url}">모바일 화면보기</a>
+</div>
+
+<div id="wrap_dialog">
+</div>
+
+<script>
+/* 카테고리 탭 완전 JS 제어 */
+(function(){
+    function fixTabs(){
+        var pkg = document.querySelector('.xans-product-menupackage');
+        if(!pkg || pkg.classList.contains('yt-tab-fixed')) return;
+
+        // 컨테이너
+        pkg.setAttribute('style','margin:0 0 20px !important;padding:0 20px !important;');
+
+        // 제목
+        var title = pkg.querySelector('.title');
+        if(title){
+            title.setAttribute('style','min-height:0 !important;margin:0 0 12px !important;padding:0 !important;border:none !important;');
+            var h2 = title.querySelector('h2');
+            if(h2) h2.setAttribute('style','font-size:20px !important;font-weight:700 !important;color:#111 !important;padding:0 !important;background:none !important;letter-spacing:-0.02em !important;');
+            var banner = title.querySelector('.banner');
+            if(banner) banner.style.display = 'none';
+            var like = title.querySelector('.likeButton');
+            if(like) like.style.display = 'none';
+        }
+
+        // 메뉴 카테고리 — div(래퍼) + ul(탭)
+        var menus = pkg.querySelectorAll('.menuCategory');
+        menus.forEach(function(menu){
+            if(menu.tagName === 'DIV'){
+                menu.setAttribute('style','overflow-x:auto !important;overflow-y:hidden !important;border:none !important;padding:0 !important;margin:0 !important;-webkit-overflow-scrolling:touch !important;scrollbar-width:none !important;');
+            }
+            if(menu.tagName === 'UL'){
+                menu.setAttribute('style','border:none !important;display:inline-flex !important;flex-wrap:nowrap !important;gap:5px !important;padding:10px 0 !important;margin:0 !important;list-style:none !important;border-top:1px solid #e8e8e8 !important;white-space:nowrap !important;min-width:max-content !important;');
+
+                var items = menu.querySelectorAll(':scope > li');
+                items.forEach(function(li){
+                    li.setAttribute('style','display:inline-flex !important;width:auto !important;margin:0 !important;padding:0 !important;flex-shrink:0 !important;font-size:11px !important;line-height:1 !important;vertical-align:middle !important;');
+                    var a = li.querySelector(':scope > a');
+                    if(a){
+                        var isSelected = li.classList.contains('selected');
+                        a.setAttribute('style','display:inline-flex !important;align-items:center !important;justify-content:center !important;padding:4px 10px !important;font-size:8px !important;font-weight:400 !important;color:'+(isSelected?'#fff':'#777')+' !important;white-space:nowrap !important;border:none !important;border-radius:50px !important;background:'+(isSelected?'#555':'#f3f3f3')+' !important;text-decoration:none !important;height:22px !important;box-sizing:border-box !important;');
+                    }
+                    // 중분류 표시 (selected 카테고리만)
+                    var sub = li.querySelector(':scope > ul');
+                    if(sub) {
+                        if(li.classList.contains('selected')) {
+                            sub.style.setProperty('display','inline-flex','important');
+                            // 중분류 스타일 적용
+                            sub.style.setProperty('flex-wrap','nowrap','important');
+                            sub.style.setProperty('gap','4px','important');
+                            sub.style.setProperty('padding','8px 0 0','important');
+                            sub.style.setProperty('margin','0','important');
+                            sub.style.setProperty('list-style','none','important');
+                            sub.style.setProperty('overflow-x','auto','important');
+                            var subItems = sub.querySelectorAll(':scope > li');
+                            subItems.forEach(function(sli){
+                                sli.style.setProperty('display','inline-flex','important');
+                                sli.style.setProperty('width','auto','important');
+                                sli.style.setProperty('margin','0','important');
+                                sli.style.setProperty('padding','0','important');
+                                sli.style.setProperty('flex-shrink','0','important');
+                                var sa = sli.querySelector(':scope > a');
+                                if(sa){
+                                    var isSel = sli.classList.contains('selected');
+                                    sa.style.setProperty('display','inline-block','important');
+                                    sa.style.setProperty('padding','5px 12px','important');
+                                    sa.style.setProperty('font-size','10px','important');
+                                    sa.style.setProperty('font-weight','400','important');
+                                    sa.style.setProperty('color',isSel?'#fff':'#bbb','important');
+                                    sa.style.setProperty('white-space','nowrap','important');
+                                    sa.style.setProperty('border','1px solid '+(isSel?'#888':'#eee'),'important');
+                                    sa.style.setProperty('border-radius','20px','important');
+                                    sa.style.setProperty('background',isSel?'#888':'none','important');
+                                    sa.style.setProperty('text-decoration','none','important');
+                                }
+                            });
+                        } else {
+                            sub.style.display = 'none';
+                        }
+                    }
+                    var btn = li.querySelector('.button');
+                    if(btn) btn.style.display = 'none';
+                    var count = li.querySelector('.count');
+                    if(count) count.style.display = 'none';
+                });
+
+                menu.scrollLeft = 0;
+            }
+        });
+
+        pkg.classList.add('yt-tab-fixed');
+    }
+    setTimeout(fixTabs, 100);
+    setTimeout(fixTabs, 500);
+    setTimeout(fixTabs, 1500);
+
+    // 상품명/가격 — DOM 로드 후 확실하게 적용
+    var productFixInterval = setInterval(function(){
+        var names = document.querySelectorAll('#content p.name, #content .name');
+        if(!names.length) return;
+        names.forEach(function(el){
+            el.style.setProperty('font-size','13px','important');
+            el.style.setProperty('font-weight','600','important');
+            el.style.setProperty('color','#111','important');
+            el.style.setProperty('letter-spacing','-0.01em','important');
+            el.style.setProperty('line-height','1.4','important');
+            el.style.setProperty('margin','6px 0 2px','important');
+        });
+        document.querySelectorAll('#content p.name a, #content .name a').forEach(function(el){
+            el.style.setProperty('font-size','13px','important');
+            el.style.setProperty('font-weight','600','important');
+            el.style.setProperty('color','#111','important');
+            el.style.setProperty('text-decoration','none','important');
+        });
+        document.querySelectorAll('#content p.prices, #content .prices').forEach(function(el){
+            el.style.setProperty('font-size','12px','important');
+            el.style.setProperty('color','#888','important');
+        });
+        clearInterval(productFixInterval);
+    }, 300);
+})();
+</script>
+<script>
+/* 리뷰 페이지 리디자인 */
+(function(){
+    if(location.pathname.indexOf('/board/review') === -1 && location.pathname.indexOf('/board/free') === -1) return;
+
+    // CSS를 JS로 동적 삽입 — 모든 CSS 뒤에 로드되므로 최우선 적용
+    var css = document.createElement('style');
+    css.textContent = '\
+#content *{font-family:helvetica,"Noto Sans KR",sans-serif !important}\
+#content .Board{border:none !important}\
+#content .Board table{border:none !important;width:100% !important}\
+#content .Board thead{display:none !important}\
+#content .Board tbody tr{border-bottom:1px solid #f0f0f0 !important}\
+#content .Board tbody td{border:none !important;padding:10px 4px !important;font-size:11px !important;color:#111 !important;vertical-align:middle !important}\
+#content .Board tbody td:first-child{display:none !important}\
+#content .Board tbody td img.prdImg{width:60px !important;height:60px !important;object-fit:cover !important}\
+#content .Board tbody td img[alt="HIT"]{display:none !important}\
+#content .Board tbody td img[alt="내용 보기"]{display:none !important}\
+#content .Board tbody td .OPEN{display:none !important}\
+#content .Board tbody td .number{display:none !important}\
+#content .Board .ga09_copyright,#content div[class*="copyright"]{display:none !important}\
+a[href*="ga09design"]{display:none !important}\
+#content .searchArea,#content .Board .search,#content fieldset{display:none !important}\
+#content .photoreview_copyright{display:none !important}\
+';
+    document.head.appendChild(css);
+
+    function styleReview(){
+        // GA09 크레딧 + Photoreview 텍스트 숨김
+        document.querySelectorAll('#content div, #content p, #content span').forEach(function(el){
+            var t = el.textContent.trim();
+            if((t.indexOf('GA09') > -1 && t.indexOf('Photoreview') > -1) || (t.indexOf('designed by') > -1 && t.indexOf('GA09') > -1)){
+                el.style.display = 'none';
+            }
+        });
+
+        // OPEN 버튼 숨김
+        document.querySelectorAll('select[class*="OPEN"], .OPEN, img[alt="OPEN"]').forEach(function(el){
+            el.style.display = 'none';
+        });
+    }
+    setTimeout(styleReview, 500);
+    setTimeout(styleReview, 1500);
+})();
+</script>
+<script>
+/* 추천 상품 — 검색 결과 페이지 하단 */
+(function(){
+    if(location.pathname.indexOf('/product/search') === -1) return;
+    var s = document.createElement('style');
+    s.textContent = '.yt-rec{max-width:1200px;margin:60px auto 40px;padding:0 24px;font-family:helvetica,"Noto Sans KR",sans-serif}.yt-rec-header{margin-bottom:24px}.yt-rec-title{font-size:14px;font-weight:400;color:#111;margin:0 0 4px}.yt-rec-sub{font-size:12px;color:#999;margin:0}.yt-rec-grid{display:flex;overflow-x:auto;gap:12px;padding:0 0 8px;margin:0;list-style:none;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}.yt-rec-grid::-webkit-scrollbar{display:none}.yt-rec-grid>li{flex:0 0 180px;overflow:hidden}.yt-rec-grid>li .prdpadding{padding:0}.yt-rec-grid>li .prdline{position:relative;width:180px;height:240px;overflow:hidden}.yt-rec-grid>li .prdline img{width:100%;height:100%;object-fit:cover;display:block}.yt-rec-grid>li .hoverimg{width:100%;height:100%}.yt-rec-grid>li .hoverimg a{display:block;width:100%;height:100%}.yt-rec-grid>li .name{font-size:12px;font-weight:400;color:#212121;margin:8px 0 2px;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.yt-rec-grid>li .name a{text-decoration:none;color:#212121}.yt-rec-grid>li .prices,.yt-rec-grid>li .price{font-size:12px;color:#999}.yt-rec-grid>li .colorWrap,.yt-rec-grid>li .info,.yt-rec-grid>li .prd-keywords,.yt-rec-grid>li .soldout_icon,.yt-rec-grid>li .stock_icon{display:none}.yt-rec-link{display:inline-block;margin-top:20px;font-size:12px;color:#999;text-decoration:none}.yt-rec-link:hover{color:#111}@media(max-width:768px){.yt-rec{padding:0 16px;margin:40px auto 24px}.yt-rec-grid>li{flex:0 0 140px}.yt-rec-grid>li .prdline{width:140px;height:187px}}';
+    document.head.appendChild(s);
+    function init(){
+        var anchor = document.getElementById('bottom') || document.querySelector('footer') || document.getElementById('contents');
+        if(!anchor) return;
+        var d = document.createElement('div');
+        d.className = 'yt-rec';
+        d.innerHTML = '<div class="yt-rec-header"><p class="yt-rec-title">추천 상품</p><p class="yt-rec-sub">이런 상품은 어떠세요?</p></div><ul class="yt-rec-grid" id="ytRecGrid"></ul><a href="/product/list.html?cate_no=42" class="yt-rec-link">더보기 →</a>';
+        anchor.parentNode.insertBefore(d, anchor);
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/product/list.html?cate_no=42', true);
+        xhr.timeout = 8000;
+        xhr.onload = function(){
+            if(xhr.status === 200){
+                try{
+                    var doc = new DOMParser().parseFromString(xhr.responseText,'text/html');
+                    var ul = doc.querySelector('.xans-product-listnormal ul.grid4') || doc.querySelector('ul.grid4');
+                    if(ul){
+                        var items = ul.querySelectorAll('li');
+                        var grid = document.getElementById('ytRecGrid');
+                        var added = 0;
+                        for(var i=0;i<items.length && added<12;i++){
+                            var img = items[i].querySelector('.prdline img, .hoverimg img');
+                            if(!img || !img.src || img.src.indexOf('product') === -1) continue;
+                            var clone = items[i].cloneNode(true);
+                            var chips = clone.querySelector('.colorWrap');
+                            if(chips) chips.style.display='none';
+                            grid.appendChild(clone);
+                            added++;
+                        }
+                    }
+                }catch(e){}
+            }
+        };
+        xhr.send();
+    }
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+})();
+</script>
+<script type="text/javascript" src="/js/ga09.js"></script>
+<!-- Enliple Common Tracker v3.6 [공용] start -->
+<script type="text/javascript">
+<!--
+function mobRf() {
+    var rf = new EN();
+    rf.setData("userid", "tpdnd134");
+    rf.setSSL(true);
+    rf.sendRf();
+}
+//-->
+</script>
+<script src="https://cdn.megadata.co.kr/js/en_script/3.6/enliple_min3.6.js" defer="defer" onload="mobRf()"></script>
+<!-- Enliple Common Tracker v3.6 [공용] end -->
+</body>
+</html>

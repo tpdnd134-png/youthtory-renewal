@@ -1,0 +1,27 @@
+<!--@css(/css/top.css)-->
+<!--@js(/js/top.js)-->
+
+<div class="inner">
+    
+    <!-- 검색 -->
+    <div id="topsearch">
+        <div class="search-bar">
+            <div module="Layout_SearchHeader">
+                <!--
+                $product_page=/product/detail.html
+                $category_page=/product/list.html
+                -->
+                <fieldset id="search_fieldset">{$form.keyword}<a onclick="{$action_search_submit}"><img src=/web/upload/ga09/search.png></a></fieldset>
+            </div> 
+        </div>
+    </div>
+    
+    <!-- 장바구니 -->
+	<div module="Layout_orderBasketcount" style="cursor:pointer;" onclick="location.href='/order/basket.html'" id="topcarticon"><img src=/web/upload/ga09/cart.png>BAG ({$basket_count})</a></div>
+    
+    <!-- 로그인/로그아웃 메뉴 -->
+    <div id="log" module="Layout_stateLogoff"><span id="toggle" style="cursor:pointer">LOGIN</span><a href="/member/join.html">REGISTER</a></div>
+    <div id="log" module="Layout_stateLogon"><a href="{$action_logout}">LOGOUT</a><a href="/member/modify.html">MY INFO</a></div>
+    
+
+</div>

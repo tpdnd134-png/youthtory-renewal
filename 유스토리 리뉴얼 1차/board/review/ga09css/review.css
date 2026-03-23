@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+
+
+#review_photo { display:none; }
+#review_photo li { height:150px; background-color:#eee; }
+
+#review_simple {border:1px solid #eaeaea; padding:20px 18px 20px 27px; width:303px; margin:0 auto;margin-top:40px; }
+#review_simple .text {text-align:center; letter-spacing:0; margin-bottom:20px; line-height:13px; font-size:12px; font-family: 'Nanum Gothic', sans-serif;}
+#review_simple .text img {vertical-align:middle; margin-right:10px}
+#review_simple_photo { display:none; }
+#review_simple_photo li { float:left; margin-right:5px; width:55px; height:55px; background-color:#eee; }
+
+#licensetext {font-size:10px; font-family:Tahoma; color:#c5c5c5; letter-spacing:1px; line-height:30px}
+#licensetext a {color:#c5c5c5}
+
+/* 아이프레임 크기 */
+#review_popup { display:none; position:fixed; top:0; width:auto; height:auto; }
+#review_popup iframe { width:900px; height:600px; border:1px solid #000; padding:20px 0 20px 20px; background:#fff }
+.review_imglist img { display:inline; width:100px; height:100px; object-fit: cover; margin-right:10px; margin-top:20px; cursor:pointer; vertical-align:top; }
+
+.xans-board-listpackage { font-size:11px }
+.xans-board-listpackage a { color:#282828;}
+.xans-board-listpackage a:hover {text-decoration:none;}
+
+/* 공지글 공통 */
+
+.xans-board-listpackage .notice {border:1px solid #eaeaea; border-left:none; border-right:none; margin-bottom:60px; font-size:12px; font-family: 'Nanum Gothic', sans-serif; font-weight:500; letter-spacing:0}
+.xans-board-listpackage .notice a { color:#000; -webkit-transition-duration: 0.3; transition-duration: 0.3s;}
+.xans-board-listpackage .notice a:hover {text-decoration:none; color:#868686;}
+.xans-board-listpackage .notice .noticeline {border-top:1px solid #eaeaea;margin:15px 0; padding-top:15px}
+.xans-board-listpackage .notice .left {float:left; width:70px; text-align:center;}
+.xans-board-listpackage .notice .left img {vertical-align:middle; line-height:9px}
+.xans-board-listpackage .notice .right {float:left; line-height:9px}
+.xans-board-listpackage .notice .date {float:right; font-size:10px; color:#a4a4a4; line-height:10px; padding-right:20px; letter-spacing:0}
+
+/* 이미지 형식 */
+#ga09photoreview {font-size:12px; font-family: 'Nanum Gothic', sans-serif;}
+#ga09photoreview a {color:#353535; }
+
+#ga09photoreview {float:left; width:25%; height:515px; margin-bottom:60px; cursor:pointer; -webkit-transition-duration: 0.3; transition-duration: 0.3s;}
+
+#ga09photoreview .thumnail {width:100%; height:400px;}
+
+#ga09photoreview .infobox {padding:18px 15px; border:1px solid #eaeaea; margin:0 10px; border-top:none}
+#ga09photoreview .infobox .info1 {border-bottom:1px solid #eaeaea; padding-bottom:15px}
+#ga09photoreview .infobox .info1 .name {line-height:20px;  letter-spacing:0}
+#ga09photoreview .infobox .info1 .point {float:right}
+#ga09photoreview .infobox .info1 .point img {vertical-align:middle}
+
+#ga09photoreview .infobox .info2 {padding-top:15px; line-height:18px}
+#ga09photoreview .infobox .info2 .subject {letter-spacing:0}
+#ga09photoreview .infobox .info2 .date {margin-top:7px; font-size:10px; color:#a4a4a4;}
+#ga09photoreview .infobox .comment {font-size:10px; color:#a4a4a4; margin-left:5px}
+
+.nodata { margin:50px 0 70px 0; border:1px solid #eaeaea; color:#000; line-height:39px; text-align:center; font-family: 'Nanum Gothic', sans-serif;}
+
+
+/* 리스트 형식 */
+#ga09photoreview-list { border-bottom:1px solid #eaeaea; border-left:none; border-right:none; font-size:12px; font-family: 'Nanum Gothic', sans-serif; color:#3b3b3b; line-height:32px;}
+#ga09photoreview-list a:hover {text-decoration:none;}
+#ga09photoreview-list .boardList { clear:both; }
+#ga09photoreview-list table th {  padding:15px 0; background:#fff; }
+#ga09photoreview-list table td {  padding:15px 0; border-top:1px solid #eaeaea; text-align:center; vertical-align:middle; }
+#ga09photoreview-list table th:last-child,
+#ga09photoreview-list table td:last-child { border-right:0; }
+#ga09photoreview-list table a,
+#ga09photoreview-list table a:hover { color:#000; }
+
+#ga09photoreview-list .infobox { word-break:break-all; text-align:left; padding-left:20px; padding-top:21px; }
+#ga09photoreview-list .infobox img { vertical-align:middle; margin:0 1px; }
+#ga09photoreview-list .infobox span { padding:0; text-align:left;}
+
+#ga09photoreview-list .thumb { width:80px; overflow:hidden; text-align:center }
+#ga09photoreview-list .thumb img { height:80px; text-align:center;}
+#ga09photoreview-list .comment {color:#ccc; margin-left:12px; font-size:10px; font-family: 'Nanum Gothic', sans-serif;}
+#ga09photoreview-list .number { font-size:10px; color:#a4a4a4}
+#ga09photoreview-list .prdname {float:left; font-size:12px; margin-right:10px; line-height:13px; font-weight:bold;letter-spacing:0}
+#ga09photoreview-list .prdname2 {float:left; font-size:12px; margin-right:10px; line-height:25px; font-weight:bold;letter-spacing:0}
+#ga09photoreview-list .prdname2 a {color:#3b3b3b}
+#ga09photoreview-list .openbt img { vertical-align:middle; margin:0 ; }
+#ga09photoreview-list .point { margin-top:8px}
+#ga09photoreview-list .subject { margin-top:8px;letter-spacing:0}
+#ga09photoreview-list .subject2 { margin-top:0;letter-spacing:0}
+#ga09photoreview-list .subject2 .icons img {margin-left:5px}
+#ga09photoreview-list .writer {margin-left:10px; font-size:11px; color:#a4a4a4;}
+#ga09photoreview-list .writer2 {font-size:12px; color:#a4a4a4; line-height:10px; margin-top:-2px;}
+#ga09photoreview-list .date {font-size:10px; color:#a4a4a4; line-height:10px; margin-top:-2px;}
+
+
+#ga09photoreview-list .nodata { margin:50px 0 70px 0; border:1px solid #eaeaea; color:#000; line-height:39px; text-align:center; font-family: 'Nanum Gothic', sans-serif;}
+/* 상품후기 아코디언형 */
+#ga09photoreview-list #content_view td { padding:20px 0 5px 171px; background:#fbfbfb; text-align:left; line-height:20px; word-break:break-all; white-space:pre-wrap; }
+
+/* 게시글 없음, 검색결과없음 */
+#ga09photoreview-list .boardListEmpty { padding:20px 0; text-align:center; background-color:#fff; border-width:0 1px 1px; border-style:solid; border-color:#eaeaea; }
+
+
+
+
+/* 상세페이지 */
+#ga09photoreview-detail {margin-top:16px; border-bottom:1px solid #eaeaea; border-left:none; border-right:none; font-size:12px; font-family: 'Nanum Gothic', sans-serif; color:#3b3b3b; line-height:32px;}
+#ga09photoreview-detail a:hover {text-decoration:none;}
+#ga09photoreview-detail .boardList { clear:both; }
+#ga09photoreview-detail table th {  padding:10px 0; background:#fff; }
+#ga09photoreview-detail table td {  padding:10px 0; border-top:1px solid #eaeaea; text-align:center; vertical-align:middle; }
+#ga09photoreview-detail table th:last-child,
+#ga09photoreview-detail table td:last-child { border-right:0; }
+#ga09photoreview-detail table a,
+#ga09photoreview-detail table a:hover { color:#000; }
+
+#ga09photoreview-detail .infobox { word-break:break-all; text-align:left; padding-top:16px; }
+#ga09photoreview-detail .infobox img { vertical-align:middle; margin:0 1px; }
+#ga09photoreview-detail .infobox span { padding:0; text-align:left;}
+
+#ga09photoreview-detail .thumb { width:80px; overflow:hidden; text-align:center }
+#ga09photoreview-detail .thumb img { width:80px; text-align:center;}
+#ga09photoreview-detail .comment {color:#ccc; margin-left:12px; font-size:10px; font-family: 'Nanum Gothic', sans-serif;}
+#ga09photoreview-detail .number { font-size:10px; color:#a4a4a4}
+#ga09photoreview-detail .subject {float:left; font-size:13px; margin-right:10px; line-height:13px; letter-spacing:0; color:#000}
+#ga09photoreview-detail .openbt img { vertical-align:middle; margin:0 ; }
+#ga09photoreview-detail .point { margin-top:8px}
+#ga09photoreview-detail .writer {margin-top:5px; font-size:11px; color:#a4a4a4;}
+#ga09photoreview-detail .date {font-size:10px; color:#a4a4a4; line-height:10px; margin-top:-2px;}
+
+/* 상품후기 아코디언형 */
+#ga09photoreview-detail #content_view td { padding:20px 0 5px 70px; background:#fbfbfb; text-align:left; line-height:20px; word-break:break-all; white-space:pre-wrap; }
+
+#prdReview .nodata { margin:15px 0 0 0; border:1px solid #eaeaea; color:#000; line-height:39px; text-align:center; font-family: 'Nanum Gothic', sans-serif;}
+
+.ga09photoreview-detail-btnArea { margin:50px 0; text-align:center}
+.ga09photoreview-detail-btnArea a {margin:0 5px}
+
+/* 상세페이지 포토후기만 모은것 */
+#detail_photoreview {padding:20px 38px 20px 8px; border:1px solid #eaeaea; width:1052px; height:170px; font-size:12px; font-family: 'Nanum Gothic', sans-serif;}
+#detail_photoreview .left {float:left; width:260px; text-align:center; letter-spacing:0; margin-top:44px}
+#detail_photoreview .left img {vertical-align:middle; margin-right:10px}
+#detail_photoreview .left .bt {margin-top:30px}
+#detail_photoreview .right {float:right; width:790px;}
+
+.boardtopimg {margin-bottom:50px}
+.boardtopimg img {width:100%}

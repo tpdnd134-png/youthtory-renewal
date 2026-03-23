@@ -1,0 +1,70 @@
+<!--@layout(/layout.html)-->
+<!--@js(/js/fullpage.js)-->
+<!--@js(/js/fullpageexe.js)-->
+<!--@css(/css/fullpage.css)-->
+<!--@css(/css/ga09product.css)-->
+
+<div id="fullpage">
+
+    <div class="section hero-section" style="background-image: url(/web/upload/ga09/main/0616pc-01.jpg); background-size: cover; background-position:center; cursor:pointer" id="section1" onclick="location.href='/product/list.html?cate_no=42'">
+        <div class="overlay"></div>
+    </div>
+
+    <div class="section hero-section" id="section2" style="background-image: url(/web/upload/ga09/main/0719pc-02.jpg); background-size: cover; background-position:center">
+        <div class="overlay"></div>
+        <div class="intro" onclick="location.href='/product/list.html?cate_no=176'">
+            <p class="title">OFFLINE CLUB SERVICE</p>
+            <p class="sub">FIND YOUR STYLE , FIND YOUR VALUE , FIND YOUR LIFE.</p>
+        </div>
+    </div>
+
+    <div class="section hero-section" style="background-image: url(/web/upload/ga09/main/0719pc-03.jpg); background-size: cover; background-position:center; cursor:pointer" id="section3" onclick="location.href='/article/notice/1/14174'">
+        <div class="overlay"></div>
+    </div>
+
+    <!-- BEST ITEMS -->
+    <div class="section fp-auto-height" id="section-best">
+        <div class="section-area">
+            <div class="section-title">
+                <h2>BEST ITEMS</h2>
+                <p>CURATED FOR YOU</p>
+            </div>
+            <div class="ga09list" module="product_listrecommend">
+                <!--
+                $count = 8
+                $basket_result = /product/add_basket.html
+                $basket_option = /product/basket_option.html
+                -->
+                <ul class="grid4 prdList">
+                    <!--@import(/prdlist.html)-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW ARRIVALS -->
+    <div class="section fp-auto-height" id="section-new">
+        <div class="section-area">
+            <div class="section-title">
+                <h2>NEW ARRIVALS</h2>
+                <p>LATEST COLLECTION</p>
+            </div>
+            <div class="ga09list" module="product_listnew">
+                <!--
+                $count = 8
+                $basket_result = /product/add_basket.html
+                $basket_option = /product/basket_option.html
+                -->
+                <ul class="grid4 prdList">
+                    <!--@import(/prdlist.html)-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <div class="section fp-auto-height" id="section-footer">
+        <!--@import(/bottom.html)-->
+    </div>
+
+</div>

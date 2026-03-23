@@ -1,0 +1,33 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--@css(/board/review/ga09css/photoreviewbutton.css)-->
+<div module="board_CommentDeletePackage_4" style="margin-top:70px">
+    <!--@css(/css/module/board/commentDeletePackage.css)-->
+    <div module="board_title_4">
+        <div class="path">
+            <span>현재 위치</span>
+            <ol>
+                <li><a href="/">홈</a></li>
+                <li><a href="/board/index.html">게시판</a></li>
+                <li title="현재 위치"><strong>{$board_name}</strong></li>
+            </ol>
+        </div>
+
+        <div class="titleArea">
+            <h2>{$board_title}</h2>
+        </div>
+    </div>
+
+    <div module="Board_CommentDel_4">
+        <div class="commentDel">
+            <fieldset>
+                <legend>댓글삭제</legend>
+                <p class="info">댓글 등록 시 입력한 <strong>비밀번호를 입력하여 주십시요.</strong><br><span style="color:#9b9b9b; line-height:22px">관리자분께서는 확인만 누르시면 됩니다.</span></p>
+                <p class="password"><label for="comment_password">비밀번호</label> {$form.comment_password}</p>
+                <p class="button">
+                    <a href="/board/review/list.html{$param_list}"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/board/btn_secret_list.gif" alt="목록" /></a>
+                    <input type="image" src="http://img.echosting.cafe24.com/skin/base_ko_KR/board/btn_secret_submit.gif" alt="확인" />
+                </p>
+            </fieldset>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,152 @@
+<!--@css(/layout/basic/css/slideMenu.css)-->
+<!--@js(/layout/basic/js/slide_menu.js)-->
+
+<aside id="aside" module="layout_slidePackage">
+<a href="#none" class="btnClose"><img src="/web/upload/ga09/mobile/close.png" alt="닫기"></a>
+
+    
+<div id="slidemenu">
+	<div class="inner">
+        
+        
+        <!-- 슬라이드 메뉴 상단 -->
+        <div id="slidemenutop">
+            
+            <!-- 로고 이미지 크기는 /layout/basic/css/slideMenu.css 파일에서 조정 -->
+            <div class="logo"><a href="/"><img src=/web/upload/ga09/mobile/logo.png></a></div>
+            
+            
+            <div id="loginfobox">
+                
+
+                
+                <div module="Layout_statelogoff">    
+                    <div>
+                        고객님은 현재 <b>로그아웃</b> 상태입니다.<br>
+                        로그인을 하시면 더 많은 정보를 확인하실 수 있습니다.
+                    </div>
+                    <div class="ec-base-button gColumn" style="margin-top:20px">
+                        <a href="/member/login.html" class="btnSubmit2">LOGIN</a>
+                        <a href="/member/agreement.html" class="btnEm2">REGISTER</a>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+
+                <div module="Layout_statelogon">    
+                    <div>{$name}님, 반갑습니다. 오늘도 즐거운 쇼핑하세요.</div>
+
+                    <div class="ec-base-button gColumn" style="margin-top:20px">
+                        <a href="/myshop/index.html" class="btnSubmit2">MY PAGE</a>
+                        <a href="{$action_logout}" class="btnEm2">LOGOUT</a>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+        <!-- 슬라이드 메뉴 상단 close -->
+        
+        
+    	<div id="menulist">
+            <button class="accordionmenu">BRAND</button>
+            <div class="panel">
+                <ul>
+                    <li><a href="/about.html">ABOUT</a></li>                  
+                </ul>
+            </div>
+            
+            <button class="accordionmenu active">SHOP</button>
+            <div class="panel" style="max-height: 200px;">
+                <ul module="Layout_category">
+                    <li><a href="/product/list.html{$param}">{$name}</a></li>
+                    <li><a href="/product/list.html{$param}">{$name}</a></li>
+                </ul>
+            </div>
+
+            <button class="accordionmenu">BOARD</button>
+            <div class="panel">
+                <ul>
+                    <li><a href="/board/free/list.html?board_no=1">NOTICE</a></li>
+                    <li><a href="/board/product/list.html?board_no=6">Q&amp;A</a></li>
+                    <li><a href="/board/product/list.html?board_no=4">REVIEW</a></li>
+                    <li><a href="/collectionread.html?product_no=1793&cate_no=50&display_group=1">Collection</a></li>
+                </ul>
+            </div>
+
+            <button class="accordionmenu">MY PAGE</button>
+            <div class="panel">
+                <ul>
+                    <li><a href="/myshop/index.html">MY PAGE</a></li>
+                    <li><a href="/myshop/order/list.html">ORDER</a></li>
+                    <li><a href="/myshop/mileage/historyList.html">MILEAGE</a></li> 
+                    <li><a href="/myshop/board_list.html">MY Q&amp;A</a></li> 
+                    <li><a href="https://www.cjlogistics.com/ko/tool/parcel/tracking" target="_blank">DELIVERY</a></li>
+                </ul>
+            </div>
+            
+    	</div>
+
+            
+        <!-- 검색창 -->
+        <div class="search-bar">
+            <div module="Layout_SearchHeader">
+                <!--
+                $product_page=/product/detail.html
+                $category_page=/product/list.html
+                -->
+                <fieldset id="search_fieldset">
+                    <legend>검색</legend>{$form.keyword}<img src=/web/upload/ga09/mobile/searchicon.png onclick="{$action_search_submit}">
+                </fieldset>
+            </div> 
+        </div>  
+        
+        
+
+    
+        <!-- 고객센터번호/계좌 -->
+        <div id="cscenter">
+
+            <div id="customer">
+                <ul>
+                    <li class="cs1">Tel 070-8673-7558 </li>
+                        H.P 010-5648-7558 </li>
+                    <li class="cs2">Opening hours. am11-pm17</li>
+                    <li class="cs2">Lunch break. pm13-pm14</li>
+                    <li class="cs2">Sat, Sun, Holiday Off</li>
+                </ul>
+            </div>
+
+            <div id="bank">
+                <ul>
+                    <li class="bank1">신한은행 110-398-259805</li>
+                    <li class="bank2">예금주 : 한유승</li>
+                </ul>
+            </div>
+
+        </div>        
+
+
+        <!-- SNS아이콘 -->
+        <div id="sns">
+            <ul>
+                <li>
+                    <span style="margin-right:10px">Follow us</span>
+                    <a href=# target="_blank"><img src="/web/upload/ga09/mobile/sns/fb.png"></a>
+                    <a href="https://www.instagram.com/youth_ok" target="_blank"><img src="/web/upload/ga09/mobile/sns/in.png"></a>
+                    <a href=# target="_blank"><img src="/web/upload/ga09/mobile/sns/blog.png"></a>
+                </li>
+                <div style="clear:both"></div>
+            </ul>
+        </div>
+    
+        
+        
+        
+        
+    </div><!-- inner close -->
+    
+    
+    
+</div>
+
+</aside>

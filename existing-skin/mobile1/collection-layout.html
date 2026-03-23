@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title></title>
+    <!--@css(/layout/basic/css/common.css)-->
+    <!--@css(/layout/basic/css/layout.css)-->
+    <!--@css(/layout/basic/css/paginate.css)-->
+    <!--@css(/layout/basic/css/ec-base-help.css)-->
+    <!--@css(/layout/basic/css/ec-base-product.css)-->
+    <!--@css(/layout/basic/css/ec-base-button.css)-->
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/ga09.css)-->
+    <!-- 스마트디자인에서는 JQuery 1.4.4 버전이 내장되어있습니다. 추가로 호출하면 충돌이 생길 수 있습니다. -->
+    <!--@js(/layout/basic/js/common.js)-->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600|Roboto+Mono:500" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+<body>
+<div id="wrap">
+    
+    <div id="toparea"></div>
+    
+	<!--@import(/layout/basic/sidebar.html)-->
+    
+    <div id="container">
+        <!--@import(/top.html)-->
+        <div id="contents3">
+            <!--@contents-->
+        </div>
+        <div id="bottom"><!--@import(/bottom.html)--></div>
+		<div class="scrollTop" style="position:fixed; margin-bottom:40px;"><a id="toparea" href="#toparea"><i class="fas fa-arrow-up"></i></a></div> 
+    </div>
+    
+    
+    <div id="progressPaybar" style="display:none;">
+        <!-- 배경 -->
+        <div id="progressPaybarBackground" class="layerProgress"></div>
+        <!-- 진행바 -->
+        <div id="progressPaybarView">
+            <p class="graph">현재 결제가 진행중입니다.</p>
+            <p class="txt">
+                본 결제 창은 결제완료 후 자동으로 닫히며, <br>
+                결제 진행 중에 본 결제 창을 닫으시면<br>
+                주문이 되지 않으니 <br>
+                결제 완료 될 때 까지 닫지 마시기 바랍니다.
+            </p>
+        </div>
+    </div>
+    <div module="Layout_multishopShipping" class="ec-base-layer">
+        <!--@css(/css/module/layout/multishopShipping.css)-->
+        <!--@js(/js/module/layout/multishopShipping.js)-->
+        <div class="worldshipLayer">
+            <h2>WORLD SHIPPING</h2>
+            <div class="content">
+                <p class="desc">PLEASE SELECT THE DESTINATION COUNTRY AND LANGUAGE :</p>
+                <div class="select">
+                    <select module="Layout_multishopShippingCountrylist">
+                        <option value="{$country_code}"{$country_default_selected}>SHIPPING TO : {$country_name}</option>
+                        <option value="{$country_code}"{$country_default_selected}>SHIPPING TO : {$country_name}</option>
+                    </select>
+                </div>
+                <div class="select">
+                    <select module="Layout_multishopShippingLanguagelist">
+                        <option value="{$shop_domain}"{$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+                        <option value="{$shop_domain}"{$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="ec-base-button gFull">
+                <a href="#none" class="btnSubmit">GO</a>
+            </div>
+            <a href="#none" class="btnClose"><img src="//img.echosting.cafe24.com/skin/mobile_ko_KR/layout/ico_close_gray.png" width="15" height="15" alt="close"></a>
+        </div>
+    </div>
+    <div module="mobilequick_display">
+        {$quick_link}
+        {$quick_button}
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YOUTHTORY</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link rel="stylesheet" href="../skin/css/layout.css">
+<link rel="stylesheet" href="../skin/css/override.css">
+<style>
+/* ===== BASE RESET ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+  color: #212121;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+ul, ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; background: none; border: none; padding: 0; }
+
+/* ===== PREVIEW BADGE ===== */
+.preview-badge {
+  position: fixed; bottom: 24px; left: 24px; z-index: 99999;
+  background: #2C5AFF; color: #fff;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.15em;
+  padding: 5px 10px; font-family: 'SF Mono', Monaco, monospace;
+  pointer-events: none;
+}
+
+/* ===== ANNOUNCEMENT BAR ===== */
+.announcement-bar {
+  position: relative;
+  background: #1a1a1a;
+  color: rgba(255,255,255,0.75);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px 48px;
+  line-height: 1;
+}
+.announcement-bar__close {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+.announcement-bar__close:hover { color: #fff; }
+
+/* ===== HEADER ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: background .3s, border-color .3s, box-shadow .3s;
+  border-bottom: 1px solid transparent;
+}
+.header--transparent {
+  background: rgba(42,41,41,0.45);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-bottom-color: rgba(255,255,255,0.06);
+}
+.header.is-scrolled {
+  background: #ffffff !important;
+  border-bottom-color: rgba(0,0,0,0.08) !important;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+}
+.header__inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 74px;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 24px;
+  gap: 24px;
+}
+
+/* Hamburger */
+.header__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.header__hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  transition: all 0.3s;
+}
+
+/* Logo */
+.header__logo {
+  text-align: center;
+}
+.header__logo-text {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  color: #fff;
+  transition: color 0.4s ease;
+}
+.header.is-scrolled .header__logo-text { color: #212121; }
+
+/* Nav */
+.header__nav { justify-self: start; }
+.header__nav-list {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+.header__nav-item { position: relative; }
+.header__nav-link {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  transition: color 0.3s ease;
+  padding: 8px 0;
+  display: block;
+}
+.header__nav-link:hover { color: #fff; }
+.header.is-scrolled .header__nav-link { color: rgba(33,33,33,0.65); }
+.header.is-scrolled .header__nav-link:hover { color: #212121; }
+
+/* Dropdown (kept for non-mega items) */
+.header__dropdown {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: -16px;
+  background: #ffffff;
+  min-width: 160px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.25s ease;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+}
+.header__nav-item--dropdown:hover .header__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.header__dropdown ul { padding: 8px 0; }
+.header__dropdown a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #999999;
+  transition: color .3s, background .3s;
+}
+.header__dropdown a:hover { color: #212121; background: #f8f8f8; }
+
+/* Mega Dropdown */
+.header__mega-dropdown {
+  position: fixed;
+  top: 74px;
+  left: 0;
+  right: 0;
+  background: #f5f5f5;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: all 0.25s ease;
+  padding: 40px 0;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  z-index: 999;
+}
+.header__nav-item--mega:hover .header__mega-dropdown {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+.header__mega-inner {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+.header__mega-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #212121;
+  margin-bottom: 20px;
+}
+.header__mega-col ul { list-style: none; }
+.header__mega-col a {
+  display: block;
+  padding: 8px 0;
+  font-size: 13px;
+  font-weight: 400;
+  color: #999999;
+  transition: color .3s;
+}
+.header__mega-col a:hover { color: #212121; }
+
+/* Utils */
+.header__utils {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: flex-end;
+}
+.header__util-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: rgba(255,255,255,0.85);
+  position: relative;
+  transition: color 0.3s;
+}
+.header__util-btn:hover { color: #fff; }
+.header.is-scrolled .header__util-btn { color: rgba(33,33,33,0.7); }
+.header.is-scrolled .header__util-btn:hover { color: #212121; }
+.header__cart-badge {
+  position: absolute;
+  top: 4px; right: 4px;
+  background: #2C5AFF;
+  color: #fff;
+  font-size: 8px;
+  font-weight: 700;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.header__util-auth a {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.7);
+  margin-left: 8px;
+  transition: color 0.3s;
+}
+.header__util-auth a:hover { color: #fff; }
+.header.is-scrolled .header__util-auth a { color: rgba(33,33,33,0.6); }
+.header.is-scrolled .header__util-auth a:hover { color: #212121; }
+
+/* ===== HERO SWIPER ===== */
+.main-hero {
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
+}
+.main-hero__swiper,
+.main-hero .swiper { width: 100%; height: 100%; }
+.main-hero__slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.main-hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 0 24px;
+}
+.main-hero__title {
+  font-size: clamp(52px, 9vw, 120px);
+  font-weight: 200;
+  letter-spacing: 0.08em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  font-feature-settings: 'kern' 1;
+}
+.main-hero__subtitle {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 40px;
+}
+.main-hero__cta {
+  display: inline-block;
+  padding: 14px 48px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.5);
+  background: transparent;
+  transition: all .3s, letter-spacing .3s;
+}
+.main-hero__cta:hover {
+  background: rgba(42,41,41,0.8);
+  border-color: rgba(255,255,255,0.85);
+  letter-spacing: 0.32em;
+}
+
+/* Swiper pagination */
+.main-hero .swiper-pagination { bottom: 32px; }
+.main-hero .swiper-pagination-bullet {
+  background: rgba(255,255,255,0.4);
+  width: 24px;
+  height: 2px;
+  border-radius: 0;
+  opacity: 1;
+  transition: background 0.3s;
+}
+.main-hero .swiper-pagination-bullet-active { background: #fff; }
+
+/* ===== SECTIONS ===== */
+.main-section {
+  padding: 80px 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.main-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.main-section--gray { background: #f9f9f9; }
+.main-section__inner {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.main-section__title {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #212121;
+  margin-bottom: 64px;
+  position: relative;
+}
+.main-section__title::after {
+  display: none;
+}
+
+/* Product Grid */
+.ga09list ul.grid4 {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.prdpadding { padding: 0; }
+.prdline {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 16px;
+  position: relative;
+}
+.prdline > div:first-child {
+  width: 100%;
+  aspect-ratio: 3/4;
+  transition: transform .3s;
+}
+.prdline:hover > div:first-child {
+  transform: scale(1.05);
+  opacity: 0.94;
+}
+.prd-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  display: block;
+  background: #f2f2f2;
+}
+.prd-img-swatch {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .3s;
+}
+.prd-img-hover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.prd-img-wrap:hover .prd-img-hover { opacity: 1; }
+.prdpadding:hover .prd-img-swatch { transform: scale(1.05); opacity: 0.94; }
+
+/* Product Badge */
+.prd-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.prd-badge--new { background: #212121; color: #fff; }
+.prd-badge--best { background: #2C5AFF; color: #fff; }
+.prd-badge--hot { background: transparent; color: #2C5AFF; border: 1px solid #2C5AFF; }
+
+p.name {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #212121;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity .3s;
+}
+p.name:hover { opacity: 0.6; }
+p.name a { color: inherit; }
+p.prices {
+  font-size: 14px;
+  font-weight: 400;
+  color: #212121;
+  padding: 0;
+}
+.price.normal { color: #212121; }
+
+/* View All */
+.main-section__more {
+  text-align: center;
+  margin-top: 52px;
+}
+.main-section__more-btn {
+  display: inline-block;
+  padding: 14px 48px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #212121;
+  border: 1px solid rgba(33,33,33,0.25);
+  background: transparent;
+  transition: all .3s, letter-spacing .3s;
+}
+.main-section__more-btn:hover {
+  border-color: #212121;
+  letter-spacing: 0.32em;
+}
+
+/* ===== LOOKBOOK BANNER ===== */
+.main-banner {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.main-banner.is-visible { opacity: 1; transform: translateY(0); }
+.main-banner a { display: block; }
+.main-banner__inner {
+  height: 56vw;
+  max-height: 680px;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.main-banner__inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.18);
+}
+.main-banner__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+}
+.main-banner__label {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 16px;
+}
+.main-banner__title {
+  font-size: clamp(36px, 7vw, 88px);
+  font-weight: 200;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* ===== STYLE PICK ===== */
+.main-style-pick {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.main-style-pick__card {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+.main-style-pick__img-wrap {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  position: relative;
+}
+.main-style-pick__img-wrap > div {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.main-style-pick__card:hover .main-style-pick__img-wrap > div { transform: scale(1.05); }
+.main-style-pick__label {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #fff;
+  z-index: 2;
+}
+.main-style-pick__card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ===== INSTAGRAM GRID ===== */
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3px;
+  max-width: 840px;
+  margin: 0 auto;
+}
+.insta-grid__cell {
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.insta-grid__cell > div {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+.insta-grid__cell:hover > div { transform: scale(1.08); }
+.insta-grid__cell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  transition: background 0.3s;
+}
+.insta-grid__cell:hover::after { background: rgba(0,0,0,0.12); }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #212121;
+  color: rgba(255,255,255,0.75);
+  padding-top: 80px;
+}
+.footer__inner {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer__brand-name {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.footer__brand-desc {
+  font-size: 11px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 28px;
+}
+.footer__social {
+  display: flex;
+  gap: 10px;
+}
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.5);
+  transition: all 0.3s;
+}
+.footer__social-link:hover {
+  border-color: rgba(255,255,255,0.7);
+  color: #fff;
+}
+.footer__heading {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 20px;
+}
+.footer__info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+}
+.footer__cs-number {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.footer__link {
+  color: rgba(255,255,255,0.5);
+  font-size: 12px;
+  transition: color 0.2s;
+}
+.footer__link:hover { color: #fff; }
+.footer__bottom {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer__company {
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.03em;
+  line-height: 1.8;
+}
+.footer__copy {
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.03em;
+}
+
+/* ===== SCROLL TOP ===== */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  background: #212121;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 999;
+  border: none;
+}
+.scroll-top-btn.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== SEARCH OVERLAY ===== */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(255,255,255,0.97);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.search-overlay.is-open { opacity: 1; visibility: visible; }
+.search-overlay__inner { width: 100%; max-width: 560px; padding: 0 32px; position: relative; }
+.search-overlay input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #212121;
+  padding: 16px 0;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  outline: none;
+  background: transparent;
+  color: #212121;
+}
+.search-overlay input::placeholder { color: #999999; }
+.search-close-btn {
+  position: absolute;
+  top: -56px;
+  right: 32px;
+  font-size: 28px;
+  color: #212121;
+  cursor: pointer;
+  background: none;
+  border: none;
+  line-height: 1;
+}
+
+/* ===== MOBILE NAV ===== */
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1500;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.mobile-nav-overlay.is-open { opacity: 1; visibility: visible; }
+.mobile-nav-wrap {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: 280px;
+  background: #fff;
+  z-index: 1600;
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.mobile-nav-wrap.is-open { transform: translateX(0); }
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  border-bottom: 1px solid #dadada;
+}
+.mobile-nav-title {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+}
+.mobile-nav-close {
+  font-size: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #212121;
+}
+.mobile-nav-list { padding: 24px; }
+.mobile-nav-list li { border-bottom: 1px solid #dadada; }
+.mobile-nav-list a {
+  display: block;
+  padding: 16px 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #212121;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .ga09list ul.grid4 { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .header__inner { grid-template-columns: 40px 1fr 40px; padding: 0 15px; }
+  .header__nav { display: none; }
+  .header__hamburger { display: flex; color: #fff; }
+  .header.is-scrolled .header__hamburger { color: #212121; }
+  .header__utils .header__util-auth { display: none; }
+  .main-section__inner { padding: 0 15px; }
+  .ga09list ul.grid4 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .main-style-pick { grid-template-columns: repeat(2, 1fr); }
+  .insta-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer__inner { grid-template-columns: 1fr 1fr; gap: 40px; padding: 0 20px 40px; }
+  .footer__bottom { padding: 20px; }
+}
+@media (max-width: 480px) {
+  .main-hero__title { font-size: 40px; }
+  .ga09list ul.grid4 { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="preview-badge">PREVIEW</div>
+
+<!-- Announcement Bar -->
+<div class="announcement-bar" id="announcementBar">
+  FREE SHIPPING ON ORDERS OVER ₩50,000 &nbsp;&nbsp;&middot;&nbsp;&nbsp; FREE RETURNS WITHIN 7 DAYS
+  <button class="announcement-bar__close" id="announcementClose" aria-label="닫기">
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="1" y1="1" x2="9" y2="9"/><line x1="9" y1="1" x2="1" y2="9"/></svg>
+  </button>
+</div>
+
+<!-- Header -->
+<header class="header header--transparent" id="header">
+  <div class="header__inner">
+    <button class="header__hamburger" id="hamburgerBtn" aria-label="메뉴">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="header__logo">
+      <a href="index.html"><span class="header__logo-text">YOUTHTORY</span></a>
+    </div>
+    <nav class="header__nav">
+      <ul class="header__nav-list">
+        <li class="header__nav-item header__nav-item--mega">
+          <a href="list.html" class="header__nav-link">SHOP</a>
+          <div class="header__mega-dropdown">
+            <div class="header__mega-inner">
+              <div class="header__mega-col">
+                <h4 class="header__mega-title">MENS</h4>
+                <ul>
+                  <li><a href="list.html">All</a></li>
+                  <li><a href="list.html">Outwear</a></li>
+                  <li><a href="list.html">Top</a></li>
+                  <li><a href="list.html">Bottom</a></li>
+                  <li><a href="list.html">Accessories</a></li>
+                </ul>
+              </div>
+              <div class="header__mega-col">
+                <h4 class="header__mega-title">WOMENS</h4>
+                <ul>
+                  <li><a href="list.html">All</a></li>
+                  <li><a href="list.html">Outwear</a></li>
+                  <li><a href="list.html">Top</a></li>
+                  <li><a href="list.html">Bottom</a></li>
+                  <li><a href="list.html">Dress</a></li>
+                  <li><a href="list.html">Accessories</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="header__nav-item"><a href="list.html" class="header__nav-link">NEW</a></li>
+        <li class="header__nav-item"><a href="#" class="header__nav-link">BRAND</a></li>
+        <li class="header__nav-item"><a href="list.html" class="header__nav-link">SALE</a></li>
+      </ul>
+    </nav>
+    <div class="header__utils">
+      <button class="header__util-btn" id="searchOpenBtn" aria-label="검색">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+      </button>
+      <a href="#" class="header__util-btn" style="position:relative;" aria-label="장바구니">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="header__cart-badge">3</span>
+      </a>
+      <div class="header__util-auth"><a href="#">LOGIN</a></div>
+    </div>
+  </div>
+</header>
+
+<!-- Search Overlay -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-overlay__inner">
+    <button class="search-close-btn" id="searchCloseBtn" aria-label="닫기">&times;</button>
+    <input type="text" placeholder="Search..." />
+  </div>
+</div>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+<div class="mobile-nav-wrap" id="mobileNavWrap">
+  <div class="mobile-nav-header">
+    <span class="mobile-nav-title">MENU</span>
+    <button class="mobile-nav-close" id="mobileNavClose">&times;</button>
+  </div>
+  <ul class="mobile-nav-list">
+    <li><a href="list.html">SHOP</a></li>
+    <li><a href="list.html">NEW</a></li>
+    <li><a href="#">BRAND</a></li>
+    <li><a href="list.html">SALE</a></li>
+  </ul>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<section class="main-hero">
+  <div class="swiper main-hero__swiper">
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="main-hero__slide">
+          <div style="position:absolute;inset:0;background-image:url(https://shopyouthtory.kr/web/upload/ga09/main/0616pc-01.jpg);background-size:cover;background-position:center;"></div>
+          <div class="main-hero__content">
+            <p class="main-hero__subtitle">2026 SPRING / SUMMER</p>
+            <h1 class="main-hero__title">NEW<br>COLLECTION</h1>
+            <a href="list.html" class="main-hero__cta">SHOP NOW</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="main-hero__slide">
+          <div style="position:absolute;inset:0;background-image:url(https://shopyouthtory.kr/web/upload/ga09/main/0719pc-02.jpg);background-size:cover;background-position:center;"></div>
+          <div class="main-hero__content">
+            <p class="main-hero__subtitle">LOOKBOOK 2026</p>
+            <h1 class="main-hero__title">SUMMER<br>MOOD</h1>
+            <a href="list.html" class="main-hero__cta">VIEW MORE</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <div class="main-hero__slide">
+          <div style="position:absolute;inset:0;background-image:url(https://shopyouthtory.kr/web/upload/ga09/main/0719pc-03.jpg);background-size:cover;background-position:center;"></div>
+          <div class="main-hero__content">
+            <p class="main-hero__subtitle">STREET CULTURE</p>
+            <h1 class="main-hero__title">DEFINE<br>YOUR STYLE</h1>
+            <a href="list.html" class="main-hero__cta">DISCOVER</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<!-- ===================== NEW ARRIVALS ===================== -->
+<section class="main-section is-visible" style="transition-delay:0s;">
+  <div class="main-section__inner">
+    <h2 class="main-section__title">NEW ARRIVALS</h2>
+    <div class="ga09list">
+      <ul class="grid4">
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <span class="prd-badge prd-badge--new">NEW</span>
+              <img src="https://shopyouthtory.kr/web/product/medium/202501/4a6c08453311b33e1439ac01a088f189.jpg" alt="오버핏 워싱 데님 자켓" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202501/a182d11b68c86106264b6076bcf3fd4d.jpg" alt="오버핏 워싱 데님 자켓" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">오버핏 워싱 데님 자켓</a></p>
+            <p class="prices"><span class="price normal">₩89,000</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <span class="prd-badge prd-badge--new">NEW</span>
+              <img src="https://shopyouthtory.kr/web/product/medium/202501/a182d11b68c86106264b6076bcf3fd4d.jpg" alt="릴렉스핏 코튼 팬츠" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202501/4181e16720db59f97d8882541562d733.jpg" alt="릴렉스핏 코튼 팬츠" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">릴렉스핏 코튼 팬츠</a></p>
+            <p class="prices"><span class="price normal">₩49,000</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <img src="https://shopyouthtory.kr/web/product/medium/202501/4181e16720db59f97d8882541562d733.jpg" alt="슬림핏 린넨 셔츠" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202501/5fa898fdf3b6b637527bcef9d0a48671.jpg" alt="슬림핏 린넨 셔츠" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">슬림핏 린넨 셔츠</a></p>
+            <p class="prices"><span class="price normal">₩59,000</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <img src="https://shopyouthtory.kr/web/product/medium/202501/5fa898fdf3b6b637527bcef9d0a48671.jpg" alt="크롭 니트 스웨터" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202501/4d3bab023b59765d72993070269767a5.jpg" alt="크롭 니트 스웨터" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">크롭 니트 스웨터</a></p>
+            <p class="prices"><span class="price normal">₩69,000</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <img src="https://shopyouthtory.kr/web/product/medium/202501/4d3bab023b59765d72993070269767a5.jpg" alt="와이드 슬랙스" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202412/a07305674299def57816474c7cacb492.gif" alt="와이드 슬랙스" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">와이드 슬랙스</a></p>
+            <p class="prices"><span class="price normal">₩79,000</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <img src="https://shopyouthtory.kr/web/product/medium/202412/a07305674299def57816474c7cacb492.gif" alt="베이직 오버사이즈 티" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202412/a608f40c1993f083f2f77c2bb358fd7b.gif" alt="베이직 오버사이즈 티" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">베이직 오버사이즈 티</a></p>
+            <p class="prices"><span class="price normal">₩39,000</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <img src="https://shopyouthtory.kr/web/product/medium/202412/a608f40c1993f083f2f77c2bb358fd7b.gif" alt="싱글 브레스티드 코트" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202306/4a15ccd01cfcb3f6139e963cd661ca40.jpg" alt="싱글 브레스티드 코트" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">싱글 브레스티드 코트</a></p>
+            <p class="prices"><span class="price normal">₩189,000</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <img src="https://shopyouthtory.kr/web/product/medium/202306/4a15ccd01cfcb3f6139e963cd661ca40.jpg" alt="스트레이트 데님 팬츠" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202306/7552b1a31f8488474e33f670171f121c.jpg" alt="스트레이트 데님 팬츠" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">스트레이트 데님 팬츠</a></p>
+            <p class="prices"><span class="price normal">₩75,000</span></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="main-section__more">
+      <a href="list.html" class="main-section__more-btn">VIEW ALL NEW ARRIVALS</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LOOKBOOK BANNER ===================== -->
+<div class="main-banner">
+  <a href="list.html">
+    <div class="main-banner__inner" style="background-image:url(https://shopyouthtory.kr/web/upload/ga09/main/0719pc-02.jpg);background-size:cover;background-position:center;">
+      <div class="main-banner__content">
+        <span class="main-banner__label">Lookbook</span>
+        <h2 class="main-banner__title">SUMMER 2026</h2>
+      </div>
+    </div>
+  </a>
+</div>
+
+<!-- ===================== BEST SELLERS ===================== -->
+<section class="main-section">
+  <div class="main-section__inner">
+    <h2 class="main-section__title">BEST SELLERS</h2>
+    <div class="ga09list">
+      <ul class="grid4">
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <span class="prd-badge prd-badge--best">BEST</span>
+              <img src="https://shopyouthtory.kr/web/product/medium/202306/7552b1a31f8488474e33f670171f121c.jpg" alt="테크 플리스 집업" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202412/ff01db17b450354eb35207e2f33188ff.png" alt="테크 플리스 집업" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">테크 플리스 집업</a></p>
+            <p class="prices"><span class="price normal">₩129,000</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <span class="prd-badge prd-badge--best">BEST</span>
+              <img src="https://shopyouthtory.kr/web/product/medium/202412/ff01db17b450354eb35207e2f33188ff.png" alt="에코 울 터틀넥" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202109/9142a863c9d3cf439e1601e3be18d27d.png" alt="에코 울 터틀넥" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">에코 울 터틀넥</a></p>
+            <p class="prices"><span class="price normal">₩99,000</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <img src="https://shopyouthtory.kr/web/product/medium/202109/9142a863c9d3cf439e1601e3be18d27d.png" alt="미니멀 레더 벨트" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202109/6f766651d5aa46d7a53a7e4efe7d8f26.png" alt="미니멀 레더 벨트" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">미니멀 레더 벨트</a></p>
+            <p class="prices"><span class="price normal">₩45,000</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <img src="https://shopyouthtory.kr/web/product/medium/202109/6f766651d5aa46d7a53a7e4efe7d8f26.png" alt="캔버스 토트백" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202109/575ea355007d71005ce3043d1f9c7214.png" alt="캔버스 토트백" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">캔버스 토트백</a></p>
+            <p class="prices"><span class="price normal">₩59,000</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <img src="https://shopyouthtory.kr/web/product/medium/202109/575ea355007d71005ce3043d1f9c7214.png" alt="헤비웨이트 후드" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202109/6a67c1a3a423cf722f609a3a75bc7903.png" alt="헤비웨이트 후드" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">헤비웨이트 후드</a></p>
+            <p class="prices"><span class="price normal">₩89,000</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <img src="https://shopyouthtory.kr/web/product/medium/202109/6a67c1a3a423cf722f609a3a75bc7903.png" alt="체크 패턴 셔츠" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202109/a84fe4a244e1349a4c2466d925bef3bb.png" alt="체크 패턴 셔츠" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">체크 패턴 셔츠</a></p>
+            <p class="prices"><span class="price normal">₩65,000</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <img src="https://shopyouthtory.kr/web/product/medium/202109/a84fe4a244e1349a4c2466d925bef3bb.png" alt="사이드 슬릿 스커트" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202109/f9df068819eea5ae44b3a985560f0904.png" alt="사이드 슬릿 스커트" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">사이드 슬릿 스커트</a></p>
+            <p class="prices"><span class="price normal">₩55,000</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="prdpadding">
+            <a href="detail.html" class="prd-img-wrap">
+              <img src="https://shopyouthtory.kr/web/product/medium/202109/f9df068819eea5ae44b3a985560f0904.png" alt="컬러블록 니트 조끼" class="prd-img-swatch">
+              <img src="https://shopyouthtory.kr/web/product/medium/202109/19293147a93c432787f097a991f28c3f.png" alt="컬러블록 니트 조끼" class="prd-img-hover">
+            </a>
+            <p class="name"><a href="detail.html">컬러블록 니트 조끼</a></p>
+            <p class="prices"><span class="price normal">₩49,000</span></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="main-section__more">
+      <a href="list.html" class="main-section__more-btn">VIEW ALL BEST SELLERS</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STYLE PICK ===================== -->
+<section class="main-section" style="padding-top:0;">
+  <div class="main-section__inner">
+    <h2 class="main-section__title">STYLE PICK</h2>
+    <div class="main-style-pick">
+      <a href="list.html" class="main-style-pick__card">
+        <div class="main-style-pick__img-wrap">
+          <div style="width:100%;height:100%;background:url(https://shopyouthtory.kr/web/product/medium/202501/4a6c08453311b33e1439ac01a088f189.jpg) center/cover;"></div>
+        </div>
+        <span class="main-style-pick__label">MINIMAL</span>
+      </a>
+      <a href="list.html" class="main-style-pick__card">
+        <div class="main-style-pick__img-wrap">
+          <div style="width:100%;height:100%;background:url(https://shopyouthtory.kr/web/product/medium/202501/a182d11b68c86106264b6076bcf3fd4d.jpg) center/cover;"></div>
+        </div>
+        <span class="main-style-pick__label">CASUAL</span>
+      </a>
+      <a href="list.html" class="main-style-pick__card">
+        <div class="main-style-pick__img-wrap">
+          <div style="width:100%;height:100%;background:url(https://shopyouthtory.kr/web/product/medium/202501/4181e16720db59f97d8882541562d733.jpg) center/cover;"></div>
+        </div>
+        <span class="main-style-pick__label">STREET</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INSTAGRAM ===================== -->
+<section class="main-section main-section--gray">
+  <div class="main-section__inner" style="text-align:center;">
+    <h2 class="main-section__title">@YOUTHTORY</h2>
+    <p style="font-size:11px;color:#999;letter-spacing:0.12em;margin-bottom:48px;">Follow us on Instagram</p>
+    <div class="insta-grid">
+      <div class="insta-grid__cell"><div style="width:100%;height:100%;background:linear-gradient(135deg,#e8ddd0,#c9b49a);"></div></div>
+      <div class="insta-grid__cell"><div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a1a,#333);"></div></div>
+      <div class="insta-grid__cell"><div style="width:100%;height:100%;background:linear-gradient(135deg,#dce8f0,#a8c4d8);"></div></div>
+      <div class="insta-grid__cell"><div style="width:100%;height:100%;background:linear-gradient(135deg,#2d3a2d,#4a5e4a);"></div></div>
+      <div class="insta-grid__cell"><div style="width:100%;height:100%;background:linear-gradient(135deg,#3d2d1a,#6b4c2a);"></div></div>
+      <div class="insta-grid__cell"><div style="width:100%;height:100%;background:linear-gradient(135deg,#1a2d3d,#2d4a5e);"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="footer__brand-name">YOUTHTORY</div>
+      <p class="footer__brand-desc">트렌드를 앞서가는 당신을 위한<br>패션 쇼핑몰 유스토리</p>
+      <div class="footer__social">
+        <a href="#" class="footer__social-link" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" class="footer__social-link" aria-label="Blog">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer__section">
+      <h4 class="footer__heading">CS CENTER</h4>
+      <ul class="footer__info-list">
+        <li class="footer__cs-number">010-5648-7558</li>
+        <li>평일 10:00 — 17:00</li>
+        <li>점심 12:00 — 13:00</li>
+        <li>주말·공휴일 휴무</li>
+      </ul>
+    </div>
+    <div class="footer__section">
+      <h4 class="footer__heading">BANK INFO</h4>
+      <ul class="footer__info-list">
+        <li>신한은행</li>
+        <li>110-398-259805</li>
+        <li>예금주: 한유승</li>
+      </ul>
+    </div>
+    <div class="footer__section">
+      <h4 class="footer__heading">GUIDE</h4>
+      <ul class="footer__info-list">
+        <li><a href="#" class="footer__link">주문/배송 안내</a></li>
+        <li><a href="#" class="footer__link">교환/반품 안내</a></li>
+        <li><a href="#" class="footer__link">사이즈 가이드</a></li>
+        <li><a href="#" class="footer__link">개인정보처리방침</a></li>
+        <li><a href="#" class="footer__link">이용약관</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__company">유스컴퍼니 &nbsp;&middot;&nbsp; 대표: 한유승 &nbsp;&middot;&nbsp; 사업자번호: 595-38-00307 &nbsp;&middot;&nbsp; 통신판매업신고: 2024-서울-00000 &nbsp;&middot;&nbsp; 주소: 서울특별시</p>
+    <p class="footer__copy">&copy; 2026 YOUTHTORY. All rights reserved. <span style="opacity:0.35;margin-left:8px;">Skin by GA09 DESIGN</span></p>
+  </div>
+</footer>
+
+<!-- Scroll Top -->
+<button class="scroll-top-btn" id="scrollTopBtn" aria-label="맨 위로">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  // Swiper
+  new Swiper('.main-hero__swiper', {
+    loop: true,
+    autoplay: { delay: 5500, disableOnInteraction: false },
+    speed: 900,
+    effect: 'fade',
+    fadeEffect: { crossFade: true },
+    pagination: { el: '.swiper-pagination', clickable: true }
+  });
+
+  // Header scroll
+  var header = document.getElementById('header');
+  var announcementBar = document.getElementById('announcementBar');
+  var headerOffset = 0;
+
+  function updateHeaderOffset() {
+    if (announcementBar && announcementBar.style.display !== 'none') {
+      headerOffset = announcementBar.offsetHeight;
+    } else {
+      headerOffset = 0;
+    }
+    header.style.top = headerOffset + 'px';
+  }
+  updateHeaderOffset();
+
+  window.addEventListener('scroll', function() {
+    var y = window.scrollY || window.pageYOffset;
+    if (y > 60) {
+      header.classList.add('is-scrolled');
+      header.classList.remove('header--transparent');
+    } else {
+      header.classList.remove('is-scrolled');
+      header.classList.add('header--transparent');
+    }
+    // Scroll top btn
+    var stb = document.getElementById('scrollTopBtn');
+    if (stb) { if (y > 500) stb.classList.add('visible'); else stb.classList.remove('visible'); }
+  }, { passive: true });
+
+  // Announcement close
+  var closeBtn = document.getElementById('announcementClose');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      announcementBar.style.display = 'none';
+      updateHeaderOffset();
+    });
+  }
+
+  // Scroll reveal
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.main-section:not(.is-visible), .main-banner').forEach(function(el) { observer.observe(el); });
+
+  // Scroll top
+  var stb = document.getElementById('scrollTopBtn');
+  if (stb) stb.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  // Search overlay
+  var searchOpen = document.getElementById('searchOpenBtn');
+  var searchOverlay = document.getElementById('searchOverlay');
+  var searchClose = document.getElementById('searchCloseBtn');
+  if (searchOpen) searchOpen.addEventListener('click', function(e) { e.preventDefault(); searchOverlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; });
+  if (searchClose) searchClose.addEventListener('click', function() { searchOverlay.classList.remove('is-open'); document.body.style.overflow = ''; });
+
+  // Mobile nav
+  var hamburger = document.getElementById('hamburgerBtn');
+  var mobileWrap = document.getElementById('mobileNavWrap');
+  var mobileOverlay = document.getElementById('mobileNavOverlay');
+  var mobileClose = document.getElementById('mobileNavClose');
+  function openNav() { mobileWrap.classList.add('is-open'); mobileOverlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+  function closeNav() { mobileWrap.classList.remove('is-open'); mobileOverlay.classList.remove('is-open'); document.body.style.overflow = ''; }
+  if (hamburger) hamburger.addEventListener('click', openNav);
+  if (mobileClose) mobileClose.addEventListener('click', closeNav);
+  if (mobileOverlay) mobileOverlay.addEventListener('click', closeNav);
+
+  // ESC key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeNav();
+      if (searchOverlay) { searchOverlay.classList.remove('is-open'); document.body.style.overflow = ''; }
+    }
+  });
+})();
+</script>
+</body>
+</html>

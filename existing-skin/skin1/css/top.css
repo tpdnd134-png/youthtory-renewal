@@ -1,0 +1,33 @@
+/* YOUTHTORY Renewed - GNB Right Area */
+
+/* GNB 안에서 top.html 콘텐츠가 .gnb-right 안에 들어감 */
+#topsearch { display: inline-flex !important; align-items: center !important; }
+#topsearch .search-bar { margin: 0 !important; padding: 0 !important; }
+#topsearch .search-bar img { cursor: pointer !important; margin-left: 4px !important; height: 14px !important; opacity: 0.8 !important; transition: opacity 0.3s ease !important; vertical-align: middle !important; }
+#topsearch .search-bar img:hover { opacity: 1 !important; }
+#topsearch .search-bar input[type=text] {
+    height: 24px !important; padding: 0 !important; font-size: 12px !important; color: #212121 !important;
+    width: 0 !important; border: none !important; border-bottom: 1px solid #dadada !important;
+    background: transparent !important; transition: width 0.3s ease !important;
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+}
+#topsearch .search-bar:hover input[type=text],
+#topsearch .search-bar input[type=text]:focus {
+    width: 120px !important; border-bottom-color: #212121 !important;
+}
+
+#topcarticon { font-family: helvetica, 'Noto Sans KR', sans-serif !important; font-size: 11px !important; font-weight: 600 !important; color: #212121 !important; cursor: pointer !important; letter-spacing: 0.03em !important; }
+#topcarticon img { margin-right: 4px !important; height: 14px !important; vertical-align: middle !important; }
+
+#log { font-size: 11px !important; font-weight: 600 !important; }
+#log a { color: #212121 !important; font-weight: 600 !important; letter-spacing: 0.03em !important; }
+
+.gnb-link { font-size: 11px !important; font-weight: 600 !important; color: #212121 !important; text-decoration: none !important; letter-spacing: 0.03em !important; }
+.gnb-link:hover { opacity: 0.7 !important; }
+
+.gnb-right a { font-size: 11px !important; font-weight: 600 !important; color: #212121 !important; text-decoration: none !important; letter-spacing: 0.03em !important; }
+
+@media (max-width: 768px) {
+    #topsearch { display: none !important; }
+    .gnb-right { display: none !important; }
+}

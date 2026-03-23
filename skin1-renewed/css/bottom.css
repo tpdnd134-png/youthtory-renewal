@@ -1,0 +1,142 @@
+/* YOUTHTORY Renewed - Footer (pickysociety 스타일) */
+
+#bottom-wrap {
+    border-top: 1px solid #dadada;
+    margin-top: 120px; /* 넉넉한 섹션 여백 */
+}
+
+#bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.8;
+    padding-top: 60px;
+    color: #666666;
+}
+#bottom a {
+    transition: all 0.3s ease;
+    color: #666666;
+}
+#bottom a:hover {
+    text-decoration: none;
+    color: #212121;
+}
+
+#bottom .copypadding {
+    float: left;
+    width: 20%;
+}
+#bottom .copypadding1 {
+    float: left;
+}
+#bottom .copypadding2 {
+    float: right;
+    text-align: right;
+}
+
+#bottom .inner {
+    padding-bottom: 60px;
+    margin: 0 40px;
+}
+#bottom .logo {
+    margin-bottom: 24px;
+}
+#bottom .logo img {
+    height: 16px;
+    opacity: 0.8;
+}
+
+/* 가입 버튼 */
+#joinbt {
+    border: 1px solid #dadada;
+    padding: 12px 0;
+    width: 140px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: #212121;
+}
+#joinbt:hover {
+    border-color: #212121;
+    background: #212121;
+    color: #ffffff;
+}
+
+/* CS 센터 */
+#bottom #cscenter #customer {}
+#bottom #cscenter #customer .cs1 {
+    font-size: 14px;
+    font-weight: 500;
+    padding-bottom: 4px;
+    color: #212121;
+}
+#bottom #cscenter #customer .cs2 {
+    font-size: 12px;
+    color: #999999;
+}
+
+#bottom #cscenter #bank {
+    margin-top: 24px;
+    font-size: 12px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #666666;
+}
+#bottom #cscenter #bank .bank1 {
+    color: #212121;
+    font-weight: 500;
+}
+#bottom #cscenter #bank .bank2 {
+    padding-top: 4px;
+    color: #999999;
+}
+
+/* 회사 정보 */
+#bottom #company {}
+#bottom #company .copytext {
+    font-size: 11px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #999999;
+    line-height: 1.8;
+}
+#bottom #company .copytext span {
+    font-size: 11px;
+    margin-right: 8px;
+    color: #666666;
+}
+
+/* 링크 & SNS */
+#bottom #link {
+    font-size: 12px;
+}
+#bottom #link .sns {
+    text-align: left;
+    margin-top: 20px;
+}
+#bottom #link .sns img {
+    opacity: 0.5;
+    vertical-align: middle;
+    transition: opacity 0.3s ease;
+}
+#bottom #link .sns img:hover {
+    opacity: 1;
+}
+
+/* 저작권 */
+#bottomcopyright {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid #dadada;
+    text-align: left;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #999999;
+}
+#bottomcopyright b {
+    font-weight: 500;
+    color: #666666;
+}

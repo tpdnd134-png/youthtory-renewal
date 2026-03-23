@@ -1,0 +1,85 @@
+#catetitle {text-align:center; margin:0 auto; margin-top:-5px}
+#catetitle h2 {font-family: 'Unbounded', sans-serif; font-size: 36px; font-weight: 900; letter-spacing: -0.02em; text-transform: uppercase;}
+
+
+.xans-product-normalmenu { margin:0 15px; margin-bottom:50px; font-family: helvetica, 'Noto Sans KR', sans-serif; font-size:11px}
+.xans-product-normalmenu .function { overflow:hidden; text-align:right; line-height:38px; border-radius: 0; border-bottom: 1px solid #e6e3db; border-top: none; border-left: none; border-right: none; }
+.xans-product-normalmenu .function .btnCompare { display:inline-block; padding:0 12px; border-left:1px solid #e6e3db; }
+.xans-product-normalmenu .function .btnCompare:hover { color:#212121; text-decoration:none; }
+.xans-product-normalmenu .prdCount { float:left; padding:0 0 0 8px; color:#212121; }
+.xans-product-normalmenu ul#type { display:inline; margin:0 4px 0 0; }
+.xans-product-normalmenu ul#type li { display:inline; padding:0 6px 0 10px; background:url("//img.echosting.cafe24.com/skin/base_ko_KR/product/bg_result_type.gif") no-repeat 0 50%; }
+.xans-product-normalmenu ul#type li:first-child { background:none; }
+.xans-product-normalmenu ul#type li a { color:#212121 }
+.xans-product-normalmenu ul#type li a:hover { color:#212121; text-decoration:none; }
+.xans-product-normalmenu fieldset { margin:-1px 0 0; padding:7px 12px; border:1px solid #e6e3db; text-align:right; background:#f6f5f1; }
+.xans-product-normalmenu fieldset select { height:24px; }
+
+
+.xans-product-menupackage #subcate {
+    text-align: center;
+    font-family: helvetica, 'Noto Sans KR', sans-serif;
+    margin: 30px 0 55px 0;
+}
+
+
+.xans-product-menupackage #subcate ul {
+    overflow: hidden;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0;
+    text-align: left;
+    line-height: 0;
+    justify-content: center;
+}
+
+
+
+.xans-product-menupackage #subcate ul > li {
+    position: relative;
+    display: inline-block;
+    padding: 6px 16px;
+    margin: 0 4px;
+    background: #fff;
+    color: #212121;
+    border: 1px solid #e6e3db;
+    border-radius: 24px;
+    font-size: 11px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 20px;
+    letter-spacing: 0.03em;
+    transition: all 0.3s ease;
+}
+
+
+
+.xans-product-menupackage #subcate ul > li.selected {
+    background: #f1f1f1;
+    color: #212121;
+    border-color: #f1f1f1;
+}
+
+
+.xans-product-menupackage #subcate a { text-decoration:none; color: #212121;}
+.xans-product-menupackage #subcate a:hover { text-decoration:none; color:#212121}
+.xans-product-menupackage #subcate ul > li:hover {
+    background: #f1f1f1;
+    color: #212121;
+    cursor:pointer;
+    border-color: #f1f1f1;
+    transition: all 0.3s ease;
+}
+
+.xans-product-menupackage #subcate ul > li:hover a {color:#212121}
+
+/* Pagination */
+.ga09-paging { text-align: center; margin: 60px 0 40px; font-family: helvetica, 'Noto Sans KR', sans-serif; }
+.ga09-paging ol { display: inline-flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.ga09-paging ol li a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; font-size: 12px; color: #999; transition: all 0.3s ease; text-decoration: none; }
+.ga09-paging ol li a:hover, .ga09-paging ol li a.this { background: #f1f1f1; color: #212121; }
+.ga09-paging a { color: #ccc; text-decoration: none; }
+.ga09-paging a:hover { color: #212121; }
+.ga09-paging img { height: 10px; opacity: 0.4; }
+.ga09-paging a:hover img { opacity: 0.8; }

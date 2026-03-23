@@ -1,0 +1,94 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>현재 위치</span>
+    <ol>
+        <li><a href="/">홈</a></li>
+        <li title="현재 위치"><strong>로그인</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>로그인</h2>
+</div>
+<!--@css(/css/module/member/login.css)-->
+<div module="member_login" id="login-wrap" class="memberloginbox">
+
+    <!--
+        $defaultReturnUrl = /index.html
+        $forbidIpUrl = member/adminFail.html
+    -->
+    <div class="login">
+    <div id="logintitle">
+        <h2>Member Login</h2>
+        <span>가입시 입력하신 아이디와 비밀번호로 로그인이 가능합니다.</span>
+    </div>
+        <fieldset>
+            <legend>회원로그인</legend>
+            <label class="idbox" title="아이디">{$form.member_id}</label>
+            <label class="pwbox" title="비밀번호">{$form.member_passwd}</label>
+            <a href="#none" onclick="{$action_func_login}"><img src="/web/upload/ga09/login/btn_login.gif" alt="로그인" /></a>
+            <ul style="margin-top:15px">
+                <li><a href="/member/id/find_id.html"><i class="fas fa-check" style="color:#979797; margin-right:5px; font-size:10px"></i>아이디찾기</a></li>
+                <li style="margin-left:10px"><a href="/member/passwd/find_passwd_info.html"><i class="fas fa-check" style="color:#979797; margin-right:5px; font-size:10px"></i>비밀번호찾기</a></li>
+                <li style="float:right">
+                    <p class="security">
+                    <i class="fas fa-lock" style="color:#979797; font-size:10px"></i>{$form.member_check_save_id}
+                    {$form.member_check_secret_connect}
+                    </p>
+                </li>
+                <div style="clear:both"></div>
+            </ul>
+
+
+            <ul class="snsArea">
+                <li class="{$display_naver|display}">
+                    <a href="#none" onclick="{$naver_func_login}"><img src="/web/upload/ga09/login/btn_naver_login.gif" alt="네이버 로그인" /></a>
+                </li>
+                <li class="{$display_facebook|display}">
+                    <a href="#none" onclick="{$facebook_func_login}"><img src="/web/upload/ga09/login/btn_facebook_login.gif" alt="페이스북 로그인" /></a>
+                </li>
+                <li class="{$display_google|display}">
+                    <a href="#none" onclick="{$google_func_login}"><img src="/web/upload/ga09/login/btn_google_login.gif" alt="구글 로그인" /></a>
+                </li>
+                <li class="{$display_kakao|display}">
+                    <a href="#none" onclick="{$kakao_func_login}"><img src="/web/upload/ga09/login/btn_kakao_login.gif" alt="카카오계정 로그인" /></a>
+                </li>
+                <li class="{$display_line|display}">
+                    <a href="#none" onclick="{$line_func_login}"><img src="/web/upload/ga09/login/btn_line_login.gif" alt="LINE 로그인" /></a>
+                </li>
+            </ul>
+
+            <p class="link">
+                회원가입을 하시면 다양하고 특별한<br />혜택이 준비되어 있습니다.
+                <a href="/member/join.html"><img src="/web/upload/ga09/login/btn_join.gif" style="margin-top:0" alt="회원가입" /></a>
+            </p>
+            <p class="link {$display_nomember|display}" id="noMemberWrap">
+                비회원님도 상품구매가 가능하나 다양한<br />회원혜택에서 제외됩니다.
+                <a href="{$returnUrl}" onclick="{$action_nomember_order}"><img src="/web/upload/ga09/login/btn_nomember.gif" alt="비회원구매" /></a>
+            </p>
+        </fieldset>
+    </div>
+</div>
+
+<div module="MyShop_OrderHistoryNologin" style="border:1px solid #eaeaea; margin:0 auto; padding:30px 0; color:#2e2e2e; width:500px; margin-top:50px">
+    
+    <!--
+        $orderDetailUrl = /myshop/order/detail.html
+    -->
+    <div id="logintitle">
+        <h2>Nonmember Order</h2>
+        <span>비회원의 경우, 주문시의 주문번호로 주문조회가 가능합니다.</span>
+    </div>
+
+    <div id="ordercheck">
+        <div class="namebox" title="주문자성함">{$form.order_name}</div>
+        <div class="nobox" title="주문번호">{$form.order_id}</div>
+        <div class="pwbox" title="주문비밀번호">{$form.order_password}</div>
+        <div class="bt">
+            <ul>
+                <li><input type="image" alt="로그인" src="/web/upload/ga09/login/check.gif"/></li>
+            </ul>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,51 @@
+<!--@css(/css/right.css)-->
+
+<div id="rightmenu">
+    
+    <!-- 검색창 영역(삭제금지) -->
+    <div class="search-bar">
+        <div module="Layout_SearchHeader">
+            <!--
+            $product_page=/product/detail.html
+            $category_page=/product/list.html
+            -->
+            <fieldset id="search_fieldset">{$form.keyword}<a onclick="{$action_search_submit}"><img src=/web/upload/ga09/rightsearch.png></a></fieldset>
+        </div> 
+    </div>
+    
+	<div class="innermenu">
+        
+        <ul>
+            <li><a href="/about.html">HISTORY</a></li>
+            <li><a href="/about2.html">OUR STORY</a></li>
+            <li><a href="/collection.html?cate_no=50">YOUTH STORY</a></li>
+            <li><a href="javascript:myFavorite()" onfocus='this.blur()'>BOOKMARK</a></li>
+        </ul>
+        
+        <!-- 상품관리 메뉴와 자동으로 연동 -->
+        <ul module="Layout_category">
+            <li><a href="/product/list.html{$param}">{$name}</a></li>
+            <li><a href="/product/list.html{$param}">{$name}</a></li>
+        </ul>
+        
+        <ul style="margin-right:0">
+            <li><a href="/board/free/list.html?board_no=1">NOTICE</a></li>
+            <li><a href="/board/product/list.html?board_no=6">Q&amp;A</a></li>
+            <li><a href="/board/review/list.html?board_no=4">REVIEW</a></li>
+            <li><a href="/article/notice/1/14174/">매장 안내</a></li>
+        </ul>
+        
+        <ul style="margin-right:0; float:right">
+            <li module="Layout_stateLogoff"><a href="/member/login.html">LOGIN</a></li>
+            <li module="Layout_stateLogoff"><a href="/member/join.html">REGISTER</a></li>
+            <li module="Layout_stateLogon"><a href="{$action_logout}">LOGOUT</a></li>
+            <li><a href="/myshop/index.html">MY PAGE</a></li>
+            <li><a href="/myshop/order/list.html">ORDER</a></li>
+            <li><a href="/myshop/mileage/historyList.html">MILEAGE</a></li> 
+            <li><a href="/myshop/board_list.html">MY Q&amp;A</a></li> 
+            <li><a href=# style="cursor:pointer" onclick="gogoNew(0)">DELIVERY</a></li>
+        </ul>
+        
+    </div>
+    
+</div>

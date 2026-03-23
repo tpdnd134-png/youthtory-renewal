@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHOP YOUTHTORY — ORDER COMPLETE</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<style>
+/* ===== Global ===== */
+* { box-sizing: border-box; }
+body { font-family: helvetica, 'Noto Sans KR', sans-serif; color: #212121; background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+a { color: #212121; text-decoration: none; transition: all 0.3s ease; }
+a:hover { opacity: 0.7; }
+img { max-width: 100%; height: auto; }
+ul { list-style: none; margin: 0; padding: 0; }
+button, .btn { font-family: helvetica, 'Noto Sans KR', sans-serif; cursor: pointer; transition: all 0.3s ease; }
+input, select, textarea { font-family: helvetica, 'Noto Sans KR', sans-serif; }
+
+/* ===== Promo + GNB ===== */
+.gnb-float-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 100; pointer-events: none; }
+.gnb-float-wrap > * { pointer-events: auto; }
+.promo-wrap { padding: 5px 8px 0; }
+.promo-bar { height: 24px; background: rgba(42,41,41,0.4); overflow: hidden; display: flex; align-items: center; position: relative; z-index: 101; border-radius: 100px; }
+.promo-track { display: flex; white-space: nowrap; animation: marquee 60s linear infinite; will-change: transform; }
+.promo-item { color: rgba(255,255,255,0.9); font-size: 11px; margin-right: 40vw; letter-spacing: 0.03em; font-weight: 300; }
+.promo-item a { color: rgba(255,255,255,0.9); text-decoration: none; }
+.promo-item a:hover { color: #fff; opacity: 1; }
+.promo-bar:hover .promo-track { animation-play-state: paused; }
+@keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+
+.gnb-header { position: relative; overflow: visible; height: 36px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border: none; border-radius: 10px; margin: 3px 8px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: background 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1); }
+.gnb-header.scrolled { background: rgba(255,255,255,0.97); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.gnb-inner { max-width: 1920px; margin: 0 auto; display: flex; align-items: center; height: 100%; padding: 0 28px; }
+.gnb-logo { display: flex; align-items: center; margin-right: 40px; text-decoration: none; }
+.gnb-logo:hover { opacity: 0.7; }
+.gnb-logo img { height: 16px; display: block; }
+.gnb-nav { display: flex; align-items: center; height: 100%; gap: 0; }
+.gnb-item { font-family: helvetica, 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 600; color: #212121; padding: 0 14px; line-height: 36px; cursor: pointer; position: static; text-decoration: none; letter-spacing: 0.03em; white-space: nowrap; }
+.gnb-item:hover { opacity: 0.6; }
+
+.gnb-mega-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.18); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 98; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-overlay.active { opacity: 1; pointer-events: auto; }
+.gnb-mega { position: absolute; top: calc(100% + 2px); left: 0; right: 0; width: auto; background: rgba(246,245,241,0.97); backdrop-filter: saturate(120%) blur(16px); -webkit-backdrop-filter: saturate(120%) blur(16px); visibility: hidden; opacity: 0; transform: translateY(-6px); transition: visibility 0s 0.35s, opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1); padding: 28px 0 32px; z-index: 101; border: none; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.gnb-item.has-sub:hover .gnb-mega { visibility: visible; opacity: 1; transform: translateY(0); transition: visibility 0s, opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-inner { max-width: 1920px; margin: 0 auto; padding: 0 28px; display: flex; gap: 80px; }
+.gnb-mega-col { min-width: 120px; }
+.gnb-mega-col .mega-title { font-size: 11px; font-weight: 700; color: #212121; margin-bottom: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+.gnb-mega-col a { display: block; font-size: 12px; font-weight: 400; color: #555; padding: 3px 0; text-decoration: none; line-height: 1.8; transition: color 0.25s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-col a:hover { color: #212121; opacity: 1; }
+.gnb-right { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+.gnb-right a, .gnb-link { font-size: 11px; font-weight: 600; color: #212121; text-decoration: none; cursor: pointer; letter-spacing: 0.03em; }
+
+/* ===== Content ===== */
+.content-area { max-width: 900px; margin: 100px auto 0; padding: 0 24px; }
+.page-title { font-family: 'Unbounded', sans-serif; font-size: 24px; font-weight: 900; text-align: center; margin-bottom: 48px; text-transform: uppercase; }
+
+/* ===== Step Indicator ===== */
+.step-indicator { display: flex; justify-content: center; gap: 8px; margin-bottom: 48px; align-items: center; }
+.step { padding: 8px 24px; border-radius: 24px; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; font-family: helvetica, 'Noto Sans KR', sans-serif; font-weight: 500; }
+.step.active { background: #212121; color: #fff; }
+.step.done { background: #f1f1f1; color: #999; }
+.step.pending { background: transparent; color: #ccc; border: 1px solid #e6e3db; }
+.step-arrow { color: #ccc; font-size: 10px; }
+
+/* ===== Success ===== */
+.success-section { text-align: center; padding: 40px 0; }
+.success-icon { width: 80px; height: 80px; border: 2px solid #212121; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 32px; }
+.success-msg { font-size: 20px; font-weight: 600; margin: 0 0 12px; }
+.success-order-no { font-size: 13px; color: #999; margin: 0 0 8px; }
+.success-order-no strong { color: #212121; font-weight: 500; }
+.success-sub { font-size: 13px; color: #999; margin: 0; }
+
+/* ===== Order Summary Card ===== */
+.order-summary-card { background: #f9f9f7; border-radius: 12px; padding: 32px; max-width: 500px; margin: 40px auto; }
+.order-summary-card dl { display: flex; flex-wrap: wrap; font-size: 13px; margin: 0; }
+.order-summary-card dt { width: 120px; color: #999; padding: 8px 0; }
+.order-summary-card dd { flex: 1; padding: 8px 0; margin: 0; }
+
+/* ===== Buttons ===== */
+.btn-primary { display: inline-block; padding: 14px 48px; background: #212121; color: #fff; border-radius: 8px; font-size: 13px; font-weight: 500; letter-spacing: 0.05em; cursor: pointer; border: none; transition: all 0.3s ease; font-family: helvetica, 'Noto Sans KR', sans-serif; }
+.btn-primary:hover { background: #444; opacity: 1; }
+.btn-secondary { display: inline-block; padding: 14px 48px; background: #f1f1f1; color: #212121; border-radius: 8px; font-size: 13px; border: none; cursor: pointer; transition: all 0.3s ease; font-family: helvetica, 'Noto Sans KR', sans-serif; }
+.btn-secondary:hover { background: #e0e0e0; opacity: 1; }
+
+.btn-row { display: flex; justify-content: center; gap: 12px; margin-top: 48px; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .content-area { margin-top: 80px; }
+    .btn-row { flex-direction: column; align-items: center; }
+    .order-summary-card { margin: 40px 0; max-width: 100%; }
+}
+
+/* ===== POLISH: Animations & Micro-interactions ===== */
+
+/* Page load */
+@keyframes pageIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+body { animation: pageIn 0.5s ease-out; }
+
+/* Scroll reveal */
+@keyframes revealUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; }
+.reveal.visible { animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* Input focus glow */
+input:focus, select:focus, textarea:focus {
+    border-color: #212121 !important;
+    box-shadow: 0 0 0 3px rgba(33,33,33,0.06);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Button press effect */
+button:active, .btn-primary:active, .btn-secondary:active, a[class*="btn"]:active {
+    transform: scale(0.97);
+    transition: transform 0.1s;
+}
+
+/* Button hover lift */
+.btn-primary:hover, button[style*="background: #212121"]:hover, button[style*="background:#212121"]:hover {
+    box-shadow: 0 4px 12px rgba(33,33,33,0.2);
+    transform: translateY(-1px);
+}
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(33,33,33,0.15); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(33,33,33,0.3); }
+
+/* Scroll progress bar */
+.scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: #212121; z-index: 9999; width: 0%; transition: width 0.1s linear; }
+
+/* Checkbox custom enhanced */
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid #e6e3db;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    vertical-align: middle;
+}
+input[type="checkbox"]:checked {
+    background: #212121;
+    border-color: #212121;
+}
+input[type="checkbox"]:checked::after {
+    content: '\2713';
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+input[type="checkbox"]:hover {
+    border-color: #999;
+}
+
+/* Radio custom enhanced */
+input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid #e6e3db;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    vertical-align: middle;
+}
+input[type="radio"]:checked {
+    border-color: #212121;
+}
+input[type="radio"]:checked::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #212121;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Select dropdown enhanced */
+select {
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23999'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+}
+
+/* Table row hover */
+.order-table tbody tr:hover td, table tbody tr:hover td {
+    background: rgba(246,245,241,0.5);
+    transition: background 0.2s ease;
+}
+
+/* Card/section hover lift */
+.summary-box:hover, .order-summary-card:hover, [class*="stat"]:hover, [class*="card"]:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Step indicator enhanced */
+.step {
+    transition: all 0.3s ease;
+}
+.step:hover {
+    transform: translateY(-1px);
+}
+
+/* Success animation for complete page */
+@keyframes successPop {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+@keyframes checkDraw {
+    from { stroke-dashoffset: 50; }
+    to { stroke-dashoffset: 0; }
+}
+.success-icon { animation: successPop 0.6s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+
+/* Form label float effect */
+.form-group { position: relative; margin-bottom: 20px; }
+.form-group label {
+    transition: all 0.3s ease;
+}
+
+/* Link underline animation */
+.footer-col a, a[href*="preview"] {
+    position: relative;
+}
+
+/* GNB logo hover */
+.gnb-logo img { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s; }
+.gnb-logo:hover img { transform: scale(1.05); opacity: 0.8; }
+
+/* Mega dropdown link slide */
+.gnb-mega-col a { transition: padding-left 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s; }
+.gnb-mega-col a:hover { padding-left: 8px; color: #212121; opacity: 1; }
+
+/* Promo bar glow */
+.promo-bar:hover { box-shadow: 0 0 20px rgba(42,41,41,0.15); }
+
+/* SNS login buttons hover */
+.kakao-btn:hover, .naver-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+/* Confetti for complete page */
+@keyframes confettiDrop { 0% { opacity: 1; transform: translateY(-20px) rotate(0); } 100% { opacity: 0; transform: translateY(100px) rotate(360deg); } }
+.confetti { position: fixed; top: 0; width: 8px; height: 8px; border-radius: 2px; animation: confettiDrop 2s ease-out forwards; pointer-events: none; z-index: 9999; }
+
+/* ===== RESPONSIVE — Mobile ===== */
+.m-header { display: none; }
+.m-sidebar-overlay, .m-sidebar { display: none; }
+
+@media (max-width: 768px) {
+    .gnb-header { display: none !important; }
+    .gnb-mega-overlay { display: none !important; }
+    .m-header {
+        display: flex !important; position: fixed; top: 32px; left: 8px; right: 8px;
+        height: 36px; background: rgba(255,255,255,0.88);
+        backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+        align-items: center; justify-content: space-between;
+        padding: 0 20px; z-index: 100; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); border: none;
+    }
+    .m-header .m-menu-btn { background: none; border: none; font-size: 16px; color: #212121; padding: 4px; cursor: pointer; letter-spacing: 0.03em; }
+    .m-header .m-logo img { height: 13px; }
+    .m-header .m-cart { font-size: 11px; font-weight: 600; color: #212121; text-decoration: none; letter-spacing: 0.03em; }
+    .promo-bar { height: 28px; }
+    .promo-item { font-size: 10px; }
+    #content { padding-top: 90px !important; }
+    .section-area { padding: 48px 16px 0; }
+    .ga09list ul.grid4 > li { width: 50%; }
+    .hoverimg { border-radius: 8px; }
+    .board-wrap { padding: 0 16px !important; }
+    .board-wrap table { font-size: 11px; }
+    .complete-wrap { padding: 0 16px !important; text-align: center; }
+    .footer-top { flex-direction: column; gap: 24px; }
+    .footer-cols { flex-wrap: wrap; gap: 24px; }
+    .footer-col { min-width: 45%; }
+    .footer-bottom { flex-direction: column; gap: 16px; }
+    #bottom .inner { padding: 32px 16px 24px; }
+    .footer-links ul { flex-wrap: wrap; gap: 12px; }
+    .scrollTop { bottom: 16px; right: 16px; }
+    .scrollTop a { width: 36px; height: 36px; }
+    .m-sidebar-overlay {
+        display: block; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.4); z-index: 200; opacity: 0; pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+    .m-sidebar-overlay.active { opacity: 1; pointer-events: auto; }
+    .m-sidebar {
+        display: block; position: fixed; top: 0; left: -300px; bottom: 0;
+        width: 300px; background: #fff; z-index: 201; transition: left 0.3s ease; overflow-y: auto;
+    }
+    .m-sidebar.active { left: 0; }
+    .m-sidebar .sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 16px; border-bottom: 1px solid #f1f1f1; }
+    .m-sidebar .sidebar-header .close-btn { background: none; border: none; font-size: 24px; color: #212121; cursor: pointer; }
+    .m-sidebar .sidebar-search { padding: 16px; }
+    .m-sidebar .sidebar-search input { width: 100%; padding: 10px 12px; border: 1px solid #e6e3db; border-radius: 8px; font-size: 12px; outline: none; }
+    .m-sidebar .menu-group { border-bottom: 1px solid #f1f1f1; }
+    .m-sidebar .menu-title { display: flex; align-items: center; justify-content: space-between; padding: 16px; font-size: 13px; font-weight: 600; color: #212121; cursor: pointer; letter-spacing: 0.05em; }
+    .m-sidebar .menu-title .arrow { transition: transform 0.3s ease; font-size: 10px; color: #999; }
+    .m-sidebar .menu-title.active .arrow { transform: rotate(180deg); }
+    .m-sidebar .menu-sub { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: #fafafa; }
+    .m-sidebar .menu-sub.active { max-height: 300px; }
+    .m-sidebar .menu-sub a { display: block; padding: 10px 24px; font-size: 12px; color: #666; text-decoration: none; }
+    .m-sidebar .menu-sub a:hover { color: #212121; }
+    .m-sidebar .sidebar-auth { padding: 16px; border-top: 1px solid #f1f1f1; margin-top: 16px; }
+    .m-sidebar .sidebar-auth a { display: block; padding: 8px 0; font-size: 12px; color: #999; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Mobile Header -->
+<div class="m-header">
+    <button class="m-menu-btn" onclick="toggleSidebar()">&#9776;</button>
+    <a href="preview-index.html" class="m-logo"><img src="logo-C-refined-header.svg" alt="YOUTHTORY"></a>
+    <a href="preview-cart.html" class="m-cart">BAG</a>
+</div>
+<div class="m-sidebar-overlay" onclick="toggleSidebar()"></div>
+<div class="m-sidebar">
+    <div class="sidebar-header">
+        <a href="preview-index.html"><img src="logo-C-refined-header.svg" alt="YOUTHTORY" style="height:14px;"></a>
+        <button class="close-btn" onclick="toggleSidebar()">&times;</button>
+    </div>
+    <div class="sidebar-search"><input type="text" placeholder="Search" onclick="location.href='preview-search.html'" readonly></div>
+    <div class="sidebar-menu">
+        <div class="menu-group"><div class="menu-title" onclick="toggleAccordion(this)">SHOP <span class="arrow">&#9660;</span></div><div class="menu-sub"><a href="preview-list.html">STYLING</a><a href="preview-list.html">NEW</a><a href="preview-list.html">EXCLUSIVE</a><a href="preview-list.html">SALE</a></div></div>
+        <div class="menu-group"><div class="menu-title" onclick="toggleAccordion(this)">MEN <span class="arrow">&#9660;</span></div><div class="menu-sub"><a href="preview-list.html">All</a><a href="preview-list.html">Outwear</a><a href="preview-list.html">Top</a><a href="preview-list.html">Bottom</a><a href="preview-list.html">Accessories</a></div></div>
+        <div class="menu-group"><div class="menu-title" onclick="toggleAccordion(this)">WOMEN <span class="arrow">&#9660;</span></div><div class="menu-sub"><a href="preview-list.html">All</a><a href="preview-list.html">Outwear</a><a href="preview-list.html">Top</a><a href="preview-list.html">Bottom</a><a href="preview-list.html">Dress</a><a href="preview-list.html">Accessories</a></div></div>
+        <div class="menu-group"><div class="menu-title" onclick="toggleAccordion(this)">BOARD <span class="arrow">&#9660;</span></div><div class="menu-sub"><a href="preview-board.html">Notice</a><a href="preview-board.html">Q&amp;A</a><a href="preview-board.html">Review</a></div></div>
+        <div class="menu-group"><div class="menu-title"><a href="preview-mypage.html" style="color:#212121;text-decoration:none;">MY PAGE</a></div></div>
+    </div>
+    <div class="sidebar-auth"><a href="preview-login.html">LOGIN</a><a href="preview-register.html">REGISTER</a></div>
+</div>
+
+<!-- Promo + GNB -->
+<div class="gnb-float-wrap">
+<div class="promo-wrap">
+<div class="promo-bar">
+    <div class="promo-track">
+        <span class="promo-item"><a href="#">회원가입 시 즉시 사용 가능한 3,000 포인트가 지급됩니다.</a></span>
+        <span class="promo-item"><a href="#">매주 선보이는 트렌디한 뉴 아이템과 스타일링을 확인해 보세요.</a></span>
+        <span class="promo-item"><a href="#">회원가입 시 즉시 사용 가능한 3,000 포인트가 지급됩니다.</a></span>
+        <span class="promo-item"><a href="#">매주 선보이는 트렌디한 뉴 아이템과 스타일링을 확인해 보세요.</a></span>
+    </div>
+</div>
+</div>
+
+<header class="gnb-header">
+    <div class="gnb-inner">
+        <a href="preview-index.html" class="gnb-logo"><img src="logo-C-refined-header.svg" alt="SHOP YOUTHTORY"></a>
+        <nav class="gnb-nav">
+            <a href="#" class="gnb-item">STYLING</a>
+            <a href="#" class="gnb-item">NEW</a>
+            <div class="gnb-item has-sub">MEN
+                <div class="gnb-mega">
+                    <div class="gnb-mega-inner">
+                        <div class="gnb-mega-col">
+                            <div class="mega-title">MEN</div>
+                            <a href="preview-list.html">All</a>
+                        </div>
+                        <div class="gnb-mega-col">
+                            <a href="preview-list.html">Outwear</a>
+                            <a href="preview-list.html">Top</a>
+                            <a href="preview-list.html">Bottom</a>
+                        </div>
+                        <div class="gnb-mega-col">
+                            <a href="preview-list.html">Accessories</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gnb-item has-sub">WOMEN
+                <div class="gnb-mega">
+                    <div class="gnb-mega-inner">
+                        <div class="gnb-mega-col">
+                            <div class="mega-title">WOMEN</div>
+                            <a href="preview-list.html">All</a>
+                        </div>
+                        <div class="gnb-mega-col">
+                            <a href="preview-list.html">Outwear</a>
+                            <a href="preview-list.html">Top</a>
+                            <a href="preview-list.html">Bottom</a>
+                        </div>
+                        <div class="gnb-mega-col">
+                            <a href="preview-list.html">Dress</a>
+                            <a href="preview-list.html">Accessories</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="gnb-item">EXCLUSIVE</a>
+            <a href="#" class="gnb-item">SALE</a>
+        </nav>
+        <div class="gnb-right">
+            <a href="preview-search.html"><i class="fas fa-search" style="font-size:14px;"></i></a>
+            <a href="preview-login.html" class="gnb-link">LOGIN</a>
+            <a href="preview-cart.html" class="gnb-link">CART (0)</a>
+        </div>
+    </div>
+</header>
+</div>
+
+<div class="gnb-mega-overlay" id="megaOverlay"></div>
+
+<!-- ===== CONTENT ===== -->
+<div class="content-area">
+    <h1 class="page-title">Order Complete</h1>
+
+    <!-- Step indicator -->
+    <div class="step-indicator">
+        <span class="step done">Cart</span>
+        <span class="step-arrow"><i class="fas fa-chevron-right"></i></span>
+        <span class="step done">Order</span>
+        <span class="step-arrow"><i class="fas fa-chevron-right"></i></span>
+        <span class="step active">Complete</span>
+    </div>
+
+    <!-- Success message -->
+    <div class="success-section">
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
+        </div>
+        <p class="success-msg">주문이 완료되었습니다.</p>
+        <p class="success-order-no">주문번호: <strong>20260314-0001234</strong></p>
+        <p class="success-sub">주문하신 상품은 결제 확인 후 배송이 시작됩니다.</p>
+    </div>
+
+    <!-- Order summary card -->
+    <div class="order-summary-card">
+        <dl>
+            <dt>주문 상품</dt>
+            <dd>워셔블 오버핏 블레이저 외 1건</dd>
+            <dt>결제 금액</dt>
+            <dd style="font-weight:600;">&#8361;186,200</dd>
+            <dt>결제 방법</dt>
+            <dd>신용카드</dd>
+            <dt>배송지</dt>
+            <dd>서울시 마포구 망원동 421-10</dd>
+        </dl>
+    </div>
+
+    <!-- Buttons -->
+    <div class="btn-row">
+        <a href="preview-index.html" class="btn-primary" style="text-decoration:none; color:#fff;">주문 상세보기</a>
+        <a href="preview-index.html" class="btn-secondary" style="text-decoration:none; color:#212121;">쇼핑 계속하기</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<div style="background:#f6f5f1; padding:40px 24px; margin-top:80px; text-align:center; font-size:10px; color:#bbb;">
+    <img src="logo-C-refined.svg" alt="SHOP YOUTHTORY" style="height:20px; margin-bottom:16px; display:block; margin:0 auto 16px;">
+    <p>Copyright &copy; 2019 유스컴퍼니 all rights reserved</p>
+</div>
+
+<script>
+function toggleSidebar() {
+    document.querySelector('.m-sidebar').classList.toggle('active');
+    document.querySelector('.m-sidebar-overlay').classList.toggle('active');
+    document.body.style.overflow = document.querySelector('.m-sidebar').classList.contains('active') ? 'hidden' : '';
+}
+function toggleAccordion(el) {
+    el.classList.toggle('active');
+    var sub = el.nextElementSibling;
+    if (sub) sub.classList.toggle('active');
+}
+// GNB mega dropdown overlay
+(function(){
+    var overlay = document.getElementById('megaOverlay');
+    var subs = document.querySelectorAll('.gnb-item.has-sub');
+    subs.forEach(function(item){
+        item.addEventListener('mouseenter', function(){ overlay.classList.add('active'); });
+        item.addEventListener('mouseleave', function(){ overlay.classList.remove('active'); });
+    });
+    window.addEventListener('scroll', function(){
+        var h = document.querySelector('.gnb-header');
+        if(window.scrollY > 20) h.classList.add('scrolled');
+        else h.classList.remove('scrolled');
+    });
+})();
+</script>
+
+<script>
+// Scroll reveal
+(function() {
+    document.querySelectorAll('.content-area, .content-area > *, .summary-box, .order-summary-card, table, form, .form-section, .step-indicator, [class*="stat"], .footer-top, .footer-bottom').forEach(function(el) {
+        if (!el.classList.contains('reveal') && el.offsetHeight > 20) el.classList.add('reveal');
+    });
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+})();
+
+// Scroll progress bar
+(function() {
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    document.body.prepend(bar);
+    window.addEventListener('scroll', function() {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        if (h > 0) bar.style.width = (window.scrollY / h * 100) + '%';
+    });
+})();
+
+// Confetti effect for order complete
+(function() {
+    var colors = ['#212121', '#db7e7e', '#e6e3db', '#f6f5f1', '#999'];
+    for (var i = 0; i < 30; i++) {
+        var c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        c.style.animationDelay = Math.random() * 1.5 + 's';
+        c.style.animationDuration = (1.5 + Math.random() * 1.5) + 's';
+        document.body.appendChild(c);
+        setTimeout(function(el) { el.remove(); }.bind(null, c), 4000);
+    }
+})();
+</script>
+</body>
+</html>

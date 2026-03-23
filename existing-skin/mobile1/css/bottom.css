@@ -1,0 +1,34 @@
+/* 모바일 푸터 — YOUTHTORY renewal */
+#bottom { font-family: helvetica, 'Noto Sans KR', sans-serif; font-size: 11px; line-height: 1.7; margin-top: 60px; color: #999; background: #f6f5f1; }
+#bottom a { transition: 0.3s ease; color: #999; }
+#bottom a:hover { text-decoration: none; color: #212121; }
+
+#bottom .inner { padding: 40px 20px; }
+
+#bottom .logo { float: left; }
+#bottom .logo img { height: 14px; }
+
+#bottom .joinbt { float: right; border: 1px solid #e6e3db; padding: 6px 0; width: 80px; text-align: center; font-size: 10px; font-weight: 500; border-radius: 24px; color: #999; transition: 0.3s ease; }
+#bottom .joinbt:hover { border-color: #212121; color: #212121; }
+
+#bottom #cscenter { margin-top: 32px; }
+#bottom #cscenter #customer .cs1 { font-size: 13px; padding-bottom: 3px; color: #212121; font-weight: 500; }
+#bottom #cscenter #customer .cs2 { font-size: 10px; color: #999; }
+#bottom #cscenter #bank { margin-top: 16px; font-size: 10px; }
+#bottom #cscenter #bank .bank1 { color: #212121; font-weight: 500; }
+#bottom #cscenter #bank .bank2 { padding-top: 2px; color: #999; }
+
+#bottom #link { font-size: 10px; margin-top: 32px; }
+#bottom #link li { float: left; margin-right: 12px; }
+
+#bottom #sns { margin-top: 20px; text-align: left; }
+#bottom #sns span { font-size: 10px; color: #bbb; letter-spacing: 0.06em; text-transform: uppercase; }
+#bottom #sns img { margin-right: 4px; height: 12px; opacity: 0.5; vertical-align: middle; }
+#bottom #sns img:hover { opacity: 1; }
+
+#bottom #company { margin-top: 20px; }
+#bottom #company .copytext { font-size: 10px; color: #bbb; line-height: 1.8; }
+#bottom #company .copytext span { font-size: 9px; margin-right: 4px; color: #999; }
+
+#bottomcopyright { margin-top: 32px; text-align: left; font-size: 9px; line-height: 1.6; color: #ccc; }
+#bottomcopyright b { font-weight: 500; color: #999; }

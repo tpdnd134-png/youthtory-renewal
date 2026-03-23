@@ -1,0 +1,16 @@
+<!--@css(/css/top.css)-->
+<!--@js(/js/top.js)-->
+<div id="topsearch">
+    <div class="search-bar">
+        <div module="Layout_SearchHeader">
+            <!--
+            $product_page=/product/detail.html
+            $category_page=/product/list.html
+            -->
+            <fieldset id="search_fieldset">{$form.keyword}<a onclick="{$action_search_submit}"><i class="fas fa-search" style="font-size:14px;color:#212121;"></i></a></fieldset>
+        </div>
+    </div>
+</div>
+<span module="Layout_stateLogoff"><a href="/member/login.html" class="gnb-link">LOGIN</a></span>
+<span module="Layout_stateLogon"><a href="{$action_logout}" class="gnb-link">LOGOUT</a></span>
+<span module="Layout_orderBasketcount" style="cursor:pointer;" onclick="location.href='/order/basket.html'" class="gnb-link">CART ({$basket_count})</span>

@@ -1,0 +1,99 @@
+.xans-product-additional ul.link {padding:150px 0 60px 0; line-height:1.5; *zoom:1; font-family: 'Montserrat', sans-serif; font-size:10px; letter-spacing:1px; text-align:center;}
+.xans-product-additional ul.link:after { content:""; display:block; clear:both; }
+.xans-product-additional ul.link span { text-align:center; margin:0 20px; color:#d6d6d6 }
+.xans-product-additional ul.link span.selected a { color:#000; padding-bottom:7px; border-bottom:2px solid #eaeaea; font-weight:700}
+.xans-product-additional ul.link a {color:#444444; transition-duration: 0.3s;}
+.xans-product-additional ul.link a:hover{ color:#838383; text-decoration:none; transition-duration: 0.3s; }
+.xans-product-additional .cont { padding:0; color:#000; line-height:20px; font-family: 'Nanum Gothic', sans-serif; font-size:12px;}
+.xans-product-additional .cont h3 { margin:0 0 10px 0; padding-bottom:10px; color:#444444; border-bottom:1px dashed #eaeaea; font-size:13px; font-family: 'Nanum Gothic', sans-serif font-weight:400;}
+
+#prdDetail {text-align:center; line-height:24px}
+#prddetailimg img {width:100%}
+#detailboardtext {margin:0 auto; margin-top:40px; margin-bottom:20px; font-family: 'Montserrat', sans-serif; font-size:10px; letter-spacing:1px}
+#detailboardtext a:hover{ color:#838383; text-decoration:none;}
+#detailboardtext .bt a{ color:#7b7b7b; text-decoration:none;}
+
+#detailboardtext2 {font-family: 'Montserrat', sans-serif; font-size:10px; letter-spacing:1px}
+
+
+/* 상품 게시판 */
+.xans-product-additional div.board { padding:0; color:#353535; line-height:18px; font-family: 'Nanum Gothic', sans-serif}
+.xans-product-additional div.board h3 { padding:0 10px 0 9px; font-size:12px; }
+.xans-product-additional div.board p.desc { padding:0 10px 0 9px; }
+.nodata { margin:15px 0 0; border:1px solid #eaeaea; color:#000; line-height:39px; text-align:center; font-family: 'Nanum Gothic', sans-serif}
+.xans-product-additional div.board .btnArea { padding:10px 0; text-align:right; }
+.xans-product-additional div.board .btnArea img { margin:0 0 0 4px; }
+.xans-product-additional div.board > .btnArea { padding:8px 19px 12px 0; border:1px solid #eaeaea; border-top:0; }
+
+.xans-product-additional table.board { margin:15px 0 0; border:1px solid #eaeaea; border-left:none; border-right:none; color:#353535; font-size:12px; line-height:140%; font-family: 'Nanum Gothic', sans-serif}
+.xans-product-additional table.board th { padding:12px 0 10px; background:#fbfafa; font-weight:normal; }
+.xans-product-additional table.board td { padding:14px 3px 13px; border-top:1px solid #eaeaea; text-align:center; vertical-align:middle; }
+.xans-product-additional table.board th:last-child,
+.xans-product-additional table.board td:last-child { border-right:none; }
+.xans-product-additional table.board a,
+.xans-product-additional table.board a:hover { color:#353535; text-decoration:none;}
+.xans-product-additional table.board .subject { padding-left:8px; color:#f76560; text-align:left; word-break:break-all; }
+.xans-product-additional table.board .subject img { vertical-align:middle; margin:0 1px; }
+.xans-product-additional table.board .txtLess { color:#939393; font-size:11px; }
+.xans-product-additional table.board td .view { padding:16px 19px 0; line-height:18px; text-align:left; }
+
+#commentWriteForm_4 { padding:0 19px; }
+#SecretForm_4 { background:#fbf9fa; }
+#SecretForm_4 .view { padding:8px 0 7px; }
+#SecretForm_4 input { width:41px; height:24px; margin:0 0 0 6px; border:0; font-size:0; line-height:0; cursor:pointer; background:url("http://img.echosting.cafe24.com/skin/base_ko_KR/board/btn_ico_submit.gif") no-repeat 0 0; }
+#SecretForm_4 input#secure_password { width:130px; height:18px; margin-left:11px; padding:2px 2px 2px 4px; border:1px solid #d9d9d9; font-size:12px; line-height:14px; cursor:text; background:#fff; }
+#product-review-read td,
+#product-qna-read td { padding:0; }
+#product-review-read td #SecretForm_4 .view { padding-left:79px; }
+#product-qna-read td #SecretForm_4 .view { padding-left:213px; }
+
+.xans-product-additional .boardComment { padding:0 19px; }
+.xans-product-additional .boardComment li { position:relative; overflow:hidden; margin:10px 0 0 0; padding:12px 0 0; border-top:1px solid #d7d5d6; color:#353535; text-align:left; line-height:14px; }
+.xans-product-additional .boardComment li:first-child { margin-top:0; }
+.xans-product-additional .boardComment li .comment { margin:9px 0 0; padding:16px 0 15px 9px; border-top:1px solid #e9e9e9; line-height:18px; word-break:break-all; }
+.xans-product-additional .boardComment li .name { margin:0 21px 0 0; }
+.xans-product-additional .boardComment li .name input { width:13px; height:13px; margin:0 2px 0 0; vertical-align:-2px; *vertical-align:2px; }
+.xans-product-additional .boardComment li .date { margin:0 10px 0 0; font-size:11px; }
+.xans-product-additional .boardComment li .grade { margin:0 10px 0 0; }
+.xans-product-additional .boardComment li .button { position:absolute; right:0; top:6px; }
+
+.xans-product-additional .memoCont { margin:20px 15px; padding:10px 20px 15px 20px; border:1px solid #e9e9e9; color:#353535; text-align:left; background:#fbfafa; }
+.xans-product-additional .memoCont .user { overflow:hidden; padding:0 90px 0 0; }
+.xans-product-additional .memoCont .user input,
+.xans-product-additional .memoCont .user textarea { border:1px solid #d9d9d9; }
+.xans-product-additional .memoCont .user input { width:135px; height:18px; margin:0 10px 0 9px; padding:2px 2px 2px 4px; }
+.xans-product-additional .memoCont .user .secret input { width:13px; height:13px; margin-right:3px; }
+.xans-product-additional .memoCont .user .secret { margin:0 20px 0 0; }
+.xans-product-additional .memoCont .user textarea { float:left; width:100%; padding:2px 0; height:44px; text-indent:4px; *margin-right:10px; }
+.xans-product-additional .memoCont .user a { float:right; margin:0 -90px 0 0; }
+.xans-product-additional .memoCont .nameArea { display:block; margin:0 0 10px; }
+.xans-product-additional .memoCont .rating { margin:12px 0 0; }
+.xans-product-additional .memoCont .rating input { width:13px; height:13px; margin:0 2px 0 0; padding:0; border:0; vertical-align:-2px; *vertical-align:1px; }
+.xans-product-additional .memoCont .rating label { padding:0 10px 0 0; }
+.xans-product-additional .memoCont .rating em { font-style:normal; }
+.xans-product-additional .memoCont .text { margin:5px 0 0; font-size:11px; }
+.xans-product-additional .memoCont .text span { color:#008bcc; }
+.xans-product-additional .memoCont .captcha { margin:8px 0 0; padding:10px 0 0; border-top:1px solid #e9e9e9; color:#757575; }
+.xans-product-additional .memoCont .captcha img { vertical-align:middle; }
+.xans-product-additional .memoCont .captcha input { margin:0 10px 0 20px; font-size:12px; }
+
+.xans-product-additional table.board td .view + form .memoCont { margin-top:0; }
+
+/* 댓글의 댓글 */
+.xans-product-additional .boardComment li.replyArea { margin:-1px 0 0; padding:10px 0 7px 33px; border:1px solid #e9e9e9; background:url("http://img.echosting.cafe24.com/skin/admin_ko_KR/board/ico_comment.gif") no-repeat 20px 15px; }
+.xans-product-additional .boardComment li.replyArea .commentSecret { margin-right:30px; }
+.xans-product-additional .boardComment li.replyArea .comment { margin:7px 0 0; padding:0; border-top:0; }
+
+/* 권한없을시 */
+.xans-product-additional .noAccess { margin:15px 0 10px; border:1px solid #d7d5d5; font-weight:bold; color:#008bcc; line-height:39px; text-align:center; }
+
+/* 미성년자 */
+.xans-product-additional .minor { margin:15px 0 0; padding:35px 0 24px; border:1px solid #d7d5d5; font-weight:bold; color:#353535; line-height:14px; text-align:center; }
+.xans-product-additional .minor p:first-child img { margin:-11px 8px 0 0; vertical-align:top; }
+.xans-product-additional .minor strong { color:#008bcc; }
+.xans-product-additional .minor .button { margin:-7px 0 0; }
+
+/* 비밀글 관련 */
+.xans-product-additional .commentSecret { margin:10px 10px 5px 0; padding:10px 15px; border:1px solid #e9e9e9; background-color:#fbfafa; color:#353535; }
+.xans-product-additional .commentSecret input[type=password] { height:20px; padding:2px 2px 2px 4px; border:1px solid #d9d9d9; }
+

@@ -1,0 +1,2034 @@
+/*
+ * ============================================================
+ *  YOUTHTORY common-skin.css
+ *  Shared CSS across all layout files (layout.html, layout-list.html, layout/basic/layout.html)
+ *  ALL properties use !important to override Cafe24 base CSS
+ * ============================================================
+ */
+
+/* ==========================================================
+   1. Global Resets & Typography
+   ========================================================== */
+* { box-sizing: border-box !important; }
+
+body {
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    font-size: 14px !important;
+    color: #212121 !important;
+    background: #fff !important;
+    line-height: 1.6 !important;
+    -webkit-font-smoothing: antialiased !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+a {
+    color: #212121 !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+a:hover {
+    text-decoration: none !important;
+    opacity: 0.7 !important;
+}
+
+img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+ul {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+button, .btn {
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+input, select, textarea {
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+}
+
+input[type=text], select, textarea {
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+}
+
+
+/* ==========================================================
+   2. Cafe24 Base Overrides
+   ========================================================== */
+#left, #right, #toggle-right {
+    display: none !important;
+}
+
+#toparea {
+    display: none !important;
+}
+
+#loginpopup {
+    display: none !important;
+}
+
+.gnb-mega {
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+.gnb-item.has-sub:hover .gnb-mega {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+/* ==========================================================
+   3. Promo Marquee Bar
+   ========================================================== */
+.promo-wrap {
+    padding: 5px 8px 0 !important;
+}
+
+.promo-bar {
+    height: 24px !important;
+    background: rgba(42,41,41,0.4) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+    z-index: 101 !important;
+    border-radius: 100px !important;
+}
+
+.promo-track {
+    display: flex !important;
+    white-space: nowrap !important;
+    animation: marquee 60s linear infinite !important;
+    will-change: transform !important;
+}
+
+.promo-item {
+    color: rgba(255,255,255,0.9) !important;
+    font-size: 11px !important;
+    margin-right: 40vw !important;
+    letter-spacing: 0.03em !important;
+    font-weight: 300 !important;
+}
+.promo-item a {
+    color: rgba(255,255,255,0.9) !important;
+    text-decoration: none !important;
+}
+.promo-item a:hover {
+    color: #fff !important;
+    opacity: 1 !important;
+}
+
+.promo-bar:hover .promo-track {
+    animation-play-state: paused !important;
+}
+
+@keyframes marquee {
+    from { transform: translate3d(0,0,0); }
+    to { transform: translate3d(-50%,0,0); }
+}
+
+
+/* ==========================================================
+   4. GNB Float Wrapper
+   ========================================================== */
+.gnb-float-wrap {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 100 !important;
+    pointer-events: none !important;
+}
+.gnb-float-wrap > * {
+    pointer-events: auto !important;
+}
+
+
+/* ==========================================================
+   5. GNB Header (PC) — compact floating card
+   ========================================================== */
+.gnb-header {
+    position: relative !important;
+    overflow: visible !important;
+    height: 36px !important;
+    background: rgba(255,255,255,0.88) !important;
+    backdrop-filter: saturate(180%) blur(20px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    margin: 3px 8px 0 !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08) !important;
+    transition: background 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1) !important;
+    z-index: 100 !important;
+}
+.gnb-header.scrolled {
+    background: rgba(255,255,255,0.97) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+}
+
+.gnb-inner {
+    max-width: 1920px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    padding: 0 28px !important;
+}
+
+.gnb-logo {
+    display: flex !important;
+    align-items: center !important;
+    margin-right: 40px !important;
+    text-decoration: none !important;
+}
+.gnb-logo:hover {
+    opacity: 0.7 !important;
+}
+.gnb-logo img {
+    height: 16px !important;
+    display: block !important;
+}
+
+.gnb-nav {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    gap: 0 !important;
+}
+
+.gnb-item {
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+    padding: 0 14px !important;
+    line-height: 36px !important;
+    cursor: pointer !important;
+    position: static !important;
+    text-decoration: none !important;
+    letter-spacing: 0.03em !important;
+    white-space: nowrap !important;
+}
+.gnb-item:hover {
+    opacity: 0.6 !important;
+}
+
+/* Mega Dropdown */
+.gnb-mega-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0,0,0,0.18) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    z-index: 98 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1) !important;
+}
+.gnb-mega-overlay.active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.gnb-mega {
+    position: absolute !important;
+    top: calc(100% + 2px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    background: rgba(246,245,241,0.97) !important;
+    backdrop-filter: saturate(120%) blur(16px) !important;
+    -webkit-backdrop-filter: saturate(120%) blur(16px) !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    transform: translateY(-6px) !important;
+    transition: visibility 0s 0.35s, opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1) !important;
+    padding: 28px 0 32px !important;
+    z-index: 101 !important;
+    border: none !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+}
+.gnb-item.has-sub:hover .gnb-mega {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: visibility 0s, opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1) !important;
+}
+
+.gnb-mega-inner {
+    max-width: 1920px !important;
+    margin: 0 auto !important;
+    padding: 0 28px !important;
+    display: flex !important;
+    gap: 80px !important;
+}
+
+.gnb-mega-col {
+    min-width: 120px !important;
+}
+.gnb-mega-col .mega-title {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #212121 !important;
+    margin-bottom: 12px !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+}
+.gnb-mega-col a {
+    display: block !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #555 !important;
+    padding: 3px 0 !important;
+    text-decoration: none !important;
+    line-height: 1.8 !important;
+    transition: color 0.25s cubic-bezier(0.4,0,0.2,1) !important;
+}
+.gnb-mega-col a:hover {
+    color: #212121 !important;
+    opacity: 1 !important;
+}
+
+.gnb-right {
+    margin-left: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+}
+.gnb-right a, .gnb-link {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    letter-spacing: 0.03em !important;
+}
+
+
+/* ==========================================================
+   6. Mobile Header
+   ========================================================== */
+/* (displayed via media query below; hidden on desktop) */
+
+
+/* ==========================================================
+   7. Menu Overlay (ZARA-style left sidebar)
+   ========================================================== */
+.menu-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 300 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+}
+.menu-overlay.open {
+    pointer-events: auto !important;
+    visibility: visible !important;
+}
+
+.menu-overlay-bg {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0,0,0,0.4) !important;
+    z-index: 0 !important;
+    opacity: 0 !important;
+    transition: opacity 0.35s ease !important;
+}
+.menu-overlay.open .menu-overlay-bg {
+    opacity: 1 !important;
+}
+
+.menu-overlay-card {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 380px !important;
+    z-index: 1 !important;
+    background: #fff !important;
+    border-radius: 0 !important;
+    overflow-y: auto !important;
+    padding: 80px 40px 40px !important;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.08) !important;
+    transform: translateX(-100%) !important;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.menu-overlay.open .menu-overlay-card {
+    transform: translateX(0) !important;
+}
+
+.menu-overlay-close {
+    position: absolute !important;
+    top: 24px !important;
+    right: 24px !important;
+    background: none !important;
+    border: none !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    color: #111 !important;
+    font-weight: 300 !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: opacity 0.2s !important;
+}
+.menu-overlay-close:hover {
+    opacity: 0.5 !important;
+}
+
+.menu-overlay-nav {
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+}
+.menu-overlay-nav > li {
+    border-bottom: 1px solid #e8e8e8 !important;
+}
+.menu-overlay-nav > li > a {
+    display: flex !important;
+    align-items: center !important;
+    padding: 18px 0 !important;
+    font-size: 15px !important;
+    font-weight: 300 !important;
+    color: #111 !important;
+    text-decoration: none !important;
+    letter-spacing: 0.35em !important;
+    text-transform: uppercase !important;
+    transition: letter-spacing 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.menu-overlay-nav > li > a:hover {
+    letter-spacing: 0.45em !important;
+    opacity: 1 !important;
+}
+
+/* 번호 스타일 */
+.nav-number {
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.1em !important;
+    color: #999 !important;
+    margin-right: 16px !important;
+    min-width: 20px !important;
+}
+
+.menu-overlay-nav .menu-sub-toggle {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 18px 0 !important;
+    font-size: 15px !important;
+    font-weight: 300 !important;
+    color: #111 !important;
+    background: none !important;
+    border: none !important;
+    letter-spacing: 0.35em !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    transition: letter-spacing 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.menu-overlay-nav .menu-sub-toggle:hover {
+    letter-spacing: 0.45em !important;
+    opacity: 1 !important;
+}
+
+.menu-overlay-nav .menu-sub-toggle .toggle-arrow {
+    font-size: 14px !important;
+    font-weight: 300 !important;
+    color: #999 !important;
+    margin-left: auto !important;
+    transition: transform 0.3s ease !important;
+}
+.menu-overlay-nav .menu-sub-toggle.active .toggle-arrow {
+    transform: rotate(45deg) !important;
+}
+
+.menu-overlay-sub {
+    max-height: 0 !important;
+    overflow: hidden !important;
+    transition: max-height 0.35s ease, padding 0.35s ease !important;
+    padding: 0 0 0 36px !important;
+}
+.menu-overlay-sub.open {
+    max-height: 300px !important;
+    padding: 0 0 16px 36px !important;
+}
+
+.menu-overlay-sub li a {
+    display: block !important;
+    padding: 8px 0 !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #999 !important;
+    text-decoration: none !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    transition: color 0.2s !important;
+}
+.menu-overlay-sub li a:hover {
+    color: #111 !important;
+    opacity: 1 !important;
+}
+
+/* 사이드바 하단 */
+.menu-overlay-footer {
+    margin-top: 48px !important;
+    padding-top: 24px !important;
+    border-top: 1px solid #e8e8e8 !important;
+    display: flex !important;
+    gap: 20px !important;
+    align-items: center !important;
+}
+.menu-overlay-footer a {
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.15em !important;
+    color: #999 !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+}
+.menu-overlay-footer a:hover {
+    color: #111 !important;
+    opacity: 1 !important;
+}
+.menu-overlay-footer a .fab {
+    font-size: 16px !important;
+}
+
+
+/* ==========================================================
+   8. Footer
+   ========================================================== */
+#bottom-wrap {
+    background: #f6f5f1 !important;
+    margin-top: 120px !important;
+    border: none !important;
+}
+
+#bottom {
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    line-height: 1.7 !important;
+    color: #999 !important;
+}
+#bottom a {
+    transition: all 0.3s ease !important;
+    color: #999 !important;
+}
+#bottom a:hover {
+    text-decoration: none !important;
+    color: #212121 !important;
+}
+#bottom .inner {
+    padding: 56px 40px 40px !important;
+}
+
+.footer-top {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    padding-bottom: 40px !important;
+    border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+    gap: 40px !important;
+}
+
+.footer-brand {
+    flex-shrink: 0 !important;
+}
+.footer-brand .logo-text {
+    line-height: 0 !important;
+}
+.footer-brand .logo-text img {
+    height: 24px !important;
+    display: block !important;
+}
+.footer-brand .brand-desc {
+    font-size: 11px !important;
+    color: #bbb !important;
+    margin-top: 8px !important;
+    letter-spacing: 0.02em !important;
+}
+
+.footer-cols {
+    display: flex !important;
+    gap: 64px !important;
+}
+
+.footer-col h4 {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    margin: 0 0 14px !important;
+}
+.footer-col ul {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.footer-col li {
+    padding: 2px 0 !important;
+}
+.footer-col a {
+    font-size: 11px !important;
+    color: #999 !important;
+}
+.footer-col a:hover {
+    color: #212121 !important;
+}
+
+.footer-bottom {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    padding-top: 28px !important;
+    gap: 40px !important;
+    flex-wrap: wrap !important;
+}
+
+.footer-info {
+    font-size: 10px !important;
+    color: #bbb !important;
+    line-height: 1.8 !important;
+}
+.footer-info span {
+    color: #999 !important;
+    margin-right: 2px !important;
+}
+
+.footer-copyright {
+    font-size: 10px !important;
+    color: #ccc !important;
+    letter-spacing: 0.02em !important;
+    margin-top: 20px !important;
+}
+
+.footer-sns {
+    display: flex !important;
+    gap: 16px !important;
+    align-items: center !important;
+}
+.footer-sns a {
+    font-size: 11px !important;
+    color: #bbb !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+}
+.footer-sns a:hover {
+    color: #212121 !important;
+}
+
+#bottom #cscenter #bank .bank1 {
+    color: #212121 !important;
+    font-weight: 500 !important;
+}
+#bottom #cscenter #bank .bank2 {
+    padding-top: 4px !important;
+    color: #999 !important;
+}
+#bottom #company .copytext {
+    font-size: 11px !important;
+    color: #999 !important;
+    line-height: 1.8 !important;
+}
+#bottom #company .copytext span {
+    font-size: 11px !important;
+    margin-right: 8px !important;
+    color: #666 !important;
+}
+#bottom #link {
+    font-size: 12px !important;
+}
+#bottom #link .sns {
+    text-align: left !important;
+    margin-top: 20px !important;
+}
+
+#bottomcopyright {
+    margin-top: 40px !important;
+    padding-top: 24px !important;
+    border-top: 1px solid #dadada !important;
+    text-align: left !important;
+    font-size: 11px !important;
+    line-height: 1.6 !important;
+    color: #999 !important;
+}
+#bottomcopyright b {
+    font-weight: 500 !important;
+    color: #666 !important;
+}
+
+
+/* ==========================================================
+   9. Scroll Top
+   ========================================================== */
+.scrollTop a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: rgba(33,33,33,0.1) !important;
+    color: #212121 !important;
+    border-radius: 0 !important;
+    transition: all 0.3s ease !important;
+}
+.scrollTop a:hover {
+    background: rgba(33,33,33,0.2) !important;
+}
+
+
+/* ==========================================================
+   10. Mobile Responsive (@media max-width: 768px)
+   ========================================================== */
+@media (max-width: 768px) {
+
+    /* Hide PC GNB */
+    .gnb-header {
+        display: none !important;
+    }
+
+    /* Promo bar — mobile top fixed */
+    .gnb-float-wrap {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 100 !important;
+    }
+    .promo-bar {
+        font-size: 11px !important;
+        height: 28px !important;
+    }
+    .promo-wrap {
+        padding: 5px 8px 0 !important;
+        z-index: 201 !important;
+        position: relative !important;
+    }
+
+    /* Mobile Header — below promo bar (38px) */
+    .mobile-header {
+        display: flex !important;
+        position: fixed !important;
+        top: 38px !important;
+        left: 8px !important;
+        right: 8px !important;
+        height: 44px !important;
+        background: rgba(255,255,255,0.85) !important;
+        backdrop-filter: saturate(180%) blur(20px) !important;
+        -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+        border-radius: 10px !important;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.08) !important;
+        z-index: 200 !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0 16px !important;
+    }
+    .mobile-header .mobile-menu-btn {
+        background: none !important;
+        border: none !important;
+        font-size: 20px !important;
+        cursor: pointer !important;
+        color: #212121 !important;
+        padding: 8px !important;
+    }
+    .mobile-header .mobile-logo img {
+        height: 16px !important;
+    }
+    .mobile-header .mobile-icons {
+        display: flex !important;
+        gap: 12px !important;
+        align-items: center !important;
+    }
+    .mobile-header .mobile-icons a {
+        font-size: 16px !important;
+        color: #212121 !important;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        position: relative !important;
+        z-index: 201 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    /* Menu Overlay — mobile: full width sidebar */
+    .menu-overlay-card {
+        width: 100% !important;
+        padding: 64px 24px 32px !important;
+    }
+    .menu-overlay-nav > li > a {
+        padding: 14px 0 !important;
+        font-size: 14px !important;
+        letter-spacing: 0.25em !important;
+    }
+    .menu-overlay-nav .menu-sub-toggle {
+        padding: 14px 0 !important;
+        font-size: 14px !important;
+        letter-spacing: 0.25em !important;
+    }
+    .menu-overlay-sub {
+        padding: 0 0 0 28px !important;
+    }
+    .menu-overlay-sub.open {
+        padding: 0 0 12px 28px !important;
+    }
+    .menu-overlay-footer {
+        margin-top: 32px !important;
+    }
+
+    /* Legacy sidebar hide */
+    .mobile-sidebar {
+        display: none !important;
+    }
+    .sidebar-overlay {
+        display: none !important;
+    }
+
+    /* Hide elements */
+    #left, #right, #toggle-right {
+        display: none !important;
+    }
+}
+
+
+/* ==========================================================
+   11. Desktop (@media min-width: 769px)
+   ========================================================== */
+@media (min-width: 769px) {
+    .mobile-header {
+        display: none !important;
+    }
+}
+
+
+/* ==========================================================
+   12. Common Content Area
+   ========================================================== */
+#content {
+    max-width: 1920px !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+}
+
+
+/* ==========================================================
+   13. Product Grid (shared across home + list)
+   ========================================================== */
+.ga09list { margin: 0 auto; font-family: helvetica, 'Noto Sans KR', sans-serif; }
+.ga09list ul { width: 100%; margin: 0 -4px; display: flex; flex-wrap: wrap; }
+.ga09list ul.grid4 > li { width: 25%; padding: 0 4px; text-align: left; }
+.ga09list .prdpadding { margin: 0 0 32px 0; display: flex; flex-direction: column; }
+.ga09list .prdline { margin-bottom: 0; position: relative; }
+.hoverimg { overflow: hidden; border-radius: 16px; position: relative; }
+.hoverimg img { width: 100%; object-fit: cover; display: block; transform: scale(1); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s; }
+.hoverimg:hover img { transform: scale(1.03); opacity: 0.94; }
+.ga09list .name { clear: both; font-size: 13px; font-weight: 400; color: #212121; margin: 10px 0 0; line-height: 1.4; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ga09list .name a { color: #212121 !important; }
+.ga09list .colorWrap { margin-top: 6px; height: auto; min-height: 0; }
+.ga09list .color { text-align: left; }
+.ga09list .color ul { display: inline-flex; gap: 3px; margin: 0; padding: 0; }
+.ga09list .chips { width: 9px; height: 9px; border-radius: 50%; font-size: 0; line-height: 0; display: inline-block; }
+.ga09list .prices { line-height: 1.4; color: #212121; font-size: 14px; margin-top: 4px; }
+.ga09list .price { font-size: 11px; color: #999; margin-right: 5px; text-decoration: line-through; opacity: 0.7; }
+.ga09list .normal { font-size: 14px; color: #212121; font-weight: 400; text-decoration: none !important; }
+.ga09list .sale-pct { font-size: 14px; color: #db7e7e; margin-right: 5px; font-weight: 400; }
+.prd-badge { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 2px 14px; border-radius: 24px; font-size: 11px; font-weight: 400; letter-spacing: 0.02em; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.badge-new { background: rgba(237,237,237,0.7); color: #212121; }
+.badge-best { background: rgba(0,0,0,0.5); color: #fff; }
+
+
+/* ==========================================================
+   14. Section Titles (shared across home + list)
+   ========================================================== */
+.section-area { max-width: 1920px; margin: 0 auto; padding: 80px 24px 0; }
+.section-title { text-align: center; margin-bottom: 48px; }
+.section-title h2 { font-family: 'Unbounded', sans-serif; font-size: 48px; font-weight: 900; color: #212121; letter-spacing: -0.02em; margin: 0; text-transform: uppercase; line-height: 1; }
+.section-title p { font-size: 11px; color: #aaa; margin-top: 12px; letter-spacing: 0.12em; font-weight: 400; text-transform: uppercase; }
+
+
+/* ==========================================================
+   15. Mobile Responsive — Shared product & section
+   ========================================================== */
+@media (max-width: 768px) {
+    #content { padding: 0 12px !important; }
+
+    /* Section titles mobile */
+    .section-title h2 { font-size: 20px !important; }
+    .section-title p { font-size: 11px !important; }
+    .section-area { padding: 40px 0 !important; }
+
+    /* Product grid mobile — 2 columns */
+    .ga09list ul.grid4 > li { width: 50% !important; display: inline-block !important; float: none !important; box-sizing: border-box !important; vertical-align: top !important; }
+    .ga09list ul.grid4, .ga09list ul { display: flex !important; flex-wrap: wrap !important; gap: 0 !important; }
+}
+
+/* ==========================================================
+   16. Desktop — Sidebar removal (shared)
+   ========================================================== */
+@media (min-width: 769px) {
+    #left { display: none !important; }
+    #listcontent { margin-left: 0 !important; }
+    #content { margin-left: 0 !important; }
+}
+
+
+/* ==========================================================
+   17. Search Overlay (la-room fullscreen style)
+   ========================================================== */
+.mobile-search-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 500;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+}
+.mobile-search-overlay.open {
+    display: flex;
+    animation: searchFadeIn 0.3s ease;
+}
+@keyframes searchFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.mobile-search-overlay form {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    background: none;
+    border-radius: 0;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 0;
+    height: auto;
+    margin-top: 35vh;
+    padding-bottom: 12px;
+}
+.mobile-search-overlay input[type="text"] {
+    flex: 1;
+    border: none !important;
+    background: none !important;
+    font-size: 24px !important;
+    font-weight: 300 !important;
+    color: #111 !important;
+    outline: none !important;
+    padding: 0 16px !important;
+    height: 48px !important;
+    letter-spacing: 0.05em !important;
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+}
+.mobile-search-overlay input[type="text"]::placeholder {
+    color: #ccc;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+}
+.mobile-search-overlay .search-submit {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #111;
+    padding: 8px 16px;
+    transition: opacity 0.2s;
+}
+.mobile-search-overlay .search-submit:hover {
+    opacity: 0.5;
+}
+.mobile-search-overlay .search-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #111;
+    font-weight: 300;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ==========================================================
+   18. Soldout Badge & Restock Button — minimal pill style
+   ========================================================== */
+
+/* 품절 아이콘 (상품 리스트) */
+.icon_soldout_icon,
+img[alt="품절"],
+.soldout_icon,
+.ga09list .icon img[alt="품절"] {
+    width: auto !important;
+    height: 18px !important;
+    max-width: 36px !important;
+    vertical-align: middle !important;
+}
+
+/* 품절 텍스트 뱃지 */
+.prd-icon .soldout,
+.ga09list .soldout_icon,
+span.soldout_icon {
+    display: inline-block !important;
+    font-size: 10px !important;
+    font-weight: 500 !important;
+    color: #999 !important;
+    background: #f5f5f5 !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 2px 8px !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.02em !important;
+}
+
+/* 재입고 알림 신청 버튼 이미지 (상품 상세) */
+img[alt="재입고 알림 SMS"],
+img[src*="btn_sms"],
+img[src*="btn_restock"] {
+    height: 20px !important;
+    width: auto !important;
+    vertical-align: middle !important;
+}
+
+
+/* ==========================================================
+   19. Unified Form & Input Style
+   ========================================================== */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="search"],
+textarea {
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 0 !important;
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+    color: #212121 !important;
+    background: #fff !important;
+    outline: none !important;
+    transition: border-color 0.2s ease !important;
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+    border-color: #212121 !important;
+}
+input[type="text"]::placeholder,
+input[type="password"]::placeholder,
+textarea::placeholder {
+    color: #bbb !important;
+}
+
+/* Select — appearance 제거 (장바구니 옵션변경 드롭다운 깨짐 방지) */
+select {
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 0 !important;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+    color: #212121 !important;
+    outline: none !important;
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+}
+
+
+/* ==========================================================
+   20. Unified Button Style
+   ========================================================== */
+
+/* 기본 버튼 (카페24 이미지 버튼 대체) */
+.ec-base-button a,
+.ec-base-button button,
+.ec-base-button input[type="submit"],
+input[type="submit"],
+input[type="button"],
+button[type="submit"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 40px !important;
+    padding: 0 24px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.04em !important;
+    border-radius: 0 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+    box-sizing: border-box !important;
+}
+
+/* Primary (dark) */
+.ec-base-button .btnSubmit,
+.ec-base-button .btnStrong,
+.ec-base-button .gFlex a:first-child,
+input[type="submit"],
+button[type="submit"] {
+    background: #212121 !important;
+    color: #fff !important;
+    border: 1px solid #212121 !important;
+}
+.ec-base-button .btnSubmit:hover,
+.ec-base-button .btnStrong:hover,
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+    background: #000 !important;
+}
+
+/* Secondary (outline) */
+.ec-base-button .btnNormal,
+.ec-base-button .btnBasic,
+.ec-base-button a {
+    background: #fff !important;
+    color: #212121 !important;
+    border: 1px solid #ddd !important;
+}
+.ec-base-button .btnNormal:hover,
+.ec-base-button .btnBasic:hover,
+.ec-base-button a:hover {
+    border-color: #212121 !important;
+    opacity: 1 !important;
+}
+
+/* 카페24 기본 이미지 버튼 숨기고 텍스트로 */
+.ec-base-button img {
+    height: 16px !important;
+    vertical-align: middle !important;
+}
+
+
+/* ==========================================================
+   21. Unified Table Style (게시판, 주문내역 등)
+   ========================================================== */
+.ec-base-table table,
+.boardList table,
+table[border="1"] {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border: none !important;
+    font-size: 12px !important;
+}
+.ec-base-table th,
+.boardList th,
+table[border="1"] th {
+    background: #fafafa !important;
+    color: #212121 !important;
+    font-weight: 500 !important;
+    font-size: 11px !important;
+    padding: 10px 12px !important;
+    border: none !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    text-align: left !important;
+}
+.ec-base-table td,
+.boardList td,
+table[border="1"] td {
+    color: #212121 !important;
+    font-size: 12px !important;
+    padding: 10px 12px !important;
+    border: none !important;
+    border-bottom: 1px solid #f1f1f1 !important;
+    vertical-align: middle !important;
+}
+.ec-base-table tr:hover td,
+.boardList tr:hover td {
+    background: #fafafa !important;
+}
+
+/* 게시판 제목 링크 */
+.boardList td.subject a,
+table td.subject a {
+    color: #212121 !important;
+    text-decoration: none !important;
+    font-size: 12px !important;
+}
+.boardList td.subject a:hover {
+    text-decoration: underline !important;
+    opacity: 1 !important;
+}
+
+
+/* ==========================================================
+   22. Unified Page Title
+   ========================================================== */
+.titleArea,
+.xans-layout-title {
+    padding: 0 0 20px !important;
+    margin: 0 0 24px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+.titleArea h2,
+.xans-layout-title h2 {
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    color: #212121 !important;
+    letter-spacing: 0.02em !important;
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    margin: 0 !important;
+}
+
+/* 서브 타이틀 / 설명 */
+.titleArea p,
+.xans-layout-title p {
+    font-size: 12px !important;
+    color: #999 !important;
+    margin-top: 6px !important;
+}
+
+
+/* ==========================================================
+   23. Unified Pagination
+   ========================================================== */
+.ec-base-paginate,
+.paginate {
+    text-align: center !important;
+    margin: 32px 0 !important;
+    padding: 0 !important;
+}
+.ec-base-paginate ol,
+.paginate ol {
+    display: inline-flex !important;
+    gap: 2px !important;
+    align-items: center !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.ec-base-paginate li a,
+.ec-base-paginate a,
+.paginate a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 32px !important;
+    height: 32px !important;
+    padding: 0 6px !important;
+    font-size: 12px !important;
+    color: #999 !important;
+    text-decoration: none !important;
+    border-radius: 0 !important;
+    transition: all 0.2s ease !important;
+}
+.ec-base-paginate li a:hover,
+.ec-base-paginate a:hover,
+.paginate a:hover {
+    color: #212121 !important;
+    background: #f5f5f5 !important;
+    opacity: 1 !important;
+}
+.ec-base-paginate .now,
+.ec-base-paginate li a.now,
+.ec-base-paginate strong,
+.paginate .this {
+    color: #212121 !important;
+    font-weight: 600 !important;
+    background: #f5f5f5 !important;
+}
+
+
+/* ==========================================================
+   24. Login / Member Pages — pickysociety minimal
+   ========================================================== */
+
+/* #top 영역 숨김 (LOGIN CART 텍스트 제거) */
+#top {
+    display: none !important;
+}
+
+/* 페이지 타이틀 "로그인" 숨김 — 폼 안에 이미 있으므로 */
+.xans-member-login .titleArea,
+.member .titleArea {
+    border: none !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* 로그인 전체 래퍼 */
+.xans-member-login,
+#member_login,
+.member .login {
+    max-width: 360px !important;
+    margin: 60px auto 0 !important;
+    padding: 0 !important;
+}
+
+/* Member Login 박스 — 테두리/배경 제거 */
+.xans-member-login .ec-base-box,
+.member .login .ec-base-box {
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+/* "Member Login" 제목 */
+.xans-member-login h3,
+.member .login h3 {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #212121 !important;
+    text-align: center !important;
+    margin: 0 0 8px !important;
+    letter-spacing: 0.04em !important;
+}
+
+/* 설명 텍스트 */
+.xans-member-login .ec-base-box > p,
+.member .login .description {
+    font-size: 11px !important;
+    color: #999 !important;
+    text-align: center !important;
+    margin-bottom: 24px !important;
+}
+
+/* 폼 필드셋 */
+.xans-member-login fieldset,
+#member_login fieldset {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* 아이디/비밀번호 입력 */
+.xans-member-login input[type="text"],
+.xans-member-login input[type="password"],
+#member_login input[type="text"],
+#member_login input[type="password"] {
+    width: 100% !important;
+    height: 44px !important;
+    font-size: 13px !important;
+    border: none !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    margin-bottom: 0 !important;
+}
+.xans-member-login input[type="text"]:focus,
+.xans-member-login input[type="password"]:focus {
+    border-bottom-color: #212121 !important;
+}
+
+/* 로그인 버튼 */
+.xans-member-login .btnArea,
+#member_login .btnArea {
+    margin-top: 20px !important;
+}
+.xans-member-login .btnArea a,
+.xans-member-login .btnArea button,
+.xans-member-login .btnArea input,
+#member_login .btnArea a,
+#member_login .btnArea input {
+    width: 100% !important;
+    height: 44px !important;
+    background: #212121 !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 0 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.06em !important;
+    cursor: pointer !important;
+}
+.xans-member-login .btnArea a:hover,
+.xans-member-login .btnArea input:hover {
+    background: #000 !important;
+    opacity: 1 !important;
+}
+
+/* 아이디찾기 / 비밀번호찾기 / 아이디저장 / 보안접속 */
+.xans-member-login .link,
+.xans-member-login .ec-base-help,
+.xans-member-login .autoLogin,
+#member_login .autoLogin {
+    margin-top: 12px !important;
+    text-align: center !important;
+    font-size: 11px !important;
+}
+.xans-member-login .link a,
+.xans-member-login .autoLogin a,
+.xans-member-login .autoLogin label {
+    font-size: 11px !important;
+    color: #999 !important;
+    text-decoration: none !important;
+}
+.xans-member-login .link a:hover {
+    color: #212121 !important;
+    opacity: 1 !important;
+}
+
+/* 회원가입 안내 영역 */
+.xans-member-login .join,
+.member .login .join,
+.member .ec-base-box:last-child {
+    border: none !important;
+    background: none !important;
+    text-align: center !important;
+    margin-top: 32px !important;
+    padding: 24px 0 0 !important;
+    border-top: 1px solid #f1f1f1 !important;
+    box-shadow: none !important;
+}
+.xans-member-login .join p,
+.member .login .join p {
+    font-size: 11px !important;
+    color: #999 !important;
+    margin-bottom: 12px !important;
+}
+
+/* 회원가입 버튼 */
+.xans-member-login .join a,
+.xans-member-login .join input,
+.member .login .join a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 40px !important;
+    padding: 0 32px !important;
+    background: #fff !important;
+    color: #212121 !important;
+    border: 1px solid #ddd !important;
+    border-radius: 0 !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.04em !important;
+    cursor: pointer !important;
+}
+.xans-member-login .join a:hover {
+    border-color: #212121 !important;
+    opacity: 1 !important;
+}
+
+
+/* ==========================================================
+   25. Tab Style (카페24 기본 탭)
+   ========================================================== */
+.ec-base-tab ul {
+    display: flex !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+.ec-base-tab li {
+    flex: none !important;
+}
+.ec-base-tab li a {
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 40px !important;
+    padding: 0 20px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #999 !important;
+    text-decoration: none !important;
+    border-bottom: 2px solid transparent !important;
+    transition: all 0.2s ease !important;
+}
+.ec-base-tab li a:hover {
+    color: #212121 !important;
+    opacity: 1 !important;
+}
+.ec-base-tab li.selected a,
+.ec-base-tab li.active a {
+    color: #212121 !important;
+    border-bottom-color: #212121 !important;
+    font-weight: 600 !important;
+}
+
+
+/* ==========================================================
+   26. Box / Notice Style
+   ========================================================== */
+.ec-base-box {
+    border: 1px solid #f1f1f1 !important;
+    border-radius: 0 !important;
+    padding: 16px 20px !important;
+    margin: 12px 0 !important;
+    background: #fafafa !important;
+    font-size: 12px !important;
+    color: #666 !important;
+    line-height: 1.7 !important;
+}
+.ec-base-box strong {
+    color: #212121 !important;
+}
+
+/* 알림/안내 텍스트 */
+.ec-base-help {
+    font-size: 11px !important;
+    color: #999 !important;
+    line-height: 1.6 !important;
+}
+.ec-base-help .ico {
+    color: #db7e7e !important;
+}
+
+
+/* ==========================================================
+   27. Cart Page — pickysociety minimal style
+   ========================================================== */
+
+/* 장바구니 이용안내 숨김 */
+.xans-order-basketguide,
+.xans-order-basket .guideArea {
+    display: none !important;
+}
+
+/* 장바구니 테이블 — 미니멀 */
+.xans-order-basket table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border: none !important;
+}
+.xans-order-basket th {
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    color: #999 !important;
+    padding: 12px 8px !important;
+    border: none !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    background: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+}
+.xans-order-basket td {
+    font-size: 12px !important;
+    color: #212121 !important;
+    padding: 16px 8px !important;
+    border: none !important;
+    border-bottom: 1px solid #f1f1f1 !important;
+    vertical-align: middle !important;
+    background: none !important;
+}
+
+/* 장바구니 상품 이미지 */
+.xans-order-basket .thumbnail img,
+.xans-order-basket td img.thumb {
+    width: 80px !important;
+    height: auto !important;
+    border-radius: 0 !important;
+}
+
+/* 장바구니 상품명 */
+.xans-order-basket .name a,
+.xans-order-basket td.name a {
+    font-size: 12px !important;
+    color: #212121 !important;
+    font-weight: 400 !important;
+    text-decoration: none !important;
+}
+
+/* 장바구니 가격 */
+.xans-order-basket .price,
+.xans-order-basket td.price {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #212121 !important;
+}
+
+/* 장바구니 비었을 때 */
+.xans-order-basket .message,
+.xans-order-basket .noData {
+    text-align: center !important;
+    padding: 60px 0 !important;
+    font-size: 13px !important;
+    color: #999 !important;
+}
+
+/* 스토어픽업 버튼 — JS에서 주문 기능으로 교체됨 (ga09.js) */
+
+/* 전체상품주문/선택상품주문 버튼 (.totalbt) — 메인 주문 버튼으로 스타일링 */
+.totalbt {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 48px !important;
+    padding: 0 32px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.04em !important;
+    border-radius: 0 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    white-space: nowrap !important;
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    box-sizing: border-box !important;
+}
+.totalbt.btst1 {
+    background: #212121 !important;
+    color: #fff !important;
+    border: none !important;
+}
+.totalbt.btst1:hover {
+    background: #000 !important;
+}
+.totalbt.btst2 {
+    background: #fff !important;
+    color: #212121 !important;
+    border: 1px solid #ddd !important;
+}
+.totalbt.btst2:hover {
+    border-color: #212121 !important;
+}
+.totalbt.btst5 {
+    background: #fff !important;
+    color: #999 !important;
+    border: 1px solid #eee !important;
+}
+
+@media (max-width: 768px) {
+    .totalbt {
+        width: 100% !important;
+        height: 44px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* 장바구니 하단 버튼들 — pickysociety 스타일 */
+.xans-order-basket .btnArea,
+.xans-order-basketpackage .btnArea,
+.orderBasket .btnArea {
+    display: flex !important;
+    gap: 8px !important;
+    justify-content: center !important;
+    margin: 24px 0 !important;
+    padding: 0 !important;
+}
+.xans-order-basket .btnArea a,
+.xans-order-basket .btnArea button,
+.orderBasket .btnArea a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 44px !important;
+    padding: 0 28px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.04em !important;
+    border-radius: 0 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+}
+
+/* 전체상품주문 (Primary) */
+.xans-order-basket .btnArea .btnSubmit,
+.xans-order-basket .btnArea a:first-child,
+.orderBasket .btnArea .btnSubmit {
+    background: #f1f1f1 !important;
+    color: #212121 !important;
+    border: none !important;
+}
+.xans-order-basket .btnArea .btnSubmit:hover,
+.xans-order-basket .btnArea a:first-child:hover {
+    background: #777 !important;
+    color: #fff !important;
+    opacity: 1 !important;
+}
+
+/* 선택상품주문 / 쇼핑계속하기 (Secondary) */
+.xans-order-basket .btnArea .btnNormal,
+.xans-order-basket .btnArea a + a,
+.orderBasket .btnArea .btnNormal {
+    background: #fff !important;
+    color: #212121 !important;
+    border: 1px solid #ddd !important;
+}
+.xans-order-basket .btnArea .btnNormal:hover,
+.xans-order-basket .btnArea a + a:hover {
+    border-color: #212121 !important;
+    opacity: 1 !important;
+}
+
+/* 장바구니 합계 영역 */
+.totalSummary,
+.xans-order-basket .total,
+.orderBasket .total {
+    border: none !important;
+    background: none !important;
+    padding: 20px 0 !important;
+    border-top: 1px solid #e0e0e0 !important;
+    font-size: 13px !important;
+}
+.totalSummary strong,
+.xans-order-basket .total strong {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #212121 !important;
+}
+
+/* 장바구니 삭제/수량변경 버튼 */
+.xans-order-basket .delete a,
+.xans-order-basket .modify a {
+    font-size: 11px !important;
+    color: #999 !important;
+    text-decoration: underline !important;
+}
+.xans-order-basket .delete a:hover,
+.xans-order-basket .modify a:hover {
+    color: #212121 !important;
+    opacity: 1 !important;
+}
+
+
+/* ==========================================================
+   28. Mobile — Form & Utility pages
+   ========================================================== */
+@media (max-width: 768px) {
+    /* 로그인 */
+    .xans-member-login,
+    #member_login {
+        max-width: 100% !important;
+        padding: 0 16px !important;
+        margin-top: 20px !important;
+    }
+    .titleArea h2,
+    .xans-layout-title h2 {
+        font-size: 16px !important;
+    }
+    .ec-base-table th,
+    .ec-base-table td,
+    .boardList th,
+    .boardList td {
+        padding: 8px 8px !important;
+        font-size: 11px !important;
+    }
+    .ec-base-tab li a {
+        padding: 0 14px !important;
+        font-size: 11px !important;
+        height: 36px !important;
+    }
+
+    /* 장바구니 모바일 */
+    .xans-order-basket .btnArea {
+        flex-direction: column !important;
+        gap: 6px !important;
+        padding: 0 16px !important;
+    }
+    .xans-order-basket .btnArea a,
+    .xans-order-basket .btnArea button {
+        width: 100% !important;
+        height: 42px !important;
+    }
+    .xans-order-basket th {
+        font-size: 10px !important;
+        padding: 8px 4px !important;
+    }
+    .xans-order-basket td {
+        font-size: 11px !important;
+        padding: 12px 4px !important;
+    }
+    .xans-order-basket .thumbnail img,
+    .xans-order-basket td img.thumb {
+        width: 60px !important;
+    }
+}
+
+
+/* ==========================================================
+   29. Cart Drawer (사이드 패널)
+   ========================================================== */
+
+/* 배경 오버레이 */
+.cart-drawer-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 10000;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+.cart-drawer-overlay.open {
+    display: block;
+    opacity: 1;
+}
+
+/* 드로어 패널 */
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: -460px;
+    width: 420px;
+    max-width: 90vw;
+    height: 100%;
+    background: #fff;
+    z-index: 10001;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: -4px 0 20px rgba(0,0,0,0.08);
+}
+.cart-drawer.open {
+    right: 0;
+}
+
+/* 헤더 */
+.cart-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid #f1f1f1;
+    flex-shrink: 0;
+}
+.cart-drawer-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #212121;
+    letter-spacing: 0.08em;
+    font-family: helvetica, 'Noto Sans KR', sans-serif;
+}
+.cart-drawer-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    font-weight: 300;
+    transition: color 0.2s;
+}
+.cart-drawer-close:hover {
+    color: #212121;
+}
+
+/* 바디 (아이템 목록) */
+.cart-drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+}
+
+/* 로딩 */
+.cart-drawer-loading {
+    text-align: center;
+    padding: 60px 0;
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 0.04em;
+}
+
+/* 비었을 때 */
+.cart-drawer-empty {
+    text-align: center;
+    padding: 60px 24px;
+    font-size: 13px;
+    color: #999;
+    line-height: 1.6;
+}
+
+/* 아이템 카드 */
+.cart-drawer-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid #f5f5f5;
+    align-items: flex-start;
+}
+.cart-drawer-item-img {
+    flex-shrink: 0;
+    width: 80px;
+}
+.cart-drawer-item-img img {
+    width: 80px;
+    height: auto;
+    display: block;
+}
+.cart-drawer-item-info {
+    flex: 1;
+    min-width: 0;
+}
+.cart-drawer-item-name {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #212121 !important;
+    text-decoration: none !important;
+    line-height: 1.5 !important;
+    display: block;
+    margin-bottom: 4px;
+}
+.cart-drawer-item-name:hover {
+    opacity: 0.7 !important;
+}
+.cart-drawer-item-option {
+    font-size: 11px;
+    color: #999;
+    margin: 0 0 4px;
+    line-height: 1.4;
+}
+.cart-drawer-item-price {
+    font-size: 12px;
+    color: #212121;
+    font-weight: 400;
+    margin: 0;
+}
+
+/* 푸터 (합계 + 체크아웃) */
+.cart-drawer-footer {
+    flex-shrink: 0;
+    border-top: 1px solid #e0e0e0;
+    padding: 20px 24px 24px;
+    background: #fff;
+}
+.cart-drawer-summary {
+    margin-bottom: 16px;
+}
+.cart-drawer-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #999;
+    padding: 3px 0;
+}
+.cart-drawer-total {
+    color: #212121;
+    font-weight: 500;
+    font-size: 13px;
+    padding-top: 8px;
+    margin-top: 4px;
+    border-top: 1px solid #f1f1f1;
+}
+.cart-drawer-checkout {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 44px;
+    background: #212121 !important;
+    color: #fff !important;
+    border: none;
+    font-size: 12px !important;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    text-decoration: none !important;
+    font-family: helvetica, 'Noto Sans KR', sans-serif;
+    transition: background 0.2s ease;
+}
+.cart-drawer-checkout:hover {
+    background: #000 !important;
+    opacity: 1 !important;
+}
+
+/* 카페24 기본 장바구니 팝업 — 표시 허용 */
+
+/* 모바일 */
+@media (max-width: 768px) {
+    .cart-drawer {
+        width: 100%;
+        max-width: 100%;
+        right: -100%;
+    }
+    .cart-drawer-item-img {
+        width: 64px;
+    }
+    .cart-drawer-item-img img {
+        width: 64px;
+    }
+    .cart-drawer-item {
+        padding: 16px;
+        gap: 12px;
+    }
+    .cart-drawer-header {
+        padding: 16px;
+    }
+    .cart-drawer-footer {
+        padding: 16px;
+    }
+}
+
+
+/* ==========================================================
+   30. 검색 인기 상품 슬라이드 (layout.html에서 이전)
+   ========================================================== */
+.search-rec{width:100%;max-width:600px;margin-top:40px;padding:0 16px;box-sizing:border-box}
+.search-rec-title{font-size:12px;font-weight:400;color:#999;letter-spacing:0.1em;margin:0 0 16px}
+.search-rec-grid{display:flex;overflow-x:auto;gap:12px;padding:0 0 8px;margin:0;list-style:none;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
+.search-rec-grid::-webkit-scrollbar{display:none}
+.search-rec-grid>li{flex:0 0 120px;overflow:hidden}
+.search-rec-grid>li .prdpadding{padding:0}
+.search-rec-grid>li .prdline{width:120px;height:160px;overflow:hidden}
+.search-rec-grid>li .prdline img{width:100%;height:100%;object-fit:cover;display:block}
+.search-rec-grid>li .hoverimg{width:100%;height:100%}
+.search-rec-grid>li .hoverimg a{display:block;width:100%;height:100%}
+.search-rec-grid>li .name{font-size:11px;font-weight:400;color:#212121;margin:6px 0 2px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.search-rec-grid>li .name a{text-decoration:none;color:#212121}
+.search-rec-grid>li .prices,.search-rec-grid>li .price{font-size:11px;color:#999}
+.search-rec-grid>li .colorWrap,.search-rec-grid>li .info,.search-rec-grid>li .prd-keywords{display:none}
+@media(max-width:768px){.search-rec-grid>li{flex:0 0 100px}.search-rec-grid>li .prdline{width:100px;height:133px}}
+/* PC에서 인기 상품 크기 확대 */
+@media(min-width:769px){.search-rec-grid>li{flex:0 0 140px}.search-rec-grid>li .prdline{width:140px;height:187px}.search-rec{max-width:800px}}
+
+
+/* ==========================================================
+   31. 메뉴 오버레이 COMMUNITY 섹션
+   ========================================================== */
+.menu-overlay-community { padding: 24px 0 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 16px; }
+.menu-overlay-section-title { font-size: 10px; font-weight: 400; color: rgba(255,255,255,0.4); letter-spacing: 0.15em; text-transform: uppercase; margin: 0 0 12px; padding: 0 32px; }
+.menu-overlay-community ul { list-style: none; padding: 0; margin: 0; }
+.menu-overlay-community li { padding: 0 32px; }
+.menu-overlay-community li a { display: block; padding: 8px 0; font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.8); text-decoration: none; letter-spacing: 0.04em; transition: all 0.3s ease; }
+.menu-overlay-community li a:hover { color: #fff; letter-spacing: 0.08em; }
+
+
+/* ==========================================================
+   32. PC 검색 오버레이
+   ========================================================== */
+@media(min-width:769px){
+    .mobile-search-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); z-index: 10000; flex-direction: column; align-items: center; justify-content: center; padding: 0 40px; }
+    .mobile-search-overlay.open { display: flex !important; }
+    .mobile-search-overlay form { width: 100%; max-width: 600px; }
+    .mobile-search-overlay input[type="text"] { font-size: 24px; width: 100%; border: none; border-bottom: 2px solid #212121; padding: 16px 0; background: transparent; font-family: helvetica, 'Noto Sans KR', sans-serif; color: #212121; outline: none; }
+    .mobile-search-overlay .search-submit { position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; }
+    .mobile-search-overlay .search-close { position: absolute; top: 40px; right: 40px; background: none; border: none; font-size: 24px; cursor: pointer; color: #212121; }
+}
+
+
+/* 섹션 33-34: 제거됨 — 전역 오버라이드가 카페24 기능(장바구니 등)을 방해하여 삭제 */
+/* 폰트/색상 통일은 개별 CSS 파일(button.css, login.css 등)에서 직접 처리 */

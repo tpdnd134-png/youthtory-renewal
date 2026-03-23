@@ -1,0 +1,51 @@
+<!--@layout(/layout-list.html)-->
+<!--@css(/css/ga09product.css)-->
+
+
+<div class="titleArea">
+    <h2>SEARCH</h2>
+</div>
+
+<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
+<div module="search_form">
+    <!--@css(/css/module/product/search_form.css)-->
+    <div class="noData {$search_fail_display|display}">
+        <strong class="warning">검색결과가 없습니다.</strong>
+        <strong>정확한 검색어 인지 확인하시고 다시 검색해 주세요.</strong>
+        <ul>
+            <li>검색어/제외검색어의 입력이 정확한지 확인해 보세요.</li>
+            <li>두 단어 이상의 검색어인 경우, 띄어쓰기를 확인해 보세요.</li>
+        </ul>
+    </div>
+</div><!-- //참고 -->
+
+<div module="Search_Result" class="ga09list">
+
+    <!--
+    $count = 20
+    -->
+    <ul class="grid4">
+        <!--@import(/prdlist.html)-->
+        <!--@import(/prdlist.html)-->
+    </ul>
+</div>
+
+<div module="search_paging" class="ga09-paging">
+    <a href="{$param_first}" class="first"><img src="/img/page_first.gif" alt="첫 페이지" /></a>
+    <a href="{$param_before}"><img src="/img/page_prev.gif" alt="이전 페이지" /></a>
+    <ol>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+    </ol>
+    <a href="{$param_next}"><img src="/img/page_next.gif" alt="다음 페이지" /></a>
+    <a href="{$param_last}" class="last"><img src="/img/page_last.gif" alt="마지막 페이지" /></a>
+</div>
+

@@ -1,0 +1,131 @@
+/* YOUTHTORY Renewed - Left Navigation (pickysociety 스타일) */
+
+#left {
+    position: fixed;
+    z-index: 99;
+    left: 40px;
+    top: 0;
+    width: 180px;
+    padding: 24px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #212121;
+    transition: all 0.3s ease;
+}
+#left a {
+    text-decoration: none;
+    color: #212121;
+    transition: all 0.3s ease;
+}
+#left a:hover {
+    text-decoration: none;
+    opacity: 0.6;
+}
+.leftbg {
+    background: #ffffff;
+}
+
+/* 로고 */
+#left #logo {
+    padding: 20px 0;
+}
+#left #logo img {
+    padding: 16px 0;
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+    transition: all 0.3s ease;
+    max-width: 100%;
+}
+#left #logo img:hover {
+    padding: 16px 0;
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* 메뉴 리스트 */
+#left #menulist {
+    margin-top: 32px;
+    width: 180px;
+}
+
+/* 아코디언 메뉴 */
+#left .accordionmenu,
+#left .accordionmenu2 {
+    cursor: pointer;
+    width: 180px;
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: all 0.3s ease;
+    background: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 44px;
+    color: #212121;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+#left .accordionmenu:hover,
+#left .accordionmenu2:hover {
+    letter-spacing: 0.06em; /* pickysociety hover 효과 */
+}
+
+/* 서브 패널 */
+#left .panel {
+    background: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 28px;
+}
+#left .panel a {
+    color: #666666;
+    display: block;
+    padding-left: 0;
+    transition: all 0.3s ease;
+}
+#left .panel a:hover {
+    margin-left: 0;
+    padding-left: 8px;
+    color: #212121;
+}
+
+#left .panel2 {
+    margin-bottom: 12px;
+    background: transparent;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 28px;
+}
+#left .panel2 a {
+    color: #666666;
+    display: block;
+    transition: all 0.3s ease;
+}
+#left .panel2 a:hover {
+    margin-left: 0;
+    padding-left: 8px;
+    color: #212121;
+}
+
+/* 버튼 리셋 */
+#left button,
+#left button:focus,
+#left button:active {
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+#left span {
+    position: relative;
+}

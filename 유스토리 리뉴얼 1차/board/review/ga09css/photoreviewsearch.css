@@ -1,0 +1,37 @@
+#photoreviewsearch { padding:30px 50px; border:1px solid #eaeaea; margin-top:30px; margin-bottom:60px; color:#494949; font-size:12px; font-family: 'Nanum Gothic', sans-serif;}
+#photoreviewsearch .boardSearch { display:block; }
+#photoreviewsearch p { margin:0 0 10px; padding:0 0 0 7px; background:url("http://img.echosting.cafe24.com/skin/base/common/ico_triangle3.gif") no-repeat 0 45%; }
+#photoreviewsearch p.category:before { content:"상품분류"; }
+#photoreviewsearch p:before { content:"검색어"; }
+#photoreviewsearch select { width:72px; font-size:12px; font-family: 'Nanum Gothic', sans-serif; font-weight:600; height:30px; line-height:30px; margin-top:-1px}
+
+#photoreviewsearch input { font-size:12px; font-family: 'Nanum Gothic', sans-serif; height:25px; line-height:25px; width:162px; border:1px solid #d5d5d5; color:#2e2e2e; margin-top:-1px}
+#photoreviewsearch .boardSearch img { vertical-align:middle; }
+
+
+#product_category_depth1 {}
+#product_category_depth2, #product_category_depth3, #product_category_depth4 {display:none}
+
+
+#photoreviewsearch div.category:before {
+    content: "카테고리별 검색";
+    margin-right:20px
+}
+#photoreviewsearch div.reviewboard:before {
+}
+
+#photoreviewsearch .category select {
+    margin: -1px 0 0 0;
+    width: 200px;
+    font-size:12px;
+    font-family: 'Nanum Gothic', sans-serif;
+    height:30px;
+    line-height:30px;
+    border:1px solid #d5d5d5;
+}
+
+#photoreviewsearch p {
+    margin: 0;
+    padding:0;
+    background: none;
+}

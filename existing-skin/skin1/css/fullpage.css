@@ -1,0 +1,266 @@
+.video-container { pointer-events: none !important; position: relative !important; padding-bottom: 58% !important; padding-top: 0 !important; height: 0 !important; overflow: hidden !important; }
+.video-container iframe, .video-container object, .video-container embed { position: absolute !important; top: -10% !important; left: -5% !important; width: 120% !important; height: 130% !important; }
+
+/* YOUTHTORY Renewed - Fullpage Intro */
+
+
+#section2 .intro {
+    position: absolute !important; top: 65% !important; left: 50% !important; width: 100% !important;
+    text-align: center !important; color: #fff !important;
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    transform: translateX(-50%) !important; opacity: 0.2 !important;
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+body.fp-viewing-secondPage #section2 .intro {
+    position: absolute !important; top: 47% !important; left: 50% !important;
+    transform: translateX(-50%) !important; opacity: 1 !important;
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#section2 .title {
+    letter-spacing: 0.15em !important; border: 1px solid rgba(255,255,255,0.6) !important;
+    font-size: 14px !important; font-weight: 300 !important; padding: 14px 28px !important;
+    display: inline-block !important; margin: 0 auto 24px !important;
+    transition: all 0.3s ease !important; color: #fff !important; text-transform: uppercase !important;
+}
+#section2 .title:hover { color: #212121 !important; border-color: #fff !important; background: #fff !important; letter-spacing: 0.2em !important; cursor: pointer !important; }
+
+#section2 .sub {
+    font-size: 12px !important; font-weight: 300 !important; line-height: 1.8 !important;
+    letter-spacing: 0.08em !important; opacity: 0.8 !important; color: #fff !important;
+}
+
+html.fp-enabled,
+.fp-enabled body {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow:hidden !important;
+
+    /*Avoid flicker on slides transitions for mobile phones #336 */
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+}
+.fp-section {
+    position: relative !important;
+    -webkit-box-sizing: border-box; /* Safari<=5 Android<=3 */
+    -moz-box-sizing: border-box; /* <=28 */
+    box-sizing: border-box !important;
+}
+.fp-slide {
+    float: left !important;
+}
+.fp-slide, .fp-slidesContainer {
+    height: 100% !important;
+    display: block !important;
+}
+.fp-slides {
+    z-index:1 !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    position: relative !important;
+    -webkit-transition: all 0.3s ease-out; /* Safari<=6 Android<=4.3 */
+    transition: all 0.3s ease-out !important;
+}
+.fp-section.fp-table, .fp-slide.fp-table {
+    display: table !important;
+    table-layout:fixed !important;
+    width: 100% !important;
+}
+.fp-tableCell {
+    display: table-cell !important;
+    vertical-align: middle !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+.fp-slidesContainer {
+    float: left !important;
+    position: relative !important;
+}
+.fp-controlArrow {
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+    position: absolute !important;
+    z-index: 4 !important;
+    top: 50% !important;
+    cursor: pointer !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-style: solid !important;
+    margin-top: -38px !important;
+    -webkit-transform: translate3d(0,0,0) !important;
+    -ms-transform: translate3d(0,0,0) !important;
+    transform: translate3d(0,0,0) !important;
+}
+.fp-controlArrow.fp-prev {
+    left: 15px !important;
+    width: 0 !important;
+    border-width: 38.5px 34px 38.5px 0 !important;
+    border-color: transparent #fff transparent transparent !important;
+}
+.fp-controlArrow.fp-next {
+    right: 15px !important;
+    border-width: 38.5px 0 38.5px 34px !important;
+    border-color: transparent transparent transparent #fff !important;
+}
+.fp-scrollable {
+    overflow: hidden !important;
+    position: relative !important;
+}
+.fp-scroller{
+    overflow: hidden !important;
+}
+.iScrollIndicator{
+    border: 0 !important;
+}
+.fp-notransition {
+    -webkit-transition: none !important;
+    transition: none !important;
+}
+#fp-nav {
+    position: fixed !important;
+    z-index: 100 !important;
+    margin-top: -32px !important;
+    top: 50% !important;
+    opacity: 1 !important;
+    -webkit-transform: translate3d(0,0,0) !important;
+}
+#fp-nav.fp-right {
+    right: 17px !important;
+}
+#fp-nav.fp-left {
+    left: 17px !important;
+}
+.fp-slidesNav{
+    position: absolute !important;
+    z-index: 4 !important;
+    opacity: 1 !important;
+    -webkit-transform: translate3d(0,0,0) !important;
+    -ms-transform: translate3d(0,0,0) !important;
+    transform: translate3d(0,0,0) !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important;
+}
+.fp-slidesNav.fp-bottom {
+    bottom: 17px !important;
+}
+.fp-slidesNav.fp-top {
+    top: 17px !important;
+}
+#fp-nav ul,
+.fp-slidesNav ul {
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align:center !important;
+}
+#fp-nav ul li,
+.fp-slidesNav ul li {
+    display: block !important;
+    width: 14px !important;
+    height: 13px !important;
+    margin: 7px !important;
+    position:relative !important;
+}
+.fp-slidesNav ul li {
+    display: inline-block !important;
+}
+#fp-nav ul li a,
+.fp-slidesNav ul li a {
+    display: block !important;
+    position: relative !important;
+    z-index: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+#fp-nav ul li a.active span,
+.fp-slidesNav ul li a.active span,
+#fp-nav ul li:hover a.active span,
+.fp-slidesNav ul li:hover a.active span{
+    height: 12px !important;
+    width: 12px !important;
+    margin: -6px 0 0 -6px !important;
+    border-radius: 100% !important;
+ }
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+    border-radius: 50% !important;
+    position: absolute !important;
+    z-index: 1 !important;
+    height: 4px !important;
+    width: 4px !important;
+    border: 0 !important;
+    background: #333 !important;
+    left: 50% !important;
+    top: 50% !important;
+    margin: -2px 0 0 -2px !important;
+    -webkit-transition: all 0.1s ease-in-out !important;
+    -moz-transition: all 0.1s ease-in-out !important;
+    -o-transition: all 0.1s ease-in-out !important;
+    transition: all 0.1s ease-in-out !important;
+}
+#fp-nav ul li:hover a span,
+.fp-slidesNav ul li:hover a span{
+    width: 10px !important;
+    height: 10px !important;
+    margin: -5px 0px 0px -5px !important;
+}
+#fp-nav ul li .fp-tooltip {
+    position: absolute !important;
+    top: -2px !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    font-family: arial, helvetica, sans-serif !important;
+    white-space: nowrap !important;
+    max-width: 220px !important;
+    overflow: hidden !important;
+    display: block !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    cursor: pointer !important;
+}
+#fp-nav ul li:hover .fp-tooltip,
+#fp-nav.fp-show-active a.active + .fp-tooltip {
+    -webkit-transition: opacity 0.2s ease-in !important;
+    transition: opacity 0.2s ease-in !important;
+    width: auto !important;
+    opacity: 1 !important;
+}
+#fp-nav ul li .fp-tooltip.fp-right {
+    right: 20px !important;
+}
+#fp-nav ul li .fp-tooltip.fp-left {
+    left: 20px !important;
+}
+.fp-auto-height.fp-section,
+.fp-auto-height .fp-slide,
+.fp-auto-height .fp-tableCell{
+    height: auto !important;
+}
+
+.fp-responsive .fp-auto-height-responsive.fp-section,
+.fp-responsive .fp-auto-height-responsive .fp-slide,
+.fp-responsive .fp-auto-height-responsive .fp-tableCell {
+    height: auto !important;
+}
+
+/*Only display content to screen readers*/
+.fp-sr-only{
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .hero-section .intro .title { font-size: 20px !important; }
+    .hero-section .intro .sub { font-size: 12px !important; }
+    .hero-section .intro { padding: 20px !important; }
+}

@@ -1,0 +1,93 @@
+/* YOUTHTORY Renewed - Header (pickysociety 스타일) */
+
+#top {
+    position: fixed;
+    z-index: 80;
+    right: 40px;
+    top: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    padding: 0;
+    height: 74px; /* pickysociety 헤더 높이 */
+    line-height: 74px;
+    color: #212121;
+    transition: all 0.3s ease;
+}
+#top a {
+    text-decoration: none;
+    color: #212121;
+    transition: opacity 0.3s ease;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+#top a:hover {
+    text-decoration: none;
+    opacity: 0.6;
+}
+
+/* 장바구니 아이콘 */
+#top #topcarticon {
+    float: right;
+    margin-top: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    margin-left: 20px;
+    line-height: 74px;
+}
+#top #topcarticon img {
+    margin-top: 0;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+/* 검색바 */
+#top #topsearch {
+    float: right;
+    margin-left: 20px;
+    margin-top: 0;
+    line-height: 74px;
+}
+#top #topsearch .search-bar {
+    margin: 0;
+    padding: 0;
+}
+#top #topsearch .search-bar img {
+    cursor: pointer;
+    margin-left: 4px;
+    height: 16px;
+    vertical-align: middle;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+#top #topsearch .search-bar img:hover {
+    opacity: 1;
+}
+#top #topsearch .search-bar input[type=text] {
+    height: 24px;
+    padding: 0;
+    font-size: 12px;
+    color: #212121;
+    width: 0;
+    border: none;
+    border-bottom: 1px solid #dadada;
+    background: transparent;
+    transition: width 0.3s ease, border-color 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+#top #topsearch .search-bar:hover input[type=text],
+#top #topsearch .search-bar input[type=text]:focus {
+    width: 120px;
+    border-bottom: 1px solid #212121;
+}
+
+/* 로그인/회원가입 */
+#top #log {
+    float: right;
+    margin-top: 0;
+    font-size: 12px;
+    line-height: 74px;
+}
+#top #log a {
+    margin-left: 20px;
+    font-weight: 400;
+}

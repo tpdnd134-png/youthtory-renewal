@@ -1,0 +1,29 @@
+<!--@css(/css/top.css)-->
+
+<header id="header">
+
+    <!-- 좌측 메뉴버튼 -->
+    <div id="toggle"><span></span></div>
+
+    <div id="top">
+        <div class="topbg_back"></div>
+
+        <div style="margin:0 15px;">
+
+            <div id="menuicon" style='cursor:pointer;' class="fold"><i class="fas fa-bars" style="font-size:18px; color:#212121;"></i></div>
+
+            <!-- SHOP YOUTHTORY 로고 -->
+            <div id="logo"><a href="/"><img src="/web/upload/ga09/logo-C-refined-header.svg" alt="SHOP YOUTHTORY"></a></div>
+
+            <!-- 장바구니 모듈 -->
+            <div id="cart" module="Layout_statelogoff"><a href="/order/basket.html"><div class="cartcount {$basket_count_display_class}"><span>{$basket_count}</span></div><i class="fas fa-shopping-bag" style="font-size:18px; color:#212121;"></i></a></div>
+            <div id="cart" module="Layout_stateLogon"><a href="/order/basket.html"><div class="cartcount {$basket_count_display_class}"><span>{$basket_count}</span></div><i class="fas fa-shopping-bag" style="font-size:18px; color:#212121;"></i></a></div>
+
+            <div style="clear:both"></div>
+
+        </div>
+    </div>
+
+    <!-- 검색창 팝업 모듈 -->
+
+</header>

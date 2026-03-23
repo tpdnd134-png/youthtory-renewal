@@ -1,0 +1,99 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+#review_popup { display:none; width:100%; height: 100%; }
+#review_popup .content { width:100%; height: 100%; }
+#review_photo li { height:100px; background-color:#eee; }
+#review_photo img { cursor:pointer; }
+#review_popup iframe { width:100%; height:100%; background:#fff; border:none}
+
+#licensetext {font-size:10px; font-family:Tahoma; color:#c5c5c5; letter-spacing:1px; line-height:50px}
+#licensetext a {color:#c5c5c5}
+
+
+.review_imglist img { display:inline; height:100px; margin-right:10px; margin-top:20px; cursor:pointer; vertical-align:top; }
+
+.xans-board-listpackage { font-size:11px }
+.xans-board-listpackage a:hover {text-decoration:none;}
+
+/* 공지글 공통 */
+
+.xans-board-listpackage .notice {border:1px solid #eaeaea; border-left:none; border-right:none; margin-bottom:60px; font-size:12px; font-family: 'Nanum Gothic', sans-serif; font-weight:500; letter-spacing:-1px}
+.xans-board-listpackage .notice a { color:#000; -webkit-transition-duration: 0.3; transition-duration: 0.3s;}
+.xans-board-listpackage .notice a:hover {text-decoration:none; color:#868686;}
+.xans-board-listpackage .notice .noticeline {border-top:1px solid #eaeaea;margin:15px 0; padding-top:15px}
+.xans-board-listpackage .notice .left {float:left; width:70px; text-align:center;}
+.xans-board-listpackage .notice .left img {vertical-align:middle; line-height:9px}
+.xans-board-listpackage .notice .right {float:left; line-height:9px}
+.xans-board-listpackage .notice .date {float:right; font-size:10px; color:#a4a4a4; line-height:10px; padding-right:20px; letter-spacing:0}
+
+
+/* 이미지 형식 */
+
+.ga09photoreview {font-size:12px; font-family: 'Nanum Gothic', sans-serif;}
+.ga09photoreview ul { clear:both; zoom:1;}
+.ga09photoreview ul li { float:left; width:49.9%; }
+.ga09photoreview .listinner { padding:10px; border:1px solid #eaeaea; margin:7px}
+.ga09photoreview .thumbnail img { width:100%; }
+
+.ga09photoreview .infobox {border-top:1px solid #eaeaea; }
+.ga09photoreview .infobox .info1 {padding-top:12px; line-height:12px; }
+.ga09photoreview .infobox .info1 .subject {font-weight:600; letter-spacing:-1px; font-size:11px; color:#353535}
+.ga09photoreview .infobox .info1 .writer {padding-top:3px; font-weight:400; letter-spacing:-1px;font-size:10px; color:#a4a4a4; display:block}
+
+.ga09photoreview .infobox .info2 {padding-top:3px; line-height:10px;}
+.ga09photoreview .infobox .info2 .date {font-size:9px; color:#a4a4a4; }
+.ga09photoreview .infobox .info2 .point {float:right}
+.ga09photoreview .infobox .info2 .point img {vertical-align:middle; height:7px}
+
+/* 게시글 없음 */
+.ga09photoreview .empty { position:relative; padding:0; text-align:center; font-size:12px; border-bottom:1px solid #d5d5d5; background:#fff; }
+
+
+
+
+
+
+
+/* 리스트 형식 */
+#ga09photoreview-list { border-bottom:1px solid #eaeaea; margin:0; border-left:none; border-right:none; font-size:12px; font-family: 'Nanum Gothic', sans-serif; color:#3b3b3b; line-height:32px;}
+#ga09photoreview-list a:hover {text-decoration:none;}
+#ga09photoreview-list .boardList { clear:both; }
+#ga09photoreview-list ul {  padding:15px 0; background:#fff; }
+#ga09photoreview-list li {  padding:15px 0; border-top:1px solid #eaeaea; text-align:center; vertical-align:middle; line-height:20px}
+#ga09photoreview-list a,
+#ga09photoreview-list a:hover { color:#000; }
+
+#ga09photoreview-list .infobox { padding-left:10px; word-break:break-all; text-align:left; }
+#ga09photoreview-list .infobox img { vertical-align:middle; }
+#ga09photoreview-list .infobox span { padding:0; text-align:left; word-break:keep-all; margin-right:10px }
+#ga09photoreview-list .infobox2 {width:50px; position:absolute; right:10px; margin-top:-50px; text-align:right;}
+
+#ga09photoreview-list .thumb { float:left; padding-left:10px;padding-right:10px; overflow:hidden; text-align:center }
+#ga09photoreview-list .thumb img { width:50px; height:50px; object-fit: cover; text-align:center;}
+#ga09photoreview-list .comment {color:#ccc; font-size:10px;}
+#ga09photoreview-list .subject {font-size:12px; line-height:23px; margin-bottom:6px; font-weight:600;}
+#ga09photoreview-list .openbt img { vertical-align:middle; margin:0 ; }
+#ga09photoreview-list .point {margin-right:10px}
+#ga09photoreview-list .point img {height:5px; height:10px}
+#ga09photoreview-list .writer {font-size:11px; color:#757575;}
+#ga09photoreview-list .date {font-size:10px; color:#a4a4a4; line-height:10px;}
+#ga09photoreview-list .infobox .icons img {margin-left:5px}
+
+
+/* 게시글 없음, 검색결과없음 */
+#ga09photoreview-list .boardListEmpty { padding:20px 0; text-align:center; background-color:#fff; border-width:0 1px 1px; border-style:solid; border-color:#eaeaea; }
+
+
+#ga09photoreview-list .contentView { margin:0; padding:14px; min-height:0; background:#f1f1f1; color:#757575; font-size:15px; word-wrap:break-word; }
+#ga09photoreview-list .contentView img { margin:0 0 14px; max-width:100%; }
+
+
+
+/* 상세페이지 */
+#review_simple {border:1px solid #eaeaea; margin:14px}
+#review_simple .text {text-align:center; letter-spacing:-1px; margin-bottom:20px; line-height:13px; font-size:11px; font-family: 'Nanum Gothic', sans-serif;}
+#review_simple .text img {vertical-align:middle; height:10px; margin-right:5px}
+#review_simple_photo { width:100%; display:none; }
+#review_simple_photo li { float:left; margin-right:5px; width:20%; background-color:#eee; }
+
+#review_simple_photo li img {width:100%; height:100%}

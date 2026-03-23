@@ -1,0 +1,79 @@
+<!--@layout(/layout.html)-->
+<!--@js(/js/fullpage.js)-->
+<!--@js(/js/fullpageexe.js)-->
+<!--@css(/css/fullpage.css)-->
+<!--@css(/css/ga09product.css)-->
+
+<div id="fullpage">
+
+    <div class="section hero-section" style="background-image: url(/web/upload/ga09/main/0616pc-01.jpg); background-size: cover; background-position:center; cursor:pointer" id="section1" onclick="location.href='/product/list.html?cate_no=42'">
+        <div class="overlay"></div>
+    </div>
+
+    <div class="section hero-section" id="section2" style="background-image: url(/web/upload/ga09/main/0719pc-02.jpg); background-size: cover; background-position:center">
+        <div class="overlay"></div>
+        <div class="intro" onclick="location.href='/product/list.html?cate_no=176'">
+            <p class="title">OFFLINE CLUB SERVICE</p>
+            <p class="sub">
+                FIND YOUR STYLE , FIND YOUR VALUE , FIND YOUR LIFE.
+            </p>
+        </div>
+    </div>
+
+    <div class="section hero-section" style="background-image: url(/web/upload/ga09/main/0719pc-03.jpg); background-size: cover; background-position:center; cursor:pointer" id="section3" onclick="location.href='/article/notice/1/14174'">
+        <div class="overlay"></div>
+    </div>
+
+    <!-- MEN BEST ITEMS -->
+    <div class="section fp-auto-height" id="section-men">
+        <div class="section-area">
+            <div class="section-title">
+                <h2>MEN</h2>
+                <p>BEST ITEMS FOR HIM</p>
+            </div>
+            <div class="ga09list" module="product_listmain_1">
+                <ul class="grid4 prdList">
+                    <!--@import(/prdlist.html)-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- WOMEN BEST ITEMS -->
+    <div class="section fp-auto-height" id="section-women">
+        <div class="section-area">
+            <div class="section-title">
+                <h2>WOMEN</h2>
+                <p>BEST ITEMS FOR HER</p>
+            </div>
+            <div class="ga09list" module="product_listmain_2">
+                <ul class="grid4 prdList">
+                    <!--@import(/prdlist.html)-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW ARRIVALS (통합) -->
+    <div class="section fp-auto-height" id="section-new">
+        <div class="section-area">
+            <div class="section-title">
+                <h2>NEW ARRIVALS</h2>
+                <p>LATEST COLLECTION</p>
+            </div>
+            <div class="ga09list" module="product_listmain_3">
+                <ul class="grid4 prdList">
+                    <!--@import(/prdlist.html)-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <div class="section fp-auto-height" id="section-footer">
+        <div class="myContent">
+            <div id="bottom"><!--@import(/bottom.html)--></div>
+        </div>
+    </div>
+
+</div>

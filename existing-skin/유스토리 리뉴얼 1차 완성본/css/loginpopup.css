@@ -1,0 +1,132 @@
+#wrap_dialog { z-index:9998; display:none; width:100%; height:100%; position:fixed; top:0; left:0; background-color:#000; opacity:.35;}
+
+#loginpopuppage #login-wrap .idbox {}
+#loginpopuppage #login-wrap .idbox input { border:1px solid #ccc; width:258px; margin-bottom:5px; color:#000; font-size:12px; background-image:url("/web/upload/ga09/login/id.gif"); background-repeat:no-repeat; background-position-x:10px; background-position-y:12px;}
+#loginpopuppage #login-wrap .pwbox {margin-top:10px}
+#loginpopuppage #login-wrap .pwbox input { border:1px solid #ccc; width:258px; margin:0; color:#000; font-size:12px; background-image:url("/web/upload/ga09/login/pw.gif"); background-repeat:no-repeat; background-position-x:10px; background-position-y:12px;}
+
+
+#loginpopuppage #logintitle {margin-top:0; margin-bottom:30px; text-align:center}
+#loginpopuppage #logintitle h2 { font-weight:bold; font-size:15px; color:#3c3c3c}
+#loginpopuppage #logintitle span {font-size:12px; line-height:35px; color:#666666}
+
+
+
+#loginpopuppage .memberloginbox-popup h3 { margin:0 0 20px 0; text-align:center;}
+#loginpopuppage .memberloginbox-popup .login a:hover { text-decoration:none;}
+#loginpopuppage .memberloginbox-popup .login img {opacity:1; -webkit-transition-duration: 0.3s; transition-duration: 0.3s;}
+#loginpopuppage .memberloginbox-popup .login img:hover {opacity:0.7; -webkit-transition-duration: 0.3s; transition-duration: 0.3s;}
+#loginpopuppage .memberloginbox-popup .login { margin:0 auto; padding:40px 0; color:#2e2e2e; width:500px;}
+#loginpopuppage .memberloginbox-popup .login fieldset { position:relative; width:380px; margin:0 auto; }
+#loginpopuppage .memberloginbox-popup .login fieldset .id,
+#loginpopuppage .memberloginbox-popup .login fieldset .password { overflow:hidden; display:block; width:263px; margin:0 0 5px; border:1px solid #d9d9d9; color:#8F8F91; }
+#loginpopuppage .memberloginbox-popup .login fieldset .id span,
+#loginpopuppage .memberloginbox-popup .login fieldset .password span { height:32px; line-height:32px; padding:0 0 0 8px; color:#c9c9c9;}
+#loginpopuppage .memberloginbox-popup .login fieldset input[type=text],
+#loginpopuppage .memberloginbox-popup .login fieldset input[type=password] { width:95%; height:28px; line-height:28px; padding:2px 2px 2px 3px; border:0 none; color:#8F8F91; }
+#loginpopuppage .memberloginbox-popup .login fieldset .security { padding:0; margin:0; color:#757575; }
+#loginpopuppage .memberloginbox-popup .login fieldset .security img { vertical-align:middle; display:none }
+#loginpopuppage .memberloginbox-popup .login fieldset > a { position:absolute; top:0; right:0; }
+#loginpopuppage .memberloginbox-popup .login fieldset ul { overflow:hidden; padding:0; margin-bottom:0; border:0; }
+#loginpopuppage .memberloginbox-popup .login fieldset li { float:left; }
+#loginpopuppage .memberloginbox-popup .login fieldset li a { color:#2e2e2e; }
+#loginpopuppage .memberloginbox-popup .login fieldset .link { position:relative; margin-top:25px; padding:25px 0 0 0; color:#535353; border-top:1px solid #e9e9e9;}
+#loginpopuppage .memberloginbox-popup .login fieldset .link a { position:absolute; top:25px; right:0; }
+#loginpopuppage .memberloginbox-popup .login fieldset .snsArea { padding:0; }
+#loginpopuppage .memberloginbox-popup .login fieldset .snsArea li:first-child { width:380px; margin-top:20px; padding:0; background:none; }
+#loginpopuppage .memberloginbox-popup .login fieldset .snsArea li { width:380px; margin-top:5px; padding:0; background:none; }
+#loginpopuppage .memberloginbox-popup .login fieldset #noMemberWrap { border-top:0; margin-top:0; }
+
+
+
+/* 토글메뉴 */
+#closebt {
+  position: absolute;
+  width: 23px;
+  height: 20px;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  z-index:9999;
+}
+
+#closebt span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 0.1em;
+  margin: 0.8em 0 0 0;
+  background: #000000;
+  -webkit-transition: 350ms ease all;
+  -moz-transition: 350ms ease all;
+  transition: 350ms ease all;
+}
+
+#closebt span:before,
+#closebt span:after {
+  content: " ";
+  position: absolute;
+  width: 20px;
+  height: 0.12em;
+  background: #000000;
+  -webkit-transition: 350ms ease all;
+  -moz-transition: 350ms ease all;
+  transition: 350ms ease all;
+}
+
+#closebt span:before { margin: -0.5em 0 0 0; }
+
+#closebt span:after { margin: 0.5em 0 0 0; }
+#closebt span { background-color: transparent; height: 0.10em;}
+
+#closebt span:before,
+#closebt span:after {
+  margin: 0;
+  background: #000;height: 0.10em;
+}
+
+#closebt span:before {
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+#closebt span:after {
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+
+
+/* 팝업 오픈 상태 */
+#loginpopup {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  z-index: 9999;
+  width: 500px;
+  height: 360px;
+  top: 50%;
+  left: 50%;
+  margin-left:-250px;
+  margin-top:-180px;
+  background: #fff;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 350ms ease all;
+  -moz-transition: 350ms ease all;
+  transition: 350ms ease all;
+}
+
+#loginpopup.opened {
+  z-index:9999;
+  visibility: visible;
+  opacity: 0.95;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 350ms ease all;
+  -moz-transition: 350ms ease all;
+  transition: 350ms ease all;
+}

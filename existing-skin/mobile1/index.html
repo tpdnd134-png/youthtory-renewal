@@ -1,0 +1,98 @@
+<!--@layout(/layout/basic/main.html)-->
+<!--@js(/js/fullpage.js)-->
+<!--@js(/js/fullpageexe.js)-->
+<!--@css(/css/fullpage.css)-->
+
+<div id="fullpage">
+
+    <div class="section hero-section" style="background-image: url(/web/upload/ga09/main/0617mobile-01.jpg); background-size: cover; background-position:center; cursor:pointer; position:relative;" id="section1" onclick="location.href='/product/list.html?cate_no=42'">
+        <div class="overlay" style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.15);"></div>
+    </div>
+
+	<div class="section hero-section" id="section2" style="background-image: url(/web/upload/ga09/main/0719mobile-02.jpg); background-size: cover; background-position:center; position:relative;">
+        <div class="overlay" style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.15);"></div>
+		<div class="intro" onclick="location.href='/product/list.html?cate_no=176'" style="position:relative;z-index:1;">
+            <p class="title">OFFLINE CLUB SERVICE</p>
+            <p class="sub">
+               <br>FIND YOUR STYLE , FIND YOUR VALUE , FIND YOUR LIFE <br>
+                       </p>
+		</div>
+	</div>
+
+    <div class="section hero-section" style="background-image: url(/web/upload/ga09/main/0719mobile-03.jpg); background-size: cover; background-position:center; cursor:pointer; position:relative;" id="section4" onclick="location.href='/article/notice/1/14174/'">
+        <div class="overlay" style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.15);"></div>
+    </div>
+
+</div>
+
+<!--
+
+샘플은 기본적으로 3개의 인트로로 화면이 구성되어 있습니다
+
+section1 > 단순 이미지 (배경이미지 주소 /web/upload/ga09/main/mobile-01.jpg)
+section2 > 이미지 + 텍스트의 조합 (배경이미지 주소 /web/upload/ga09/main/mobile-02.jpg)
+section3 > 단순 이미지 (배경이미지 주소 /web/upload/ga09/main/mobile-03.jpg)
+
+사용된 이미지는 ftp업로드로 변경하실 수 있으며, pc/모바일 각각 분리하여 관리됩니다
+또한 12-16번줄은 section2의 텍스트 영역으로 원하시는 타이틀+서브텍스트를 입력해 보세요 ^^
+
+** section1, section2, section3의
+onclick="location.href='★'" 영역의 ★부분엔 클릭시 이동될 주소를 넣어주세요
+
+-->
+
+<!-- MEN SECTION -->
+<div class="m-section-title"><h2>Men</h2><p>New arrivals for him</p></div>
+<div class="prdlistmain" module="product_listmain_1">
+<!--
+$count=4
+$basket_result=/product/add_basket.html
+$basket_option=/product/basket_option.html
+-->
+    <ul class="grid2">
+        <!--@import(/mainprdlist.html)-->
+        <!--@import(/mainprdlist.html)-->
+    </ul>
+</div>
+
+<!-- WOMEN SECTION -->
+<div class="m-section-title"><h2>Women</h2><p>New arrivals for her</p></div>
+<div class="prdlistmain" module="product_listmain_2">
+<!--
+$count=4
+$basket_result=/product/add_basket.html
+$basket_option=/product/basket_option.html
+-->
+    <ul class="grid2">
+        <!--@import(/mainprdlist.html)-->
+        <!--@import(/mainprdlist.html)-->
+    </ul>
+</div>
+
+<!-- NEW ARRIVALS -->
+<div class="m-section-title"><h2>New</h2><p>Just dropped</p></div>
+<div class="prdlistmain" module="product_listmain_3">
+<!--
+$count=4
+$basket_result=/product/add_basket.html
+$basket_option=/product/basket_option.html
+-->
+    <ul class="grid2">
+        <!--@import(/mainprdlist.html)-->
+        <!--@import(/mainprdlist.html)-->
+    </ul>
+</div>
+
+<!-- Enliple Common Tracker v3.6 [공용] start -->
+<script type="text/javascript">
+<!--
+function mobRf() {
+    var rf = new EN();
+    rf.setData("userid", "tpdnd134");
+    rf.setSSL(true);
+    rf.sendRf();
+}
+//-->
+</script>
+<script src="https://cdn.megadata.co.kr/js/en_script/3.6/enliple_min3.6.js" defer="defer" onload="mobRf()"></script>
+<!-- Enliple Common Tracker v3.6 [공용] end -->

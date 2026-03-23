@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>YOUTHTORY - Product Detail Preview</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Font Awesome 6.4.0 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ============================================================
+   SOURCE 1: layout-list.html inline <style> — ALL CSS
+   ============================================================ */
+
+/* ===== 카페24 기본 CSS 강제 오버라이드 ===== */
+body { font-family: helvetica, 'Noto Sans KR', sans-serif !important; font-size: 14px !important; color: #212121 !important; background: #fff !important; }
+a { color: #212121 !important; text-decoration: none !important; }
+a:hover { text-decoration: none !important; }
+input[type=text], select, textarea { font-family: helvetica, 'Noto Sans KR', sans-serif !important; }
+
+#left, #right, #toggle-right { display: none !important; }
+#contentsWrap { margin: 0 !important; padding: 0 !important; margin-top: -48px !important; position: relative !important; z-index: 1 !important; }
+#content { max-width: 1920px !important; margin: 0 auto !important; padding: 0 24px !important; }
+#toparea { display: none !important; }
+#loginpopup { display: none !important; }
+.gnb-mega { visibility: hidden !important; opacity: 0 !important; }
+.gnb-item.has-sub:hover .gnb-mega { visibility: visible !important; opacity: 1 !important; }
+
+/* ===== 글로벌 스타일 (layout.html) ===== */
+* { box-sizing: border-box; }
+body { font-family: helvetica, 'Noto Sans KR', sans-serif !important; color: #212121 !important; background: #fff !important; line-height: 1.6 !important; -webkit-font-smoothing: antialiased; margin: 0 !important; padding: 0 !important; }
+a { color: #212121 !important; text-decoration: none !important; transition: all 0.3s ease; }
+a:hover { opacity: 0.7; }
+img { max-width: 100%; height: auto; }
+ul { list-style: none; margin: 0; padding: 0; }
+button, .btn { font-family: helvetica, 'Noto Sans KR', sans-serif !important; cursor: pointer; transition: all 0.3s ease; }
+input, select, textarea { font-family: helvetica, 'Noto Sans KR', sans-serif !important; }
+
+/* 프로모션+GNB 플로팅 래퍼 */
+.gnb-float-wrap { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 100 !important; pointer-events: none !important; }
+.gnb-float-wrap > * { pointer-events: auto !important; }
+
+/* 프로모션 마키 바 — pill shape compact */
+.promo-wrap { padding: 5px 8px 0 !important; }
+.promo-bar { height: 24px !important; background: rgba(42,41,41,0.4) !important; overflow: hidden !important; display: flex !important; align-items: center !important; position: relative !important; z-index: 101 !important; border-radius: 100px !important; }
+.promo-track { display: flex !important; white-space: nowrap !important; animation: marquee 60s linear infinite !important; will-change: transform !important; }
+.promo-item { color: rgba(255,255,255,0.9) !important; font-size: 11px !important; margin-right: 40vw !important; letter-spacing: 0.03em !important; font-weight: 300 !important; }
+.promo-item a { color: rgba(255,255,255,0.9) !important; text-decoration: none !important; }
+.promo-item a:hover { color: #fff !important; opacity: 1 !important; }
+.promo-bar:hover .promo-track { animation-play-state: paused !important; }
+@keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+
+/* GNB 헤더 — compact floating card */
+.gnb-header { position: relative !important; overflow: visible !important; height: 36px !important; background: rgba(255,255,255,0.88) !important; backdrop-filter: saturate(180%) blur(20px) !important; -webkit-backdrop-filter: saturate(180%) blur(20px) !important; border: none !important; border-radius: 10px !important; margin: 3px 8px 0 !important; box-shadow: 0 2px 12px rgba(0,0,0,0.08) !important; transition: background 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1); z-index: 100 !important; }
+.gnb-header.scrolled { background: rgba(255,255,255,0.97) !important; box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important; }
+.gnb-inner { max-width: 1920px; margin: 0 auto; display: flex; align-items: center; height: 100%; padding: 0 28px; }
+.gnb-logo { display: flex; align-items: center; margin-right: 40px; text-decoration: none !important; }
+.gnb-logo:hover { opacity: 0.7; }
+.gnb-logo img { height: 16px; display: block; }
+.gnb-logo-text { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #212121; }
+.gnb-nav { display: flex; align-items: center; height: 100%; gap: 0; }
+.gnb-item { font-family: helvetica, 'Noto Sans KR', sans-serif !important; font-size: 11px !important; font-weight: 600 !important; color: #212121 !important; padding: 0 14px !important; line-height: 36px !important; cursor: pointer; position: static; text-decoration: none !important; letter-spacing: 0.03em !important; white-space: nowrap; }
+.gnb-item:hover { opacity: 0.6; }
+
+/* 메가 드롭다운 — compact */
+.gnb-mega-overlay { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; background: rgba(0,0,0,0.18) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; z-index: 98 !important; opacity: 0 !important; pointer-events: none !important; transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-overlay.active { opacity: 1 !important; pointer-events: auto !important; }
+.gnb-mega { position: absolute !important; top: calc(100% + 2px) !important; left: 0 !important; right: 0 !important; width: auto !important; background: rgba(246,245,241,0.97) !important; backdrop-filter: saturate(120%) blur(16px) !important; -webkit-backdrop-filter: saturate(120%) blur(16px) !important; visibility: hidden !important; opacity: 0 !important; transform: translateY(-6px); transition: visibility 0s 0.35s, opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1); padding: 28px 0 32px !important; z-index: 101 !important; border: none !important; border-radius: 10px !important; box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important; }
+.gnb-item.has-sub:hover .gnb-mega { visibility: visible !important; opacity: 1 !important; transform: translateY(0); transition: visibility 0s, opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-inner { max-width: 1920px; margin: 0 auto; padding: 0 28px; display: flex; gap: 80px; }
+.gnb-mega-col { min-width: 120px; }
+.gnb-mega-col .mega-title { font-size: 11px; font-weight: 700; color: #212121; margin-bottom: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+.gnb-mega-col a { display: block; font-size: 12px; font-weight: 400; color: #555 !important; padding: 3px 0; text-decoration: none !important; line-height: 1.8; transition: color 0.25s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-col a:hover { color: #212121 !important; opacity: 1; }
+.gnb-right { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+.gnb-right a, .gnb-link { font-size: 11px !important; font-weight: 600 !important; color: #212121 !important; text-decoration: none !important; cursor: pointer; letter-spacing: 0.03em; }
+
+/* ===== 히어로 배너 ===== */
+.hero-section { width: 100%; height: 100vh; background-size: cover; background-position: center; cursor: pointer; position: relative; }
+.hero-section .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.15); }
+.hero-section .intro { position: absolute; top: 47%; left: 50%; transform: translateX(-50%); text-align: center; color: #fff; }
+.hero-section .intro .title { letter-spacing: 0.15em; border: 1px solid rgba(255,255,255,0.6); font-size: 14px; font-weight: 300; padding: 14px 28px; display: inline-block; margin: 0 auto 24px; transition: all 0.3s ease; color: #fff !important; text-transform: uppercase; }
+.hero-section .intro .title:hover { color: #212121 !important; border-color: #fff; background: #fff; letter-spacing: 0.2em; }
+.hero-section .intro .sub { font-size: 12px; font-weight: 300; line-height: 1.8; letter-spacing: 0.08em; opacity: 0.8; color: #fff !important; }
+
+/* ===== 섹션 타이틀 ===== */
+.section-area { max-width: 1920px; margin: 0 auto; padding: 80px 24px 0; }
+.section-title { text-align: center; margin-bottom: 48px; }
+.section-title h2 { font-family: 'Unbounded', sans-serif; font-size: 48px; font-weight: 900; color: #212121; letter-spacing: -0.02em; margin: 0; text-transform: uppercase; line-height: 1; }
+.section-title p { font-size: 11px; color: #aaa; margin-top: 12px; letter-spacing: 0.12em; font-weight: 400; text-transform: uppercase; }
+
+/* ===== 상품 그리드 ===== */
+.ga09list { margin: 0 auto; font-family: helvetica, 'Noto Sans KR', sans-serif; }
+.ga09list ul { width: 100%; margin: 0 -4px; display: flex; flex-wrap: wrap; }
+.ga09list ul.grid4 > li { width: 25%; padding: 0 4px; text-align: left; }
+.ga09list .prdpadding { margin: 0 0 32px 0; display: flex; flex-direction: column; }
+.ga09list .prdline { margin-bottom: 0; position: relative; }
+.hoverimg { overflow: hidden; border-radius: 16px; position: relative; }
+.hoverimg img { width: 100%; object-fit: cover; display: block; transform: scale(1); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s; }
+.hoverimg:hover img { transform: scale(1.03); opacity: 0.94; }
+.ga09list .name { clear: both; font-size: 13px; font-weight: 400; color: #212121; margin: 10px 0 0; line-height: 1.4; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ga09list .name a { color: #212121 !important; }
+.ga09list .colorWrap { margin-top: 6px; height: auto; min-height: 0; }
+.ga09list .color { text-align: left; }
+.ga09list .color ul { display: inline-flex; gap: 3px; margin: 0; padding: 0; }
+.ga09list .chips { width: 9px; height: 9px; border-radius: 50%; font-size: 0; line-height: 0; display: inline-block; }
+.ga09list .prices { line-height: 1.4; color: #212121; font-size: 14px; margin-top: 4px; }
+.ga09list .price { font-size: 11px; color: #999; margin-right: 5px; text-decoration: line-through; opacity: 0.7; }
+.ga09list .normal { font-size: 14px; color: #212121; font-weight: 400; text-decoration: none !important; }
+.ga09list .sale-pct { font-size: 14px; color: #db7e7e; margin-right: 5px; font-weight: 400; }
+.prd-badge { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 2px 14px; border-radius: 24px; font-size: 11px; font-weight: 400; letter-spacing: 0.02em; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.badge-new { background: rgba(237,237,237,0.7); color: #212121; }
+.badge-best { background: rgba(0,0,0,0.5); color: #fff; }
+
+/* ===== 푸터 — 미니멀 모던 ===== */
+#bottom-wrap { background: #f6f5f1; margin-top: 120px; border: none; }
+#bottom { max-width: 1400px; margin: 0 auto; font-family: helvetica, 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 400; line-height: 1.7; color: #999; }
+#bottom a { transition: all 0.3s ease; color: #999 !important; }
+#bottom a:hover { text-decoration: none !important; color: #212121 !important; }
+#bottom .inner { padding: 56px 40px 40px; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 40px; border-bottom: 1px solid rgba(0,0,0,0.06); gap: 40px; }
+.footer-brand { flex-shrink: 0; }
+.footer-brand .logo-text { line-height: 0; }
+.footer-brand .logo-text img { height: 24px; display: block; }
+.footer-brand .brand-desc { font-size: 11px; color: #bbb; margin-top: 8px; letter-spacing: 0.02em; }
+.footer-cols { display: flex; gap: 64px; }
+.footer-col h4 { font-size: 11px; font-weight: 600; color: #212121; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 14px; }
+.footer-col ul { list-style: none; margin: 0; padding: 0; }
+.footer-col li { padding: 2px 0; }
+.footer-col a { font-size: 11px; color: #999 !important; }
+.footer-col a:hover { color: #212121 !important; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: flex-start; padding-top: 28px; gap: 40px; flex-wrap: wrap; }
+.footer-info { font-size: 10px; color: #bbb; line-height: 1.8; }
+.footer-info span { color: #999; margin-right: 2px; }
+.footer-copyright { font-size: 10px; color: #ccc; letter-spacing: 0.02em; margin-top: 20px; }
+.footer-sns { display: flex; gap: 16px; align-items: center; }
+.footer-sns a { font-size: 11px; color: #bbb !important; letter-spacing: 0.06em; text-transform: uppercase; }
+.footer-sns a:hover { color: #212121 !important; }
+
+/* 콘텐츠 영역 */
+#contentsWrap { margin-top: 80px !important; position: relative !important; z-index: 1 !important; }
+#content { max-width: 1920px !important; margin: 0 auto !important; padding: 0 24px !important; }
+
+/* 리스트 콘텐츠 영역 */
+#listcontentWrap { margin: 0 auto !important; max-width: 1920px !important; padding: 0 24px !important; margin-top: 0 !important; }
+#catetitle { margin-bottom: 16px !important; margin-top: 0 !important; }
+#catetitle h2 { font-size: 18px !important; font-weight: 700 !important; letter-spacing: 2px !important; }
+.xans-product-listnormal, .xans-product-listrecommend { margin-top: 0 !important; }
+#listcontent { width: 100% !important; }
+
+/* 스크롤 탑 */
+.scrollTop a { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: rgba(33,33,33,0.1); color: #212121 !important; border-radius: 0; transition: all 0.3s ease; }
+.scrollTop a:hover { background: rgba(33,33,33,0.2); }
+
+/* ===== Fullscreen Menu Overlay ===== */
+.menu-overlay {
+    position: fixed !important;
+    top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+    z-index: 300 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1) !important;
+}
+.menu-overlay.open {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+.menu-overlay-bg {
+    position: absolute !important;
+    top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+    background: rgba(0,0,0,0.25) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    z-index: 0 !important;
+}
+.menu-overlay-card {
+    position: absolute !important;
+    top: 8px !important; left: 8px !important; right: 8px !important;
+    z-index: 1 !important;
+    background: rgba(246,245,241,0.97) !important;
+    border-radius: 16px !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+    padding: 40px 24px 32px !important;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.12) !important;
+    transform: translateY(-100%) !important;
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1) !important;
+}
+.menu-overlay.open .menu-overlay-card {
+    transform: translateY(0) !important;
+}
+.menu-overlay-close {
+    position: absolute !important;
+    top: 16px !important; right: 16px !important;
+    background: none !important; border: none !important;
+    font-size: 20px !important; cursor: pointer !important;
+    color: #212121 !important; font-weight: 300 !important;
+    width: 32px !important; height: 32px !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    transition: opacity 0.2s !important;
+}
+.menu-overlay-close:hover { opacity: 0.5 !important; }
+
+.menu-overlay-nav {
+    padding: 0 !important; margin: 0 !important; list-style: none !important;
+}
+.menu-overlay-nav > li {
+    border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+}
+.menu-overlay-nav > li > a {
+    display: block !important;
+    padding: 14px 0 !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+    text-decoration: none !important;
+    letter-spacing: 0.08em !important;
+    transition: opacity 0.2s !important;
+}
+.menu-overlay-nav > li > a:hover { opacity: 0.5 !important; }
+
+/* Sub-menu toggle */
+.menu-overlay-nav .menu-sub-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 14px 0 !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+    background: none !important;
+    border: none !important;
+    letter-spacing: 0.08em !important;
+    cursor: pointer !important;
+    transition: opacity 0.2s !important;
+}
+.menu-overlay-nav .menu-sub-toggle:hover { opacity: 0.5 !important; }
+.menu-overlay-nav .menu-sub-toggle .toggle-arrow {
+    font-size: 10px !important;
+    transition: transform 0.3s ease !important;
+}
+.menu-overlay-nav .menu-sub-toggle.active .toggle-arrow {
+    transform: rotate(180deg) !important;
+}
+
+.menu-overlay-sub {
+    max-height: 0 !important;
+    overflow: hidden !important;
+    transition: max-height 0.35s ease, padding 0.35s ease !important;
+    padding: 0 12px !important;
+}
+.menu-overlay-sub.open {
+    max-height: 300px !important;
+    padding: 4px 12px 12px !important;
+}
+.menu-overlay-sub li a {
+    display: block !important;
+    padding: 8px 0 !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color: #999 !important;
+    text-decoration: none !important;
+    letter-spacing: 0.04em !important;
+    transition: color 0.2s !important;
+}
+.menu-overlay-sub li a:hover { color: #212121 !important; opacity: 1 !important; }
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .gnb-header { display: none !important; }
+    .gnb-float-wrap { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 100 !important; }
+    .promo-bar { font-size: 11px !important; height: 28px !important; }
+    .promo-wrap { padding: 5px 8px 0 !important; z-index: 201 !important; position: relative !important; }
+
+    .mobile-header {
+        display: flex !important;
+        position: fixed !important;
+        top: 38px !important;
+        left: 8px !important;
+        right: 8px !important;
+        height: 44px !important;
+        background: rgba(255,255,255,0.85) !important;
+        backdrop-filter: saturate(180%) blur(20px) !important;
+        -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+        border-radius: 10px !important;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.08) !important;
+        z-index: 200 !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0 16px !important;
+    }
+    .mobile-header .mobile-menu-btn {
+        background: none !important;
+        border: none !important;
+        font-size: 20px !important;
+        cursor: pointer !important;
+        color: #212121 !important;
+        padding: 8px !important;
+    }
+    .mobile-header .mobile-logo { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; }
+    .mobile-header .mobile-icons {
+        display: flex !important;
+        gap: 12px !important;
+        align-items: center !important;
+    }
+    .mobile-header .mobile-icons a {
+        font-size: 16px !important;
+        color: #212121 !important;
+    }
+
+    .menu-overlay-nav { text-align: center !important; }
+    .menu-overlay-nav > li { border: none !important; }
+    .menu-overlay-nav > li > a { padding: 10px 0 !important; font-size: 13px !important; letter-spacing: 0.06em !important; }
+    .menu-overlay-nav .menu-sub-toggle { justify-content: center !important; gap: 6px !important; padding: 10px 0 !important; font-size: 13px !important; letter-spacing: 0.06em !important; }
+    .menu-overlay-sub li a { font-size: 12px !important; padding: 6px 0 !important; text-align: center !important; }
+
+    .mobile-sidebar { display: none !important; }
+    .sidebar-overlay { display: none !important; }
+
+    #contentsWrap { margin-top: 0 !important; width: 100% !important; float: none !important; overflow: visible !important; box-sizing: border-box !important; }
+    #content { padding: 0 12px !important; width: 100% !important; margin-left: 0 !important; float: none !important; box-sizing: border-box !important; }
+    #listcontentWrap { padding: 0 12px !important; margin-top: 92px !important; width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; float: none !important; box-sizing: border-box !important; max-width: 100% !important; }
+    #listcontent { width: 100% !important; margin-left: 0 !important; float: none !important; box-sizing: border-box !important; overflow: hidden !important; }
+
+    .ga09list ul.grid4 > li { width: 50% !important; display: inline-block !important; float: none !important; box-sizing: border-box !important; vertical-align: top !important; }
+    .ga09list ul.grid4, .ga09list ul { display: flex !important; flex-wrap: wrap !important; }
+    .ga09list ul { flex-wrap: wrap !important; }
+    #catetitle { margin-bottom: 8px !important; }
+    #catetitle h2 { font-size: 16px !important; }
+    .function { padding: 0 !important; }
+    .prdCount { font-size: 12px !important; }
+
+    .section-title h2 { font-size: 20px !important; }
+    .section-title p { font-size: 11px !important; }
+    .section-area { padding: 40px 0 !important; }
+
+    #left, #right, #toggle-right, #top { display: none !important; width: 0 !important; height: 0 !important; margin: 0 !important; padding: 0 !important; float: none !important; }
+}
+
+/* Desktop: hide mobile elements */
+@media (min-width: 769px) {
+    .mobile-header { display: none !important; }
+    #left { display: none !important; }
+    #listcontent { margin-left: 0 !important; }
+    #content { margin-left: 0 !important; }
+}
+
+
+/* ============================================================
+   SOURCE 2: css/module/product/detail.css — ENTIRE FILE
+   ============================================================ */
+
+/* ===== PRODUCT DETAIL ===== */
+
+/* ===== 카테고리 내비게이션 바 ===== */
+.detail-cate-nav {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0 !important;
+    padding: 10px 0 16px !important;
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+}
+.detail-cate-nav a {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #999 !important;
+    text-decoration: none !important;
+    padding: 4px 12px !important;
+    transition: color 0.2s !important;
+    white-space: nowrap !important;
+}
+.detail-cate-nav a:hover { color: #212121 !important; }
+.detail-cate-nav a .cate-arrow {
+    font-size: 8px !important;
+    margin-left: 2px !important;
+}
+
+/* ===== PC LAYOUT ===== */
+#detailinfo { width: 460px !important; }
+.fixmenu { z-index: 9; position: sticky; top: 80px; width: 460px; background: #fff; }
+.detailArea { position: relative; }
+#detail-right { position: absolute; top: 0; right: 0; padding-bottom: 100px; width: 460px; }
+
+.xans-product-detail { font-family: helvetica, 'Noto Sans KR', sans-serif; position: relative; margin: 0 auto; font-weight: 400 !important; }
+.xans-product-detail:after { content: " "; display: block; clear: both; }
+
+/* ===== imgArea ===== */
+.xans-product-detail .imgArea { padding-right: 490px; padding-left: 0; }
+.xans-product-detail .imgArea .keyImg {}
+.xans-product-detail .imgArea .keyImg img { width: 100%; }
+
+.xans-product-detail .imgArea .listImg { overflow: hidden; width: 100%; }
+.xans-product-detail .imgArea .listImg ul { margin: 0; font-size: 0; line-height: 0; }
+.xans-product-detail .imgArea .listImg li { display: inline-block; margin: 0; vertical-align: top; }
+.xans-product-detail .imgArea .listImg li img { width: 100%; margin-bottom: 4px; border-radius: 0; }
+
+/* ===== infoArea ===== */
+.xans-product-detail .infoArea { margin-top: 0; font-size: 11px; line-height: 1.8; color: #212121; }
+.xans-product-detail .infoArea p.delivery { padding: 10px 0 20px; }
+.xans-product-detail .infoArea .guideArea { position: relative; }
+.xans-product-detail .infoArea .guideArea .info { margin: 7px 0 0; padding: 8px 0 0 11px; border-top: 1px solid #e6e3db; color: #999; }
+.xans-product-detail .infoArea .sizeGuide { position: absolute; bottom: 0; right: 0; margin: 8px 0 0; }
+.xans-product-detail .infoArea .sizeGuide a { display: inline-block; padding: 2px 15px 2px 24px; color: #212121; vertical-align: top; }
+.xans-product-detail .infoArea .sizeGuide a:hover { text-decoration: none; }
+
+.xans-product-detail .infoArea .detaildesign { margin-bottom: 6px; line-height: 1.6; font-size: 11px; color: #999; letter-spacing: 0.04em; font-weight: 400; }
+.xans-product-detail .infoArea .prdname { font-size: 13px; font-weight: 500; margin-bottom: 14px; color: #212121; letter-spacing: 0; line-height: 1.6; }
+
+.xans-product-detail .infoArea .icon { display: block; }
+.xans-product-detail .infoArea .icon img { margin-right: 5px; margin-bottom: 7px; }
+
+.xans-product-detail .infoArea .color { overflow: hidden; margin-bottom: 5px; }
+.xans-product-detail .infoArea .chips { float: left; width: 15px; height: 4px; margin: 0 3px 0 0; font-size: 0; line-height: 0; }
+
+/* Product info table */
+.xans-product-detail .infoArea table { border: 0 !important; font-size: 11px; line-height: 20px; padding: 5px 0; border-collapse: collapse !important; }
+.xans-product-detail .infoArea th { font-weight: 400 !important; color: #999 !important; width: 100px; padding: 7px 0 8px 0; text-align: left; vertical-align: middle; border: none !important; font-size: 11px !important; }
+.xans-product-detail .infoArea td { padding-top: 4px; vertical-align: middle; border: none !important; color: #212121; font-size: 11px; }
+.xans-product-detail .infoArea img { vertical-align: middle; }
+.xans-product-detail .infoArea td input[type=text] { width: 80%; }
+
+/* Select boxes - minimal style */
+.xans-product-detail .infoArea select {
+    width: 100% !important;
+    height: 36px !important;
+    font-size: 11px !important;
+    color: #212121 !important;
+    border: 1px solid #ddd !important;
+    border-radius: 0 !important;
+    padding: 0 30px 0 10px !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%23999'/%3E%3C/svg%3E") no-repeat right 10px center !important;
+    background-size: 8px 5px !important;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+.xans-product-detail .infoArea select:focus {
+    border-color: #212121 !important;
+}
+
+.xans-product-detail .infoArea td .sale { text-decoration: line-through; color: #bbb; font-size: 11px; }
+.xans-product-detail .infoArea td .period { display: block; margin: 7px 0 0; font-size: 11px; color: #999; }
+.xans-product-detail .infoArea td .mileage li { line-height: 1.7em; }
+.xans-product-detail .infoArea td .delivery label { margin: 0 30px 0 0; }
+.xans-product-detail .infoArea td #span_product_price_text { font-weight: 500; font-size: 13px; color: #212121; letter-spacing: 0; }
+.xans-product-detail .infoArea td #span_product_coupon_dc_price { color: #212121; font-size: 13px; font-weight: 500; }
+.xans-product-detail .infoArea td .sale { text-decoration: line-through; color: #bbb; font-size: 11px; }
+.xans-product-detail .infoArea td.fileInfo { color: #999; }
+.xans-product-detail .infoArea td.fileInfo input { width: 288px; border: 1px solid #e6e3db; border-right: 1px solid #e6e3db; border-bottom: 1px solid #e6e3db; }
+.xans-product-detail .infoArea td.fileInfo .infoDesc { margin: 0 0 10px 0; }
+.xans-product-detail .infoArea td.fileInfo li { margin: 4px 0 0; color: #999; font-size: 11px; }
+.xans-product-detail .infoArea td.fileInfo li img { vertical-align: bottom; }
+.xans-product-detail .delv_price_B strong { font-weight: normal; }
+.xans-product-detail .btnTooltip { display: inline-block; position: relative; z-index: 10; vertical-align: middle; }
+
+/* ===== 상품 옵션 ===== */
+.xans-product-detail .infoArea .xans-product-option tr th {
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    color: #212121 !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    padding: 10px 0 6px !important;
+}
+.xans-product-detail .infoArea .xans-product-option tr td {
+    padding: 0 0 8px !important;
+}
+.xans-product-detail .infoArea .xans-product-option tr:first-child th,
+.xans-product-detail .infoArea .xans-product-option .xans-product-fileoption th {}
+.xans-product-detail .infoArea .xans-product-option tr:first-child td,
+.xans-product-detail .infoArea .xans-product-option .xans-product-fileoption td {}
+.xans-product-detail .infoArea .xans-product-option td.selectButton { text-align: right; }
+.xans-product-detail .infoArea .xans-product-addoption .txtByte { font-size: 11px; vertical-align: middle; letter-spacing: -1px; }
+.xans-product-detail .infoArea .xans-product-addoption .txtByte strong { color: #212121; }
+
+.xans-product-detail .infoArea .xans-product-option .value { color: #999; word-break: break-all; }
+.xans-product-detail .infoArea .xans-product-option .value .ec-product-value { color: #212121; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-button li { position: relative; overflow: hidden; display: inline-block; margin: 0 4px 4px 0; vertical-align: top; border: 1px solid #ddd; background: #fff; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; border-radius: 0; transition: border-color 0.2s ease; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-button li:last-child { margin-right: 0; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-button li a { min-width: 32px; display: block; line-height: 14px; height: auto; text-align: center; text-decoration: none; word-break: break-all; font-size: 11px; }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .xans-product-detail .infoArea .xans-product-option .ec-product-button li a { min-width: 25px; display: block; line-height: 12px; height: 25px; text-align: center; text-decoration: none; word-break: break-all; }
+}
+
+.xans-product-detail .infoArea .xans-product-option .ec-product-button li a span { display: inline-block; padding: 7px 10px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; font-size: 11px; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-button.ec-product-preview li {}
+.xans-product-detail .infoArea .xans-product-option .ec-product-button.ec-product-preview li a { width: 25px; height: 25px; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-button.ec-product-preview li a img { max-width: 50px; max-height: 50px; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-button.ec-product-preview li a span { overflow: hidden; line-height: 0; font-size: 0; padding: 0; text-indent: 120%; white-space: nowrap; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-button.ec-product-preview .ec-product-soldout span,
+.xans-product-detail .infoArea .xans-product-option .ec-product-button.ec-product-preview .ec-product-disabled span { position: absolute; left: 0; top: 0; z-index: 1; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-button .ec-product-soldout { border-style: dashed; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-button .ec-product-soldout a span { display: inline-block; width: 100%; height: 100%; cursor: not-allowed; color: #d7d7d7; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-button .ec-product-soldout.ec-product-selected { border-style: dashed; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-button .ec-product-disabled a { cursor: default; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-button .ec-product-disabled a span { display: inline-block; width: 100%; height: 100%; color: #000; background: #555; filter: alpha(opacity=30); opacity: 0.3; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-button .ec-product-selected { border: 1px solid #212121 !important; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-button .ec-product-selected a {}
+.xans-product-detail .infoArea .xans-product-option .ec-product-radio > li { display: inline-block; margin: 0 0 3px; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-radio label { margin: 0 7px 0 0; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-radio label input { margin: 0 2px 0 0; }
+.xans-product-detail .infoArea .xans-product-option .ec-product-radio .ec-product-disabled,
+.xans-product-detail .infoArea .xans-product-option .ec-product-radio .ec-product-soldout { color: #d7d7d7; }
+
+/* ===== 수량 (Quantity) ===== */
+.ec-base-desc.quantity { margin: 12px 0 0; padding: 12px 0 0; border-top: 1px solid #eee; }
+.ec-base-desc.quantity dt { width: 100px; padding: 0 0 0 0; font-weight: 400; color: #212121; font-size: 11px; }
+
+.ec-base-qty {
+    display: flex !important;
+    align-items: center !important;
+    border: 1px solid #ddd !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+    width: fit-content;
+}
+.ec-base-qty input {
+    text-align: center !important;
+    border: none !important;
+    width: 40px !important;
+    height: 30px !important;
+    font-size: 11px !important;
+    color: #212121 !important;
+    outline: none !important;
+    -moz-appearance: textfield !important;
+}
+.ec-base-qty input::-webkit-outer-spin-button,
+.ec-base-qty input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+}
+.ec-base-qty .up,
+.ec-base-qty .down,
+.ec-base-qty a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 30px !important;
+    height: 30px !important;
+    background: #fafafa;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.ec-base-qty a:hover {
+    background: #eee;
+}
+
+/* ===== 구매버튼 (Buy Buttons) ===== */
+.xans-product-detail .infoArea .xans-product-action {
+    margin-top: 20px;
+    font-family: helvetica, 'Noto Sans KR', sans-serif;
+    line-height: 1;
+    font-size: 11px;
+    letter-spacing: 0;
+    word-break: keep-all;
+}
+
+/* PC: 하단 고정 바 */
+.xans-product-detail .infoArea .btnArea,
+.xans-product-detail .btnArea {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 200 !important;
+    background: #fff !important;
+    display: flex !important;
+    gap: 10px !important;
+    margin: 0 !important;
+    padding: 14px 24px !important;
+    box-shadow: 0 -1px 8px rgba(0,0,0,0.06) !important;
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+}
+
+.xans-product-detail .infoArea .btnArea a,
+.xans-product-detail .btnArea a {
+    cursor: pointer;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center !important;
+    padding: 0 40px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.02em !important;
+    text-decoration: none !important;
+    border-radius: 24px !important;
+    transition: all 0.3s ease;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    line-height: 1 !important;
+    height: 44px !important;
+    white-space: nowrap !important;
+}
+
+/* 구매하기 BUY NOW - dark filled */
+.xans-product-detail .infoArea .btnArea a:first-child,
+.xans-product-detail .btnArea a:not(#cartBtn) {
+    flex: 1 !important;
+    max-width: 320px !important;
+    background: #212121 !important;
+    color: #fff !important;
+    border: none !important;
+    order: 2 !important;
+}
+.xans-product-detail .infoArea .btnArea a:first-child:hover,
+.xans-product-detail .btnArea a:not(#cartBtn):hover {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+/* SOLD OUT */
+.xans-product-detail .infoArea .btnArea a.ga09bt2 {
+    flex: 1 !important;
+    max-width: 320px !important;
+    background: #e5e5e5 !important;
+    color: #999 !important;
+    border: none !important;
+    cursor: not-allowed !important;
+    order: 2 !important;
+}
+
+/* 장바구니 CART - outline style */
+.xans-product-detail .infoArea .btnArea a#cartBtn,
+.xans-product-detail .btnArea a#cartBtn {
+    flex: 1 !important;
+    max-width: 320px !important;
+    background: #fff !important;
+    color: #212121 !important;
+    border: 1px solid #212121 !important;
+    order: 1 !important;
+}
+.xans-product-detail .infoArea .btnArea a#cartBtn:hover,
+.xans-product-detail .btnArea a#cartBtn:hover {
+    background: #212121 !important;
+    color: #fff !important;
+}
+
+/* WISHLIST - 숨김 */
+.xans-product-detail .infoArea .btnArea a#wishBtn {
+    display: none !important;
+}
+
+/* 하단 바 높이만큼 페이지 여백 */
+.xans-product-detail {
+    padding-bottom: 80px !important;
+}
+
+/* ===== 상세 콘텐츠 폰트 고정 ===== */
+#prdDetail,
+#prdDetail *,
+.xans-product-detail .detailArea .cont,
+.xans-product-detail .detailArea .cont * {
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    font-size: 11px !important;
+    line-height: 1.9 !important;
+    color: #888 !important;
+    letter-spacing: 0 !important;
+}
+#prdDetail b, #prdDetail strong,
+.xans-product-detail .detailArea .cont b,
+.xans-product-detail .detailArea .cont strong {
+    font-weight: 600 !important;
+    color: #555 !important;
+    font-size: 11px !important;
+}
+#prdDetail img,
+.xans-product-detail .detailArea .cont img {
+    max-width: 100% !important;
+    height: auto !important;
+    font-size: 0 !important;
+}
+/* 상세 콘텐츠 내 테이블 (사이즈표 등) */
+#prdDetail table,
+.xans-product-detail .detailArea .cont table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 8px 0 !important;
+    font-size: 11px !important;
+}
+#prdDetail table th,
+.xans-product-detail .detailArea .cont table th {
+    font-weight: 500 !important;
+    color: #212121 !important;
+    padding: 8px 6px !important;
+    border-bottom: 1px solid #e6e3db !important;
+    text-align: center !important;
+    font-size: 11px !important;
+    background: none !important;
+}
+#prdDetail table td,
+.xans-product-detail .detailArea .cont table td {
+    font-weight: 400 !important;
+    color: #888 !important;
+    padding: 8px 6px !important;
+    border-bottom: 1px solid #f5f5f5 !important;
+    text-align: center !important;
+    font-size: 11px !important;
+}
+
+/* ===== 탭 내비게이션 (pill tabs) ===== */
+.prod-tab-nav {
+    margin-top: 60px;
+    padding: 0 0 30px 0;
+}
+.prod-tab-nav ul {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.prod-tab-nav li {
+    flex: none;
+}
+.prod-tab-nav a {
+    display: inline-block;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: #212121;
+    text-decoration: none;
+    border: 1px solid #f1f1f1;
+    border-radius: 24px;
+    background: #fff;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+.prod-tab-nav a:hover {
+    background: #f9f9f9;
+}
+.prod-tab-nav a.active {
+    background: #f1f1f1;
+    border-color: #f1f1f1;
+}
+
+.xans-product-detail .infoArea .xans-product-action span {
+    position: relative;
+    text-decoration: none;
+}
+
+/* ===== eventArea ===== */
+.xans-product-detail .eventArea { color: #212121; }
+.xans-product-detail .eventArea h3 { padding: 0 0 0 9px; border-top: 1px solid #e6e3db; border-bottom: 1px solid #e6e3db; font-size: 12px; color: #212121; line-height: 39px; }
+.xans-product-detail .eventArea .event { padding: 27px 10px 46px 9px; color: #212121; line-height: 18px; }
+
+/* ===== xans-myshop-benefit ===== */
+.xans-myshop-asyncbenefit { margin: 30px 0; }
+.xans-myshop-asyncbenefit .member { margin: 2px 0 19px; }
+.xans-myshop-asyncbenefit .member em { font-style: normal; }
+
+/* ===== 상품 미리보기 이미지 (Product Zoom) ===== */
+#image_zoom_small { display: block; position: absolute; z-index: 999; background: #fff; outline: 2px solid #aaa; filter: alpha(opacity=50); opacity: 0.5; }
+#zoom_wrap { position: absolute; top: 0; left: 103%; z-index: 100; display: block; }
+.image_zoom_large { position: absolute; z-index: 99; width: 500px; height: 500px; overflow: hidden; background: #fff; outline: 1px solid #e6e3db; }
+.image_zoom_large .image_zoom_large_relative { position: relative; display: block; }
+.image_zoom_large .image_zoom_large_relative img#zoom_image { position: absolute; z-index: 99; max-width: none; }
+
+/* ===== Naver Checkout ===== */
+#NaverChk_Button { clear: both; margin: 10px 0; }
+
+/* ===== 총 상품 금액 (Total Price) ===== */
+.totalPrice {
+    font-weight: 400 !important;
+    margin-top: 12px !important;
+    padding: 12px 0 !important;
+    color: #212121 !important;
+    vertical-align: middle;
+    background: #fff;
+    text-align: left !important;
+    font-size: 11px !important;
+    border-top: 1px solid #eee !important;
+    letter-spacing: 0;
+}
+.totalPrice .total { color: #212121; }
+.totalPrice .total em { font-style: normal; font-size: 11px; color: #212121; font-weight: 500; }
+
+/* ===== 총 상품 (Total Products) ===== */
+#totalProducts { margin-top: 10px; }
+#totalProducts table { margin: 0; }
+#totalProducts table .left { text-align: left; }
+#totalProducts table .center { text-align: center; }
+#totalProducts table .right { color: #212121; text-align: right; }
+#totalProducts thead th { height: 0; padding: 0; font-size: 0; line-height: 0; }
+#totalProducts tbody th { vertical-align: middle; }
+#totalProducts tbody td { padding: 0; color: #212121; line-height: 18px; vertical-align: middle; word-wrap: break-word; word-break: break-all; }
+#totalProducts tbody td p { padding: 0 10px 0 0; line-height: 21px; }
+#totalProducts tbody td p.product span { font-weight: normal; color: #999; line-height: 18px; }
+#totalProducts tbody td p.product span.soldOut { color: #212121; }
+#totalProducts tbody td img { vertical-align: middle; }
+#totalProducts tbody td .quantity { display: inline-block; position: relative; width: 50px; vertical-align: top; }
+#totalProducts tbody td .mileage { display: block; white-space: nowrap; }
+
+/* ===== 배송비 차등부과 레이어 ===== */
+.differentialShipping { display: none; overflow: hidden; position: absolute; left: 50%; top: 17px; z-index: 100; width: 350px; margin: 0 0 0 -176px; }
+.differentialShipping h3.title { height: 35px; padding: 0 35px 0 19px; border: 0; color: #fff; font-size: 14px; line-height: 35px; background: #495164; }
+.differentialShipping .content { padding: 12px 18px 14px 18px; border: 1px solid #999; border-top: 0; text-align: center; background: #fff; }
+.differentialShipping .close { position: absolute; right: 14px; top: 12px; }
+
+.xans-product-detail .shippingFee { position: relative; display: inline-block; }
+
+/* ===== SNS 상품 홍보 ===== */
+.xans-product-customsns,
+.xans-product-customsns ul,
+.xans-product-customsns li { display: inline; vertical-align: middle; }
+
+/* ===== 관련상품 ===== */
+.rollingprd { font-family: helvetica, 'Noto Sans KR', sans-serif; width: 460px; margin-left: 0; }
+.rollingprd:first-child h2 { border-top: 0; }
+.rollingprd ul { display: table; table-layout: fixed; width: 100%; font-size: 0; line-height: 0; }
+.rollingprd img { max-width: 100%; }
+.rollingprd li { position: relative; display: inline-block; padding: 0; vertical-align: top; }
+.rollingprd li .information { text-align: center; padding: 0 5px; }
+.rollingprd .thumbnail { padding: 0 5px; margin-bottom: 15px; }
+.rollingprd .thumbnail img { width: 100%; border-radius: 0; }
+.rollingprd .name { font-size: 13px; margin-bottom: 3px; line-height: 18px; word-wrap: break-word; color: #212121; }
+.rollingprd .name a { color: #212121; }
+.rollingprd .name a:hover { text-decoration: none; transition-duration: 0.3s; }
+.rollingprd .price { display: block; margin: 0; letter-spacing: 0; color: #999; font-size: 11px; line-height: 12px; word-wrap: break-word; }
+.rollingprd .price.sale { color: #999; font-size: 11px; }
+.rollingprd .strike { text-decoration: line-through; color: #b5b5b5; }
+.rollingprd .grid3 li { width: 33.33%; }
+.rollingprd .grid4 li { width: 25%; }
+
+/* ===== Swiper / Paginate ===== */
+.ga09swipe .paginate { margin: 11px 0 0 0; text-align: center; font-size: 0; line-height: 0; }
+
+/* ===== Force option table visibility ===== */
+.xans-product-detail .infoArea table[module="product_option"],
+.xans-product-detail .infoArea .xans-product-option {
+    display: table !important;
+    width: 100% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    border: none !important;
+    border-collapse: collapse !important;
+}
+.xans-product-detail .infoArea table[module="product_option"] caption {
+    display: none !important;
+}
+
+/* ===== 세트상품 ===== */
+.xans-product-detail .productSet { margin: 10px 0 0; border: 1px solid #e6e3db; border-bottom: 0; display: none; }
+.xans-product-detail .productSet > .title { position: relative; height: 40px; line-height: 40px; box-sizing: border-box; border-bottom: 1px solid #e6e3db; background-color: #f6f5f1; }
+.xans-product-detail .productSet > .title h3 { margin: 0 0 0 9px; font-size: 12px; color: #212121; }
+
+/* ===== 회원등급별 할인가 ===== */
+.xans-product-detail .infoArea td > span > ul.discountMember > li { position: relative; float: left; }
+.xans-product-detail .infoArea td ul.discountMember li a { display: block; margin: 0 4px 4px 0; }
+
+/* ===== MOBILE RESPONSIVE (detail.css) ===== */
+@media (max-width: 768px) {
+
+    .xans-product-detail .imgArea {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+    .xans-product-detail .listImg li img {
+        margin-bottom: 2px !important;
+        border-radius: 0 !important;
+    }
+
+    #detail-right {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        padding: 16px !important;
+        box-sizing: border-box !important;
+    }
+    #detailinfo {
+        width: 100% !important;
+    }
+    .fixmenu {
+        position: relative !important;
+        top: auto !important;
+        width: 100% !important;
+    }
+
+    .rollingprd {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .xans-product-detail .infoArea table[module="product_option"],
+    .xans-product-detail .infoArea .xans-product-option,
+    .prd-option-wrap,
+    .prd-option-wrap table,
+    .prd-option-wrap tbody,
+    .prd-option-wrap tr,
+    .prd-option-wrap th,
+    .prd-option-wrap td {
+        display: revert !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    .prd-option-wrap table {
+        width: 100% !important;
+        border: none !important;
+    }
+    .prd-option-wrap th {
+        display: block !important;
+        width: 100% !important;
+    }
+    .prd-option-wrap td {
+        display: block !important;
+        width: 100% !important;
+    }
+    .prd-option-wrap select {
+        width: 100% !important;
+        height: 48px !important;
+        font-size: 14px !important;
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    .xans-product-detail .infoArea .btnArea,
+    .xans-product-detail .btnArea {
+        padding: 10px 16px !important;
+        max-width: 100% !important;
+        gap: 8px !important;
+    }
+    .xans-product-detail .infoArea .btnArea a,
+    .xans-product-detail .btnArea a {
+        padding: 0 !important;
+        font-size: 12px !important;
+        height: 42px !important;
+        max-width: none !important;
+        flex: 1 !important;
+    }
+
+    .xans-product-detail .infoArea select {
+        height: 48px !important;
+        font-size: 14px !important;
+    }
+
+    .ec-base-qty input {
+        height: 40px !important;
+        width: 56px !important;
+    }
+    .ec-base-qty .up,
+    .ec-base-qty .down,
+    .ec-base-qty a {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .prod-tab-nav {
+        margin-top: 30px !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 50 !important;
+        background: #fff !important;
+        padding: 12px 16px !important;
+    }
+    .prod-tab-nav a {
+        font-size: 12px !important;
+        padding: 6px 16px !important;
+    }
+}
+
+
+/* ============================================================
+   SOURCE 3: detail_infoarea.html inline <style> — ALL CSS
+   ============================================================ */
+
+/* === Brand label === */
+.prd-brand-label {
+    font-size: 11px !important;
+    letter-spacing: 2px !important;
+    color: #999 !important;
+    margin-bottom: 8px !important;
+    text-transform: uppercase !important;
+}
+
+/* === Product detail fields === */
+.prd-detail-fields {
+    padding-bottom: 16px !important;
+}
+.prd-detail-fields table {
+    display: table !important;
+    width: 100% !important;
+    border: none !important;
+    border-collapse: collapse !important;
+}
+.prd-detail-fields caption {
+    display: none !important;
+}
+.prd-detail-fields th {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: 10px 0 2px 0 !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    color: #999 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    border: none !important;
+    background: none !important;
+}
+.prd-detail-fields td {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 0 4px 0 !important;
+    font-size: 11px !important;
+    color: #212121 !important;
+    line-height: 1.6 !important;
+    border: none !important;
+    background: none !important;
+}
+.prd-detail-fields tr:first-child th {
+    padding-top: 0 !important;
+}
+
+/* === Option wrapper === */
+.prd-option-wrap {
+    margin-top: 20px !important;
+    padding: 0 !important;
+    border-top: none !important;
+    background: none !important;
+    border-radius: 0 !important;
+}
+.prd-option-wrap table {
+    display: table !important;
+    width: 100% !important;
+    visibility: visible !important;
+    border: none !important;
+    border-collapse: collapse !important;
+}
+.prd-option-wrap table caption {
+    display: none !important;
+}
+.prd-option-wrap tbody {
+    display: table-row-group !important;
+    visibility: visible !important;
+}
+.prd-option-wrap tr {
+    display: table-row !important;
+    visibility: visible !important;
+}
+.prd-option-wrap th {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: 12px 0 6px 0 !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    color: #212121 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    border: none !important;
+    background: none !important;
+}
+.prd-option-wrap td {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    padding: 0 0 4px 0 !important;
+    border: none !important;
+    background: none !important;
+}
+.prd-option-wrap select {
+    width: 100% !important;
+    height: 36px !important;
+    font-size: 11px !important;
+    color: #212121 !important;
+    border: 1px solid #ddd !important;
+    border-radius: 0 !important;
+    padding: 0 30px 0 10px !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%23999'/%3E%3C/svg%3E") no-repeat right 10px center !important;
+    background-size: 8px 5px !important;
+    cursor: pointer !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.2s ease !important;
+}
+.prd-option-wrap select:focus {
+    border-color: #212121 !important;
+}
+
+/* === Inline buy buttons === */
+.prd-inline-btns {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    margin-top: 16px !important;
+}
+.prd-inline-btn {
+    width: 100% !important;
+    height: 36px !important;
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.02em !important;
+    cursor: pointer !important;
+    border-radius: 0 !important;
+    transition: all 0.2s ease !important;
+    box-sizing: border-box !important;
+}
+.prd-btn-cart {
+    background: #f0f0f0 !important;
+    color: #212121 !important;
+    border: none !important;
+}
+.prd-btn-cart:hover {
+    background: #e0e0e0 !important;
+}
+.prd-btn-buy {
+    background: #212121 !important;
+    color: #fff !important;
+    border: none !important;
+}
+.prd-btn-buy:hover {
+    background: #000 !important;
+}
+
+/* === Accordion === */
+.prd-accordion-wrap {
+    margin-top: 32px !important;
+    border-top: none !important;
+}
+.prd-accordion {
+    border-top: 1px solid #e6e3db !important;
+    margin: 0 !important;
+}
+.prd-accordion:last-of-type {
+    border-bottom: 1px solid #e6e3db !important;
+}
+.prd-accordion summary {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 14px 0 !important;
+    cursor: pointer !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 1px !important;
+    color: #212121 !important;
+    list-style: none !important;
+    text-transform: uppercase !important;
+}
+.prd-accordion summary::-webkit-details-marker {
+    display: none !important;
+}
+.prd-accordion summary .acc-icon::after {
+    content: '+' !important;
+    font-size: 18px !important;
+    font-weight: 300 !important;
+    color: #212121 !important;
+}
+.prd-accordion[open] summary .acc-icon::after {
+    content: '\2212' !important;
+}
+.prd-accordion .acc-content {
+    padding: 0 0 16px 0 !important;
+    font-size: 12px !important;
+    line-height: 1.8 !important;
+    color: #666 !important;
+}
+.prd-accordion .acc-content p {
+    margin: 0 0 4px 0 !important;
+}
+
+/* === Mobile option adjustments === */
+@media (max-width: 768px) {
+    .prd-option-wrap {
+        margin-top: 16px !important;
+    }
+    .prd-option-wrap select {
+        height: 40px !important;
+        font-size: 12px !important;
+    }
+    .prd-option-wrap th {
+        font-size: 12px !important;
+        padding: 10px 0 6px 0 !important;
+    }
+    .prd-option-wrap td {
+        padding: 0 0 4px 0 !important;
+    }
+    .prd-inline-btn {
+        height: 40px !important;
+        font-size: 12px !important;
+    }
+    .prd-accordion-wrap {
+        margin-top: 24px !important;
+        margin-bottom: 80px !important;
+    }
+}
+
+
+/* ============================================================
+   PREVIEW-SPECIFIC: additional helpers
+   ============================================================ */
+
+/* Price area styling for preview */
+.price-area { margin-bottom: 16px; }
+.price-original { font-size: 11px; color: #bbb; text-decoration: line-through; margin-right: 6px; }
+.price-discount { font-size: 13px; color: #db7e7e; font-weight: 500; margin-right: 6px; }
+.price-sale { font-size: 13px; color: #212121; font-weight: 500; }
+
+/* Review / QnA board preview styles */
+#detailboardtext { padding: 12px 0; border-bottom: 1px solid #e6e3db; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; }
+#detailboardtext .bt a { font-size: 11px; font-weight: 400; color: #999 !important; }
+.board { font-size: 11px; }
+.board table { width: 100%; border-collapse: collapse; }
+.board table td { padding: 12px 0; border-bottom: 1px solid #f5f5f5; font-size: 11px; color: #666; vertical-align: top; }
+.board .subject { font-size: 12px; color: #212121; font-weight: 400; }
+.board .writer { font-size: 11px; color: #999; margin-top: 4px; }
+.board .date { font-size: 11px; color: #bbb; }
+
+/* Q&A board */
+#qnaArea table { width: 100%; border-collapse: collapse; }
+#qnaArea table th { font-size: 11px; font-weight: 500; color: #212121; padding: 10px 0; border-bottom: 1px solid #e6e3db; text-align: left; }
+#qnaArea table td { font-size: 11px; color: #666; padding: 10px 0; border-bottom: 1px solid #f5f5f5; }
+#qnaArea .subject a { color: #212121 !important; }
+
+/* Simple footer for preview */
+.preview-footer { background: #f6f5f1; margin-top: 120px; padding: 40px 24px; text-align: center; font-size: 11px; color: #999; }
+.preview-footer .footer-logo { font-size: 14px; font-weight: 700; color: #212121; letter-spacing: 0.08em; margin-bottom: 12px; }
+
+/* Content wrap for detail page */
+.detail-content-wrap { max-width: 1920px; margin: 0 auto; padding: 0 24px; padding-top: 80px; }
+@media (max-width: 768px) {
+    .detail-content-wrap { padding: 92px 12px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     PROMO BAR + MOBILE HEADER + MENU OVERLAY + GNB
+     ============================================================ -->
+
+<div class="gnb-float-wrap">
+
+<!-- Promo Bar -->
+<div class="promo-wrap">
+<div class="promo-bar">
+    <div class="promo-track">
+        <span class="promo-item"><a href="#">회원가입 시 즉시 사용 가능한 3,000 포인트가 지급됩니다.</a></span>
+        <span class="promo-item"><a href="#">매주 선보이는 트렌디한 뉴 아이템과 스타일링을 확인해 보세요.</a></span>
+        <span class="promo-item"><a href="#">회원가입 시 즉시 사용 가능한 3,000 포인트가 지급됩니다.</a></span>
+        <span class="promo-item"><a href="#">매주 선보이는 트렌디한 뉴 아이템과 스타일링을 확인해 보세요.</a></span>
+    </div>
+</div>
+</div>
+
+<!-- Mobile Header -->
+<div class="mobile-header">
+    <button class="mobile-menu-btn" onclick="toggleMenuOverlay()"><i class="fa-solid fa-bars"></i></button>
+    <a href="#" class="mobile-logo">SHOP YOUTHTORY</a>
+    <div class="mobile-icons">
+        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="#"><i class="fa-solid fa-right-to-bracket"></i></a>
+        <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+    </div>
+</div>
+
+<!-- Fullscreen Menu Overlay -->
+<div class="menu-overlay" id="menuOverlay">
+    <div class="menu-overlay-bg" onclick="toggleMenuOverlay()"></div>
+    <div class="menu-overlay-card">
+        <button class="menu-overlay-close" onclick="toggleMenuOverlay()">&#10005;</button>
+        <ul class="menu-overlay-nav">
+            <li><a href="#">STYLING</a></li>
+            <li><a href="#">NEW</a></li>
+            <li>
+                <button class="menu-sub-toggle" onclick="toggleSubMenu(this)">MEN <span class="toggle-arrow">&#9662;</span></button>
+                <ul class="menu-overlay-sub">
+                    <li><a href="#">All</a></li>
+                    <li><a href="#">Outwear</a></li>
+                    <li><a href="#">Top</a></li>
+                    <li><a href="#">Bottom</a></li>
+                    <li><a href="#">Accessories</a></li>
+                </ul>
+            </li>
+            <li>
+                <button class="menu-sub-toggle" onclick="toggleSubMenu(this)">WOMEN <span class="toggle-arrow">&#9662;</span></button>
+                <ul class="menu-overlay-sub">
+                    <li><a href="#">All</a></li>
+                    <li><a href="#">Outwear</a></li>
+                    <li><a href="#">Top</a></li>
+                    <li><a href="#">Bottom</a></li>
+                    <li><a href="#">Dress</a></li>
+                    <li><a href="#">Accessories</a></li>
+                </ul>
+            </li>
+            <li><a href="#">EXCLUSIVE</a></li>
+            <li><a href="#">SALE</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- GNB Header (PC) -->
+<header class="gnb-header">
+    <div class="gnb-inner">
+        <a href="#" class="gnb-logo"><span class="gnb-logo-text">SHOP YOUTHTORY</span></a>
+        <nav class="gnb-nav">
+            <a class="gnb-item" href="#">STYLING</a>
+            <a class="gnb-item" href="#">NEW</a>
+            <a class="gnb-item" href="#">MEN</a>
+            <a class="gnb-item" href="#">WOMEN</a>
+            <a class="gnb-item" href="#">EXCLUSIVE</a>
+            <a class="gnb-item" href="#">SALE</a>
+        </nav>
+        <div class="gnb-right">
+            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="#"><i class="fa-solid fa-right-to-bracket"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+    </div>
+</header>
+
+</div><!-- gnb-float-wrap -->
+
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+
+<div class="detail-content-wrap">
+
+    <!-- Category Breadcrumb -->
+    <nav class="detail-cate-nav">
+        <a href="#">Home <span class="cate-arrow">&#9662;</span></a>
+        <a href="#">MEN <span class="cate-arrow">&#9662;</span></a>
+        <a href="#">Outwear</a>
+    </nav>
+
+    <!-- Product Detail Area -->
+    <div class="xans-product-detail">
+        <div class="detailArea">
+
+            <!-- Right Panel: Product Info -->
+            <div id="detail-right">
+                <div id="detailinfo">
+                    <div class="infoArea">
+
+                        <!-- Brand label -->
+                        <p class="prd-brand-label">SHOP YOUTHTORY</p>
+
+                        <!-- Product name -->
+                        <p class="prdname">워셔블 오버핏 울 블레이저</p>
+
+                        <!-- Price area -->
+                        <div class="price-area">
+                            <span class="price-original">89,000원</span>
+                            <span class="price-discount">20%</span>
+                            <span class="price-sale">71,200원</span>
+                        </div>
+
+                        <!-- Product detail fields -->
+                        <div class="prd-detail-fields">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>소재</th>
+                                        <td>울 80%, 폴리에스터 20%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>색상</th>
+                                        <td>블랙 / 네이비 / 그레이</td>
+                                    </tr>
+                                    <tr>
+                                        <th>배송</th>
+                                        <td>3,000원 (50,000원 이상 무료배송)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Options -->
+                        <div class="prd-option-wrap">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Color</th>
+                                        <td>
+                                            <select>
+                                                <option value="">- [필수] 옵션을 선택해 주세요 -</option>
+                                                <option value="블랙">블랙</option>
+                                                <option value="네이비">네이비</option>
+                                                <option value="그레이">그레이</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Size</th>
+                                        <td>
+                                            <select>
+                                                <option value="">- [필수] 옵션을 선택해 주세요 -</option>
+                                                <option value="S/44">S/44</option>
+                                                <option value="M/46">M/46</option>
+                                                <option value="L/48">L/48</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Quantity -->
+                        <dl class="ec-base-desc quantity">
+                            <dt>수량</dt>
+                            <dd>
+                                <div class="ec-base-qty">
+                                    <a href="javascript:;" class="down" onclick="var q=this.parentNode.querySelector('input');if(q.value>1)q.value=parseInt(q.value)-1;updateTotal();">&#8722;</a>
+                                    <input type="number" value="1" min="1" id="qtyInput">
+                                    <a href="javascript:;" class="up" onclick="var q=this.parentNode.querySelector('input');q.value=parseInt(q.value)+1;updateTotal();">+</a>
+                                </div>
+                            </dd>
+                        </dl>
+
+                        <!-- Total Price -->
+                        <div class="totalPrice">
+                            TOTAL : <span class="total"><em id="totalPriceVal">71,200원</em></span>
+                        </div>
+
+                        <!-- Inline buy buttons -->
+                        <div class="prd-inline-btns">
+                            <button type="button" class="prd-inline-btn prd-btn-cart">장바구니</button>
+                            <button type="button" class="prd-inline-btn prd-btn-buy">구매하기</button>
+                        </div>
+
+                        <!-- Accordions -->
+                        <div class="prd-accordion-wrap">
+                            <details class="prd-accordion">
+                                <summary>Product Detail <span class="acc-icon"></span></summary>
+                                <div class="acc-content">
+                                    <p><strong>Model Info</strong></p>
+                                    <p>키 182cm / 몸무게 68kg / M 착용</p>
+                                    <p>오버핏으로 여유 있는 실루엣을 연출합니다.</p>
+                                    <br>
+                                    <p><strong>Size (cm)</strong></p>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Size</th>
+                                                <th>어깨</th>
+                                                <th>가슴</th>
+                                                <th>소매</th>
+                                                <th>총장</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>S/44</td><td>47</td><td>112</td><td>60</td><td>72</td></tr>
+                                            <tr><td>M/46</td><td>49</td><td>116</td><td>62</td><td>74</td></tr>
+                                            <tr><td>L/48</td><td>51</td><td>120</td><td>64</td><td>76</td></tr>
+                                        </tbody>
+                                    </table>
+                                    <p>사이즈는 측정 방법에 따라 1~3cm 오차가 있을 수 있습니다.</p>
+                                </div>
+                            </details>
+                            <details class="prd-accordion">
+                                <summary>Size &amp; Fabric <span class="acc-icon"></span></summary>
+                                <div class="acc-content">
+                                    <p><strong>Fabric</strong>: 울 80%, 폴리에스터 20%</p>
+                                    <p><strong>Care</strong>: 드라이클리닝 권장 / 물세탁 가능 (울 세탁 모드)</p>
+                                    <p>배송: 택배 (영업일 기준 2~5일 소요)</p>
+                                    <p>배송비: 3,000원 (50,000원 이상 무료배송)</p>
+                                    <p>교환/반품: 수령 후 7일 이내 가능</p>
+                                    <p>세일 상품은 변심에 의한 교환/반품이 불가합니다.</p>
+                                </div>
+                            </details>
+                        </div>
+
+                    </div><!-- infoArea -->
+                </div><!-- detailinfo -->
+            </div><!-- detail-right -->
+
+            <!-- Image Area -->
+            <div class="imgArea">
+                <div class="listImg">
+                    <ul>
+                        <li><img src="https://placehold.co/800x1100/e8e8e8/999?text=PRODUCT+IMAGE+1" alt="Product Image 1"></li>
+                        <li><img src="https://placehold.co/800x1100/e8e8e8/999?text=PRODUCT+IMAGE+2" alt="Product Image 2"></li>
+                        <li><img src="https://placehold.co/800x1100/e8e8e8/999?text=PRODUCT+IMAGE+3" alt="Product Image 3"></li>
+                    </ul>
+                </div>
+
+                <!-- Tab Nav -->
+                <nav class="prod-tab-nav" id="prodTabNav">
+                    <ul>
+                        <li><a href="#prdDetail" class="active" data-tab="detail">DETAIL</a></li>
+                        <li><a href="#prdReview" data-tab="review">REVIEW</a></li>
+                        <li><a href="#prdQnA" data-tab="qna">Q&A</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Detail Section -->
+                <div id="prdDetail">
+                    <div id="prddetailimg">
+                        <p><strong>워셔블 오버핏 울 블레이저</strong></p>
+                        <br>
+                        <p>고급스러운 울 소재로 제작된 오버핏 블레이저입니다.</p>
+                        <p>워셔블 가공 처리되어 가정에서도 간편하게 세탁이 가능합니다.</p>
+                        <p>여유 있는 실루엣으로 다양한 스타일링에 활용할 수 있습니다.</p>
+                        <br>
+                        <p>- 울 80%, 폴리에스터 20%</p>
+                        <p>- 워셔블 가공 처리</p>
+                        <p>- 오버핏 / 싱글 2버튼</p>
+                        <p>- 노치드 라펠 / 플랩 포켓</p>
+                        <br>
+                        <p><strong>Styling Tip</strong></p>
+                        <p>와이드 슬랙스와 매치하면 깔끔한 오피스 룩을 연출할 수 있으며,</p>
+                        <p>데님과 함께 착용하면 캐주얼한 데일리 룩으로도 활용 가능합니다.</p>
+                    </div>
+                </div>
+
+                <!-- Review Section -->
+                <div id="prdReview" style="margin-top:80px">
+                    <div id="detailboardtext">
+                        <div style="float:left;">Review</div>
+                        <div style="float:right; text-align:right;" class="bt"><a href="#">Write</a> <a href="#" style="margin-left:15px">View all</a></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="board">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="width:50px; color:#bbb;">5</td>
+                                    <td>
+                                        <div class="subject">핏이 정말 좋아요. 오버핏인데 깔끔하게 떨어집니다.</div>
+                                        <div class="writer">김** &nbsp; 2026-03-10</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:50px; color:#bbb;">4</td>
+                                    <td>
+                                        <div class="subject">소재감 좋고 물세탁 되는 게 최고입니다. 네이비 구매했어요.</div>
+                                        <div class="writer">이** &nbsp; 2026-03-08</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:50px; color:#bbb;">3</td>
+                                    <td>
+                                        <div class="subject">사이즈 참고하세요. 평소 L인데 M이 딱 맞았습니다.</div>
+                                        <div class="writer">박** &nbsp; 2026-03-05</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Q&A Section -->
+                <div id="prdQnA" style="margin-top:80px">
+                    <div id="detailboardtext">
+                        <div style="float:left;">Q&A</div>
+                        <div style="float:right; text-align:right;" class="bt"><a href="#">Write</a> <a href="#" style="margin-left:15px">View all</a></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div id="qnaArea">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width:50px;">NO</th>
+                                    <th>TITLE</th>
+                                    <th style="width:80px;">WRITER</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>3</td>
+                                    <td class="subject"><a href="#">그레이 색상 재입고 일정이 궁금합니다.</a></td>
+                                    <td>최**</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td class="subject"><a href="#">키 175에 M사이즈 괜찮을까요?</a></td>
+                                    <td>정**</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td class="subject"><a href="#">배송 기간 얼마나 걸리나요?</a></td>
+                                    <td>한**</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div><!-- imgArea -->
+
+        </div><!-- detailArea -->
+        <div style="clear:both"></div>
+
+        <!-- Fixed Bottom Buy Bar -->
+        <div class="btnArea">
+            <a id="cartBtn" href="javascript:;">CART</a>
+            <a href="javascript:;"><span>BUY NOW</span></a>
+        </div>
+
+    </div><!-- xans-product-detail -->
+
+</div><!-- detail-content-wrap -->
+
+
+<!-- Image Zoom Overlay -->
+<div id="imgZoomOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; cursor:zoom-out; align-items:center; justify-content:center;">
+    <img id="imgZoomLarge" src="" alt="" style="max-width:90vw; max-height:90vh; object-fit:contain; border-radius:4px; user-select:none;">
+    <button onclick="document.getElementById('imgZoomOverlay').style.display='none'; document.body.style.overflow='';" style="position:absolute; top:20px; right:24px; background:none; border:none; color:#fff; font-size:28px; cursor:pointer; line-height:1; font-weight:300;">&#10005;</button>
+</div>
+
+
+<!-- Footer -->
+<div class="preview-footer">
+    <div class="footer-logo">SHOP YOUTHTORY</div>
+    <p>COMPANY: YOUTHTORY &nbsp;|&nbsp; CEO: YOUTH &nbsp;|&nbsp; TEL: 070-0000-0000</p>
+    <p>ADDRESS: Seoul, Korea &nbsp;|&nbsp; BUSINESS LICENSE: 000-00-00000</p>
+    <p style="margin-top:12px; color:#ccc;">&copy; 2026 YOUTHTORY. All rights reserved.</p>
+</div>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+
+<script>
+/* Menu Overlay Toggle */
+function toggleMenuOverlay() {
+    document.getElementById('menuOverlay').classList.toggle('open');
+    document.body.style.overflow = document.getElementById('menuOverlay').classList.contains('open') ? 'hidden' : '';
+}
+
+/* Sub Menu Toggle */
+function toggleSubMenu(btn) {
+    btn.classList.toggle('active');
+    var sub = btn.nextElementSibling;
+    sub.classList.toggle('open');
+}
+
+/* Escape key handler */
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        var overlay = document.getElementById('menuOverlay');
+        if (overlay && overlay.classList.contains('open')) toggleMenuOverlay();
+        var zoomOverlay = document.getElementById('imgZoomOverlay');
+        if (zoomOverlay && zoomOverlay.style.display === 'flex') {
+            zoomOverlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+});
+
+/* GNB scroll behavior */
+(function(){
+    var header = document.querySelector('.gnb-header');
+    var ticking = false;
+    window.addEventListener('scroll', function(){
+        if(!ticking){
+            requestAnimationFrame(function(){
+                if(window.scrollY > 30) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+})();
+
+/* Tab nav smooth scroll */
+document.addEventListener('DOMContentLoaded', function(){
+    var tabLinks = document.querySelectorAll('.prod-tab-nav a[data-tab]');
+    tabLinks.forEach(function(link){
+        link.addEventListener('click', function(e){
+            e.preventDefault();
+            tabLinks.forEach(function(l){ l.classList.remove('active'); });
+            this.classList.add('active');
+            var target = document.querySelector(this.getAttribute('href'));
+            if(target){
+                var top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+                window.scrollTo({ top: top, behavior: 'smooth' });
+            }
+        });
+    });
+
+    /* Image zoom overlay */
+    var imgs = document.querySelectorAll('.listImg ul li img');
+    var overlay = document.getElementById('imgZoomOverlay');
+    var zoomImg = document.getElementById('imgZoomLarge');
+    imgs.forEach(function(img){
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', function(){
+            zoomImg.src = this.src;
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    if(overlay){
+        overlay.addEventListener('click', function(e){
+            if(e.target === overlay){
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+
+/* Update total price based on quantity */
+function updateTotal() {
+    var qty = parseInt(document.getElementById('qtyInput').value) || 1;
+    var price = 71200 * qty;
+    document.getElementById('totalPriceVal').textContent = price.toLocaleString() + '원';
+}
+</script>
+
+</body>
+</html>

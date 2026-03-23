@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YOUTHTORY — NEW ARRIVALS</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<style>
+/* ===== layout.html 글로벌 스타일 ===== */
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #212121;
+    background: #ffffff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: #212121;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+a:hover {
+    opacity: 0.7;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+button, .btn {
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+input, select, textarea {
+    font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 0;
+}
+.scrollTop {
+    bottom: 40px;
+    right: 40px;
+    z-index: 100;
+}
+.scrollTop a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: rgba(33, 33, 33, 0.1);
+    color: #212121;
+    border-radius: 0;
+    transition: all 0.3s ease;
+}
+.scrollTop a:hover {
+    background: rgba(33, 33, 33, 0.2);
+    opacity: 1;
+}
+ul { list-style: none; margin: 0; padding: 0; }
+
+/* ===== css/left.css ===== */
+#left {
+    position: fixed;
+    z-index: 99;
+    left: 40px;
+    top: 0;
+    width: 180px;
+    padding: 24px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #212121;
+    transition: all 0.3s ease;
+}
+#left a {
+    text-decoration: none;
+    color: #212121;
+    transition: all 0.3s ease;
+}
+#left a:hover {
+    text-decoration: none;
+    opacity: 0.6;
+}
+.leftbg {
+    background: #ffffff;
+}
+#left #logo {
+    padding: 20px 0;
+}
+#left #logo img {
+    padding: 16px 0;
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+    transition: all 0.3s ease;
+    max-width: 100%;
+}
+#left #logo img:hover {
+    padding: 16px 0;
+    margin: 0;
+    opacity: 0.8;
+}
+#left #menulist {
+    margin-top: 32px;
+    width: 180px;
+}
+#left .accordionmenu,
+#left .accordionmenu2 {
+    cursor: pointer;
+    width: 180px;
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: all 0.3s ease;
+    background: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 44px;
+    color: #212121;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+#left .accordionmenu:hover,
+#left .accordionmenu2:hover {
+    letter-spacing: 0.06em;
+}
+#left .panel {
+    background: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 28px;
+}
+#left .panel a {
+    color: #666666;
+    display: block;
+    padding-left: 0;
+    transition: all 0.3s ease;
+}
+#left .panel a:hover {
+    margin-left: 0;
+    padding-left: 8px;
+    color: #212121;
+}
+#left .panel2 {
+    margin-bottom: 12px;
+    background: transparent;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 28px;
+}
+#left .panel2 a {
+    color: #666666;
+    display: block;
+    transition: all 0.3s ease;
+}
+#left .panel2 a:hover {
+    margin-left: 0;
+    padding-left: 8px;
+    color: #212121;
+}
+#left button,
+#left button:focus,
+#left button:active {
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+}
+#left span {
+    position: relative;
+}
+
+/* ===== css/top.css ===== */
+#top {
+    position: fixed;
+    z-index: 80;
+    right: 40px;
+    top: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    padding: 0;
+    height: 74px;
+    line-height: 74px;
+    color: #212121;
+    transition: all 0.3s ease;
+}
+#top a {
+    text-decoration: none;
+    color: #212121;
+    transition: opacity 0.3s ease;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+#top a:hover {
+    text-decoration: none;
+    opacity: 0.6;
+}
+#top #topcarticon {
+    float: right;
+    margin-top: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    margin-left: 20px;
+    line-height: 74px;
+}
+#top #topcarticon img {
+    margin-top: 0;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+#top #topsearch {
+    float: right;
+    margin-left: 20px;
+    margin-top: 0;
+    line-height: 74px;
+}
+#top #topsearch .search-bar {
+    margin: 0;
+    padding: 0;
+}
+#top #topsearch .search-bar img {
+    cursor: pointer;
+    margin-left: 4px;
+    height: 16px;
+    vertical-align: middle;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+#top #topsearch .search-bar img:hover {
+    opacity: 1;
+}
+#top #topsearch .search-bar input[type=text] {
+    height: 24px;
+    padding: 0;
+    font-size: 12px;
+    color: #212121;
+    width: 0;
+    border: none;
+    border-bottom: 1px solid #dadada;
+    background: transparent;
+    transition: width 0.3s ease, border-color 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+#top #topsearch .search-bar:hover input[type=text],
+#top #topsearch .search-bar input[type=text]:focus {
+    width: 120px;
+    border-bottom: 1px solid #212121;
+}
+#top #log {
+    float: right;
+    margin-top: 0;
+    font-size: 12px;
+    line-height: 74px;
+}
+#top #log a {
+    margin-left: 20px;
+    font-weight: 400;
+}
+
+/* ===== css/right.css ===== */
+#right {
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    width: 50%;
+    min-width: 480px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    text-align: center;
+    background: rgba(42, 41, 41, 0.95);
+    border-bottom: none;
+    transition: all 0.3s ease;
+}
+#right a {
+    cursor: pointer;
+}
+#right.opened {
+    z-index: 999;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+#rightmenu {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 48px;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+    z-index: 9999;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    margin-top: -200px;
+    text-align: center;
+}
+#rightmenu .innermenu {
+    width: 480px;
+    margin: 0 auto;
+}
+#rightmenu .innermenu a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+#rightmenu .innermenu a:hover {
+    color: #ffffff;
+    letter-spacing: 0.08em;
+}
+#rightmenu .innermenu li {
+    margin-bottom: 4px;
+}
+#rightmenu .innermenu ul {
+    float: left;
+    margin-right: 60px;
+    text-align: left;
+}
+#rightmenu .search-bar {
+    padding: 16px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 440px;
+    margin: 0 auto 48px;
+    transition: border-color 0.3s ease;
+}
+#rightmenu .search-bar:hover,
+#rightmenu .search-bar:focus-within {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+#rightmenu .search-bar img {
+    cursor: pointer;
+    height: 24px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    vertical-align: middle;
+}
+#rightmenu .search-bar img:hover {
+    opacity: 1;
+}
+#rightmenu .search-bar input[type=text] {
+    height: 32px;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 300;
+    color: #ffffff;
+    width: 400px;
+    border: none;
+    background: transparent;
+    transition: all 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+    letter-spacing: 0.02em;
+}
+#rightmenu .search-bar input[type=text]::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+#toggle-right {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    top: 25px;
+    right: 40px;
+    cursor: pointer;
+    z-index: 99999;
+}
+#toggle-right span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    margin: 12px 0 0 0;
+    background: #212121;
+    transition: all 0.3s ease;
+}
+#toggle-right span:before,
+#toggle-right span:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: #212121;
+    transition: all 0.3s ease;
+}
+#toggle-right span:before {
+    margin: -8px 0 0 0;
+}
+#toggle-right span:after {
+    margin: 8px 0 0 0;
+}
+#toggle-right.open span {
+    background-color: transparent;
+}
+#toggle-right.open span:before,
+#toggle-right.open span:after {
+    margin: 0;
+    background: #ffffff;
+}
+#toggle-right.open span:before {
+    transform: rotate(45deg);
+}
+#toggle-right.open span:after {
+    transform: rotate(-45deg);
+}
+
+/* ===== css/ga09product.css ===== */
+.ga09list .prdpadding {
+    margin: 0 5px 40px 5px;
+}
+.ga09list .prdline {
+    margin-bottom: 12px;
+}
+.ga09list {
+    margin: 0 auto;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.ga09list ul {
+    zoom: 1;
+    width: 100%;
+    margin-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0;
+}
+.ga09list ul a:link {
+    text-decoration: none;
+}
+.ga09list ul a:hover {
+    text-decoration: none;
+    color: #212121;
+}
+.ga09list ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.ga09list ul li {
+    display: inline-block;
+    vertical-align: top;
+}
+.ga09list ul.grid2 > li {
+    display: inline-block;
+    width: calc(50% - 10px);
+    margin: 0 5px;
+    text-align: left;
+    vertical-align: top;
+}
+.ga09list ul.grid3 > li {
+    display: inline-block;
+    width: calc(33.33% - 10px);
+    margin: 0 5px;
+    text-align: left;
+    vertical-align: top;
+}
+.ga09list ul.grid4 > li {
+    display: inline-block;
+    width: calc(25% - 10px);
+    margin: 0 5px;
+    text-align: left;
+    vertical-align: top;
+}
+.ga09list ul.grid5 > li {
+    display: inline-block;
+    width: calc(20% - 10px);
+    margin: 0 5px;
+    text-align: left;
+    vertical-align: top;
+}
+.ga09list .name {
+    clear: both;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #212121;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+}
+.ga09list .name a {
+    color: #212121;
+    transition: opacity 0.3s ease;
+}
+.ga09list .name a:hover {
+    opacity: 0.7;
+}
+.ga09list .icon img {
+    margin-top: 8px;
+    margin-right: 4px;
+}
+.ga09list .prices {
+    line-height: 1.5;
+    color: #212121;
+    font-size: 14px;
+    font-weight: 400;
+}
+.ga09list .price {
+    font-size: 13px;
+    color: #999999;
+    margin-right: 8px;
+    text-decoration: line-through !important;
+}
+.ga09list .normal {
+    font-size: 14px;
+    color: #212121;
+    font-weight: 400;
+    text-decoration: none !important;
+}
+.ga09list .info {
+    margin-top: 8px;
+    line-height: 1.5;
+    font-size: 12px;
+    color: #999999;
+}
+.ga09list .colorWrap {
+    height: 19px;
+}
+.ga09list .color {
+    padding-top: 8px;
+    text-align: left;
+}
+.ga09list .color ul {
+    display: inline-flex;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    gap: 4px;
+}
+.ga09list .color li {
+    padding: 0;
+}
+.ga09list .chips {
+    width: 10px;
+    height: 10px;
+    margin-left: 0;
+    font-size: 0;
+    line-height: 0;
+    border-radius: 0;
+}
+.hoverimg {
+    overflow: hidden;
+    border-radius: 0;
+}
+.hoverimg img {
+    transform: scale(1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border-radius: 0;
+}
+.hoverimg:hover img {
+    transform: scale(1.05);
+    opacity: 0.94;
+}
+
+/* ===== css/bottom.css ===== */
+#bottom-wrap {
+    border-top: 1px solid #dadada;
+    margin-top: 120px;
+}
+#bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.8;
+    padding-top: 60px;
+    color: #666666;
+}
+#bottom a {
+    transition: all 0.3s ease;
+    color: #666666;
+}
+#bottom a:hover {
+    text-decoration: none;
+    color: #212121;
+}
+#bottom .copypadding {
+    float: left;
+    width: 20%;
+}
+#bottom .copypadding1 {
+    float: left;
+}
+#bottom .copypadding2 {
+    float: right;
+    text-align: right;
+}
+#bottom .inner {
+    padding-bottom: 60px;
+    margin: 0 40px;
+}
+#bottom .logo {
+    margin-bottom: 24px;
+}
+#bottom .logo img {
+    height: 16px;
+    opacity: 0.8;
+}
+#joinbt {
+    border: 1px solid #dadada;
+    padding: 12px 0;
+    width: 140px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: #212121;
+}
+#joinbt:hover {
+    border-color: #212121;
+    background: #212121;
+    color: #ffffff;
+}
+#bottom #cscenter #customer .cs1 {
+    font-size: 14px;
+    font-weight: 500;
+    padding-bottom: 4px;
+    color: #212121;
+}
+#bottom #cscenter #customer .cs2 {
+    font-size: 12px;
+    color: #999999;
+}
+#bottom #cscenter #bank {
+    margin-top: 24px;
+    font-size: 12px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #666666;
+}
+#bottom #cscenter #bank .bank1 {
+    color: #212121;
+    font-weight: 500;
+}
+#bottom #cscenter #bank .bank2 {
+    padding-top: 4px;
+    color: #999999;
+}
+#bottom #company .copytext {
+    font-size: 11px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #999999;
+    line-height: 1.8;
+}
+#bottom #company .copytext span {
+    font-size: 11px;
+    margin-right: 8px;
+    color: #666666;
+}
+#bottom #link {
+    font-size: 12px;
+}
+#bottom #link .sns {
+    text-align: left;
+    margin-top: 20px;
+}
+#bottom #link .sns img {
+    opacity: 0.5;
+    vertical-align: middle;
+    transition: opacity 0.3s ease;
+}
+#bottom #link .sns img:hover {
+    opacity: 1;
+}
+#bottomcopyright {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid #dadada;
+    text-align: left;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #999999;
+}
+#bottomcopyright b {
+    font-weight: 500;
+    color: #666666;
+}
+
+/* ===== 프리뷰용 추가 스타일 ===== */
+#content { margin-left: 220px; padding: 80px 40px 0; }
+#catetitle { margin-bottom: 55px; }
+#catetitle h2 { font-family: 'Noto Sans KR', sans-serif; font-size: 24px; font-weight: 700; color: #212121; letter-spacing: 0.02em; }
+.function { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid #dadada; margin-bottom: 20px; }
+.function .prdCount { font-size: 12px; color: #999; }
+.function .prdCount strong { color: #212121; }
+.function #type { display: flex; gap: 16px; list-style: none; }
+.function #type li a { font-size: 12px; color: #999; }
+.function #type li a:hover { color: #212121; }
+.menuCategory { display: flex; gap: 12px; list-style: none; margin-bottom: 40px; flex-wrap: wrap; }
+.menuCategory li a { font-size: 12px; color: #999; padding: 6px 16px; border: 1px solid #dadada; transition: all .3s; display: inline-block; }
+.menuCategory li a:hover { color: #212121; border-color: #212121; }
+.ga09-paging { text-align: center; padding: 60px 0; }
+.ga09-paging ol { display: inline-flex; gap: 4px; list-style: none; }
+.ga09-paging ol li a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 12px; color: #999; border: 1px solid #dadada; }
+.ga09-paging ol li a:hover, .ga09-paging ol li a.this { background: #212121; color: #fff; border-color: #212121; }
+</style>
+</head>
+<body>
+
+<div id="contentsWrap">
+    <div id="toggle-right"><span></span></div>
+
+    <!-- right.html -->
+    <div id="right">
+        <div id="rightmenu">
+            <div class="innermenu">
+                <ul>
+                    <li><a href="#">HISTORY</a></li>
+                    <li><a href="#">OUR STORY</a></li>
+                    <li><a href="#">YOUTH STORY</a></li>
+                    <li><a href="#">BOOKMARK</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">NEW ARRIVALS</a></li>
+                    <li><a href="#">OUTWEAR</a></li>
+                    <li><a href="#">TOP</a></li>
+                    <li><a href="#">BOTTOM</a></li>
+                    <li><a href="#">ACCESSORIES</a></li>
+                </ul>
+                <ul style="margin-right:0">
+                    <li><a href="#">NOTICE</a></li>
+                    <li><a href="#">Q&A</a></li>
+                    <li><a href="#">REVIEW</a></li>
+                </ul>
+                <ul style="margin-right:0; float:right">
+                    <li><a href="#">LOGIN</a></li>
+                    <li><a href="#">REGISTER</a></li>
+                    <li><a href="#">MY PAGE</a></li>
+                    <li><a href="#">ORDER</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- top.html -->
+    <div id="top">
+        <div class="inner">
+            <div id="topsearch">
+                <div class="search-bar">
+                    <fieldset style="border:none;margin:0;padding:0;"><input type="text" placeholder="Search"><a href="#"><img src="https://via.placeholder.com/16x16/212121/212121?text=+" alt="검색"></a></fieldset>
+                </div>
+            </div>
+            <div id="topcarticon" style="cursor:pointer">BAG (0)</div>
+            <div id="log"><span id="toggle" style="cursor:pointer">LOGIN</span> <a href="#">REGISTER</a></div>
+        </div>
+    </div>
+
+    <!-- left.html -->
+    <div id="left">
+        <div id="logo"><a href="preview-list.html" style="font-family:'Noto Sans KR',sans-serif;font-size:18px;font-weight:700;letter-spacing:0.08em;color:#212121;">YOUTHTORY</a></div>
+        <div id="menulist">
+            <button class="accordionmenu"><span>BRAND</span></button>
+            <button class="accordionmenu"><span>SHOP</span></button>
+            <div class="panel2" style="max-height:200px;">
+                <ul>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Outwear</a></li>
+                    <li><a href="#">Top</a></li>
+                    <li><a href="#">Bottom</a></li>
+                    <li><a href="#">Accessories</a></li>
+                </ul>
+            </div>
+            <button class="accordionmenu2"><span>Collection</span></button>
+            <button class="accordionmenu"><span>BOARD</span></button>
+        </div>
+    </div>
+
+    <!-- content -->
+    <div id="content">
+        <!-- BEST ITEM -->
+        <div class="ga09list">
+            <div id="catetitle"><h2>BEST ITEM</h2></div>
+            <ul class="grid4">
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202501/4a6c08453311b33e1439ac01a088f189.jpg" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#212121"></li><li class="chips" style="background-color:#c9b49a"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">오버핏 워싱 데님 자켓</a></p>
+                        <p class="prices"><span class="price normal">&#8361;89,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202501/a182d11b68c86106264b6076bcf3fd4d.jpg" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#3b3b3b"></li><li class="chips" style="background-color:#e8ddd0"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">릴렉스핏 코튼 팬츠</a></p>
+                        <p class="prices"><span class="price normal">&#8361;59,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202501/4181e16720db59f97d8882541562d733.jpg" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#ffffff; border:1px solid #dadada"></li><li class="chips" style="background-color:#a8c4d8"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">슬림핏 린넨 셔츠</a></p>
+                        <p class="prices"><span class="price normal">&#8361;49,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202501/5fa898fdf3b6b637527bcef9d0a48671.jpg" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#d4a76a"></li><li class="chips" style="background-color:#212121"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">크롭 니트 스웨터</a></p>
+                        <p class="prices"><span class="price normal">&#8361;65,000</span></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 카테고리 타이틀 -->
+        <div id="catetitle" style="margin-top:60px;"><h2>NEW ARRIVALS</h2></div>
+        <div class="menuCategory">
+            <ul class="menuCategory">
+                <li><a href="#">ALL</a></li>
+                <li><a href="#">OUTWEAR</a></li>
+                <li><a href="#">TOP</a></li>
+                <li><a href="#">BOTTOM</a></li>
+                <li><a href="#">ACCESSORIES</a></li>
+            </ul>
+        </div>
+
+        <div class="function">
+            <p class="prdCount">Total : <strong>48</strong> items</p>
+            <ul id="type">
+                <li><a href="#">New</a></li>
+                <li><a href="#">Low price</a></li>
+                <li><a href="#">High price</a></li>
+                <li><a href="#">Review</a></li>
+            </ul>
+        </div>
+
+        <!-- 상품 16개 -->
+        <div class="ga09list">
+            <ul class="grid4">
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202501/4a6c08453311b33e1439ac01a088f189.jpg" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#212121"></li><li class="chips" style="background-color:#c9b49a"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">오버핏 워싱 데님 자켓</a></p>
+                        <p class="prices"><span class="price normal">&#8361;89,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202501/a182d11b68c86106264b6076bcf3fd4d.jpg" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#3b3b3b"></li><li class="chips" style="background-color:#e8ddd0"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">릴렉스핏 코튼 팬츠</a></p>
+                        <p class="prices"><span class="price normal">&#8361;59,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202501/4181e16720db59f97d8882541562d733.jpg" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#ffffff; border:1px solid #dadada"></li><li class="chips" style="background-color:#a8c4d8"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">슬림핏 린넨 셔츠</a></p>
+                        <p class="prices"><span class="price normal">&#8361;49,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202501/5fa898fdf3b6b637527bcef9d0a48671.jpg" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#d4a76a"></li><li class="chips" style="background-color:#212121"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">크롭 니트 스웨터</a></p>
+                        <p class="prices"><span class="price normal">&#8361;65,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202501/4d3bab023b59765d72993070269767a5.jpg" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#2c2c2c"></li><li class="chips" style="background-color:#b0a89a"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">와이드 슬랙스</a></p>
+                        <p class="prices"><span class="price normal">&#8361;55,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202412/a07305674299def57816474c7cacb492.gif" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#ffffff; border:1px solid #dadada"></li><li class="chips" style="background-color:#212121"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">베이직 오버사이즈 티</a></p>
+                        <p class="prices"><span class="price normal">&#8361;39,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202412/a608f40c1993f083f2f77c2bb358fd7b.gif" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#3a3a3a"></li><li class="chips" style="background-color:#c9b49a"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">싱글 브레스티드 코트</a></p>
+                        <p class="prices"><span class="price normal">&#8361;189,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202306/4a15ccd01cfcb3f6139e963cd661ca40.jpg" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#4a6fa5"></li><li class="chips" style="background-color:#212121"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">스트레이트 데님 팬츠</a></p>
+                        <p class="prices"><span class="price normal">&#8361;69,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202306/7552b1a31f8488474e33f670171f121c.jpg" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#2c2c2c"></li><li class="chips" style="background-color:#6b8e6b"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">테크 플리스 집업</a></p>
+                        <p class="prices"><span class="price normal">&#8361;79,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202412/ff01db17b450354eb35207e2f33188ff.png" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#e8ddd0"></li><li class="chips" style="background-color:#3b3b3b"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">에코 울 터틀넥</a></p>
+                        <p class="prices"><span class="price normal">&#8361;75,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202109/9142a863c9d3cf439e1601e3be18d27d.png" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#212121"></li><li class="chips" style="background-color:#8b6914"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">미니멀 레더 벨트</a></p>
+                        <p class="prices"><span class="price normal">&#8361;45,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202109/6f766651d5aa46d7a53a7e4efe7d8f26.png" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#e8ddd0"></li><li class="chips" style="background-color:#212121"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">캔버스 토트백</a></p>
+                        <p class="prices"><span class="price normal">&#8361;42,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202109/575ea355007d71005ce3043d1f9c7214.png" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#3b3b3b"></li><li class="chips" style="background-color:#808080"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">헤비웨이트 후드</a></p>
+                        <p class="prices"><span class="price normal">&#8361;68,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202109/6a67c1a3a423cf722f609a3a75bc7903.png" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#c9b49a"></li><li class="chips" style="background-color:#4a6fa5"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">체크 패턴 셔츠</a></p>
+                        <p class="prices"><span class="price normal">&#8361;52,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202109/a84fe4a244e1349a4c2466d925bef3bb.png" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#212121"></li><li class="chips" style="background-color:#d4a76a"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">사이드 슬릿 스커트</a></p>
+                        <p class="prices"><span class="price normal">&#8361;48,000</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="prdpadding">
+                        <div class="prdline hoverimg"><a href="preview-detail.html"><img src="https://shopyouthtory.kr/web/product/medium/202109/f9df068819eea5ae44b3a985560f0904.png" width="100%"></a></div>
+                        <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#e8ddd0"></li><li class="chips" style="background-color:#6b8e6b"></li></ul></div></div>
+                        <p class="name"><a href="preview-detail.html">컬러블록 니트 조끼</a></p>
+                        <p class="prices"><span class="price normal">&#8361;58,000</span></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 페이징 -->
+        <div class="ga09-paging">
+            <ol>
+                <li><a href="#" class="this">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- bottom.html -->
+<div id="bottom-wrap">
+    <div id="bottom">
+        <div class="inner">
+            <div class="copypadding">
+                <div class="logo">
+                    <a href="#" style="font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;color:#212121;">YOUTHTORY</a>
+                </div>
+            </div>
+
+            <div id="cscenter" class="copypadding">
+                <div id="customer">
+                    <ul>
+                        <li class="cs1">H.P 010-5648-7558</li>
+                        <li class="cs2">Opening hours. am11-pm17</li>
+                        <li class="cs2">Lunch break. pm13-pm14</li>
+                        <li class="cs2">Sat, Sun, Holiday Off</li>
+                    </ul>
+                </div>
+                <div id="bank">
+                    <ul>
+                        <li class="bank1">신한은행 110-398-259805</li>
+                        <li class="bank2">예금주 : 한유승</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="link" class="copypadding">
+                <ul>
+                    <li><a href="#">Company</a></li>
+                    <li><a href="#">Agreement</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Site guide</a></li>
+                    <li><a href="#">Business license</a></li>
+                </ul>
+                <div class="sns">
+                    <ul>
+                        <li><span style="margin-right:10px">Follow us</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="company" class="copypadding1">
+                <ul>
+                    <li class="copytext">
+                        <span>Company</span> 유스컴퍼니<br>
+                        <span>Owner &amp; Admin</span> 한유승<br>
+                        <span>Business no.</span> 595-38-00307<br>
+                        <span>Online-order no.</span> 제2019-서울마포-1897호<br>
+                        <span>Address</span> 서울시 마포구 망원동 421-10<br>
+                        <span>Tel</span> 070-8673-7558 / H.P 010-5648-7558<br>
+                        <span>E.mail</span> Contact@youthtory.kr
+                    </li>
+                </ul>
+            </div>
+
+            <div class="copypadding2">
+                <div id="joinbt" style="cursor:pointer">Register</div>
+                <div style="clear:both"></div>
+            </div>
+
+            <div style="clear:both"></div>
+
+            <div id="bottomcopyright">
+                <div style="float:left">Copyright (C) 2019 <b>유스컴퍼니</b> all rights reserved</div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 스크롤 탑 -->
+<div class="scrollTop" style="position:fixed;"><a href="#"><i class="fas fa-arrow-up"></i></a></div>
+
+<script>
+// 햄버거 메뉴 토글
+document.getElementById('toggle-right').addEventListener('click', function() {
+    this.classList.toggle('open');
+    document.getElementById('right').classList.toggle('opened');
+});
+</script>
+
+</body>
+</html>

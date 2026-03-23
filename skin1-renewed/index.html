@@ -1,0 +1,46 @@
+<!--@layout(/layout.html)-->
+<!--@js(/js/fullpage.js)-->
+<!--@js(/js/fullpageexe.js)-->
+<!--@css(/css/fullpage.css)-->
+
+<div id="fullpage">
+
+    <div class="section" style="background-image: url(/web/upload/ga09/main/0616pc-01.jpg); background-size: cover; background-position:center; cursor:pointer" id="section1" onclick="location.href='/product/list.html?cate_no=42'"></div>
+
+	<div class="section" id="section2" style="background-image: url(/web/upload/ga09/main/0719pc-02.jpg); background-size: cover; background-position:center">
+		<div class="intro" onclick="location.href='/product/list.html?cate_no=176'">
+            <p class="title">OFFLINE CLUB SERVICE</p>
+            <p class="sub">
+                FIND YOUR STYLE , FIND YOUR VALUE , FIND YOUR LIFE.<br>
+                             </p>
+		</div>
+	</div>
+     <div class="section" style="background-image: url(/web/upload/ga09/main/0719pc-03.jpg); background-size: cover; background-position:center; cursor:pointer" id="section4" onclick="location.href='/article/notice/1/14174'"></div>
+           </div>
+	</div>
+    
+    <div class="section fp-auto-height" id="section4">
+        <div class="myContent">
+    		<div id="bottom"><!--@import(/bottom.html)--></div>
+        </div>
+    </div>
+    
+</div>
+
+
+<!--
+
+샘플은 기본적으로 4개의 인트로로 화면이 구성되어 있습니다
+
+section1 > 단순 이미지 (배경이미지 주소 /web/upload/ga09/main/pc-01.jpg)
+section2 > 이미지 + 텍스트의 조합 (배경이미지 주소 /web/upload/ga09/main/pc-02.jpg)
+section3 > 단순 이미지 + 하단회사정보 (배경이미지 주소 /web/upload/ga09/main/pc-03.jpg)
+
+사용된 이미지는 ftp업로드로 변경하실 수 있으며, pc/모바일 각각 분리하여 관리됩니다
+또한 12-16번줄은 section2의 텍스트 영역으로 원하시는 타이틀+서브텍스트를 입력해 보세요 ^^
+
+** section1, section2, section3의 
+onclick="location.href='★'" 영역의 ★부분엔 클릭시 이동될 주소를 넣어주세요
+
+-->
+

@@ -1,0 +1,52 @@
+#login-wrap .idbox {}
+#login-wrap .idbox input { border:1px solid #ccc; width:258px; margin-bottom:5px; color:#000; font-size:12px; background-image:url("/web/upload/ga09/login/id.gif"); background-repeat:no-repeat; background-position-x:10px; background-position-y:12px;}
+#login-wrap .pwbox {margin-top:10px}
+#login-wrap .pwbox input { border:1px solid #ccc; width:258px; margin:0; color:#000; font-size:12px; background-image:url("/web/upload/ga09/login/pw.gif"); background-repeat:no-repeat; background-position-x:10px; background-position-y:12px;}
+
+
+
+#logintitle {margin-top:0; margin-bottom:30px; text-align:center}
+#logintitle h2 { font-weight:bold; font-size:15px; color:#3c3c3c}
+#logintitle span {font-size:12px; line-height:35px; color:#666666}
+
+
+
+
+.memberloginbox h3 { margin:0 0 20px 0; text-align:center;}
+.memberloginbox .login a:hover { text-decoration:none;}
+.memberloginbox .login img {opacity:1; -webkit-transition-duration: 0.3s; transition-duration: 0.3s;}
+.memberloginbox .login img:hover {opacity:0.7; -webkit-transition-duration: 0.3s; transition-duration: 0.3s;}
+.memberloginbox .login { border:1px solid #eaeaea; margin:0 auto; padding:30px 0; color:#2e2e2e; width:500px;}
+.memberloginbox .login fieldset { position:relative; width:380px; margin:0 auto; }
+.memberloginbox .login fieldset .id,
+.memberloginbox .login fieldset .password { overflow:hidden; display:block; width:263px; margin:0 0 5px; border:1px solid #d9d9d9; color:#8F8F91; }
+.memberloginbox .login fieldset .id span,
+.memberloginbox .login fieldset .password span { height:32px; line-height:32px; padding:0 0 0 8px; color:#c9c9c9;}
+.memberloginbox .login fieldset input[type=text],
+.memberloginbox .login fieldset input[type=password] { width:95%; height:28px; line-height:28px; padding:2px 2px 2px 3px; border:0 none; color:#8F8F91; }
+.memberloginbox .login fieldset .security { padding:0; margin:0; color:#757575; }
+.memberloginbox .login fieldset .security img { vertical-align:middle; display:none }
+.memberloginbox .login fieldset > a { position:absolute; top:0; right:0; }
+.memberloginbox .login fieldset ul { overflow:hidden; padding:0; margin-bottom:0; border:0; }
+.memberloginbox .login fieldset li { float:left; }
+.memberloginbox .login fieldset li a { color:#2e2e2e; }
+.memberloginbox .login fieldset .link { position:relative; margin-top:25px; padding:25px 0 0 0; color:#535353; border-top:1px solid #e9e9e9;}
+.memberloginbox .login fieldset .link a { position:absolute; top:25px; right:0; }
+.memberloginbox .login fieldset .snsArea { padding:0; }
+.memberloginbox .login fieldset .snsArea li:first-child { width:380px; margin-top:20px; padding:0; background:none; }
+.memberloginbox .login fieldset .snsArea li { width:380px; margin-top:5px; padding:0; background:none; }
+.memberloginbox .login fieldset #noMemberWrap { border-top:0; margin-top:0; }
+
+
+#ordercheck {width:380px; margin:0 auto; font-size:11px;}
+#ordercheck .bt li {margin-top:10px; font-size:11px}
+#ordercheck .namebox {}
+#ordercheck .namebox input { border:1px solid #ccc; width:358px; padding:7px 10px; margin:0; color:#000; font-size:12px; background-image:url("/web/upload/ga09/login/name.gif"); background-repeat:no-repeat; background-position-x:10px; background-position-y:12px;}
+#ordercheck .nobox {margin-top:10px; color:#ccc;}
+#ordercheck .nobox input { border:1px solid #ccc; width:165px; padding:7px 10px; margin:0; color:#000; font-size:12px; background-image:url("/web/upload/ga09/login/no.gif"); background-repeat:no-repeat; background-position-x:10px; background-position-y:12px;}
+#ordercheck .pwbox {margin-top:10px}
+#ordercheck .pwbox input { border:1px solid #ccc; width:358px; padding:7px 10px; margin:0; color:#000; font-size:12px; background-image:url("/web/upload/ga09/login/pw.gif"); background-repeat:no-repeat; background-position-x:10px; background-position-y:12px;}
+
+
+#ordercheck .bt li input {opacity:1; -webkit-transition-duration: 0.3s; transition-duration: 0.3s;}
+#ordercheck .bt li input:hover {opacity:0.7; -webkit-transition-duration: 0.3s; transition-duration: 0.3s;}

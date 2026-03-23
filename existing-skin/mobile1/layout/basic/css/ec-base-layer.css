@@ -1,0 +1,5 @@
+/* ec-base-button */
+  .ec-base-layer .ec-base-button { margin:0; padding:7px 14px 7px 10px; border-top:1px solid #ccc; border-radius:0 0 5px 5px; background:#f1f1f1; }
+  .ec-base-layer .ec-base-button.gFull { padding:7px 14px 0; }
+  .ec-base-layer .ec-base-button.gFixed .ec-base-button { padding:0; border-top:0; }
+  .ec-base-layer .wrap + .ec-base-button { border-top:0; }

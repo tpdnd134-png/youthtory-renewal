@@ -1,0 +1,16 @@
+.xans-layout-category { }
+.xans-layout-category .postion { z-index:1;}
+.xans-layout-category ul { }
+.xans-layout-category ul:after {content:""; display:block; clear:both; }
+
+.xans-layout-category li { position:relative; float:left; z-index:99; }
+.xans-layout-category li a { display:block; z-index:99; }
+.xans-layout-category li a:hover {text-decoration:none; color:#000}
+
+.xans-layout-category .sub-category { position:absolute; left:-10px; top:45px; z-index:90; font-weight:normal; font-size:10px; letter-spacing:1px; line-height:20px; width:86px; background:transparent url(/web/upload/ga09/menubg2.png) repeat; padding:0 10px 3px 10px; text-transform:uppercase}
+.xans-layout-category .sub-category ul { }
+.xans-layout-category .sub-category ul li {width:86px;}
+.xans-layout-category .sub-category a {text-decoration:none; color:#fff}
+.xans-layout-category .sub-category a:hover {text-decoration:none; color:#ffea00; -webkit-transition-duration: 0.3; transition-duration: 0.3s;}
+.xans-layout-category .sub-category > ul > li { border-bottom:1px solid #7d7e7f; padding:7px 0 3px 0}
+.xans-layout-category .sub-category > ul > li:last-child { border-bottom:0;padding:7px 0 1px 0 }

@@ -1,0 +1,129 @@
+<!--@layout(/layout/basic/layout.html)-->
+
+<!--@css(/board/review/ga09css/photoreviewbutton.css)-->
+<!--@css(/board/review/ga09css/review.css)-->
+<!--@js(/board/review/ga09js/review.js)-->
+<!--@js(/board/review/ga09js/ga09.review.js)-->
+<div id="review_popup">
+    <div class="content"></div>
+</div>
+
+
+
+<div module="Board_ListPackage_4">
+    <!--@css(/board/review/ga09css/listPackage_4.css)-->
+    <div id="titleArea" module="board_title_4">
+        <h2>{$board_name}</h2>
+    </div>
+    
+
+    <div class="{$write_display|display} crema-hide" module="board_ButtonList"><a href="/board/product/write.html{$param_write}" class="btnStrong">글쓰기</a></div>
+
+    
+<div style="clear:both" class="crema-hide"></div>
+    <ul module="board_notice_4" class="boardList crema-hide">
+        <!--
+            $count = 3
+            $login_page_url = /member/login.html
+            $deny_access_url = /index.html
+        -->
+        <li>
+            <p class="summary">
+                <a href="/board/free/read.html{$param_read}">
+                    <strong class="subject">{$icon_re} {$icon_lock} {$icon_mobile} {$subject} <span class="comment">{$comment_count}</span> {$icon_hit} {$icon_file} {$icon_new}</strong>
+                    <span class="{$category_display|display}" title="카테고리">{$category_name}</span>
+                    <span class="name" title="작성자">{$writer}</span>
+                    <span class="date {$date_display|display}" title="작성일">{$write_date}</span>
+                    <span class="{$hit_display|display}">조회 {$hit_count}</span>
+                    <span class="{$vote_display|display}">추천 {$vote}</span>
+                    <span class="point {$point_display|display}"><img src="http://img.echosting.cafe24.com/skin/mobile_ko_KR/board/ico_star{$point_count}.png" alt="{$point_count}점" /></span>
+                </a>
+            </p>
+        </li>
+        <li>
+            <p class="summary">
+                <a href="/board/free/read.html{$param_read}">
+                    <strong class="subject">{$icon_re} {$icon_lock} {$icon_mobile} {$subject} <span class="comment">{$comment_count}</span> {$icon_hit} {$icon_file} {$icon_new}</strong>
+                    <span class="{$category_display|display}" title="카테고리">{$category_name}</span>
+                    <span class="name" title="작성자">{$writer}</span>
+                    <span class="date {$date_display|display}" title="작성일">{$write_date}</span>
+                    <span class="{$hit_display|display}">조회 {$hit_count}</span>
+                    <span class="{$vote_display|display}">추천 {$vote}</span>
+                    <span class="point {$point_display|display}"><img src="http://img.echosting.cafe24.com/skin/mobile_ko_KR/board/ico_star{$point_count}.png" alt="{$point_count}점" /></span>
+                </a>
+            </p>
+        </li>
+    </ul>
+    <ul module="board_list_4" id="ga09photoreview-list" class="crema-hide">
+        <!--
+            $count = 20
+            $subject_cut = 22
+            $login_page_url = /member/login.html
+            $deny_access_url = /index.html
+        -->
+        <li>
+            
+            <div class="thumb"><a href="/product/detail.html{$param_product}">{$product_img}</a></div>
+            
+            <div class="infobox">
+                <div class="subject"><a href="{$link_board_detail}">{$icon_re|replace:   ,}{$icon_mobile}{$subject}</a><span class="icons">{$icon_lock}{$icon_hit}{$icon_file}{$icon_new}</span></div>
+                <div><span class="writer">{$member_icon}{$writer}</span><span class="date {$date_display|display}">{$write_date}</span><span class="{$point_display|display} point"><img src="/board/review/img/star_mobile/ico_point{$point_count}.png" alt="{$point_count}점" ></span><span class="comment">{$comment_count}</span></div>
+            </div>
+            
+            <div class="infobox2">
+                <img src="{$img_src}" style="cursor:pointer; width:50px; height:50px; border-radius:50px; object-fit: cover;" href="/board/review/review_pop.html{$param_read}" onclick="ga09review.popReview(this);" onError="img_error(this);" />
+            </div>
+            <div style="clear:both"></div>
+        </li>
+
+        <li>
+            
+            <div class="thumb"><a href="/product/detail.html{$param_product}">{$product_img}</a></div>
+            
+            <div class="infobox">
+                <div class="subject"><a href="{$link_board_detail}">{$icon_re}{$icon_mobile}{$subject}</a><span class="icons">{$icon_lock}{$icon_hit}{$icon_file}{$icon_new}</span></div>
+                <div><span class="writer">{$member_icon}{$writer}</span><span class="date {$date_display|display}">{$write_date}</span><span class="{$point_display|display} point"><img src="/board/review/img/star_mobile/ico_point{$point_count}.png" alt="{$point_count}점" ></span><span class="comment">{$comment_count}</span></div>
+            </div>
+            
+            <div class="infobox2">
+                <img src="{$img_src}" style="cursor:pointer; width:50px; height:50px; border-radius:50px; object-fit: cover;" href="/board/review/review_pop.html{$param_read}" onclick="ga09review.popReview(this);" onError="img_error(this);" />
+            </div>
+            <div style="clear:both"></div>
+        </li>
+
+    </ul>
+
+    <p module="board_empty_4" class="empty {$empty_display|display} crema-hide">{$empty_message}</p>
+    
+        
+
+    
+    
+</div>
+
+
+    
+    
+<div id="licensetext" style="text-align:center;" class="crema-hide">Photoreview skin designed by <a href=http://ga09design.com target="_blank">GA09 DESIGN</a></div>
+
+<div module="board_paging_4" class="paginate typeList crema-hide">
+    <!--
+        $count = 5
+    -->
+    <p class="prev"><a href="{$param_prev}"><span>이전 페이지</span></a></p>
+    <ol>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+    </ol>
+    <p class="next"><a href="{$param_next}"><span>다음 페이지</span></a></p>
+</div>
+
+<div module="board_search_4" class="crema-hide">
+    <!--@css(/board/review/ga09css/search.css)-->
+    <fieldset class="boardSearch">
+        <legend>게시물 검색</legend>
+        <div class="category">{$form.search_date} {$form.search_key}</div>
+        <div class="keyword">{$form.search} <button class="btnStrong" onclick="{$action_search}">검색</button></div>
+    </fieldset>
+</div>
+

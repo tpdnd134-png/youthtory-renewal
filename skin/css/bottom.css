@@ -1,0 +1,42 @@
+/* 하단 */
+#bottom-wrap {border-top:1px solid #dfdfdf; margin-top:100px}
+
+#bottom {max-width:1450px; margin:0 auto; font-family: 'Montserrat', sans-serif; font-size:12px; line-height:24px; margin-top:80px;  color:#000;}
+#bottom a { transition-duration: 0.3s;  color:#000;}
+#bottom a:hover{  text-decoration:none; transition-duration: 0.3s; color:#adadad;}
+
+#bottom .copypadding {float:left; width:20%}
+#bottom .copypadding1 {float:left;}
+#bottom .copypadding2 {float:right;text-align:right;}
+
+#bottom .inner {padding-bottom:70px; margin:0 50px}
+#bottom .logo {}
+#bottom .logo img {height:15px}
+
+
+#joinbt {border:1px solid #000; padding:10px 0; width:120px; text-align:center; font-size:13px; font-weight:500; -webkit-transition-duration: 0.3; transition-duration: 0.3s; }
+#joinbt:hover{border:1px solid #adadad;}
+
+
+
+#bottom #cscenter #customer {}
+#bottom #cscenter #customer .cs1 {font-size:15px; padding-bottom:3px;  }
+#bottom #cscenter #customer .cs2 {font-size:11px;}
+
+#bottom #cscenter #bank {margin-top:30px; font-size:12px; font-family: 'Nanum Gothic', sans-serif; }
+#bottom #cscenter #bank .bank1 {}
+#bottom #cscenter #bank .bank2 {padding-top:2px;}
+
+
+#bottom #company {}
+#bottom #company .copytext {font-size:12px; font-family: 'Nanum Gothic', sans-serif;}
+#bottom #company .copytext span {font-size:11px; margin-right:5px; font-family: 'Montserrat', sans-serif;}
+
+#bottom #link {font-size:12px;}
+
+#bottom #link .sns {text-align:left; margin-top:25px; }
+#bottom #link .sns img {opacity:0.7; vertical-align:middle}
+#bottom #link .sns img:hover {opacity:1.0}
+
+#bottomcopyright {margin-top:50px; text-align:left; font-size:11px; line-height:15px;}
+#bottomcopyright b {font-weight:600}

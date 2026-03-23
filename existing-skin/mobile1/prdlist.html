@@ -1,0 +1,18 @@
+<li>
+    <div class="thumbnail">
+        <a href="/product/detail.html{$param}"><img src="{$image_big}" alt="{$seo_alt_tag}" class="thumb"></a>
+    </div>
+    <div class="color {$colorchip_display|display}">
+        <div module="product_Colorchip">
+            <span class="chips" style="background-color:{$color};"></span>
+            <span class="chips" style="background-color:{$color};"></span>
+        </div>
+    </div>
+    <div class="information">
+        <p class="name {$product_name_display|display}"><a href="/product/detail.html{$param}">{$product_name}</a></p>
+        <span class="price {$product_price_display|display} {$product_sale_strike}">{$disp_product_price}</span>
+        <span class="{$product_price_ref_display|display}">{$txt_product_price_ref}</span><span class="price {$product_sale_display|display}">{$product_sale_price|replace:#555555,#000}</span>
+        <p class="infotext {$summary_desc|display}">{$summary_desc}</p>
+        <p class="icon">{$soldout_icon}{$stock_icon}{$new_icon}{$recommend_icon}{$product_icons}</p>
+    </div>
+</li>

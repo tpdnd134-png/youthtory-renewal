@@ -1,0 +1,236 @@
+<!--@layout(/layout-list.html)-->
+<!--@js(/js/jquery-ui.min.js)-->
+<!--@js(/js/detail-scroll.js)-->
+
+<!--
+    $category_page = /product/list.html
+    $project_page = /product/project.html
+    $jointbuy_page = /product/jointbuy.html
+-->
+
+<!-- 상단 제품 정보  -->
+<div module="product_detail">
+    <!--@css(/css/module/product/detail.css)-->
+    <!--@css(/board/review/ga09css/review.css)-->
+    <!--@css(/board/review/ga09css/jquery.bxslider.css)-->
+    <!--@js(/board/review/ga09js/review.js)-->
+    <!--@js(/board/review/ga09js/ga09.review.js)-->
+    <!--@js(/js/detailguide.js)-->
+	<!--@css(/css/detailguide.css)--> 
+	<div style="font-size:0; line-height:0;">
+    <input id="txtProductNo" type="hidden" value="{$product_no}" />
+    <div id="review_popup">
+        <div class="content"></div>
+    </div>
+    </div>
+    
+    <div class="detailArea">
+
+        <!-- 이미지 영역(상세좌측) -->
+        <div class="imgArea" module="product_image">
+            
+            <!-- 추가이미지 처리 -->
+            <div class="listImg" module="product_addimage">
+                <ul>
+                    <li style="display:none">{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                </ul>
+            </div>
+            <!-- 추가이미지 처리 -->
+            
+
+            <!-- 추가이미지 아래 상품상세/관련상품/후기/문의 게시판 -->
+            <div module="product_additional">
+                <!--@css(/css/module/product/additional.css)-->
+                <!--@css(/board/review/ga09css/photoreviewbutton.css)-->
+
+                
+                <!-- 상품상세정보 -->
+                  <!--@import(/smart-banner/shop1/smart-banner-admin-MO00001.html)-->
+                <div id="prdDetail">
+                    <div id="prddetailimg">{$product_detail}</div>
+                </div>
+                <!-- 상품상세정보 -->
+                
+                <!-- 상품 사용 후기 -->
+                <div id="prdReview" style="margin-top:150px">
+                    <div id="detailboardtext" class="">
+                        <div style="float:left;">Review</div>
+                        <div style="float:right; text-align:right;" class="bt"><a href="{$review_write|replace:/product,/review}">Write</a><a href="{$review_list|replace:/product,/review}" style="margin-left:15px">View all</a></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    
+                 
+                    
+                    <div class="board ">
+                        <!--@js(/js/module/product/review.js)-->
+
+                        <a name="use_review"></a>
+
+                        <div id="ga09photoreview-detail" module="product_review">
+                            <table border="1" summary="">
+                                <caption>상품 게시판 목록</caption>
+                                <colgroup module="board_listheader_4">
+                                    <col style="width:70px;" />
+                                    <col style="width:auto;" />
+                                    <col style="width:auto;" />
+                                </colgroup>
+                                <tbody>
+
+                                    <tr>
+                                        <td class="number">{$no}</td>
+
+                                        <td class="infobox">
+                                            <div onclick="{$action_content_spread}" style="cursor:pointer;">
+                                                <span class="subject">{$subject}{$icon_lock}{$icon_new}{$icon_hit}</span>
+                                                <span class="{$spread_display|display} openbt"><a href="#none"><img src="/board/review/img/btn_unfold.gif" alt="내용 보기" /></a></span>
+                                                <div style="clear:both"></div>
+                                            </div>
+                                            <div class="{$use_point_display|display} point"><img src="/board/review/img/star/ico_point{$point_count}.gif" alt="{$point_count}점"></div>
+                                            <div class="writer">{$member_icon}{$writer}<span class="comment">{$comment_count}</span></div>
+                                        </td>
+
+                                        <td style="text-align:right; padding-right:20px">
+                                            <div class="date"><span class="{$date_display|display}">{$write_date|date:Y-m-d}</span></div>
+                                            <div><img src="{$img_src}" style="cursor:pointer; width:50px; height:50px; border-radius:50px; margin-top:8px; object-fit: cover;" href="/board/review/review_pop.html{$param_read}" onclick="ga09review.popReview(this);" onError="img_error(this);" /></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="number">{$no}</td>
+
+                                        <td class="infobox">
+                                            <div onclick="{$action_content_spread}" style="cursor:pointer">
+                                                <span class="subject">{$subject}{$icon_lock}{$icon_new}{$icon_hit}</span>
+                                                <span class="{$spread_display|display} openbt"><a href="#none"><img src="/board/review/img/btn_unfold.gif" alt="내용 보기" /></a></span>
+                                                <div style="clear:both"></div>
+                                            </div>
+                                            <div class="{$use_point_display|display} point"><img src="/board/review/img/star/ico_point{$point_count}.gif" alt="{$point_count}점"></div>
+                                            <div class="writer">{$member_icon}{$writer}<span class="comment">{$comment_count}</span></div>
+                                        </td>
+
+                                        <td style="text-align:right; padding-right:20px">
+                                            <div class="date"><span class="{$date_display|display}">{$write_date|date:Y-m-d}</span></div>
+                                            <div><img src="{$img_src}" style="cursor:pointer; width:50px; height:50px; border-radius:50px; margin-top:8px; object-fit: cover;" href="/board/review/review_pop.html{$param_read}" onclick="ga09review.popReview(this);" onError="img_error(this);" /></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div id="licensetext" style="text-align:right">Photoreview skin designed by <a href=http://ga09design.com target="_blank">GA09 DESIGN</a></div>
+
+                        <div module="product_reviewpaging" class="photoreview-paging">
+                            <a href="{$param_first}"class="first"><img src="/board/review/img/page_first.gif" alt="첫 페이지" /></a>
+                            <a href="{$param_before}"><img src="/board/review/img/page_prev.gif" alt="이전 페이지" /></a>
+                            <ol>
+                                <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                                <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                                <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                                <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                                <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                            </ol>
+                            <a href="{$param_next}"><img src="/board/review/img/page_next.gif" alt="다음 페이지" /></a>
+                            <a href="{$param_last}" class="last"><img src="/board/review/img/page_last.gif" alt="마지막 페이지" /></a>
+                        </div>
+                    </div>
+              
+                    
+                </div>
+                <!-- //상품 사용 후기 -->
+                
+                
+                <!-- 상품 Q&A -->
+                <div id="prdQnA" style="margin-top:100px">
+                    <div id="detailboardtext">
+                        <div style="float:left;">Q&A</div>
+                        <div style="float:right; text-align:right;"class="bt"><a href="{$qna_write}">Write</a><a href="{$qna_list}" style="margin-left:15px">View all</a></div>
+                        <div style="clear:both"></div>
+                    </div>
+
+                    <div id="qnaArea">
+                        <div module="product_qna">
+                            <!--@js(/js/module/product/qna.js)-->
+                            <table border="1" summary="" class="board {$list_display|display}">
+                                <caption>상품 Q&amp;A</caption>
+                                <colgroup>
+                                    <col style="width:70px;" />
+                                    <col style="width:auto" />
+                                    <col style="width:100px;" />
+                                </colgroup>
+                                <thead>
+                                    <tr id="detailboardtext2">
+                                        <th scope="col">NO</th>
+                                        <th scope="col">TITLE</th>
+                                        <th scope="col">WRITER</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{$no}</td>
+                                        <td class="subject">{$icon_re}{$icon_lock} <a href="/product/provider/review_read.xml{$param_read}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}{$comment_count}</td>
+                                        <td>{$member_icon} {$writer}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{$no}</td>
+                                        <td class="subject">{$icon_re}{$icon_lock} <a href="/product/provider/review_read.xml{$param_read}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}{$comment_count}</td>
+                                        <td>{$member_icon} {$writer}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div module="product_qnapaging" class="photoreview-paging">
+                            <a href="{$param_first}"class="first"><img src="/board/review/img/page_first.gif" alt="첫 페이지" /></a>
+                            <a href="{$param_before}"><img src="/board/review/img/page_prev.gif" alt="이전 페이지" /></a>
+                            <ol>
+                                <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                                <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                                <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                                <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                                <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                            </ol>
+                            <a href="{$param_next}"><img src="/board/review/img/page_next.gif" alt="다음 페이지" /></a>
+                            <a href="{$param_last}" class="last"><img src="/board/review/img/page_last.gif" alt="마지막 페이지" /></a>
+                        </div>
+                   </div>
+
+                </div>
+                <!-- 상품 Q&A -->
+                
+            </div><!-- product_additional 모듈닫기 -->
+
+        </div><!-- 이미지 영역닫기 -->
+    </div><!-- detailArea 영역 -->
+        
+        <!-- 상세정보 우측 -->
+        <div id="detail-right">
+            <div id="detailinfo">
+            <!--@import(/detail_infoarea.html)-->
+            </div>
+        </div>
+        <!-- 상세정보 우측 -->
+        
+        <div style="clear:both"></div>
+
+</div><!-- //상단 제품 정보 -->
+
+
+
+<!--@define(cmc_log)-->
+ 
+   
+
+<!-- Enliple Common Tracker v3.6 [공용] start -->
+<script type="text/javascript">
+<!--
+function mobRf() {
+    var rf = new EN();
+    rf.setData("userid", "tpdnd134");
+    rf.setSSL(true);
+    rf.sendRf();
+}
+//-->
+</script>
+<script src="https://cdn.megadata.co.kr/js/en_script/3.6/enliple_min3.6.js" defer="defer" onload="mobRf()"></script>
+<!-- Enliple Common Tracker v3.6 [공용] end -->

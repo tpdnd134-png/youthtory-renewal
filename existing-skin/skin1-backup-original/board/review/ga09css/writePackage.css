@@ -1,0 +1,28 @@
+/* write, modift */
+.review-board-write .boardWrite table { table-layout:fixed; border:1px solid #eaeaea; line-height:32px; font-family: 'Nanum Gothic', sans-serif; color:#353535}
+.review-board-write table th { width:110px; letter-spacing:-0.5px; padding:4px 0 5px 27px; border-top:1px solid #eaeaea; border-right:1px solid #eaeaea; background-color:#fff; text-align:left; font-weight:normal; vertical-align:middle; }
+.review-board-write table td { width:auto; padding:4px 3px 5px; border-top:1px solid #eaeaea; }
+.review-board-write table td img { vertical-align:middle; }
+.review-board-write table a { text-decoration:none; }
+.review-board-write table input,
+.review-board-write table textarea { padding:2px 2px 2px 4px; border:1px solid #eaeaea; color:#353535; height:20px; line-height:20px}
+.review-board-write table td.write { width:100%; padding:0; border-top:none; }
+.review-board-write table td.write table { border:0; table-layout:auto; }
+.review-board-write table tr.first th,
+.review-board-write table tr.first td,
+.review-board-write table tr.ucc th,
+.review-board-write table tr.ucc td{ border-top:0; }
+.review-board-write table tr.captcha td { color:#000; vertical-align:middle; }
+.review-board-write table tr.agree th,
+.review-board-write table tr.agree td { vertical-align:top; }
+.review-board-write table tr.agree td textarea { width:560px; height:140px; margin:0 0 10px; }
+.review-board-write table #subject { width:390px; }
+.review-board-write table input#subject {}
+.review-board-write table #writer { height:14px; padding:3px;}
+.review-board-write table #ucc_width { width:40px; }
+.review-board-write table #ucc_height { width:40px; }
+.review-board-write table input[type=radio], .review-board-write table input[type=checkbox], .review-board-write table #notice0, .review-board-write table #secure0, .review-board-write table #secure1, .review-board-write table #privacy_agreement_radio0, .review-board-write table #privacy_agreement_radio1 { border:0; width:13px; height:13px; margin:0 3px 0 0; background:none; vertical-align:middle; }
+.review-board-write select { height:21px; }
+
+.review-board-write .btnArea { margin:50px 0 0 0; text-align:center; }
+.review-board-write .btnArea a {margin:0 5px}

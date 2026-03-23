@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+html, body { height:auto; 
+    scrollbar-face-color: #fff;
+    scrollbar-shadow-color: #dcdcdc;
+    scrollbar-highlight-color: #fff;
+    scrollbar-3dlight-color: #dcdcdc;
+    scrollbar-darkshadow-color: #fff;
+    scrollbar-track-color: #fff;
+    scrollbar-arrow-color: #dcdcdc;
+    overflow:hidden; 
+    overflow-x:hidden; 
+    color:#3b3b3b;
+    font-size:12px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+html, body a { color:#3b3b3b;}
+html, body a:hover {text-decoration:none;}
+.ga09_review { display:none; }
+
+
+#review-left {float:left; width:55%; overflow:auto;  overflow-x:hidden;  height:600px;}
+#review-left img {width:100%}
+
+#review-right {float:right; width:43%; overflow:auto; overflow-x:hidden; height:600px;}
+#review-right .recom {margin-top:30px; margin-bottom:30px; text-align:center; line-height:10px; letter-spacing:-0.5px; font-size:11.5px; color:#767676}
+
+
+/* 후기글 */
+.photoreview-view {border:1px solid #eaeaea; line-height:20px; padding:20px; margin-bottom:20px}
+.photoreview-view li {}
+.photoreview-view .sub {font-weight:600; letter-spacing:-0.5px; line-height:16px}
+.photoreview-view .sub img {margin-left:10px; vertical-align:middle}
+.photoreview-view .writer {line-height:30px; border-bottom:1px solid #eaeaea; padding-bottom:15px}
+.photoreview-view .writer img {vertical-align:middle; margin-left:10px}
+.photoreview-view .date {font-size:10px; color:#a4a4a4; line-height:10px; margin-left:10px;}
+.photoreview-view .option {border-bottom:1px solid #eaeaea; padding-bottom:15px; padding-top:15px}
+.photoreview-view .contents {margin-top:15px; letter-spacing:-0.5px}
+
+
+
+/* 댓글 리스트*/
+.review_pop_comment { border:1px solid #eaeaea; margin-bottom:30px; border-top:0; letter-spacing:-0.5px; font-size:11.5px}
+.review_pop_comment .btnArea { margin:10px 0; text-align:right; font-size:1%; line-height:1%; }
+.review_pop_comment .btnArea img { margin:0 0 0 1px; cursor:pointer; line-height:12px; }
+.review_pop_comment .btnArea.spam { border-top:1px solid #eaeaea; margin:10px 0 0; padding:10px 20px; background-color:#fff; text-align:left; }
+.review_pop_comment .boardComment li { margin-top:30px; margin:0; border-top:1px solid #eaeaea; line-height:140%;}
+.review_pop_comment .boardComment li:first-child { margin:0 }
+.review_pop_comment .boardComment li div.commentTop { overflow:hidden; margin:20px; padding-bottom:20px; border-bottom:1px solid #eaeaea; }
+.review_pop_comment .boardComment li .name { margin-right:10px}
+.review_pop_comment .boardComment li .name input { width:13px; height:13px; margin:0 2px 0 0; vertical-align:-2px; *vertical-align:2px; }
+.review_pop_comment .boardComment li .date { margin:1px 10px 0 15px; }
+.review_pop_comment .boardComment li .grade {  }
+.review_pop_comment .boardComment li .button { text-align:right }
+.review_pop_comment .boardComment li .comment { clear:both; padding:0 20px 20px 20px; word-break:break-all; }
+
+
+
+
+/* 댓글의 댓글 */
+.review_pop_comment .boardComment li.replyArea { overflow:hidden; margin:-1px 20px 0; padding:0 0 0 33px; background:url("http://img.echosting.cafe24.com/skin/admin_ko_KR/board/ico_comment.gif") no-repeat 20px 15px;}
+.review_pop_comment .boardComment li.replyArea:last-child {}
+.review_pop_comment .boardComment li.replyArea div.commentTop { border:none; padding:5px; margin:5px}
+.review_pop_comment .boardComment li.replyArea .comment { padding:0 0 0 10px; margin-bottom:10px}
+.review_pop_comment .boardComment li.replyArea .button { right:5px; }
+.review_pop_comment .boardComment li.replyArea .xans-board-commentformsecret { margin:10px 35px 10px 0; }
+
+
+
+/* 댓글 쓰기 */
+.review_pop_comment_write { background-color:#fff; }
+.review_pop_comment_write legend { visibility:hidden; overflow:hidden; width:0; height:0; font-size:0; line-height:0; }
+.review_pop_comment_write p { margin:0}
+.review_pop_comment_write p.captcha { border-top:1px solid #eaeaea; padding:15px 0 0 0; color:#000; }
+.review_pop_comment_write p.captcha img { vertical-align:middle; }
+.review_pop_comment_write strong { display:block; margin:0 0 10px 0; }
+.review_pop_comment_write input[type=text],
+.review_pop_comment_write input[type=password],
+.review_pop_comment_write textarea { padding:2px 2px 2px 4px; border:1px solid #eaeaea; }
+.review_pop_comment_write input { width:135px; height:20px; margin:0 10px 0 9px; }
+.review_pop_comment_write input#captcha { width:85px; }
+.review_pop_comment_write .secret input { width:13px; height:13px; margin-right:3px; }
+.review_pop_comment_write .secret { margin:0 20px 0 0; }
+.review_pop_comment_write textarea { width:100%; height:44px; margin:0 5px 0 0;}
+.review_pop_comment_write .view { position:relative; margin:10px 0 0; padding:0 95px 0 0; }
+.review_pop_comment_write .submit { position:absolute; top:0; right:0; }
+.review_pop_comment_write p.grade input { width:13px; height:13px; margin:0 2px 0 0; padding:0; border:0; vertical-align:-2px; *vertical-align:1px; }
+.review_pop_comment_write p.grade label { padding:0 10px 0 0; }
+.review_pop_comment_write p.grade em { font-style:normal; }
+
+/* 댓글의 댓글 쓰기 */
+.xans-board-commentreply {margin:20px; padding:15px; border:1px solid #eaeaea; background-color:#fbfafa;}
+.xans-board-commentreply legend { visibility:hidden; overflow:hidden; width:0; height:0; font-size:0; line-height:0; }
+.xans-board-commentreply p { margin:0; }
+.xans-board-commentreply p.captcha { border-top:1px solid #eaeaea; padding:15px 0 0 0; }
+.xans-board-commentreply p.captcha img { vertical-align:middle; }
+.xans-board-commentreply strong { display:block; margin:0 0 10px 0;}
+.xans-board-commentreply input[type=text],
+.xans-board-commentreply input[type=password],
+.xans-board-commentreply textarea { padding:2px 2px 2px 4px; border:1px solid #eaeaea; }
+.xans-board-commentreply input { width:135px; height:20px; margin:0 10px 0 9px; }
+.xans-board-commentreply .secret input { width:13px; height:13px; margin-right:3px; }
+.xans-board-commentreply .secret { margin:0 20px 0 0; }
+.xans-board-commentreply textarea { width:100%; height:44px; margin:0 5px 0 0;}
+.xans-board-commentreply .view { position:relative; margin:10px 0 0; padding:0 95px 0 0; }
+.xans-board-commentreply .submit { position:absolute; top:0; right:0; }
+.xans-board-commentreply p.grade input { width:13px; height:13px; margin:0 2px 0 0; padding:0; border:0; vertical-align:-2px; *vertical-align:1px; }
+.xans-board-commentreply p.grade label { padding:0 10px 0 0; }
+.xans-board-commentreply p.grade em { font-style:normal; }
+
+/* 댓글 수정 */
+.xans-board-commentform { margin:10px 20px; padding:10px; border:1px solid #eaeaea; background-color:#fff; }
+.xans-board-commentform legend { visibility:hidden; overflow:hidden; width:0; height:0; font-size:0; line-height:0; }
+.xans-board-commentform p { margin:10px 0 0; }
+.xans-board-commentform input[type=text],
+.xans-board-commentform input[type=password],
+.xans-board-commentform textarea { padding:2px 2px 2px 4px; border:1px solid #eaeaea; }
+.xans-board-commentform input { width:110px; height:20px; margin:0 0 0 9px; }
+.xans-board-commentform .secret input { width:13px; height:13px; margin-right:3px; }
+.xans-board-commentform .secret { margin:0 20px 0 0; }
+.xans-board-commentform textarea { height:44px; width:100%;}
+.xans-board-commentform .view {width:98%; margin-top:20px}
+.xans-board-commentform .submit {margin-top:4px}
+.replyArea .xans-board-commentform { margin:10px 20px 10px 0; }
+
+/* 비밀글 관련 */
+.xans-board-commentformsecret { margin:10px 25px 0 0; padding:10px 15px; border:1px solid #eaeaea; background-color:#fff;}
+.xans-board-commentformsecret input[type=password] { height:20px; padding:2px 2px 2px 4px; border:1px solid #eaeaea; }

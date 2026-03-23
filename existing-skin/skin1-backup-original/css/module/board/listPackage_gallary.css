@@ -1,0 +1,28 @@
+/* 게시판 전체 공통 */
+
+.xans-board-title p.imgArea {margin:0 auto; margin-bottom:40px; text-align:center;}
+.xans-board-title p.imgArea img {width:100%; max-width:1150px;}
+
+.xans-board-listpackage-8 .boardSort { float:left; margin:0 0 10px; }
+
+/* 갤러리형 탭메뉴 */
+ul.xans-board-listheader-8 { text-align:right; margin:0 0 10px; }
+ul.xans-board-listheader-8 li { display:inline; }
+
+/* list */
+.xans-board-listpackage-8 { margin:0 0 20px; }
+
+/* 일반글 */
+.xans-board-listpackage-8 .xans-board-list-8 { font-size:0 }
+.xans-board-listpackage-8 .xans-board-list-8 ul { overflow:hidden;}
+.xans-board-listpackage-8 .xans-board-list-8 li { display: inline-block; position:relative; width:33.33%; text-align:center; vertical-align:top; margin-bottom:30px}
+.xans-board-listpackage-8 .xans-board-list-8 li .boardChk { position:absolute; left:25px; top:5px; }
+.xans-board-listpackage-8 .xans-board-list-8 li .title { display:block; padding:20px 0 5px 0; font-size:13px; width:100%}
+.xans-board-listpackage-8 .xans-board-list-8 li strong { font-weight:normal;font-size:12px; }
+.xans-board-listpackage-8 .xans-board-list-8 li img { display:block; width:100%;}
+.xans-board-listpackage-8 .xans-board-list-8 li a.imgLink,
+.xans-board-listpackage-8 .xans-board-list-8 li a.imgLink:hover { display:block; color:#000; padding:0 0 5px; text-decoration:none; }
+
+
+/* 게시글 없음, 검색결과없음 */
+.xans-board-listpackage-8 .boardListEmpty { margin:0 0 20px; text-align:center; }

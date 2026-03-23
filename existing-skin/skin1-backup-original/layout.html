@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="//www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<!--카페24PRO 로케일 팝업 스크립트--><!--@js(/cafe24pro/locale_popup.js)-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!--PG크로스브라우징필수내용 시작-->
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <!--PG크로스브라우징필수내용 끝-->
+
+    <!--@css(/layout/basic/css/common.css)--><!--해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
+    <!--@css(/layout/basic/css/layout.css)-->
+    <!--@css(/layout/basic/css/ec-base-ui.css)-->
+    <!--@css(/layout/basic/css/ec-base-tooltip.css)-->
+    <!--@css(/layout/basic/css/ec-base-help.css)-->
+    <!--@css(/layout/basic/css/ec-base-product.css)-->
+    <!--@css(/layout/basic/css/ec-base-paginate.css)-->
+    <!--@css(/layout/basic/css/ec-base-tab.css)-->
+    <!--@css(/layout/basic/css/ec-base-button.css)-->
+    <!--@css(/layout/basic/css/ec-base-box.css)-->
+    <!--@css(/layout/basic/css/ec-base-table.css)-->
+    <!--@css(/layout/basic/css/ec-base-desc.css)-->
+    <!-- 스마트디자인에서는 JQuery 1.4.4 버전이 내장되어있습니다. 추가로 호출하면 충돌이 생길 수 있습니다. -->
+    <!--@js(/layout/basic/js/basic.js)-->
+    <!--@js(/js/common.js)-->
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700;900&family=Bricolage+Grotesque:wght@700;800&family=Instrument+Sans:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<style>
+/* ===== 글로벌 스타일 (layout.html) ===== */
+* { box-sizing: border-box; }
+body { font-family: helvetica, 'Noto Sans KR', sans-serif; color: #212121; background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+a { color: #212121; text-decoration: none; transition: all 0.3s ease; }
+a:hover { opacity: 0.7; }
+img { max-width: 100%; height: auto; }
+ul { list-style: none; margin: 0; padding: 0; }
+button, .btn { font-family: helvetica, 'Noto Sans KR', sans-serif; cursor: pointer; transition: all 0.3s ease; }
+input, select, textarea { font-family: helvetica, 'Noto Sans KR', sans-serif; }
+
+/* 프로모션+GNB 플로팅 래퍼 — 이미지 위에 떠있음 */
+.gnb-float-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 100; pointer-events: none; }
+.gnb-float-wrap > * { pointer-events: auto; }
+
+/* 프로모션 마키 바 — pill shape compact */
+.promo-wrap { padding: 5px 8px 0; }
+.promo-bar { height: 24px; background: rgba(42,41,41,0.4); overflow: hidden; display: flex; align-items: center; position: relative; z-index: 101; border-radius: 100px; }
+.promo-track { display: flex; white-space: nowrap; animation: marquee 60s linear infinite; will-change: transform; }
+.promo-item { color: rgba(255,255,255,0.9); font-size: 11px; margin-right: 40vw; letter-spacing: 0.03em; font-weight: 300; }
+.promo-item a { color: rgba(255,255,255,0.9); text-decoration: none; }
+.promo-item a:hover { color: #fff; opacity: 1; }
+.promo-bar:hover .promo-track { animation-play-state: paused; }
+@keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+
+/* GNB 헤더 — compact floating card */
+.gnb-header { position: relative; overflow: visible; height: 36px; background: rgba(255,255,255,0.88); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border: none; border-radius: 10px; margin: 3px 8px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: background 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1); }
+.gnb-header.scrolled { background: rgba(255,255,255,0.97); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.gnb-inner { max-width: 1920px; margin: 0 auto; display: flex; align-items: center; height: 100%; padding: 0 28px; }
+.gnb-logo { display: flex; align-items: center; margin-right: 40px; text-decoration: none; }
+.gnb-logo:hover { opacity: 0.7; }
+.gnb-logo img { height: 16px; display: block; }
+.gnb-nav { display: flex; align-items: center; height: 100%; gap: 0; }
+.gnb-item { font-family: helvetica, 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 600; color: #212121; padding: 0 14px; line-height: 36px; cursor: pointer; position: static; text-decoration: none; letter-spacing: 0.03em; white-space: nowrap; }
+.gnb-item:hover { opacity: 0.6; }
+
+/* 메가 드롭다운 — compact */
+.gnb-mega-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.18); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 98; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-overlay.active { opacity: 1; pointer-events: auto; }
+.gnb-mega { position: absolute; top: calc(100% + 2px); left: 0; right: 0; width: auto; background: rgba(246,245,241,0.97); backdrop-filter: saturate(120%) blur(16px); -webkit-backdrop-filter: saturate(120%) blur(16px); visibility: hidden; opacity: 0; transform: translateY(-6px); transition: visibility 0s 0.35s, opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1); padding: 28px 0 32px; z-index: 101; border: none; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.gnb-item.has-sub:hover .gnb-mega { visibility: visible; opacity: 1; transform: translateY(0); transition: visibility 0s, opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-inner { max-width: 1920px; margin: 0 auto; padding: 0 28px; display: flex; gap: 80px; }
+.gnb-mega-col { min-width: 120px; }
+.gnb-mega-col .mega-title { font-size: 11px; font-weight: 700; color: #212121; margin-bottom: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+.gnb-mega-col a { display: block; font-size: 12px; font-weight: 400; color: #555; padding: 3px 0; text-decoration: none; line-height: 1.8; transition: color 0.25s cubic-bezier(0.4,0,0.2,1); }
+.gnb-mega-col a:hover { color: #212121; opacity: 1; }
+.gnb-right { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+.gnb-right a, .gnb-link { font-size: 11px; font-weight: 600; color: #212121; text-decoration: none; cursor: pointer; letter-spacing: 0.03em; }
+
+/* ===== 히어로 배너 ===== */
+.hero-section { width: 100%; height: 100vh; background-size: cover; background-position: center; cursor: pointer; position: relative; }
+.hero-section .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.15); }
+.hero-section .intro { position: absolute; top: 47%; left: 50%; transform: translateX(-50%); text-align: center; color: #fff; }
+.hero-section .intro .title { letter-spacing: 0.15em; border: 1px solid rgba(255,255,255,0.6); font-size: 14px; font-weight: 300; padding: 14px 28px; display: inline-block; margin: 0 auto 24px; transition: all 0.3s ease; color: #fff; text-transform: uppercase; }
+.hero-section .intro .title:hover { color: #212121; border-color: #fff; background: #fff; letter-spacing: 0.2em; }
+.hero-section .intro .sub { font-size: 12px; font-weight: 300; line-height: 1.8; letter-spacing: 0.08em; opacity: 0.8; color: #fff; }
+
+/* ===== 섹션 타이틀 ===== */
+.section-area { max-width: 1920px; margin: 0 auto; padding: 80px 24px 0; }
+.section-title { text-align: center; margin-bottom: 48px; }
+.section-title h2 { font-family: 'Unbounded', sans-serif; font-size: 48px; font-weight: 900; color: #212121; letter-spacing: -0.02em; margin: 0; text-transform: uppercase; line-height: 1; }
+.section-title p { font-size: 11px; color: #aaa; margin-top: 12px; letter-spacing: 0.12em; font-weight: 400; text-transform: uppercase; }
+
+/* ===== 상품 그리드 — pickysociety 참조 ===== */
+.ga09list { margin: 0 auto; font-family: helvetica, 'Noto Sans KR', sans-serif; }
+.ga09list ul { width: 100%; margin: 0 -4px; display: flex; flex-wrap: wrap; }
+.ga09list ul.grid4 > li { width: 25%; padding: 0 4px; text-align: left; }
+.ga09list .prdpadding { margin: 0 0 32px 0; display: flex; flex-direction: column; }
+.ga09list .prdline { margin-bottom: 0; position: relative; }
+.hoverimg { overflow: hidden; border-radius: 16px; position: relative; }
+.hoverimg img { width: 100%; object-fit: cover; display: block; transform: scale(1); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s; }
+.hoverimg:hover img { transform: scale(1.03); opacity: 0.94; }
+.ga09list .name { clear: both; font-size: 13px; font-weight: 400; color: #212121; margin: 10px 0 0; line-height: 1.4; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ga09list .name a { color: #212121; }
+.ga09list .colorWrap { margin-top: 6px; height: auto; min-height: 0; }
+.ga09list .color { text-align: left; }
+.ga09list .color ul { display: inline-flex; gap: 3px; margin: 0; padding: 0; }
+.ga09list .chips { width: 9px; height: 9px; border-radius: 50%; font-size: 0; line-height: 0; display: inline-block; }
+.ga09list .prices { line-height: 1.4; color: #212121; font-size: 14px; margin-top: 4px; }
+.ga09list .price { font-size: 11px; color: #999; margin-right: 5px; text-decoration: line-through; opacity: 0.7; }
+.ga09list .normal { font-size: 14px; color: #212121; font-weight: 400; text-decoration: none; }
+.ga09list .sale-pct { font-size: 14px; color: #db7e7e; margin-right: 5px; font-weight: 400; }
+.prd-badge { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 2px 14px; border-radius: 24px; font-size: 11px; font-weight: 400; letter-spacing: 0.02em; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.badge-new { background: rgba(237,237,237,0.7); color: #212121; }
+.badge-best { background: rgba(0,0,0,0.5); color: #fff; }
+
+/* ===== 푸터 — 미니멀 모던 ===== */
+#bottom-wrap { background: #f6f5f1; margin-top: 120px; border: none; }
+#bottom { max-width: 1400px; margin: 0 auto; font-family: helvetica, 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 400; line-height: 1.7; color: #999; }
+#bottom a { transition: all 0.3s ease; color: #999; }
+#bottom a:hover { text-decoration: none; color: #212121; }
+#bottom .inner { padding: 56px 40px 40px; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 40px; border-bottom: 1px solid rgba(0,0,0,0.06); gap: 40px; }
+.footer-brand { flex-shrink: 0; }
+.footer-brand .logo-text { line-height: 0; }
+.footer-brand .logo-text img { height: 24px; display: block; }
+.footer-brand .brand-desc { font-size: 11px; color: #bbb; margin-top: 8px; letter-spacing: 0.02em; }
+.footer-cols { display: flex; gap: 64px; }
+.footer-col h4 { font-size: 11px; font-weight: 600; color: #212121; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 14px; }
+.footer-col ul { list-style: none; margin: 0; padding: 0; }
+.footer-col li { padding: 2px 0; }
+.footer-col a { font-size: 11px; color: #999; }
+.footer-col a:hover { color: #212121; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: flex-start; padding-top: 28px; gap: 40px; flex-wrap: wrap; }
+.footer-info { font-size: 10px; color: #bbb; line-height: 1.8; }
+.footer-info span { color: #999; margin-right: 2px; }
+.footer-copyright { font-size: 10px; color: #ccc; letter-spacing: 0.02em; margin-top: 20px; }
+.footer-sns { display: flex; gap: 16px; align-items: center; }
+.footer-sns a { font-size: 11px; color: #bbb; letter-spacing: 0.06em; text-transform: uppercase; }
+.footer-sns a:hover { color: #212121; }
+#bottom #cscenter #bank .bank1 { color: #212121; font-weight: 500; }
+#bottom #cscenter #bank .bank2 { padding-top: 4px; color: #999; }
+#bottom #company .copytext { font-size: 11px; color: #999; line-height: 1.8; }
+#bottom #company .copytext span { font-size: 11px; margin-right: 8px; color: #666; }
+#bottom #link { font-size: 12px; }
+#bottom #link .sns { text-align: left; margin-top: 20px; }
+#bottomcopyright { margin-top: 40px; padding-top: 24px; border-top: 1px solid #dadada; text-align: left; font-size: 11px; line-height: 1.6; color: #999; }
+#bottomcopyright b { font-weight: 500; color: #666; }
+
+/* 콘텐츠 영역 */
+#contentsWrap { margin-top: -48px; position: relative; z-index: 1; }
+#content { max-width: 1920px; margin: 0 auto; padding: 0 24px; }
+
+/* 스크롤 탑 */
+.scrollTop a { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: rgba(33,33,33,0.1); color: #212121; border-radius: 0; transition: all 0.3s ease; }
+.scrollTop a:hover { background: rgba(33,33,33,0.2); }
+</style>
+    <script type="text/javascript" src="/ec-js/common.js"></script><!-- 해당 JS는 플래시를 사용하기 위한 스크립트입니다. -->
+
+</head>
+<body>
+
+<div id="toparea"></div>
+<div id="loginpopup"><!--@import(/loginpopup.html)--></div>
+
+<!-- 프로모션 + GNB — 이미지 위에 떠있는 구조 -->
+<div class="gnb-float-wrap">
+
+<div class="promo-wrap">
+<div class="promo-bar">
+    <div class="promo-track">
+        <span class="promo-item"><a href="/member/join.html">회원가입 시 즉시 사용 가능한 3,000 포인트가 지급됩니다.</a></span>
+        <span class="promo-item"><a href="/product/list.html">매주 선보이는 트렌디한 뉴 아이템과 스타일링을 확인해 보세요.</a></span>
+        <span class="promo-item"><a href="/member/join.html">회원가입 시 즉시 사용 가능한 3,000 포인트가 지급됩니다.</a></span>
+        <span class="promo-item"><a href="/product/list.html">매주 선보이는 트렌디한 뉴 아이템과 스타일링을 확인해 보세요.</a></span>
+    </div>
+</div>
+</div>
+
+<!-- GNB 헤더 -->
+<header class="gnb-header">
+    <div class="gnb-inner">
+        <a href="/" class="gnb-logo"><img src="/web/upload/ga09/logo-C-refined-header.svg" alt="SHOP YOUTHTORY"></a>
+        <nav class="gnb-nav">
+            <!--@import(/left.html)-->
+        </nav>
+        <div class="gnb-right">
+            <!--@import(/top.html)-->
+        </div>
+    </div>
+</header>
+
+</div><!-- gnb-float-wrap -->
+
+<div id="contentsWrap">
+    <div id="toggle-right"><span></span></div>
+    <div id="right"><!--@import(/right.html)--></div>
+    <div id="content"><!--@contents--></div>
+</div>
+    
+<!-- GNB 메가 드롭다운 오버레이 -->
+<div class="gnb-mega-overlay" id="gnbOverlay"></div>
+<script>
+(function(){
+    var overlay = document.getElementById('gnbOverlay');
+    var header = document.querySelector('.gnb-header');
+    var subs = document.querySelectorAll('.gnb-item.has-sub');
+    var hideTimer;
+    subs.forEach(function(el){
+        el.addEventListener('mouseenter', function(){
+            clearTimeout(hideTimer);
+            overlay.classList.add('active');
+        });
+        el.addEventListener('mouseleave', function(){
+            hideTimer = setTimeout(function(){ overlay.classList.remove('active'); }, 120);
+        });
+    });
+    var ticking = false;
+    window.addEventListener('scroll', function(){
+        if(!ticking){
+            requestAnimationFrame(function(){
+                if(window.scrollY > 30) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+})();
+</script>
+<div class="scrollTop" style="position:fixed;"><a id="toparea" href="#toparea"><i class="fas fa-arrow-up"></i></a></div> 
+    
+<!-- 참고: 결제를 위한 필수 영역 -->
+<div id="progressPaybar" style="display:none;">
+    <div id="progressPaybarBackground" class="layerProgress"></div>
+    <div id="progressPaybarView">
+        <div class="box">
+            <p class="graph">
+                <span><img src="//img.echosting.cafe24.com/skin/base_ko_KR/layout/txt_progress.gif" alt="현재 결제가 진행중입니다." /></span>
+                <span><img src="//img.echosting.cafe24.com/skin/base/layout/img_loading.gif" alt="" /></span>
+            </p>
+            <p class="txt">
+                본 결제 창은 결제완료 후 자동으로 닫히며,결제 진행 중에 본 결제 창을 닫으시면<br />
+                주문이 되지 않으니 결제 완료 될 때 까지 닫지 마시기 바랍니다.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- //참고 -->
+
+<div module="Layout_multishopShipping">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/layout/multishopShipping.css)-->
+    <!--@js(/js/module/layout/multishopShipping.js)-->
+    <div class="dimmed"></div>
+    <div class="worldshipLayer ec-base-layer">
+        <div class="header">
+            <h3>WORLD SHIPPING</h3>
+        </div>
+        <div class="content">
+            <p class="desc">PLEASE SELECT THE DESTINATION COUNTRY AND LANGUAGE :</p>
+            <div class="select">
+                <select module="Layout_multishopShippingCountrylist">
+                    <option value="{$country_code}"{$country_default_selected}>SHIPPING TO : {$country_name}</option>
+                    <option value="{$country_code}"{$country_default_selected}>SHIPPING TO : {$country_name}</option>
+                </select>
+            </div>
+            <div class="select">
+                <select module="Layout_multishopShippingLanguagelist">
+                    <option value="{$shop_domain}"{$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+                    <option value="{$shop_domain}"{$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+                </select>
+            </div>
+        </div>
+        <div class="ec-base-button">
+            <a href="#none"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/link/btn_go.gif" alt="GO" /></a>
+        </div>
+        <a href="#none" class="close"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" width="13" height="13" alt="close" /></a>
+    </div>
+</div>
+
+<div module="Layout_conversionPc">
+    <!--@css(/css/module/layout/conversionpc.css)-->
+    <a href="{$mobile_url}">모바일 화면보기</a>
+</div>
+
+<div id="wrap_dialog">
+</div>
+    
+</body>
+
+<script type="text/javascript" src="/js/ga09.js"></script>
+</html>
+
+<!-- Enliple Common Tracker v3.6 [공용] start -->
+<script type="text/javascript">
+<!--
+function mobRf() {
+    var rf = new EN();
+    rf.setData("userid", "tpdnd134");
+    rf.setSSL(true);
+    rf.sendRf();
+}
+//-->
+</script>
+<script src="https://cdn.megadata.co.kr/js/en_script/3.6/enliple_min3.6.js" defer="defer" onload="mobRf()"></script>
+<!-- Enliple Common Tracker v3.6 [공용] end -->

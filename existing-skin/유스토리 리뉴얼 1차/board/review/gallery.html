@@ -1,0 +1,118 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--@css(/board/review/ga09css/photoreviewbutton.css)-->
+<!--@css(/board/review/ga09css/review.css)-->
+<!--@js(/board/review/ga09js/review.js)-->
+<!--@js(/board/review/ga09js/ga09.review.js)-->
+<!--@css(/css/module/board/listPackage.css)-->
+<div id="review_popup">
+    <div class="content"></div>
+</div>
+
+<div module="board_title_4">
+    <div class="path">
+        <span>현재 위치</span>
+        <ol>
+            <li><a href="/">홈</a></li>
+            <li><a href="/board/index.html">게시판</a></li>
+            <li title="현재 위치"><strong>{$board_name}</strong></li>
+        </ol>
+    </div>
+
+    <div class="titleArea">
+        <h2>Photo review</h2>
+    </div>
+    <p class="imgArea">{$board_top_image}</p>
+</div>
+
+
+<div module="Board_ListPackage_4">
+
+    <div class="boardSort">
+        <span module="board_category_4">{$form.board_category}</span>
+        <span module="board_ReplySort_4">{$reply_sort}</span>
+    </div>
+    <div class="boardList" style="margin-top:60px">
+        
+        <div module="board_notice_4" class="notice">
+            <!--
+                $count = 10
+                $login_page_url = /member/login.html
+                $deny_access_url = /index.html
+            -->
+            <div style="margin:15px 0">
+                <div class="left">{$checkbox}<img src=/board/review/img/notice.png></div>
+                <div class="right"><span>{$product_name}</span><a href="/board/review/read.html{$param_read}">{$subject}</a><span class="comment">{$comment_count}</span></div>
+                <div class="date"><span class="{$date_display|display}">{$write_date}</span></div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="noticeline">
+                <div class="left">{$checkbox}<img src=/board/review/img/notice.png></div>
+                <div class="right"><span>{$product_name}</span><a href="/board/review/read.html{$param_read}">{$subject}</a><span class="comment">{$comment_count}</span></div>
+                <div class="date"><span class="{$date_display|display}">{$write_date}</span></div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+        <div module="board_list_4">
+
+            <!--
+                $count = 100
+                $product_name_cut = 20
+                $login_page_url = /member/login.html
+                $deny_access_url = /index.html
+            -->
+            
+
+            <div id="ga09photoreview" href="/board/review/review_pop.html{$param_read}" onclick="ga09review.popReview(this);">
+                <ul style="margin:0 10px; border:1px solid #eaeaea; border-bottom:none">
+                    <li style="background:transparent url({$img_src|replace:/gallery,}); background-size: cover; background-position:center;" class="thumnail"><img src="{$img_src|replace:/gallery,}" style="display:none;" onError="img_error3(this)" /></li>
+                </ul>
+                <ul class="infobox">
+                    <li class="info1">
+                        <p class="name">{$product_name}</p>
+                    </li>
+                    <li class="info2">
+                        <p class="subject">{$subject}</span><span class="comment">{$comment_count}</p>
+                        <p class="date {$date_display|display}">{$write_date}</p>
+                    </li>
+                </ul>  
+            </div>
+            
+            <div id="ga09photoreview" href="/board/review/review_pop.html{$param_read}" onclick="ga09review.popReview(this);">
+                <ul style="margin:0 10px; border:1px solid #eaeaea; border-bottom:none">
+                    <li style="background:transparent url({$img_src|replace:/gallery,}); background-size: cover; background-position:center;" class="thumnail"><img src="{$img_src|replace:/gallery,}" style="display:none;" onError="img_error3(this)" /></li>
+                </ul>
+                <ul class="infobox">
+                    <li class="info1">
+                        <p class="name">{$product_name}</p>
+                    </li>
+                    <li class="info2">
+                        <p class="subject">{$subject}</span><span class="comment">{$comment_count}</p>
+                        <p class="date {$date_display|display}">{$write_date}</p>
+                    </li>
+                </ul>  
+            </div>
+            
+            
+
+            <div style="clear:both"></div>
+
+
+
+        </div>
+    </div>
+    <div class="nodata {$empty_display|display}" module="board_empty_4">
+        <p>{$empty_message}</p>
+    </div>
+    <div id="licensetext" style="text-align:center">Photoreview skin designed by <a href=http://ga09design.com target="_blank">GA09 DESIGN</a></div>
+    
+</div>
+
+
+<div module="board_paging_4" class="photoreview-paging">
+    <a href="{$param_prev}"><img src="/board/review/img/page_prev.gif" alt="이전 페이지" /></a>
+    <ol>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+    </ol>
+    <a href="{$param_next}"><img src="/board/review/img/page_next.gif" alt="다음 페이지" /></a>
+</div>

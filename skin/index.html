@@ -1,0 +1,159 @@
+<!--@layout(/layout.html)-->
+
+<!--@css(/css/override.css)-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<!-- Hero Swiper Slider -->
+<section class="main-hero">
+    <div class="swiper main-hero__swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="/product/list.html?cate_no=42" style="display:block; height:100%;">
+                    <div class="main-hero__slide" style="background-image: url('/web/upload/main-hero-01.jpg');">
+                        <div class="main-hero__content">
+                            <h2 class="main-hero__title">2026 S/S COLLECTION</h2>
+                            <p class="main-hero__subtitle">FIND YOUR STYLE</p>
+                            <span class="main-hero__cta">SHOP NOW</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="/product/list.html?cate_no=43" style="display:block; height:100%;">
+                    <div class="main-hero__slide" style="background-image: url('/web/upload/main-hero-02.jpg');">
+                        <div class="main-hero__content">
+                            <h2 class="main-hero__title">SUMMER LOOKBOOK</h2>
+                            <p class="main-hero__subtitle">NEW ARRIVALS</p>
+                            <span class="main-hero__cta">VIEW MORE</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="/product/list.html?cate_no=44" style="display:block; height:100%;">
+                    <div class="main-hero__slide" style="background-image: url('/web/upload/main-hero-03.jpg');">
+                        <div class="main-hero__content">
+                            <h2 class="main-hero__title">STREET CULTURE</h2>
+                            <p class="main-hero__subtitle">EXPLORE NOW</p>
+                            <span class="main-hero__cta">DISCOVER</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+<!-- New Arrivals -->
+<section class="main-section">
+    <div class="main-section__inner">
+        <h2 class="main-section__title">NEW ARRIVALS</h2>
+        <div module="product_listmain_1" class="ga09list">
+            <!--
+            $count = 8
+            $basket_result = /product/add_basket.html
+            $basket_option = /product/basket_option.html
+            -->
+            <ul class="grid4">
+                <!--@import(/prdlist.html)-->
+                <!--@import(/prdlist.html)-->
+            </ul>
+        </div>
+        <div class="main-section__more">
+            <a href="/product/list.html?cate_no=42" class="main-section__more-btn">VIEW ALL</a>
+        </div>
+    </div>
+</section>
+
+<!-- Lookbook Banner -->
+<section class="main-banner">
+    <a href="/product/list.html?cate_no=45">
+        <div class="main-banner__inner" style="background-image: url('/web/upload/lookbook-banner.jpg');">
+            <div class="main-banner__content">
+                <span class="main-banner__label">LOOKBOOK</span>
+                <h2 class="main-banner__title">SUMMER 2026</h2>
+            </div>
+        </div>
+    </a>
+</section>
+
+<!-- Best Sellers -->
+<section class="main-section">
+    <div class="main-section__inner">
+        <h2 class="main-section__title">BEST SELLERS</h2>
+        <div module="product_listmain_2" class="ga09list">
+            <!--
+            $count = 8
+            $basket_result = /product/add_basket.html
+            $basket_option = /product/basket_option.html
+            -->
+            <ul class="grid4">
+                <!--@import(/prdlist.html)-->
+                <!--@import(/prdlist.html)-->
+            </ul>
+        </div>
+        <div class="main-section__more">
+            <a href="/product/list.html?cate_no=43" class="main-section__more-btn">VIEW ALL</a>
+        </div>
+    </div>
+</section>
+
+<!-- Style Pick -->
+<section class="main-section">
+    <div class="main-section__inner">
+        <h2 class="main-section__title">STYLE PICK</h2>
+        <div class="main-style-pick">
+            <a href="/product/list.html?cate_no=44" class="main-style-pick__card">
+                <div class="main-style-pick__img-wrap">
+                    <img src="/web/upload/style-minimal.jpg" alt="Minimal" class="main-style-pick__img" />
+                </div>
+                <span class="main-style-pick__label">MINIMAL</span>
+            </a>
+            <a href="/product/list.html?cate_no=45" class="main-style-pick__card">
+                <div class="main-style-pick__img-wrap">
+                    <img src="/web/upload/style-casual.jpg" alt="Casual" class="main-style-pick__img" />
+                </div>
+                <span class="main-style-pick__label">CASUAL</span>
+            </a>
+            <a href="/product/list.html?cate_no=46" class="main-style-pick__card">
+                <div class="main-style-pick__img-wrap">
+                    <img src="/web/upload/style-street.jpg" alt="Street" class="main-style-pick__img" />
+                </div>
+                <span class="main-style-pick__label">STREET</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Instagram / Review teaser (optional, can be customized later) -->
+<section class="main-section main-section--gray">
+    <div class="main-section__inner">
+        <h2 class="main-section__title">@YOUTHTORY</h2>
+        <p class="main-section__subtitle">Follow us on Instagram</p>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+var heroSwiper = new Swiper('.main-hero__swiper', {
+    loop: true,
+    autoplay: { delay: 5000, disableOnInteraction: false },
+    speed: 700,
+    effect: 'fade',
+    fadeEffect: { crossFade: true },
+    pagination: { el: '.swiper-pagination', clickable: true }
+});
+</script>
+<script>
+var sections = document.querySelectorAll('.main-section, .main-banner');
+var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+sections.forEach(function(el) { observer.observe(el); });
+</script>

@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YOUTHTORY — 오버핏 워싱 데님 자켓</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<style>
+/* ===== layout.html 글로벌 스타일 ===== */
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #212121;
+    background: #ffffff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: #212121;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+a:hover {
+    opacity: 0.7;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+button, .btn {
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+input, select, textarea {
+    font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 0;
+}
+.scrollTop {
+    bottom: 40px;
+    right: 40px;
+    z-index: 100;
+}
+.scrollTop a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: rgba(33, 33, 33, 0.1);
+    color: #212121;
+    border-radius: 0;
+    transition: all 0.3s ease;
+}
+.scrollTop a:hover {
+    background: rgba(33, 33, 33, 0.2);
+    opacity: 1;
+}
+ul { list-style: none; margin: 0; padding: 0; }
+
+/* ===== css/left.css ===== */
+#left {
+    position: fixed;
+    z-index: 99;
+    left: 40px;
+    top: 0;
+    width: 180px;
+    padding: 24px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #212121;
+    transition: all 0.3s ease;
+}
+#left a {
+    text-decoration: none;
+    color: #212121;
+    transition: all 0.3s ease;
+}
+#left a:hover {
+    text-decoration: none;
+    opacity: 0.6;
+}
+#left #logo {
+    padding: 20px 0;
+}
+#left #menulist {
+    margin-top: 32px;
+    width: 180px;
+}
+#left .accordionmenu,
+#left .accordionmenu2 {
+    cursor: pointer;
+    width: 180px;
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: all 0.3s ease;
+    background: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 44px;
+    color: #212121;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+#left .accordionmenu:hover,
+#left .accordionmenu2:hover {
+    letter-spacing: 0.06em;
+}
+#left .panel {
+    background: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 28px;
+}
+#left .panel a {
+    color: #666666;
+    display: block;
+    padding-left: 0;
+    transition: all 0.3s ease;
+}
+#left .panel a:hover {
+    margin-left: 0;
+    padding-left: 8px;
+    color: #212121;
+}
+#left .panel2 {
+    margin-bottom: 12px;
+    background: transparent;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 28px;
+}
+#left .panel2 a {
+    color: #666666;
+    display: block;
+    transition: all 0.3s ease;
+}
+#left .panel2 a:hover {
+    margin-left: 0;
+    padding-left: 8px;
+    color: #212121;
+}
+#left button,
+#left button:focus,
+#left button:active {
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+}
+#left span {
+    position: relative;
+}
+
+/* ===== css/top.css ===== */
+#top {
+    position: fixed;
+    z-index: 80;
+    right: 40px;
+    top: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    padding: 0;
+    height: 74px;
+    line-height: 74px;
+    color: #212121;
+    transition: all 0.3s ease;
+}
+#top a {
+    text-decoration: none;
+    color: #212121;
+    transition: opacity 0.3s ease;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+#top a:hover {
+    text-decoration: none;
+    opacity: 0.6;
+}
+#top #topcarticon {
+    float: right;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    margin-left: 20px;
+    line-height: 74px;
+}
+#top #topsearch {
+    float: right;
+    margin-left: 20px;
+    line-height: 74px;
+}
+#top #topsearch .search-bar {
+    margin: 0;
+    padding: 0;
+}
+#top #topsearch .search-bar input[type=text] {
+    height: 24px;
+    padding: 0;
+    font-size: 12px;
+    color: #212121;
+    width: 0;
+    border: none;
+    border-bottom: 1px solid #dadada;
+    background: transparent;
+    transition: width 0.3s ease, border-color 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+#top #topsearch .search-bar:hover input[type=text],
+#top #topsearch .search-bar input[type=text]:focus {
+    width: 120px;
+    border-bottom: 1px solid #212121;
+}
+#top #log {
+    float: right;
+    font-size: 12px;
+    line-height: 74px;
+}
+#top #log a {
+    margin-left: 20px;
+    font-weight: 400;
+}
+
+/* ===== css/right.css ===== */
+#right {
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    width: 50%;
+    min-width: 480px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    text-align: center;
+    background: rgba(42, 41, 41, 0.95);
+    border-bottom: none;
+    transition: all 0.3s ease;
+}
+#right a { cursor: pointer; }
+#right.opened {
+    z-index: 999;
+    visibility: visible;
+    opacity: 1;
+}
+#rightmenu {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 48px;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+    z-index: 9999;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    margin-top: -200px;
+    text-align: center;
+}
+#rightmenu .innermenu {
+    width: 480px;
+    margin: 0 auto;
+}
+#rightmenu .innermenu a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+#rightmenu .innermenu a:hover {
+    color: #ffffff;
+    letter-spacing: 0.08em;
+}
+#rightmenu .innermenu li { margin-bottom: 4px; }
+#rightmenu .innermenu ul {
+    float: left;
+    margin-right: 60px;
+    text-align: left;
+}
+#toggle-right {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    top: 25px;
+    right: 40px;
+    cursor: pointer;
+    z-index: 99999;
+}
+#toggle-right span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    margin: 12px 0 0 0;
+    background: #212121;
+    transition: all 0.3s ease;
+}
+#toggle-right span:before,
+#toggle-right span:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: #212121;
+    transition: all 0.3s ease;
+}
+#toggle-right span:before { margin: -8px 0 0 0; }
+#toggle-right span:after { margin: 8px 0 0 0; }
+#toggle-right.open span { background-color: transparent; }
+#toggle-right.open span:before,
+#toggle-right.open span:after { margin: 0; background: #ffffff; }
+#toggle-right.open span:before { transform: rotate(45deg); }
+#toggle-right.open span:after { transform: rotate(-45deg); }
+
+/* ===== css/ga09product.css ===== */
+.ga09list .prdpadding { margin: 0 5px 40px 5px; }
+.ga09list .prdline { margin-bottom: 12px; }
+.ga09list { margin: 0 auto; font-family: 'Noto Sans KR', sans-serif; }
+.ga09list ul { zoom: 1; width: 100%; margin-bottom: 0; display: flex; flex-wrap: wrap; font-size: 0; }
+.ga09list ul a:link { text-decoration: none; }
+.ga09list ul a:hover { text-decoration: none; color: #212121; }
+.ga09list ul:after { content: ""; display: block; clear: both; }
+.ga09list ul li { display: inline-block; vertical-align: top; }
+.ga09list ul.grid3 > li { display: inline-block; width: calc(33.33% - 10px); margin: 0 5px; text-align: left; vertical-align: top; }
+.ga09list ul.grid4 > li { display: inline-block; width: calc(25% - 10px); margin: 0 5px; text-align: left; vertical-align: top; }
+.ga09list .name { clear: both; font-size: 14px; font-weight: 700; margin-bottom: 6px; color: #212121; letter-spacing: -0.02em; line-height: 1.4; }
+.ga09list .name a { color: #212121; transition: opacity 0.3s ease; }
+.ga09list .name a:hover { opacity: 0.7; }
+.ga09list .prices { line-height: 1.5; color: #212121; font-size: 14px; font-weight: 400; }
+.ga09list .price { font-size: 13px; color: #999999; margin-right: 8px; text-decoration: line-through !important; }
+.ga09list .normal { font-size: 14px; color: #212121; font-weight: 400; text-decoration: none !important; }
+.ga09list .colorWrap { height: 19px; }
+.ga09list .color { padding-top: 8px; text-align: left; }
+.ga09list .color ul { display: inline-flex; text-align: left; margin: 0; padding: 0; gap: 4px; }
+.ga09list .color li { padding: 0; }
+.ga09list .chips { width: 10px; height: 10px; margin-left: 0; font-size: 0; line-height: 0; border-radius: 0; }
+.hoverimg { overflow: hidden; border-radius: 0; }
+.hoverimg img { transform: scale(1); transition: transform 0.3s ease, opacity 0.3s ease; border-radius: 0; }
+.hoverimg:hover img { transform: scale(1.05); opacity: 0.94; }
+
+/* ===== css/bottom.css ===== */
+#bottom-wrap { border-top: 1px solid #dadada; margin-top: 120px; }
+#bottom { max-width: 1400px; margin: 0 auto; font-family: 'Noto Sans KR', sans-serif; font-size: 12px; font-weight: 400; line-height: 1.8; padding-top: 60px; color: #666666; }
+#bottom a { transition: all 0.3s ease; color: #666666; }
+#bottom a:hover { text-decoration: none; color: #212121; }
+#bottom .copypadding { float: left; width: 20%; }
+#bottom .copypadding1 { float: left; }
+#bottom .copypadding2 { float: right; text-align: right; }
+#bottom .inner { padding-bottom: 60px; margin: 0 40px; }
+#bottom .logo { margin-bottom: 24px; }
+#bottom #cscenter #customer .cs1 { font-size: 14px; font-weight: 500; padding-bottom: 4px; color: #212121; }
+#bottom #cscenter #customer .cs2 { font-size: 12px; color: #999999; }
+#bottom #cscenter #bank { margin-top: 24px; font-size: 12px; color: #666666; }
+#bottom #cscenter #bank .bank1 { color: #212121; font-weight: 500; }
+#bottom #cscenter #bank .bank2 { padding-top: 4px; color: #999999; }
+#bottom #company .copytext { font-size: 11px; color: #999999; line-height: 1.8; }
+#bottom #company .copytext span { font-size: 11px; margin-right: 8px; color: #666666; }
+#bottom #link { font-size: 12px; }
+#bottom #link .sns { text-align: left; margin-top: 20px; }
+#joinbt { border: 1px solid #dadada; padding: 12px 0; width: 140px; text-align: center; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; transition: all 0.3s ease; background: transparent; color: #212121; }
+#joinbt:hover { border-color: #212121; background: #212121; color: #ffffff; }
+#bottomcopyright { margin-top: 40px; padding-top: 24px; border-top: 1px solid #dadada; text-align: left; font-size: 11px; line-height: 1.6; color: #999999; }
+#bottomcopyright b { font-weight: 500; color: #666666; }
+
+/* ===== 상품 상세 페이지 전용 스타일 ===== */
+#content {
+    margin-left: 220px;
+    padding: 80px 40px 0;
+}
+.detailArea {
+    position: relative;
+    margin: 0 auto;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.detailArea:after { content: " "; display: block; clear: both; }
+
+/* 이미지 영역 (좌측) */
+.detailArea .imgArea {
+    padding-right: 465px;
+    padding-left: 0;
+}
+.detailArea .imgArea .listImg {
+    overflow: hidden;
+    width: 100%;
+}
+.detailArea .imgArea .listImg ul {
+    margin: 0;
+    font-size: 0;
+    line-height: 0;
+}
+.detailArea .imgArea .listImg li {
+    display: inline-block;
+    margin: 0;
+    vertical-align: top;
+}
+.detailArea .imgArea .listImg li img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* 우측 상세정보 */
+#detail-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 400px;
+}
+#detailinfo {
+    width: 400px;
+}
+.fixmenu {
+    z-index: 9;
+    position: sticky;
+    top: 80px;
+    width: 400px;
+    background: #fff;
+}
+
+/* 상품 정보 영역 */
+.infoArea {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.infoArea .prdname {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+}
+.infoArea .detail-color {
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+.infoArea .detail-chips {
+    float: left;
+    width: 15px;
+    height: 4px;
+    margin: 0 3px 0 0;
+    font-size: 0;
+    line-height: 0;
+    display: inline-block;
+}
+.infoArea table {
+    border: 0;
+    font-size: 13px;
+    line-height: 20px;
+    padding: 5px 0;
+    width: 100%;
+    border-collapse: collapse;
+}
+.infoArea th {
+    font-weight: normal;
+    color: #999;
+    width: 100px;
+    padding: 7px 0 8px 0;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 12px;
+}
+.infoArea td {
+    padding-top: 4px;
+    vertical-align: middle;
+    font-size: 13px;
+}
+.infoArea select {
+    width: 100%;
+    height: 36px;
+    font-size: 12px;
+    color: #212121;
+    border: 1px solid #dadada;
+    padding: 0 8px;
+    background: #fff;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* 총 가격 */
+.totalPrice {
+    font-weight: 400;
+    margin-top: 24px;
+    padding: 16px 0;
+    border-top: 1px solid #dadada;
+    color: #212121;
+    text-align: left;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+}
+.totalPrice em {
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 700;
+    color: #212121;
+}
+
+/* 구매 버튼 */
+.btnArea {
+    margin-top: 24px;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 30px;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+}
+.btnArea a {
+    cursor: pointer;
+    margin-right: 24px;
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+.btnArea a:hover {
+    color: #666;
+    opacity: 1;
+}
+.btnArea a span {
+    position: relative;
+}
+.btnArea a span:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -5px;
+    left: 0;
+    background-color: #212121;
+    visibility: visible;
+    transform: scaleX(1);
+    transition: all 0.17s ease-in-out 0s;
+}
+.btnArea .buy-btn { font-weight: 900; }
+
+/* 게시판 스타일 */
+.detail-board-title {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 16px 0;
+    border-bottom: 1px solid #dadada;
+    letter-spacing: 0.02em;
+}
+.detail-board-title .bt a {
+    font-size: 12px;
+    font-weight: 400;
+    color: #999;
+    margin-left: 15px;
+}
+.detail-board-title .bt a:hover { color: #212121; }
+
+.board table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+.board table td {
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+}
+.board .number { width: 50px; color: #999; text-align: center; }
+.board .infobox .subject { font-size: 13px; color: #212121; }
+.board .writer { margin-top: 4px; font-size: 11px; color: #999; }
+.board .date { font-size: 11px; color: #999; }
+
+/* 관련상품 */
+.related-title {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #dadada;
+}
+</style>
+</head>
+<body>
+
+<div id="contentsWrap">
+    <div id="toggle-right"><span></span></div>
+
+    <!-- right.html -->
+    <div id="right">
+        <div id="rightmenu">
+            <div class="innermenu">
+                <ul>
+                    <li><a href="#">HISTORY</a></li>
+                    <li><a href="#">OUR STORY</a></li>
+                    <li><a href="#">YOUTH STORY</a></li>
+                    <li><a href="#">BOOKMARK</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">NEW ARRIVALS</a></li>
+                    <li><a href="#">OUTWEAR</a></li>
+                    <li><a href="#">TOP</a></li>
+                    <li><a href="#">BOTTOM</a></li>
+                    <li><a href="#">ACCESSORIES</a></li>
+                </ul>
+                <ul style="margin-right:0">
+                    <li><a href="#">NOTICE</a></li>
+                    <li><a href="#">Q&A</a></li>
+                    <li><a href="#">REVIEW</a></li>
+                </ul>
+                <ul style="margin-right:0; float:right">
+                    <li><a href="#">LOGIN</a></li>
+                    <li><a href="#">REGISTER</a></li>
+                    <li><a href="#">MY PAGE</a></li>
+                    <li><a href="#">ORDER</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- top.html -->
+    <div id="top">
+        <div class="inner">
+            <div id="topsearch">
+                <div class="search-bar">
+                    <fieldset style="border:none;margin:0;padding:0;"><input type="text" placeholder="Search"><a href="#"><img src="https://via.placeholder.com/16x16/212121/212121?text=+" alt="검색"></a></fieldset>
+                </div>
+            </div>
+            <div id="topcarticon" style="cursor:pointer">BAG (0)</div>
+            <div id="log"><span id="toggle" style="cursor:pointer">LOGIN</span> <a href="#">REGISTER</a></div>
+        </div>
+    </div>
+
+    <!-- left.html -->
+    <div id="left">
+        <div id="logo"><a href="preview-list.html" style="font-family:'Noto Sans KR',sans-serif;font-size:18px;font-weight:700;letter-spacing:0.08em;color:#212121;">YOUTHTORY</a></div>
+        <div id="menulist">
+            <button class="accordionmenu"><span>BRAND</span></button>
+            <button class="accordionmenu"><span>SHOP</span></button>
+            <div class="panel2" style="max-height:200px;">
+                <ul>
+                    <li><a href="preview-list.html">New Arrivals</a></li>
+                    <li><a href="#">Outwear</a></li>
+                    <li><a href="#">Top</a></li>
+                    <li><a href="#">Bottom</a></li>
+                    <li><a href="#">Accessories</a></li>
+                </ul>
+            </div>
+            <button class="accordionmenu2"><span>Collection</span></button>
+            <button class="accordionmenu"><span>BOARD</span></button>
+        </div>
+    </div>
+
+    <!-- content: 상품 상세 -->
+    <div id="content">
+        <div class="detailArea">
+
+            <!-- 이미지 영역 (좌측) -->
+            <div class="imgArea">
+                <div class="listImg">
+                    <ul>
+                        <li><img src="https://shopyouthtory.kr/web/product/medium/202501/4a6c08453311b33e1439ac01a088f189.jpg" alt="오버핏 워싱 데님 자켓"></li>
+                        <li><img src="https://shopyouthtory.kr/web/product/medium/202501/a182d11b68c86106264b6076bcf3fd4d.jpg" alt="오버핏 워싱 데님 자켓 착용컷"></li>
+                        <li><img src="https://shopyouthtory.kr/web/product/medium/202501/4181e16720db59f97d8882541562d733.jpg" alt="오버핏 워싱 데님 자켓 디테일"></li>
+                    </ul>
+                </div>
+
+                <!-- Review -->
+                <div id="prdReview" style="margin-top:80px">
+                    <div class="detail-board-title">
+                        <div style="float:left;">Review</div>
+                        <div style="float:right; text-align:right;" class="bt"><a href="#">Write</a><a href="#">View all</a></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="board">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="number">3</td>
+                                    <td class="infobox">
+                                        <span class="subject">사이즈 딱 맞고 핏이 예뻐요</span>
+                                        <div class="writer">김** <span class="comment"></span></div>
+                                    </td>
+                                    <td style="text-align:right; padding-right:20px">
+                                        <div class="date">2026-03-10</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="number">2</td>
+                                    <td class="infobox">
+                                        <span class="subject">워싱감이 자연스럽고 좋습니다</span>
+                                        <div class="writer">이** <span class="comment"></span></div>
+                                    </td>
+                                    <td style="text-align:right; padding-right:20px">
+                                        <div class="date">2026-03-08</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="number">1</td>
+                                    <td class="infobox">
+                                        <span class="subject">오버핏이라 레이어드하기 좋아요!</span>
+                                        <div class="writer">박** <span class="comment"></span></div>
+                                    </td>
+                                    <td style="text-align:right; padding-right:20px">
+                                        <div class="date">2026-03-05</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Q&A -->
+                <div id="prdQnA" style="margin-top:60px">
+                    <div class="detail-board-title">
+                        <div style="float:left;">Q&amp;A</div>
+                        <div style="float:right; text-align:right;" class="bt"><a href="#">Write</a><a href="#">View all</a></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="board">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="number">2</td>
+                                    <td class="infobox">
+                                        <span class="subject">재입고 언제 되나요?</span>
+                                        <div class="writer">최** </div>
+                                    </td>
+                                    <td style="text-align:right; padding-right:20px">
+                                        <div class="date">2026-03-11</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="number">1</td>
+                                    <td class="infobox">
+                                        <span class="subject">175/70 사이즈 추천 부탁드립니다</span>
+                                        <div class="writer">정** </div>
+                                    </td>
+                                    <td style="text-align:right; padding-right:20px">
+                                        <div class="date">2026-03-09</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div><!-- imgArea -->
+
+            <!-- 우측 상세정보 -->
+            <div id="detail-right">
+                <div id="detailinfo">
+                    <div class="fixmenu">
+                        <div class="infoArea">
+
+                            <!-- 컬러칩 -->
+                            <div class="detail-color">
+                                <span class="detail-chips" style="background-color:#212121"></span>
+                                <span class="detail-chips" style="background-color:#c9b49a"></span>
+                            </div>
+
+                            <!-- 상품명 -->
+                            <div class="prdname">오버핏 워싱 데님 자켓</div>
+
+                            <!-- 상품 정보 테이블 -->
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Price</th>
+                                        <td>&#8361;89,000</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Fabric</th>
+                                        <td>Cotton 100%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Color</th>
+                                        <td>Dark Wash / Sand Beige</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Size</th>
+                                        <td>S / M / L / XL</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Delivery</th>
+                                        <td>2,500원 (50,000원 이상 무료)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- 옵션 선택 -->
+                            <div style="margin-top:16px;">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>Color</th>
+                                            <td>
+                                                <select>
+                                                    <option>- [필수] 옵션을 선택해 주세요 -</option>
+                                                    <option>Dark Wash</option>
+                                                    <option>Sand Beige</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Size</th>
+                                            <td>
+                                                <select>
+                                                    <option>- [필수] 옵션을 선택해 주세요 -</option>
+                                                    <option>S</option>
+                                                    <option>M</option>
+                                                    <option>L</option>
+                                                    <option>XL</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- 총 금액 -->
+                            <div class="totalPrice">
+                                TOTAL : <em>&#8361;89,000</em> (1개)
+                            </div>
+
+                            <!-- 구매 버튼 -->
+                            <div class="btnArea">
+                                <a class="buy-btn"><span>BUY NOW</span></a>
+                                <a><span>CART</span></a>
+                                <a><span>WISHLIST</span></a>
+                            </div>
+
+                        </div><!-- infoArea -->
+                    </div><!-- fixmenu -->
+                </div><!-- detailinfo -->
+            </div><!-- detail-right -->
+
+            <div style="clear:both"></div>
+
+        </div><!-- detailArea -->
+
+        <!-- 관련상품 -->
+        <div style="margin-top:80px;">
+            <div class="related-title">RELATED PRODUCTS</div>
+            <div class="ga09list">
+                <ul class="grid4">
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline hoverimg"><a href="#"><img src="https://shopyouthtory.kr/web/product/medium/202501/5fa898fdf3b6b637527bcef9d0a48671.jpg" width="100%"></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#d4a76a"></li><li class="chips" style="background-color:#212121"></li></ul></div></div>
+                            <p class="name"><a href="#">크롭 니트 스웨터</a></p>
+                            <p class="prices"><span class="price normal">&#8361;65,000</span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline hoverimg"><a href="#"><img src="https://shopyouthtory.kr/web/product/medium/202501/4d3bab023b59765d72993070269767a5.jpg" width="100%"></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#2c2c2c"></li><li class="chips" style="background-color:#b0a89a"></li></ul></div></div>
+                            <p class="name"><a href="#">와이드 슬랙스</a></p>
+                            <p class="prices"><span class="price normal">&#8361;55,000</span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline hoverimg"><a href="#"><img src="https://shopyouthtory.kr/web/product/medium/202306/4a15ccd01cfcb3f6139e963cd661ca40.jpg" width="100%"></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#4a6fa5"></li><li class="chips" style="background-color:#212121"></li></ul></div></div>
+                            <p class="name"><a href="#">스트레이트 데님 팬츠</a></p>
+                            <p class="prices"><span class="price normal">&#8361;69,000</span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline hoverimg"><a href="#"><img src="https://shopyouthtory.kr/web/product/medium/202412/a608f40c1993f083f2f77c2bb358fd7b.gif" width="100%"></a></div>
+                            <div class="colorWrap"><div class="color"><ul><li class="chips" style="background-color:#3a3a3a"></li><li class="chips" style="background-color:#c9b49a"></li></ul></div></div>
+                            <p class="name"><a href="#">싱글 브레스티드 코트</a></p>
+                            <p class="prices"><span class="price normal">&#8361;189,000</span></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div><!-- content -->
+</div><!-- contentsWrap -->
+
+<!-- bottom.html -->
+<div id="bottom-wrap">
+    <div id="bottom">
+        <div class="inner">
+            <div class="copypadding">
+                <div class="logo">
+                    <a href="preview-list.html" style="font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;color:#212121;">YOUTHTORY</a>
+                </div>
+            </div>
+
+            <div id="cscenter" class="copypadding">
+                <div id="customer">
+                    <ul>
+                        <li class="cs1">H.P 010-5648-7558</li>
+                        <li class="cs2">Opening hours. am11-pm17</li>
+                        <li class="cs2">Lunch break. pm13-pm14</li>
+                        <li class="cs2">Sat, Sun, Holiday Off</li>
+                    </ul>
+                </div>
+                <div id="bank">
+                    <ul>
+                        <li class="bank1">신한은행 110-398-259805</li>
+                        <li class="bank2">예금주 : 한유승</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="link" class="copypadding">
+                <ul>
+                    <li><a href="#">Company</a></li>
+                    <li><a href="#">Agreement</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Site guide</a></li>
+                    <li><a href="#">Business license</a></li>
+                </ul>
+                <div class="sns">
+                    <ul>
+                        <li><span style="margin-right:10px">Follow us</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="company" class="copypadding1">
+                <ul>
+                    <li class="copytext">
+                        <span>Company</span> 유스컴퍼니<br>
+                        <span>Owner &amp; Admin</span> 한유승<br>
+                        <span>Business no.</span> 595-38-00307<br>
+                        <span>Online-order no.</span> 제2019-서울마포-1897호<br>
+                        <span>Address</span> 서울시 마포구 망원동 421-10<br>
+                        <span>Tel</span> 070-8673-7558 / H.P 010-5648-7558<br>
+                        <span>E.mail</span> Contact@youthtory.kr
+                    </li>
+                </ul>
+            </div>
+
+            <div class="copypadding2">
+                <div id="joinbt" style="cursor:pointer">Register</div>
+                <div style="clear:both"></div>
+            </div>
+
+            <div style="clear:both"></div>
+
+            <div id="bottomcopyright">
+                <div style="float:left">Copyright (C) 2019 <b>유스컴퍼니</b> all rights reserved</div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 스크롤 탑 -->
+<div class="scrollTop" style="position:fixed;"><a href="#"><i class="fas fa-arrow-up"></i></a></div>
+
+<script>
+// 햄버거 메뉴 토글
+document.getElementById('toggle-right').addEventListener('click', function() {
+    this.classList.toggle('open');
+    document.getElementById('right').classList.toggle('opened');
+});
+</script>
+
+</body>
+</html>

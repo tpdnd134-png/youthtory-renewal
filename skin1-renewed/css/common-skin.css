@@ -1,0 +1,851 @@
+/*
+ * ============================================================
+ *  YOUTHTORY common-skin.css
+ *  Shared CSS across all layout files (layout.html, layout-list.html, layout/basic/layout.html)
+ *  ALL properties use !important to override Cafe24 base CSS
+ * ============================================================
+ */
+
+/* ==========================================================
+   1. Global Resets & Typography
+   ========================================================== */
+* { box-sizing: border-box !important; }
+
+body {
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    font-size: 14px !important;
+    color: #212121 !important;
+    background: #fff !important;
+    line-height: 1.6 !important;
+    -webkit-font-smoothing: antialiased !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+a {
+    color: #212121 !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+a:hover {
+    text-decoration: none !important;
+    opacity: 0.7 !important;
+}
+
+img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+ul {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+button, .btn {
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+input, select, textarea {
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+}
+
+input[type=text], select, textarea {
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+}
+
+
+/* ==========================================================
+   2. Cafe24 Base Overrides
+   ========================================================== */
+#left, #right, #toggle-right {
+    display: none !important;
+}
+
+#toparea {
+    display: none !important;
+}
+
+#loginpopup {
+    display: none !important;
+}
+
+.gnb-mega {
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+.gnb-item.has-sub:hover .gnb-mega {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+/* ==========================================================
+   3. Promo Marquee Bar
+   ========================================================== */
+.promo-wrap {
+    padding: 5px 8px 0 !important;
+}
+
+.promo-bar {
+    height: 24px !important;
+    background: rgba(42,41,41,0.4) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+    z-index: 101 !important;
+    border-radius: 100px !important;
+}
+
+.promo-track {
+    display: flex !important;
+    white-space: nowrap !important;
+    animation: marquee 60s linear infinite !important;
+    will-change: transform !important;
+}
+
+.promo-item {
+    color: rgba(255,255,255,0.9) !important;
+    font-size: 11px !important;
+    margin-right: 40vw !important;
+    letter-spacing: 0.03em !important;
+    font-weight: 300 !important;
+}
+.promo-item a {
+    color: rgba(255,255,255,0.9) !important;
+    text-decoration: none !important;
+}
+.promo-item a:hover {
+    color: #fff !important;
+    opacity: 1 !important;
+}
+
+.promo-bar:hover .promo-track {
+    animation-play-state: paused !important;
+}
+
+@keyframes marquee {
+    from { transform: translate3d(0,0,0); }
+    to { transform: translate3d(-50%,0,0); }
+}
+
+
+/* ==========================================================
+   4. GNB Float Wrapper
+   ========================================================== */
+.gnb-float-wrap {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 100 !important;
+    pointer-events: none !important;
+}
+.gnb-float-wrap > * {
+    pointer-events: auto !important;
+}
+
+
+/* ==========================================================
+   5. GNB Header (PC) — compact floating card
+   ========================================================== */
+.gnb-header {
+    position: relative !important;
+    overflow: visible !important;
+    height: 36px !important;
+    background: rgba(255,255,255,0.88) !important;
+    backdrop-filter: saturate(180%) blur(20px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    margin: 3px 8px 0 !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08) !important;
+    transition: background 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1) !important;
+    z-index: 100 !important;
+}
+.gnb-header.scrolled {
+    background: rgba(255,255,255,0.97) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+}
+
+.gnb-inner {
+    max-width: 1920px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    padding: 0 28px !important;
+}
+
+.gnb-logo {
+    display: flex !important;
+    align-items: center !important;
+    margin-right: 40px !important;
+    text-decoration: none !important;
+}
+.gnb-logo:hover {
+    opacity: 0.7 !important;
+}
+.gnb-logo img {
+    height: 16px !important;
+    display: block !important;
+}
+
+.gnb-nav {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    gap: 0 !important;
+}
+
+.gnb-item {
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+    padding: 0 14px !important;
+    line-height: 36px !important;
+    cursor: pointer !important;
+    position: static !important;
+    text-decoration: none !important;
+    letter-spacing: 0.03em !important;
+    white-space: nowrap !important;
+}
+.gnb-item:hover {
+    opacity: 0.6 !important;
+}
+
+/* Mega Dropdown */
+.gnb-mega-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0,0,0,0.18) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    z-index: 98 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1) !important;
+}
+.gnb-mega-overlay.active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.gnb-mega {
+    position: absolute !important;
+    top: calc(100% + 2px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    background: rgba(246,245,241,0.97) !important;
+    backdrop-filter: saturate(120%) blur(16px) !important;
+    -webkit-backdrop-filter: saturate(120%) blur(16px) !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    transform: translateY(-6px) !important;
+    transition: visibility 0s 0.35s, opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1) !important;
+    padding: 28px 0 32px !important;
+    z-index: 101 !important;
+    border: none !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+}
+.gnb-item.has-sub:hover .gnb-mega {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: visibility 0s, opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1) !important;
+}
+
+.gnb-mega-inner {
+    max-width: 1920px !important;
+    margin: 0 auto !important;
+    padding: 0 28px !important;
+    display: flex !important;
+    gap: 80px !important;
+}
+
+.gnb-mega-col {
+    min-width: 120px !important;
+}
+.gnb-mega-col .mega-title {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #212121 !important;
+    margin-bottom: 12px !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+}
+.gnb-mega-col a {
+    display: block !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #555 !important;
+    padding: 3px 0 !important;
+    text-decoration: none !important;
+    line-height: 1.8 !important;
+    transition: color 0.25s cubic-bezier(0.4,0,0.2,1) !important;
+}
+.gnb-mega-col a:hover {
+    color: #212121 !important;
+    opacity: 1 !important;
+}
+
+.gnb-right {
+    margin-left: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+}
+.gnb-right a, .gnb-link {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    letter-spacing: 0.03em !important;
+}
+
+
+/* ==========================================================
+   6. Mobile Header
+   ========================================================== */
+/* (displayed via media query below; hidden on desktop) */
+
+
+/* ==========================================================
+   7. Menu Overlay (fullscreen)
+   ========================================================== */
+.menu-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 300 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1) !important;
+}
+.menu-overlay.open {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.menu-overlay-bg {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0,0,0,0.25) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    z-index: 0 !important;
+}
+
+.menu-overlay-card {
+    position: absolute !important;
+    top: 8px !important;
+    left: 8px !important;
+    right: 8px !important;
+    z-index: 1 !important;
+    background: rgba(246,245,241,0.97) !important;
+    border-radius: 16px !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+    padding: 40px 24px 32px !important;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.12) !important;
+    transform: translateY(-100%) !important;
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1) !important;
+}
+.menu-overlay.open .menu-overlay-card {
+    transform: translateY(0) !important;
+}
+
+.menu-overlay-close {
+    position: absolute !important;
+    top: 16px !important;
+    right: 16px !important;
+    background: none !important;
+    border: none !important;
+    font-size: 20px !important;
+    cursor: pointer !important;
+    color: #212121 !important;
+    font-weight: 300 !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: opacity 0.2s !important;
+}
+.menu-overlay-close:hover {
+    opacity: 0.5 !important;
+}
+
+.menu-overlay-nav {
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+}
+.menu-overlay-nav > li {
+    border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+}
+.menu-overlay-nav > li > a {
+    display: block !important;
+    padding: 14px 0 !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+    text-decoration: none !important;
+    letter-spacing: 0.08em !important;
+    transition: opacity 0.2s !important;
+}
+.menu-overlay-nav > li > a:hover {
+    opacity: 0.5 !important;
+}
+
+.menu-overlay-nav .menu-sub-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 14px 0 !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+    background: none !important;
+    border: none !important;
+    letter-spacing: 0.08em !important;
+    cursor: pointer !important;
+    transition: opacity 0.2s !important;
+}
+.menu-overlay-nav .menu-sub-toggle:hover {
+    opacity: 0.5 !important;
+}
+
+.menu-overlay-nav .menu-sub-toggle .toggle-arrow {
+    font-size: 10px !important;
+    transition: transform 0.3s ease !important;
+}
+.menu-overlay-nav .menu-sub-toggle.active .toggle-arrow {
+    transform: rotate(180deg) !important;
+}
+
+.menu-overlay-sub {
+    max-height: 0 !important;
+    overflow: hidden !important;
+    transition: max-height 0.35s ease, padding 0.35s ease !important;
+    padding: 0 12px !important;
+}
+.menu-overlay-sub.open {
+    max-height: 300px !important;
+    padding: 4px 12px 12px !important;
+}
+
+.menu-overlay-sub li a {
+    display: block !important;
+    padding: 8px 0 !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color: #999 !important;
+    text-decoration: none !important;
+    letter-spacing: 0.04em !important;
+    transition: color 0.2s !important;
+}
+.menu-overlay-sub li a:hover {
+    color: #212121 !important;
+    opacity: 1 !important;
+}
+
+
+/* ==========================================================
+   8. Footer
+   ========================================================== */
+#bottom-wrap {
+    background: #f6f5f1 !important;
+    margin-top: 120px !important;
+    border: none !important;
+}
+
+#bottom {
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    line-height: 1.7 !important;
+    color: #999 !important;
+}
+#bottom a {
+    transition: all 0.3s ease !important;
+    color: #999 !important;
+}
+#bottom a:hover {
+    text-decoration: none !important;
+    color: #212121 !important;
+}
+#bottom .inner {
+    padding: 56px 40px 40px !important;
+}
+
+.footer-top {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    padding-bottom: 40px !important;
+    border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+    gap: 40px !important;
+}
+
+.footer-brand {
+    flex-shrink: 0 !important;
+}
+.footer-brand .logo-text {
+    line-height: 0 !important;
+}
+.footer-brand .logo-text img {
+    height: 24px !important;
+    display: block !important;
+}
+.footer-brand .brand-desc {
+    font-size: 11px !important;
+    color: #bbb !important;
+    margin-top: 8px !important;
+    letter-spacing: 0.02em !important;
+}
+
+.footer-cols {
+    display: flex !important;
+    gap: 64px !important;
+}
+
+.footer-col h4 {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    margin: 0 0 14px !important;
+}
+.footer-col ul {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.footer-col li {
+    padding: 2px 0 !important;
+}
+.footer-col a {
+    font-size: 11px !important;
+    color: #999 !important;
+}
+.footer-col a:hover {
+    color: #212121 !important;
+}
+
+.footer-bottom {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    padding-top: 28px !important;
+    gap: 40px !important;
+    flex-wrap: wrap !important;
+}
+
+.footer-info {
+    font-size: 10px !important;
+    color: #bbb !important;
+    line-height: 1.8 !important;
+}
+.footer-info span {
+    color: #999 !important;
+    margin-right: 2px !important;
+}
+
+.footer-copyright {
+    font-size: 10px !important;
+    color: #ccc !important;
+    letter-spacing: 0.02em !important;
+    margin-top: 20px !important;
+}
+
+.footer-sns {
+    display: flex !important;
+    gap: 16px !important;
+    align-items: center !important;
+}
+.footer-sns a {
+    font-size: 11px !important;
+    color: #bbb !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+}
+.footer-sns a:hover {
+    color: #212121 !important;
+}
+
+#bottom #cscenter #bank .bank1 {
+    color: #212121 !important;
+    font-weight: 500 !important;
+}
+#bottom #cscenter #bank .bank2 {
+    padding-top: 4px !important;
+    color: #999 !important;
+}
+#bottom #company .copytext {
+    font-size: 11px !important;
+    color: #999 !important;
+    line-height: 1.8 !important;
+}
+#bottom #company .copytext span {
+    font-size: 11px !important;
+    margin-right: 8px !important;
+    color: #666 !important;
+}
+#bottom #link {
+    font-size: 12px !important;
+}
+#bottom #link .sns {
+    text-align: left !important;
+    margin-top: 20px !important;
+}
+
+#bottomcopyright {
+    margin-top: 40px !important;
+    padding-top: 24px !important;
+    border-top: 1px solid #dadada !important;
+    text-align: left !important;
+    font-size: 11px !important;
+    line-height: 1.6 !important;
+    color: #999 !important;
+}
+#bottomcopyright b {
+    font-weight: 500 !important;
+    color: #666 !important;
+}
+
+
+/* ==========================================================
+   9. Scroll Top
+   ========================================================== */
+.scrollTop a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: rgba(33,33,33,0.1) !important;
+    color: #212121 !important;
+    border-radius: 0 !important;
+    transition: all 0.3s ease !important;
+}
+.scrollTop a:hover {
+    background: rgba(33,33,33,0.2) !important;
+}
+
+
+/* ==========================================================
+   10. Mobile Responsive (@media max-width: 768px)
+   ========================================================== */
+@media (max-width: 768px) {
+
+    /* Hide PC GNB */
+    .gnb-header {
+        display: none !important;
+    }
+
+    /* Promo bar — mobile top fixed */
+    .gnb-float-wrap {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 100 !important;
+    }
+    .promo-bar {
+        font-size: 11px !important;
+        height: 28px !important;
+    }
+    .promo-wrap {
+        padding: 5px 8px 0 !important;
+        z-index: 201 !important;
+        position: relative !important;
+    }
+
+    /* Mobile Header — below promo bar (38px) */
+    .mobile-header {
+        display: flex !important;
+        position: fixed !important;
+        top: 38px !important;
+        left: 8px !important;
+        right: 8px !important;
+        height: 44px !important;
+        background: rgba(255,255,255,0.85) !important;
+        backdrop-filter: saturate(180%) blur(20px) !important;
+        -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+        border-radius: 10px !important;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.08) !important;
+        z-index: 200 !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0 16px !important;
+    }
+    .mobile-header .mobile-menu-btn {
+        background: none !important;
+        border: none !important;
+        font-size: 20px !important;
+        cursor: pointer !important;
+        color: #212121 !important;
+        padding: 8px !important;
+    }
+    .mobile-header .mobile-logo img {
+        height: 16px !important;
+    }
+    .mobile-header .mobile-icons {
+        display: flex !important;
+        gap: 12px !important;
+        align-items: center !important;
+    }
+    .mobile-header .mobile-icons a {
+        font-size: 16px !important;
+        color: #212121 !important;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        position: relative !important;
+        z-index: 201 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    /* Menu Overlay — mobile overrides */
+    .menu-overlay-nav {
+        text-align: center !important;
+    }
+    .menu-overlay-nav > li {
+        border: none !important;
+    }
+    .menu-overlay-nav > li > a {
+        padding: 10px 0 !important;
+        font-size: 13px !important;
+        letter-spacing: 0.06em !important;
+    }
+    .menu-overlay-nav .menu-sub-toggle {
+        justify-content: center !important;
+        gap: 6px !important;
+        padding: 10px 0 !important;
+        font-size: 13px !important;
+        letter-spacing: 0.06em !important;
+    }
+    .menu-overlay-sub li a {
+        font-size: 12px !important;
+        padding: 6px 0 !important;
+        text-align: center !important;
+    }
+
+    /* Legacy sidebar hide */
+    .mobile-sidebar {
+        display: none !important;
+    }
+    .sidebar-overlay {
+        display: none !important;
+    }
+
+    /* Hide elements */
+    #left, #right, #toggle-right {
+        display: none !important;
+    }
+}
+
+
+/* ==========================================================
+   11. Desktop (@media min-width: 769px)
+   ========================================================== */
+@media (min-width: 769px) {
+    .mobile-header {
+        display: none !important;
+    }
+}
+
+
+/* ==========================================================
+   12. Common Content Area
+   ========================================================== */
+#content {
+    max-width: 1920px !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+}
+
+
+/* ==========================================================
+   13. Product Grid (shared across home + list)
+   ========================================================== */
+.ga09list { margin: 0 auto; font-family: helvetica, 'Noto Sans KR', sans-serif; }
+.ga09list ul { width: 100%; margin: 0 -4px; display: flex; flex-wrap: wrap; }
+.ga09list ul.grid4 > li { width: 25%; padding: 0 4px; text-align: left; }
+.ga09list .prdpadding { margin: 0 0 32px 0; display: flex; flex-direction: column; }
+.ga09list .prdline { margin-bottom: 0; position: relative; }
+.hoverimg { overflow: hidden; border-radius: 16px; position: relative; }
+.hoverimg img { width: 100%; object-fit: cover; display: block; transform: scale(1); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s; }
+.hoverimg:hover img { transform: scale(1.03); opacity: 0.94; }
+.ga09list .name { clear: both; font-size: 13px; font-weight: 400; color: #212121; margin: 10px 0 0; line-height: 1.4; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ga09list .name a { color: #212121 !important; }
+.ga09list .colorWrap { margin-top: 6px; height: auto; min-height: 0; }
+.ga09list .color { text-align: left; }
+.ga09list .color ul { display: inline-flex; gap: 3px; margin: 0; padding: 0; }
+.ga09list .chips { width: 9px; height: 9px; border-radius: 50%; font-size: 0; line-height: 0; display: inline-block; }
+.ga09list .prices { line-height: 1.4; color: #212121; font-size: 14px; margin-top: 4px; }
+.ga09list .price { font-size: 11px; color: #999; margin-right: 5px; text-decoration: line-through; opacity: 0.7; }
+.ga09list .normal { font-size: 14px; color: #212121; font-weight: 400; text-decoration: none !important; }
+.ga09list .sale-pct { font-size: 14px; color: #db7e7e; margin-right: 5px; font-weight: 400; }
+.prd-badge { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 2px 14px; border-radius: 24px; font-size: 11px; font-weight: 400; letter-spacing: 0.02em; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.badge-new { background: rgba(237,237,237,0.7); color: #212121; }
+.badge-best { background: rgba(0,0,0,0.5); color: #fff; }
+
+
+/* ==========================================================
+   14. Section Titles (shared across home + list)
+   ========================================================== */
+.section-area { max-width: 1920px; margin: 0 auto; padding: 80px 24px 0; }
+.section-title { text-align: center; margin-bottom: 48px; }
+.section-title h2 { font-family: 'Unbounded', sans-serif; font-size: 48px; font-weight: 900; color: #212121; letter-spacing: -0.02em; margin: 0; text-transform: uppercase; line-height: 1; }
+.section-title p { font-size: 11px; color: #aaa; margin-top: 12px; letter-spacing: 0.12em; font-weight: 400; text-transform: uppercase; }
+
+
+/* ==========================================================
+   15. Mobile Responsive — Shared product & section
+   ========================================================== */
+@media (max-width: 768px) {
+    #content { padding: 0 12px !important; }
+
+    /* Section titles mobile */
+    .section-title h2 { font-size: 20px !important; }
+    .section-title p { font-size: 11px !important; }
+    .section-area { padding: 40px 0 !important; }
+
+    /* Product grid mobile — 2 columns */
+    .ga09list ul.grid4 > li { width: 50% !important; display: inline-block !important; float: none !important; box-sizing: border-box !important; vertical-align: top !important; }
+    .ga09list ul.grid4, .ga09list ul { display: flex !important; flex-wrap: wrap !important; gap: 0 !important; }
+}
+
+/* ==========================================================
+   16. Desktop — Sidebar removal (shared)
+   ========================================================== */
+@media (min-width: 769px) {
+    #left { display: none !important; }
+    #listcontent { margin-left: 0 !important; }
+    #content { margin-left: 0 !important; }
+}

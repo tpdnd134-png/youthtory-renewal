@@ -1,0 +1,178 @@
+/* ============================================================
+   YOUTHTORY Cart Design (la-room minimal style) — U7
+   ============================================================ */
+
+#contents { position: relative; }
+
+/* Title */
+.titleArea { text-align: center !important; padding: 40px 0 !important; border: none !important; }
+.titleArea h2 {
+    font-size: 12px !important; font-weight: 400 !important;
+    letter-spacing: 0.4em !important; text-transform: uppercase !important;
+    color: #111 !important;
+}
+
+/* Breadcrumb */
+.path { display: none !important; }
+
+/* Tab */
+.xans-order-basketpackage .xans-order-tabinfo { margin: 24px 0 0 !important; }
+.ec-base-tab.typeLight { border: none !important; }
+.ec-base-tab.typeLight .menu { display: flex !important; justify-content: center !important; gap: 0 !important; border: none !important; }
+.ec-base-tab.typeLight .menu li { float: none !important; }
+.ec-base-tab.typeLight .menu li a {
+    font-size: 12px !important; letter-spacing: 0.15em !important;
+    padding: 10px 24px !important; border: 1px solid #e8e8e8 !important;
+    color: #999 !important; background: none !important;
+    text-decoration: none !important;
+}
+.ec-base-tab.typeLight .menu li:first-child a { border-right: none !important; }
+.ec-base-tab.typeLight .menu li.selected a {
+    color: #111 !important; border-color: #111 !important;
+    font-weight: 500 !important; background: none !important;
+}
+.ec-base-tab.typeLight .right { display: none !important; }
+
+/* Empty state */
+.xans-order-basketpackage .xans-order-empty p {
+    margin: 80px 0 !important; text-align: center !important;
+    font-weight: 300 !important; color: #999 !important;
+    font-size: 13px !important; letter-spacing: 0.05em !important;
+}
+
+/* Benefit info — simplify */
+.ec-base-box.typeMember {
+    border: none !important; background: #fafafa !important;
+    padding: 20px 24px !important; margin: 0 0 24px !important;
+}
+.ec-base-box.typeMember .title { display: none !important; }
+.ec-base-box.typeMember .description { font-size: 12px !important; color: #666 !important; }
+.ec-base-box.typeMember .mileage { display: flex !important; gap: 16px !important; margin-top: 8px !important; }
+.ec-base-box.typeMember .mileage li a { font-size: 12px !important; color: #111 !important; font-weight: 500 !important; }
+
+/* Order List Area */
+.orderListArea { border: none !important; }
+.orderListArea .title {
+    background: none !important; border: none !important;
+    border-bottom: 1px solid #e8e8e8 !important;
+    padding: 16px 0 !important; margin: 0 !important;
+    height: auto !important; line-height: 1.4 !important;
+}
+.orderListArea .title h3 {
+    font-size: 11px !important; font-weight: 400 !important;
+    letter-spacing: 0.15em !important; color: #999 !important;
+    text-transform: uppercase !important;
+}
+
+/* Table — minimal card style */
+.xans-order-basketpackage .ec-base-table.typeList table {
+    border: none !important; border-collapse: collapse !important;
+}
+.xans-order-basketpackage .ec-base-table.typeList thead {
+    display: none !important;
+}
+.xans-order-basketpackage .ec-base-table.typeList tbody tr {
+    border-bottom: 1px solid #f0f0f0 !important;
+}
+.xans-order-basketpackage .ec-base-table.typeList tbody td {
+    padding: 16px 8px !important; border: none !important;
+    font-size: 13px !important; color: #111 !important;
+    vertical-align: middle !important;
+}
+.xans-order-basketpackage .ec-base-table td.thumb img {
+    max-width: 100px !important; border-radius: 0 !important;
+}
+.xans-order-basketpackage .ec-base-table .name {
+    font-size: 13px !important; font-weight: 400 !important;
+    color: #111 !important; letter-spacing: -0.01em !important;
+}
+.xans-order-basketpackage .ec-base-table .name a {
+    color: #111 !important; text-decoration: none !important;
+}
+.xans-order-basketpackage .ec-base-table td div.option,
+.xans-order-basketpackage .ec-base-table td ul.option > li {
+    margin: 6px 0 0 !important; color: #999 !important;
+    font-size: 12px !important; line-height: 1.5 !important;
+}
+
+/* Tfoot — total summary */
+.xans-order-basketpackage .ec-base-table tfoot td {
+    padding: 20px 16px !important; border: none !important;
+    border-top: 1px solid #111 !important;
+    font-size: 13px !important; color: #111 !important;
+    text-align: right !important;
+}
+.xans-order-basketpackage .ec-base-table tfoot td .gLeft {
+    float: left !important; margin: 0 !important;
+    font-size: 11px !important; color: #999 !important;
+    letter-spacing: 0.1em !important;
+}
+.xans-order-basketpackage .ec-base-table tfoot .txtEm {
+    font-size: 16px !important; font-weight: 500 !important;
+}
+.xans-order-basketpackage .ec-base-table tfoot .txt18 {
+    font-size: 16px !important;
+}
+
+/* Action buttons */
+.xans-order-basketpackage .ec-base-table td.button img {
+    margin: 2px 0 !important;
+}
+
+/* Total summary table */
+.xans-order-basketpackage .ec-base-table.total table {
+    border-color: #111 !important;
+}
+.xans-order-basketpackage .ec-base-table.total table th,
+.xans-order-basketpackage .ec-base-table.total table td {
+    font-size: 13px !important; border-color: #e8e8e8 !important;
+}
+.xans-order-basketpackage .ec-base-table.total table td .txt23 {
+    font-size: 18px !important; font-weight: 500 !important;
+    letter-spacing: 0 !important;
+}
+
+/* Order buttons — minimal CTA */
+.xans-order-selectorder, .xans-order-totalorder {
+    margin: 24px 0 !important; text-align: center !important;
+}
+.xans-order-selectorder .ec-base-button,
+.xans-order-totalorder .ec-base-button {
+    display: flex !important; justify-content: center !important; gap: 8px !important;
+}
+.xans-order-selectorder a, .xans-order-totalorder a,
+.xans-order-selectorder button, .xans-order-totalorder button {
+    display: inline-block !important;
+    padding: 14px 48px !important;
+    font-size: 12px !important; letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    border: 1px solid #111 !important;
+    background: #111 !important; color: #fff !important;
+    text-decoration: none !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.xans-order-selectorder a:hover, .xans-order-totalorder a:hover {
+    background: #fff !important; color: #111 !important;
+}
+
+/* Naver Pay */
+#NaverChk_Button { margin: 16px 0 !important; text-align: center !important; }
+
+/* Layer popups */
+.xans-order-basketpackage .totalDetail { display: none; z-index: 100; width: 300px; color: #707070; }
+.xans-order-basketpackage .optionModify { display: none; width: 450px; color: #707070; }
+.xans-order-basketpackage .optionModify .prdInfo { margin: 0 0 10px; padding: 0 0 10px; border-bottom: 1px dotted #e8e8e8; line-height: 1.5; }
+.xans-order-basketpackage .optionModify .prdModify li select { width: 100% !important; }
+
+/* Shipping fee */
+.xans-order-basketpackage td .box.shipping { line-height: 1.3em; }
+.xans-order-basketpackage .shippingFee { position: relative; display: inline-block; vertical-align: middle; text-align: left; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .titleArea { padding: 24px 0 !important; }
+    .ec-base-tab.typeLight .menu li a { padding: 8px 16px !important; font-size: 11px !important; }
+    .xans-order-basketpackage .ec-base-table.typeList tbody td { padding: 12px 4px !important; font-size: 12px !important; }
+    .xans-order-basketpackage .ec-base-table td.thumb img { max-width: 72px !important; }
+    .xans-order-selectorder a, .xans-order-totalorder a { padding: 12px 32px !important; }
+}

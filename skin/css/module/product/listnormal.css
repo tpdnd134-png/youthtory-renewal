@@ -1,0 +1,70 @@
+#catetitle {text-align:center; margin:0 auto; margin-top:-5px}
+#catetitle h2 {font-size:20px; font-weight:400; font-family: 'Montserrat', sans-serif;}
+
+
+.xans-product-normalmenu { margin:0 15px; margin-bottom:50px; font-family: 'Montserrat', sans-serif; font-size:11px}
+.xans-product-normalmenu .function { overflow:hidden; text-align:right; line-height:38px; border:1px solid #eaeaea; }
+.xans-product-normalmenu .function .btnCompare { display:inline-block; padding:0 12px; border-left:1px solid #d7d5d5; }
+.xans-product-normalmenu .function .btnCompare:hover { color:#008bcc; text-decoration:none; }
+.xans-product-normalmenu .prdCount { float:left; padding:0 0 0 8px; color:#000; }
+.xans-product-normalmenu ul#type { display:inline; margin:0 4px 0 0; }
+.xans-product-normalmenu ul#type li { display:inline; padding:0 6px 0 10px; background:url("//img.echosting.cafe24.com/skin/base_ko_KR/product/bg_result_type.gif") no-repeat 0 50%; }
+.xans-product-normalmenu ul#type li:first-child { background:none; }
+.xans-product-normalmenu ul#type li a { color:#2e2e2e }
+.xans-product-normalmenu ul#type li a:hover { color:#000; text-decoration:none; }
+.xans-product-normalmenu fieldset { margin:-1px 0 0; padding:7px 12px; border:1px solid #d7d5d6; text-align:right; background:#fbf9fa; }
+.xans-product-normalmenu fieldset select { height:24px; }
+
+
+.xans-product-menupackage #subcate {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    margin: 30px 0 55px 0;
+}
+
+
+.xans-product-menupackage #subcate ul {
+    overflow: hidden;
+    display: inline-block;
+    font-size: 0;
+    text-align: left;
+    line-height: 0;
+}
+
+
+
+.xans-product-menupackage #subcate ul > li {
+    position: relative;
+    display: inline-block;
+    padding: 8px 10px;
+    margin:0 10px;
+    background: #fff;
+    color: #000;
+    border:1px solid #fff;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 20px;
+    -webkit-transition-duration: 0.3; transition-duration: 0.3s;
+}
+
+
+
+.xans-product-menupackage #subcate ul > li.selected {
+    background: #fff;
+    color: #000;
+    border-bottom:1px solid #000;
+}
+
+
+.xans-product-menupackage #subcate a { text-decoration:none;}
+.xans-product-menupackage #subcate a:hover { text-decoration:none; color:#fff}
+.xans-product-menupackage #subcate ul > li:hover {
+    background: #fff;
+    color: #000;
+    cursor:pointer;
+    border-bottom:1px solid #000;
+    -webkit-transition-duration: 0.3; transition-duration: 0.3s;
+}
+
+.xans-product-menupackage #subcate ul > li:hover a {color:#000}

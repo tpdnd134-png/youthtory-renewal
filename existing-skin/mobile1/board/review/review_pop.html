@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+    <!--@css(/layout/basic/css/common.css)--><!--해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
+    <!--@css(/layout/basic/css/layout.css)-->
+    <!--@css(/css/font-awesome.min.css)-->
+    <!-- 스마트디자인에서는 최신 JQuery가 내장되어있습니다. 추가로 호출하면 충돌이 생길 수 있습니다. -->
+	<!--@js(/layout/basic/js/basic.js)-->
+    <!--@js(/js/common.js)-->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="/ec-js/common.js"></script><!-- 해당 JS는 플래시를 사용하기 위한 스크립트입니다. -->
+    
+</head>
+<body>
+<!--@css(/board/review/ga09css/photoreviewbutton.css)-->
+<!--@css(/board/review/ga09css/review_pop.css)-->
+<!--@js(/board/review/ga09js/ga09.review.js)-->
+<!--@js(/board/review/ga09js/ga09.slider.js)-->
+    
+<div module="board_ReadPackage_4" class="review_popup">
+
+    <div style="position:absolute;z-index:10000; padding:12px;cursor:pointer; right:0" onclick="parent.ga09review.popReviewClose();"><img src=/board/review/img/close_mobile.png width=22></div>
+    
+    <div module="board_read_4" class="content_image" style="display:none;">{$content_image}</div>
+    <div id="review-img" class="container">
+        <div class="iosSlider">
+            <div class="slider">
+            </div>
+        </div>     
+        <div class="selectorsBlock">
+            <div class="selectors">
+            </div>
+        </div>
+    </div>
+
+
+    <div id="review-text">
+        
+        <div module="board_read_4">
+            <!--
+                $login_page_url = /member/login.html
+                $deny_access_url = /board/review/list.html
+            -->
+            <!-- 후기 -->
+            <div class="photoreview-view">
+                <ul>
+                    <!--<li class="option">키(cm) : <span class="review_height" style="margin-right:15px"></span>평소 사이즈 : <span class="review_weight"></span></li>-->
+                    <li class="contents">{$content}</li>
+                </ul>
+            </div>
+            <!-- 후기 -->
+        </div>
+        
+        <!-- 상품정보 -->
+        <div class="review_prd">
+            <div class="prdThumb" module="board_Product_4"><a href="/product/detail.html{$param_product}" target="_parent"><img src="{$product_img}" alt="" /></a></div>
+            <div class="prdInfo">
+                <p class="name" module="board_Product_4"><a href="/product/detail.html{$param_product}" target="_parent">{$product_name}</a></p>
+                <p class="writer" module="board_read_4">{$writer}</p>
+            </div>
+            <div class="recom"><img src="/board/review/img/comment_mobile.png" id="comment_mobile" onclick="parent.location.href=location.href.replace('/review/review_pop.html','/product/read.html');"></div>
+            <div style="clear:both"></div>
+        </div>
+        <!-- 상품정보 -->
+
+    </div>
+</div>
+
+
+
+<!--@define(cmc_log)-->
+</body>
+</html>

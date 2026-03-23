@@ -1,0 +1,22 @@
+<li id="anchorBoxId_{$product_no}" class="swiper-slide">
+    <div class="prdpadding">
+        <div class="prdline hoverimg"><a href="/product/detail.html{$param}"><img src="{$image_medium}" width=100%  /></a></div>
+
+    	<div class="colorWrap">
+            <div class="color {$colorchip_display|display}">
+                <div module="product_Colorchip">
+                    <ul>
+                        <li class="chips" style="background-color:{$color}"></li>
+                        <li class="chips" style="background-color:{$color}"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <p class="name"><a href="/product/detail.html{$param}">{$product_name}</a></p>
+    	<p class="prices"><span class="price normal{$prd_price_sale}">{$disp_product_price}</span><span class="price normal {$prd_price_sale|display}">{$prd_price_sale}</span></p>
+    	<p class="info {$summary_desc|display}">{$summary_desc}</p>
+
+    	<div class="prd-keywords">{$soldout_icon}{$stock_icon}{$recommend_icon}{$new_icon}{$product_icons}{$benefit_icons}</div>
+    </div>
+</li>

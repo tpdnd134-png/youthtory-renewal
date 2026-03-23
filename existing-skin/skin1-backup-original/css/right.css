@@ -1,0 +1,29 @@
+/* YOUTHTORY Renewed - Right Sidebar / Hamburger Menu (pickysociety style) */
+
+#right { z-index: 999; visibility: hidden; opacity: 0; position: fixed; width: 50%; min-width: 480px; height: 100%; top: 0; right: 0; text-align: center; background: rgba(42,41,41,0.95); border-bottom: none; transition: all 0.3s ease; }
+#right a { cursor: pointer; }
+#right.opened { z-index: 999; visibility: visible; opacity: 1; transition: all 0.3s ease; }
+
+#rightmenu { font-family: helvetica, 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 18px; line-height: 48px; letter-spacing: 0.04em; color: #fff; z-index: 9999; position: absolute; width: 100%; top: 50%; margin-top: -200px; text-align: center; }
+#rightmenu .innermenu { width: 480px; margin: 0 auto; }
+#rightmenu .innermenu a { color: rgba(255,255,255,0.9); text-decoration: none; transition: all 0.3s ease; display: inline-block; }
+#rightmenu .innermenu a:hover { color: #fff; letter-spacing: 0.08em; }
+#rightmenu .innermenu li { margin-bottom: 4px; }
+#rightmenu .innermenu ul { float: left; margin-right: 60px; text-align: left; }
+
+#rightmenu .search-bar { padding: 16px 20px; border: 1px solid rgba(255,255,255,0.3); width: 440px; margin: 0 auto 48px; transition: border-color 0.3s ease; }
+#rightmenu .search-bar:hover, #rightmenu .search-bar:focus-within { border-color: rgba(255,255,255,0.6); }
+#rightmenu .search-bar img { cursor: pointer; height: 24px; opacity: 0.7; transition: opacity 0.3s ease; vertical-align: middle; }
+#rightmenu .search-bar img:hover { opacity: 1; }
+#rightmenu .search-bar input[type=text] { height: 32px; padding: 0; font-size: 18px; font-weight: 300; color: #fff; width: 400px; border: none; background: transparent; transition: all 0.3s ease; font-family: helvetica, 'Noto Sans KR', sans-serif; letter-spacing: 0.02em; }
+#rightmenu .search-bar input[type=text]::placeholder { color: rgba(255,255,255,0.5); }
+
+#toggle-right { position: fixed; width: 24px; height: 24px; top: 25px; right: 40px; cursor: pointer; z-index: 99999; }
+#toggle-right span { display: block; position: absolute; width: 100%; height: 1px; margin: 12px 0 0 0; background: #212121; transition: all 0.3s ease; }
+#toggle-right span:before, #toggle-right span:after { content: ""; position: absolute; width: 100%; height: 1px; background: #212121; transition: all 0.3s ease; }
+#toggle-right span:before { margin: -8px 0 0 0; }
+#toggle-right span:after { margin: 8px 0 0 0; }
+#toggle-right.open span { background-color: transparent; }
+#toggle-right.open span:before, #toggle-right.open span:after { margin: 0; background: #fff; }
+#toggle-right.open span:before { transform: rotate(45deg); }
+#toggle-right.open span:after { transform: rotate(-45deg); }

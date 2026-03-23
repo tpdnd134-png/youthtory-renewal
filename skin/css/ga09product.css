@@ -1,0 +1,63 @@
+/* 해당 디자인 기술 및 지식은 가영구 디자인측의 자산입니다 */
+/* 디자인을 구입하신 '구매자'분들 외에 다른 디자인센터 판매자가 해당 소스를 훔쳐보는 경우가 있어 멘트를 남기니, */
+/* 본인 능력껏, 양심껏 디자인하여 판매하시길 바랍니다 */
+
+/* 상품진열 기본 CSS */
+
+.ga09list .prdpadding {margin:0 15px 70px 15px; } /* 상품들간의 간격 */
+.ga09list .prdline {margin-bottom:0;} /* 상품이미지 아래 상품명과의 간격 */
+
+.ga09list {margin:0 auto; font-family: 'Montserrat','Nanum Gothic', sans-serif;}
+.ga09list ul { zoom:1; width:100%; margin-bottom:0;  display: table; font-size:0;}
+.ga09list ul a:link {text-decoration:none;}
+.ga09list ul a:hover {text-decoration:none; color:#000;}
+.ga09list ul:after {content:""; display:block; clear:both; }
+
+.ga09list ul li { display: inline-block; vertical-align:top;}
+
+.ga09list ul.grid2 > li { display: inline-block; width:50%; text-align:center; vertical-align:top;}
+.ga09list ul.grid3 > li { display: inline-block; width:33.33%; text-align:center; vertical-align:top;}
+.ga09list ul.grid4 > li { display: inline-block; width:25%; text-align:center; vertical-align:top;}
+.ga09list ul.grid5 > li { display: inline-block; width:20%; text-align:center; vertical-align:top;}
+
+
+/* 상품정보 디자인 CSS */
+
+.ga09list .name {clear:both; font-size:13px; margin-bottom:5px;}
+.ga09list .name a {color:#000}
+.ga09list .icon img {margin-top:10px; margin-right:5px }
+.ga09list .prices {line-height:18px; color:#000; font-size:11px;}
+.ga09list .price { font-size:11px; color:#727272; margin-right:5px; text-decoration:line-through !important; }
+.ga09list .normal { font-size:11px; color:#000; text-decoration:none !important; }
+.ga09list .info { margin-top:10px; line-height:18px; font-size:11px; color:#000}
+
+.ga09list .colorWrap {height:19px}
+
+/* 컬러칩 CSS */
+
+.ga09list .color { padding-top:7px; text-align:right;}
+.ga09list .color ul { display: inline-block; text-align:right; margin: 0; padding: 0; zoom:1; *display: inline;}
+.ga09list .color li {padding:0;}
+.ga09list .chips { width:8px; height:8px; margin-left:5px; font-size:0; line-height:0; }
+
+
+.hoverimg { overflow: hidden; }
+.hoverimg img {
+    -webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1); 
+    -o-transform:scale(1);  
+    transform:scale(1);
+    -webkit-transition:.25s;
+    -moz-transition:.25s;
+    -ms-transition:.25s;
+    -o-transition:.25s;
+    transition:.25s;
+}
+.hoverimg:hover img {
+    -webkit-transform:scale(1.05);
+    -moz-transform:scale(1.05);
+    -ms-transform:scale(1.05);   
+    -o-transform:scale(1.05);
+    transform:scale(1.05);
+}

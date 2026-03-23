@@ -1,0 +1,348 @@
+<!--@layout(/layout.html)-->
+<!--@js(/js/fullpage.js)-->
+<!--@js(/js/fullpageexe.js)-->
+<!--@css(/css/fullpage.css)-->
+<!--@css(/css/ga09product.css)-->
+
+<style>
+/* ===== 메인 페이지 전용 인라인 스타일 ===== */
+
+/* 배너 Women/Men 버튼 */
+.hero-gender-nav {
+    position: absolute !important;
+    bottom: 12% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    z-index: 10 !important;
+}
+.hero-gender-btn {
+    display: inline-block !important;
+    color: #fff !important;
+    font-family: 'Noto Sans KR', helvetica, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    padding: 14px 36px !important;
+    border: 1px solid rgba(255,255,255,0.5) !important;
+    background: transparent !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.hero-gender-btn:hover {
+    background: rgba(255,255,255,0.95) !important;
+    color: #111 !important;
+    border-color: #fff !important;
+    letter-spacing: 0.22em !important;
+}
+.hero-gender-divider {
+    width: 1px !important;
+    height: 16px !important;
+    background: rgba(255,255,255,0.35) !important;
+    display: inline-block !important;
+}
+
+/* Women/Men 토글 */
+.gender-toggle {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 0 !important;
+    margin: 0 0 48px !important;
+    padding-top: 80px !important;
+}
+.gender-toggle-btn {
+    font-family: 'Noto Sans KR', helvetica, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    padding: 12px 32px !important;
+    border: 1px solid #e0e0e0 !important;
+    background: transparent !important;
+    color: #bbb !important;
+    cursor: pointer !important;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    outline: none !important;
+}
+.gender-toggle-btn:first-child { border-right: none !important; }
+.gender-toggle-btn.active {
+    color: #111 !important;
+    border-color: #111 !important;
+    font-weight: 500 !important;
+}
+
+/* 상품 그리드 (fetch로 삽입되는 영역) */
+.main-products {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 24px 100px !important;
+}
+.main-products .grid4 {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    list-style: none !important;
+    margin: 0 -4px !important;
+    padding: 0 !important;
+}
+.main-products .grid4 > li {
+    width: 25% !important;
+    padding: 0 4px !important;
+    margin-bottom: 32px !important;
+    box-sizing: border-box !important;
+}
+.main-products .grid4 > li img,
+.main-products .swiper-slide li img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+}
+.main-products .grid4 > li .name,
+.main-products .swiper-slide li .name {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color: #212121 !important;
+    margin: 10px 0 4px !important;
+    letter-spacing: -0.01em !important;
+}
+.main-products .grid4 > li .name a,
+.main-products .swiper-slide li .name a {
+    text-decoration: none !important;
+    color: #212121 !important;
+}
+.main-products .grid4 > li .prices,
+.main-products .swiper-slide li .prices {
+    font-size: 13px !important;
+    color: #999 !important;
+}
+.main-products .loading {
+    text-align: center !important;
+    padding: 60px 0 !important;
+    color: #999 !important;
+    font-size: 13px !important;
+    letter-spacing: 0.05em !important;
+}
+
+/* 스켈레톤 로딩 */
+.skeleton-slide { padding: 0 4px !important; box-sizing: border-box !important; }
+.skeleton-img {
+    width: 100% !important; padding-top: 130% !important;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%) !important;
+    background-size: 200% 100% !important;
+    animation: shimmer 1.5s infinite !important;
+}
+.skeleton-text {
+    height: 13px !important; margin-top: 10px !important; width: 70% !important;
+    background: #f0f0f0 !important; border-radius: 2px !important;
+}
+.skeleton-price {
+    height: 13px !important; margin-top: 6px !important; width: 40% !important;
+    background: #f0f0f0 !important; border-radius: 2px !important;
+}
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+    .hero-gender-btn { font-size: 11px !important; padding: 11px 22px !important; }
+    .hero-gender-nav { bottom: 10% !important; }
+    .gender-toggle { padding-top: 48px !important; margin-bottom: 32px !important; }
+    .gender-toggle-btn { font-size: 11px !important; padding: 10px 24px !important; }
+    .main-products { padding: 0 16px 60px !important; }
+    .main-products .grid4 > li { width: 50% !important; }
+}
+/* la-room 스타일 가로 스크롤 */
+.yt-scroll-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    gap: 12px !important;
+    padding: 0 0 8px !important;
+    margin: 0 !important;
+    list-style: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+}
+.yt-scroll-grid::-webkit-scrollbar { display: none !important; }
+.yt-scroll-grid > li {
+    flex: 0 0 220px !important;
+    overflow: hidden !important;
+}
+.yt-scroll-grid > li .prdpadding { padding: 0 !important; }
+.yt-scroll-grid > li .prdline {
+    width: 220px !important; height: 293px !important;
+    overflow: hidden !important;
+}
+.yt-scroll-grid > li .prdline img {
+    width: 100% !important; height: 100% !important;
+    object-fit: cover !important; display: block !important;
+}
+.yt-scroll-grid > li .hoverimg,
+.yt-scroll-grid > li .hoverimg a {
+    display: block !important; width: 100% !important; height: 100% !important;
+}
+.yt-scroll-grid > li .name {
+    font-size: 13px !important; font-weight: 400 !important;
+    color: #212121 !important; margin: 10px 0 4px !important;
+    line-height: 1.4 !important; overflow: hidden !important;
+    text-overflow: ellipsis !important; white-space: nowrap !important;
+}
+.yt-scroll-grid > li .name a { text-decoration: none !important; color: #212121 !important; }
+.yt-scroll-grid > li .prices, .yt-scroll-grid > li .price { font-size: 13px !important; color: #999 !important; }
+.yt-scroll-grid > li .colorWrap,
+.yt-scroll-grid > li .info,
+.yt-scroll-grid > li .prd-keywords { display: none !important; }
+
+.yt-section-link {
+    display: inline-block !important; margin-top: 24px !important;
+    font-size: 12px !important; color: #999 !important;
+    text-decoration: none !important; letter-spacing: 0.05em !important;
+}
+.yt-section-link:hover { color: #111 !important; }
+
+@media (max-width: 768px) {
+    .yt-scroll-grid > li { flex: 0 0 160px !important; }
+    .yt-scroll-grid > li .prdline { width: 160px !important; height: 213px !important; }
+}
+</style>
+
+
+<div id="fullpage">
+
+    <!-- 메인 배너 + Women/Men 버튼 -->
+    <div class="section hero-section" style="background-image: url(/web/upload/ga09/main/0616pc-01.jpg); background-size: cover; background-position:center;" id="section1">
+        <div class="overlay"></div>
+        <div class="hero-gender-nav">
+            <a href="/product/list.html?cate_no=138" class="hero-gender-btn">Women</a>
+            <span class="hero-gender-divider"></span>
+            <a href="/product/list.html?cate_no=42" class="hero-gender-btn">Men</a>
+        </div>
+    </div>
+
+    <!-- 상품 섹션 (JS fetch로 로드) -->
+    <div class="section fp-auto-height" id="section-products">
+        <div class="main-products">
+            <div class="gender-toggle">
+                <button class="gender-toggle-btn active" data-cate="150">Women</button>
+                <button class="gender-toggle-btn" data-cate="120">Men</button>
+            </div>
+            <ul class="yt-scroll-grid" id="productGrid"></ul>
+            <a href="/product/list.html?cate_no=150" class="yt-section-link">쇼핑하기 →</a>
+        </div>
+    </div>
+
+    <!-- 인기 상품 (U3) — la-room 스타일 -->
+    <div class="section fp-auto-height" id="section-popular">
+        <div class="main-products" style="padding-top:80px;">
+            <div style="margin-bottom:24px;">
+                <p style="font-size:14px;font-weight:400;color:#111;margin:0 0 4px;">Popular Items</p>
+                <p style="font-size:12px;color:#999;margin:0;">지금 가장 인기있는 상품을 만나보세요.</p>
+            </div>
+            <ul class="yt-scroll-grid" id="popularGrid"></ul>
+            <a href="/product/list.html?cate_no=42" class="yt-section-link">쇼핑하기 →</a>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <div class="section fp-auto-height" id="section-footer">
+        <div class="myContent">
+            <div id="bottom"><!--@import(/bottom.html)--></div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+var productCache = {};
+var currentXhr = null;
+
+function fetchAndRender(cateNo, gridId, max) {
+    var grid = document.getElementById(gridId);
+    if (!grid) return;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/product/list.html?cate_no=' + cateNo, true);
+    xhr.timeout = 8000;
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            try {
+                var doc = new DOMParser().parseFromString(xhr.responseText, 'text/html');
+                var ul = doc.querySelector('.xans-product-listnormal ul.grid4') || doc.querySelector('ul.grid4');
+                if (ul) {
+                    var items = ul.querySelectorAll('li');
+                    var result = [];
+                    for (var i = 0; i < items.length && result.length < max; i++) {
+                        var img = items[i].querySelector('.prdline img, .hoverimg img');
+                        if (!img || !img.src || img.src.indexOf('product') === -1) continue;
+                        result.push(items[i].cloneNode(true));
+                    }
+                    productCache[cateNo] = result;
+                    renderToGrid(gridId, result);
+                }
+            } catch(e) {}
+        }
+    };
+    xhr.send();
+    return xhr;
+}
+
+function renderToGrid(gridId, items) {
+    var grid = document.getElementById(gridId);
+    if (!grid) return;
+    grid.innerHTML = '';
+    for (var i = 0; i < items.length; i++) {
+        var clone = items[i].cloneNode(true);
+        var chips = clone.querySelector('.colorWrap');
+        if (chips) chips.style.display = 'none';
+        grid.appendChild(clone);
+    }
+}
+
+function loadProducts(cateNo) {
+    if (currentXhr) { currentXhr.abort(); currentXhr = null; }
+    if (productCache[cateNo]) {
+        renderToGrid('productGrid', productCache[cateNo]);
+        return;
+    }
+    currentXhr = fetchAndRender(cateNo, 'productGrid', 12);
+}
+
+// 페이지 로드
+document.addEventListener('DOMContentLoaded', function() {
+    loadProducts(150);
+    // Men 미리 캐싱
+    var preXhr = new XMLHttpRequest();
+    preXhr.open('GET', '/product/list.html?cate_no=120', true);
+    preXhr.onload = function() {
+        if (preXhr.status === 200) {
+            try {
+                var doc = new DOMParser().parseFromString(preXhr.responseText, 'text/html');
+                var ul = doc.querySelector('.xans-product-listnormal ul.grid4') || doc.querySelector('ul.grid4');
+                if (ul) {
+                    var items = ul.querySelectorAll('li');
+                    var result = [];
+                    for (var i = 0; i < items.length && result.length < 12; i++) {
+                        var img = items[i].querySelector('.prdline img, .hoverimg img');
+                        if (!img || !img.src || img.src.indexOf('product') === -1) continue;
+                        result.push(items[i].cloneNode(true));
+                    }
+                    productCache[120] = result;
+                }
+            } catch(e) {}
+        }
+    };
+    preXhr.send();
+    // 인기 상품
+    fetchAndRender(42, 'popularGrid', 12);
+});
+
+// Women/Men 토글
+document.querySelectorAll('.gender-toggle-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.gender-toggle-btn').forEach(function(b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        loadProducts(this.dataset.cate);
+    });
+});
+</script>

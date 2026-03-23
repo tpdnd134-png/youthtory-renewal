@@ -1,0 +1,29 @@
+#detailguide { display:none; margin:30px 0; border:1px solid #e6e3db; border-left:0; border-right:0; padding:15px 0; font-family: helvetica, 'Noto Sans KR', sans-serif; font-size:12px; letter-spacing:0; color:#212121}
+
+#detailguide .inner { padding:10px 0; font-size:11px; line-height:18px; font-weight:400; letter-spacing:0 }
+#detailguide .accordion-label {
+    color: #212121;
+    display: block;
+    line-height: 16px;
+    padding: 5px 0;
+    position: relative;
+    text-decoration: none;
+}
+
+#detailguide .accordion-label:after {
+    background: transparent url(/web/upload/ga09/guideopen.png) center center no-repeat;
+    background-size: 9px 9px;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    font-family: sans-serif;
+    right: 5px;
+    top: 0;
+    width: 9px;
+}
+
+#detailguide .accordion-label.ui-state-active:after {
+    background: transparent url(/web/upload/ga09/guideclose.png) center center no-repeat;
+    background-size: 9px 9px;
+}

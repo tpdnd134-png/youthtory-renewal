@@ -1,0 +1,121 @@
+<!--@css(/css/override.css)-->
+
+<!-- Announcement Bar -->
+<div class="announcement-bar">
+  <p>YOUTHTORY &mdash; FREE SHIPPING OVER &#8361;80,000</p>
+  <button type="button" class="announcement-bar__close" aria-label="닫기">&times;</button>
+</div>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="header__inner">
+
+    <!-- Left: Hamburger (mobile only) -->
+    <button type="button" class="header__hamburger" id="hamburgerBtn" aria-label="메뉴 열기">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Left: Logo -->
+    <div class="header__logo">
+      <a href="/">
+        <img src="/web/upload/ga09/logo.png" alt="YOUTHTORY">
+      </a>
+    </div>
+
+    <!-- Center: Navigation -->
+    <nav class="header__nav" id="headerNav">
+      <ul class="header__nav-list">
+
+        <!-- SHOP (mega dropdown - 카테고리 자동 연동) -->
+        <li class="header__nav-item header__nav-item--mega">
+          <a href="/product/list.html" class="header__nav-link">SHOP</a>
+          <div class="header__mega-dropdown">
+            <div class="header__mega-inner" module="Layout_category">
+              <div class="header__mega-col">
+                <h4 class="header__mega-title">
+                  <a href="/product/list.html{$param}">{$name}</a>
+                </h4>
+                <ul module="Layout_category">
+                  <li><a href="/product/list.html{$param}">{$name}</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- COMMUNITY (호버 시 드롭다운) -->
+        <li class="header__nav-item header__nav-item--dropdown">
+          <a href="#" class="header__nav-link">COMMUNITY</a>
+          <ul class="header__dropdown">
+            <li><a href="/board/free/list.html?board_no=1">Notice</a></li>
+            <li><a href="/board/product/list.html?board_no=6">Q&A</a></li>
+            <li><a href="/board/review/list.html?board_no=4">Review</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- Right: Utilities -->
+    <div class="header__util">
+
+      <!-- Search Toggle -->
+      <button type="button" class="header__util-btn" id="searchOpenBtn" aria-label="검색">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+
+      <!-- Cart -->
+      <a href="/order/basket.html" class="header__util-btn" module="Layout_orderBasketcount">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 01-8 0"></path>
+        </svg>
+        <span class="header__cart-badge">{$basket_count}</span>
+      </a>
+
+      <!-- Login / Register (logged out) -->
+      <div class="header__util-auth" module="Layout_stateLogoff">
+        <a href="/member/login.html">LOGIN</a>
+      </div>
+
+      <!-- My Page / Logout (logged in) -->
+      <div class="header__util-auth" module="Layout_stateLogon">
+        <a href="/myshop/index.html">MY PAGE</a>
+        <a href="{$action_logout}">LOGOUT</a>
+      </div>
+
+    </div>
+
+  </div>
+</header>
+
+<!-- Search Overlay -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-overlay__inner">
+    <div module="Layout_SearchHeader">
+      <!--
+      $product_page=/product/detail.html
+      $category_page=/product/list.html
+      -->
+      <fieldset>
+        {$form.keyword}
+        <button type="button" onclick="{$action_search_submit}" aria-label="검색">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </fieldset>
+    </div>
+    <button type="button" class="search-overlay__close" id="searchCloseBtn" aria-label="검색 닫기">&times;</button>
+  </div>
+</div>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>

@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+/* 페이지네이트 */
+.paginate { text-align:center; background:#fff; }
+
+
+    /* Swipe */
+
+.paginate { margin:11px 0 0 0; text-align:center; font-size:0; line-height:0; }
+.paginate button { overflow:hidden; margin:0 4px; padding:0; font-size:0; line-height:0; cursor:pointer; border:0; background:none; background-repeat:no-repeat; background-position:0px 0px; background-size:100% 100%; }
+.paginate button::-moz-focus-inner { padding:0; }
+.paginate button span { color:transparent; font-size:0; line-height:0; }
+.paginate button.circle { width:11px; height:11px; background-image:url("/web/upload/ga09/mobile/btn_swipe.png");  -webkit-transition-duration: 0.2s; transition-duration: 0.2s;}
+.paginate button.circle.selected { background-image:url("/web/upload/ga09/mobile/btn_swipe_on.png"); -webkit-transition-duration: 0.2s; transition-duration: 0.2s; }
+.paginate button.prev,
+.paginate button.next { width:20px; height:20px; }
+.paginate button.prev { background-image:url("/web/upload/ga09/mobile/btn_swipe_first.png"); }
+.paginate button.next { background-image:url("/web/upload/ga09/mobile/btn_swipe_last.png"); }
+
+
+    /* 이전, 다음페이지보기(총페이지노출형) */
+    .paginate.typeTotal { color:#696969;  }
+    .paginate.typeTotal > span { margin:0 8px;font-weight:bold; }
+    .paginate.typeTotal p { display:inline-block;vertical-align:middle; }
+    .paginate.typeTotal .prev,
+    .paginate.typeTotal .next { width:7px;height:13px; font-size:15px; line-height:1.2em; background:url("http://img.echosting.cafe24.com/skin/mobile_ko_KR/layout/btn_prev.png") no-repeat 50% 50%; background-size:7px auto; }
+    .paginate.typeTotal .next { background:url("http://img.echosting.cafe24.com/skin/mobile_ko_KR/layout/btn_next.png") no-repeat 50% 50%; background-size:7px auto; }
+    .paginate.typeTotal p span { overflow:hidden; display:block; width:29px; text-indent:-999px; }
+    .paginate.typeTotal strong { color:#508bed; }
+
+    /* 이전, 다음페이지보기(리스트형) */
+.paginate.typeList { margin:15px 0; text-align:center; vertical-align:middle; font-weight:bold; }
+.paginate.typeList a,
+.paginate.typeList a.this { display:block; color:#434447; font-size:11px; height:17px; padding:5px; line-height:14px; }
+.paginate.typeList a { color:#a1a1a3; outline:none; -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
+.paginate.typeList ol { vertical-align:bottom; }
+.paginate.typeList ol, 
+.paginate.typeList li, 
+.paginate.typeList p { display:inline-block; }
+.paginate.typeList li, 
+.paginate.typeList p { overflow:hidden; min-width:22px; height:22px; margin:0 1px; }
+.paginate.typeList p { background:#fff url("/web/upload/ga09/mobile/bg_paging.png") 50% 0 no-repeat; background-size:15px 60px; }
+.paginate.typeList p a {color:#fff}
+.paginate.typeList p.first { background-position:50% 2px; }
+.paginate.typeList p.prev { background-position:50% -13px; }
+.paginate.typeList p.next { background-position:50% -28px; }
+.paginate.typeList p.last { background-position:50% -43px; }
+.paginate.typeList p span { overflow:hidden; display:block; width:11px; height:19px; text-indent:100%; }
+

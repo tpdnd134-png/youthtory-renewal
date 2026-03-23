@@ -1,0 +1,143 @@
+/* 슬라이드 */
+
+#slidemenu {font-family: helvetica, 'Noto Sans KR', sans-serif; font-size:12px; line-height:22px; color:#212121;}
+#slidemenu .inner {padding:40px 0 0 40px; width:220px}
+
+
+/* 로고 크기는 아래 12줄의 숫자를 조정해 주세요 */
+
+#slidemenutop .logo {text-align:left;}
+#slidemenutop .logo img {height:16px}
+
+#slidemenu #loginfobox {text-align:left; line-height:16px; padding-top:10px; padding-left:0; letter-spacing:0; font-family: helvetica, 'Noto Sans KR', sans-serif; font-size:11px; color:#5c5c5c}
+
+
+/* 아코디언 메뉴 */
+
+#slidemenu #menulist {margin-top:40px; border-top:1px solid #e6e3db;}
+#slidemenu .accordionmenu, #slidemenu .accordionmenu2 {
+  cursor: pointer;
+  width: 220px;
+  border: none;
+  text-align: left;
+  outline: none;
+  transition: 0.4s;
+  background-color: #fff;
+  font-family: helvetica, 'Noto Sans KR', sans-serif; font-size:12px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; line-height:40px;
+  border-bottom:1px solid #e6e3db;
+  text-indent:5px;
+  
+}
+
+#slidemenu .accordionmenu:after {
+  content: '\002B';
+  color: #212121;
+  float: right;
+  font-size:14px;
+  margin-right: 5px;
+}
+
+#slidemenu .active:after {
+  content: "\2212";
+}
+#slidemenu .active {
+  border-bottom:1px solid #fff;
+}
+#slidemenu .panel {
+  text-indent:5px;
+  background-color: #fff;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  font-family: helvetica, 'Noto Sans KR', sans-serif; font-size:11px; line-height:24px;
+}
+#slidemenu .panel a{
+  color:#666;
+}
+
+/* 검색창 */
+
+#slidemenu .search-bar { margin-bottom:40px; border-bottom:1px solid #e6e3db; line-height:40px; width:218px; transition: all 0.3s ease;}
+#slidemenu .search-bar img { cursor:pointer; height:15px; position:absolute; margin-top:11px; right:45px}
+#slidemenu .search-bar input[type=text] {height:16px; font-size:11px; width:200px; color:#212121; background:transparent; border:none; font-family: helvetica, 'Noto Sans KR', sans-serif;}
+
+
+
+/* 고객센터 정보/sns */
+
+#slidemenu #cscenter {line-height:18px}
+#slidemenu #cscenter #customer .cs1 {font-size:13px; padding-bottom:3px;  }
+#slidemenu #cscenter #customer .cs2 {font-size:10px;}
+#slidemenu #cscenter #bank {margin-top:20px; font-size:11px; font-family: helvetica, 'Noto Sans KR', sans-serif; }
+
+#slidemenu #sns {margin-top:50px;text-align:left; margin-top:25px; margin-bottom:50px}
+#slidemenu #sns img {margin-right:3px; height:12px; opacity:0.7; vertical-align:middle}
+#slidemenu #sns img:hover {opacity:1.0}
+
+
+
+
+
+
+
+
+/**
+ * 모바일쇼핑몰 슬라이딩메뉴 > 수정금지!
+ */
+
+body { position:relative; height:100%; }
+#wrap { min-height:100%; }
+
+/* 확장 */
+html.expand body { position:fixed; top:0; left:0; width:100%; }
+html.expand #container { -webkit-transform: translate(300px, 0); -moz-transform: translate(300px, 0); -ms-transform: translate(300px, 0); -o-transform: translate(300px, 0); transform: translate(300px, 0); }
+html.expand #btnFoldLayout { z-index:405; }
+html.expand #aside { z-index:0; overflow-x:hidden; }
+
+/* aside */
+#aside { z-index:-1; visibility:hidden; position:absolute; left:0px; top:0px; bottom:0; overflow:auto; overflow-x:hidden; width:300px; font-size:11px; background-color:#fff; }
+#aside .member { padding:0 0 0 14px; border-bottom:1px solid #c8c7cc; font-size:13px; line-height:41px; font-weight:normal;
+background: -webkit-linear-gradient(#f7f7f7,#eff0f0,#e8e9e9); /* For Safari 5.1 to 6.0 */
+background: -o-linear-gradient(#f7f7f7,#eff0f0,#e8e9e9); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(#f7f7f7,#eff0f0,#e8e9e9); /* For Firefox 3.6 to 15 */
+background: linear-gradient(#f7f7f7,#eff0f0,#e8e9e9); /* Standard syntax */
+}
+#aside .member  strong { color:#508bed; text-decoration:underline; }
+#aside .member.xans-layout-statelogoff a { display:inline-block; width:auto; line-height:27px; padding:0 7px; margin:0 3px 0 0; border:1px solid #d5d5d5; border-bottom-color:#b5b5b5; border-radius:3px; color:#1b1b1b; background-color:#fff; }
+#aside .member a.btnLogin { border:1px solid #4a5164; border-bottom-color:#3b4150; color:#fff; background-color:#4a5164; }
+
+#aside .btnClose { position:absolute; right:10px; top:20px }
+#aside .btnClose img {height:16px; padding:2px}
+
+#aside .membership { padding:0 14px 11px; }
+#aside .membership li { display:inline-block; margin:0 15px 0 0; padding:10px 0 0; }
+#aside .membership li a { color:#508bed; }
+#aside .membership li.like a { color:#000; }
+#aside .membership li.like a span { color:#508bed; }
+#aside .xans-myshop-main { background-color:#4a5164; }
+#aside .xans-myshop-main a {
+    float:left; width:33.3%; padding:34px 0 8px; color:#fff; text-align:center; border:1px solid #404757; border-right:0; background-color:#4a5164;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-sizing:border-box;
+    -o-sizing:border-box;
+    box-sizing:border-box;
+}
+#aside .xans-myshop-main a:first-child { border-left:0; }
+#aside .xans-myshop-main:after { content:""; display:block; clear:both; }
+#aside .xans-myshop-main a.wishList { background:#4a5164 url("//img.echosting.cafe24.com/skin/mobile_ko_KR/layout/bg_wish_list.png") no-repeat 50% 15px; background-size:20px 18px; }
+#aside .xans-myshop-main a.recentList { background:#4a5164 url("//img.echosting.cafe24.com/skin/mobile_ko_KR/layout/bg_recent_list.png") no-repeat 50% 15px; background-size:20px 18px; }
+#aside .xans-myshop-main a.orderList { background:#4a5164 url("//img.echosting.cafe24.com/skin/mobile_ko_KR/layout/bg_order_list.png") no-repeat 50% 13px; background-size:16px 21px; }
+
+/* conatiner */
+#container {
+    z-index:100; position:relative; overflow:hidden; margin-top:-1px; margin-left:-1px; background-color:#fff;
+    -webkit-transition:300ms; -moz-transition:300ms; -ms-transition:300ms; -o-transition:300ms; transition:300ms;
+    -webkit-backface-visibility: hidden; -ms-backface-visibility: hidden; backface-visibility: hidden;
+}
+
+/* btnFoldLayout */
+#btnFoldLayout {
+    display:none; position:absolute; left:300px; top:0; right:0; bottom:0; width:100%; height:100%; opacity:0;
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0); and -webkit-focus-ring-color:rgba(0, 0, 0, 0);
+}

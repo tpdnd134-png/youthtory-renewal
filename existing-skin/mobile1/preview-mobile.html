@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>SHOP YOUTHTORY — Mobile</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<style>
+/* ===== layout/basic/layout.html 글로벌 (기존 작업 그대로) ===== */
+* { box-sizing: border-box; }
+body { font-family: helvetica, 'Noto Sans KR', sans-serif; color: #212121; background: #fff; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+a { color: #212121; text-decoration: none; transition: all 0.3s ease; }
+img { max-width: 100%; height: auto; }
+ul { list-style: none; margin: 0; padding: 0; }
+
+/* ===== 프로모션 마키 바 (layout.html 그대로) ===== */
+.m-promo-bar { height: 28px; background: rgba(42,41,41,0.4); overflow: hidden; display: flex; align-items: center; }
+.m-promo-track { display: flex; white-space: nowrap; animation: m-marquee 50s linear infinite; }
+.m-promo-item { color: rgba(255,255,255,0.9); font-size: 10px; margin-right: 60px; letter-spacing: 0.02em; font-weight: 300; }
+.m-promo-item a { color: rgba(255,255,255,0.9); text-decoration: none; }
+@keyframes m-marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+
+/* ===== top.css 모바일 헤더 (기존 작업 그대로) ===== */
+#top { position: fixed; line-height: 0; top: 28px; left: 0; width: 100%; text-align: center; padding: 0; height: 52px; z-index: 11; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: 0.3s ease; }
+#logo { text-align: center; margin-top: 18px; }
+#logo img { height: 14px; }
+#top #menuicon { position: absolute; left: 16px; top: 17px; cursor: pointer; }
+#top #cart { position: absolute; right: 16px; top: 17px; }
+#top #cart .cartcount { position: absolute; right: -4px; top: -4px; font-size: 9px; font-family: helvetica, sans-serif; color: #fff; background: #212121; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* ===== fullpage 히어로 (index.html 그대로 — 프리뷰 슬라이더) ===== */
+.hero-section { width: 100%; height: 100vh; background-size: cover; background-position: center; cursor: pointer; position: relative; display: none; }
+.hero-section.active { display: block; }
+.hero-section .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.15); }
+#section2 .intro { position: absolute; top: 47%; left: 50%; width: 90%; text-align: center; color: #fff; transform: translateX(-50%); z-index: 1; }
+#section2 .title { letter-spacing: 0.15em; border: 1px solid rgba(255,255,255,0.6); font-size: 12px; font-weight: 300; padding: 10px 20px; display: inline-block; margin: 0 auto 16px; color: #fff; text-transform: uppercase; }
+#section2 .sub { font-size: 10px; font-weight: 300; line-height: 1.8; letter-spacing: 0.06em; opacity: 0.8; color: #fff; }
+.hero-indicators { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 10; }
+.hero-indicators span { width: 20px; height: 2px; background: rgba(255,255,255,0.4); cursor: pointer; transition: all 0.4s ease; }
+.hero-indicators span.active { width: 32px; background: #fff; }
+@keyframes heroFade { from { opacity: 0; } to { opacity: 1; } }
+.hero-section.active { animation: heroFade 1s ease; }
+
+/* ===== 섹션 타이틀 (layout.html 그대로) ===== */
+.m-section-title { text-align: center; padding: 48px 16px 24px; }
+.m-section-title h2 { font-family: 'Unbounded', sans-serif; font-size: 24px; font-weight: 900; color: #212121; letter-spacing: -0.02em; text-transform: uppercase; margin: 0; line-height: 1; }
+.m-section-title p { font-size: 10px; color: #aaa; margin-top: 8px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* ===== ga09.css 메인상품 리스트 (기존 작업 그대로) ===== */
+.prdlistmain { margin: 0 5px; }
+.prdlistmain ul { display: table; table-layout: fixed; width: 100%; font-size: 0; line-height: 0; }
+.prdlistmain li { position: relative; display: inline-block; padding: 0; vertical-align: top; margin-bottom: 10px; }
+.prdlistmain .thumbnail { padding: 0 5px; }
+.prdlistmain .thumbnail img { width: 100%; border-radius: 8px; }
+.prdlistmain .grid2 li { width: 50%; }
+
+/* 상품 정보 — 프리뷰용 */
+.prdlistmain .prd-info { padding: 0 7px; }
+.prdlistmain .prd-name { margin: 5px 0; font-size: 11px; line-height: 13px; font-weight: 400; color: #212121; }
+.prdlistmain .prd-name a { color: #212121; }
+.prdlistmain .prd-colors { overflow: hidden; margin-left: 7px; text-align: left; font-size: 0; line-height: 0; }
+.prdlistmain .prd-colors .chips { margin-right: 3px; font-size: 0; width: 7px; height: 7px; border-radius: 50%; line-height: 0; display: inline-block; }
+.prdlistmain .prd-price { display: block; margin: 2px 7px 0; color: #212121; font-size: 11px; line-height: 14px; }
+.prdlistmain .sale-pct { color: #db7e7e; font-size: 11px; margin-right: 3px; }
+.prdlistmain .original { text-decoration: line-through; color: #999; opacity: 0.7; font-size: 10px; margin-right: 3px; }
+
+/* ===== bottom.css 모바일 푸터 (기존 작업 그대로) ===== */
+#bottom { font-family: helvetica, 'Noto Sans KR', sans-serif; font-size: 11px; line-height: 1.7; margin-top: 60px; color: #999; background: #f6f5f1; }
+#bottom a { transition: 0.3s ease; color: #999; }
+#bottom a:hover { text-decoration: none; color: #212121; }
+#bottom .inner { padding: 40px 20px; }
+#bottom .logo { float: left; }
+#bottom .logo img { height: 14px; }
+#bottom .joinbt { float: right; border: 1px solid #e6e3db; padding: 6px 0; width: 80px; text-align: center; font-size: 10px; font-weight: 500; border-radius: 24px; color: #999; transition: 0.3s ease; cursor: pointer; }
+#bottom .joinbt:hover { border-color: #212121; color: #212121; }
+#bottom #cscenter { margin-top: 32px; }
+#bottom #cscenter #customer .cs1 { font-size: 13px; padding-bottom: 3px; color: #212121; font-weight: 500; }
+#bottom #cscenter #customer .cs2 { font-size: 10px; color: #999; }
+#bottom #cscenter #bank { margin-top: 16px; font-size: 10px; }
+#bottom #cscenter #bank .bank1 { color: #212121; font-weight: 500; }
+#bottom #cscenter #bank .bank2 { padding-top: 2px; color: #999; }
+#bottom #link { font-size: 10px; margin-top: 32px; }
+#bottom #link li { float: left; margin-right: 12px; }
+#bottom #sns { margin-top: 20px; text-align: left; }
+#bottom #sns span { font-size: 10px; color: #bbb; letter-spacing: 0.06em; text-transform: uppercase; }
+#bottom #company { margin-top: 20px; }
+#bottom #company .copytext { font-size: 10px; color: #bbb; line-height: 1.8; }
+#bottom #company .copytext span { font-size: 9px; margin-right: 4px; color: #999; }
+#bottomcopyright { margin-top: 32px; text-align: left; font-size: 9px; line-height: 1.6; color: #ccc; }
+#bottomcopyright b { font-weight: 500; color: #999; }
+
+/* ===== slideMenu.css 사이드바 (기존 작업 그대로) ===== */
+body { position: relative; height: 100%; }
+#wrap { min-height: 100%; }
+html.expand body { position: fixed; top: 0; left: 0; width: 100%; }
+html.expand #container { transform: translate(300px, 0); }
+html.expand #aside { z-index: 0; overflow-x: hidden; }
+#aside { z-index: -1; visibility: hidden; position: absolute; left: 0; top: 0; bottom: 0; overflow: auto; overflow-x: hidden; width: 300px; font-size: 11px; background-color: #fff; }
+#aside .btnClose { position: absolute; right: 10px; top: 20px; cursor: pointer; font-size: 20px; color: #212121; background: none; border: none; }
+#container { z-index: 100; position: relative; overflow: hidden; margin-top: -1px; margin-left: -1px; background-color: #fff; transition: 300ms; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+
+#slidemenu { font-family: helvetica, 'Noto Sans KR', sans-serif; font-size: 12px; line-height: 22px; color: #212121; }
+#slidemenu .inner { padding: 40px 0 0 40px; width: 220px; }
+#slidemenutop .logo { text-align: left; }
+#slidemenutop .logo img { height: 16px; }
+#slidemenu #loginfobox { text-align: left; line-height: 16px; padding-top: 10px; font-size: 11px; color: #5c5c5c; }
+#slidemenu #loginfobox .btnSubmit2, #slidemenu #loginfobox .btnEm2 { display: inline-block; padding: 8px 16px; font-size: 10px; font-weight: 600; border: 1px solid #e6e3db; border-radius: 4px; color: #212121; margin-right: 4px; margin-top: 10px; text-align: center; }
+#slidemenu #loginfobox .btnSubmit2 { background: #212121; color: #fff; border-color: #212121; }
+
+#slidemenu #menulist { margin-top: 40px; border-top: 1px solid #e6e3db; }
+.accordionmenu { cursor: pointer; width: 220px; border: none; text-align: left; outline: none; transition: 0.4s; background-color: #fff; font-family: helvetica, 'Noto Sans KR', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; line-height: 40px; border-bottom: 1px solid #e6e3db; text-indent: 5px; }
+.accordionmenu:after { content: '\002B'; color: #212121; float: right; font-size: 14px; margin-right: 5px; }
+.accordionmenu.active:after { content: "\2212"; }
+.accordionmenu.active { border-bottom: 1px solid #fff; }
+.panel { text-indent: 5px; background-color: #fff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-family: helvetica, 'Noto Sans KR', sans-serif; font-size: 11px; line-height: 24px; }
+.panel a { color: #666; }
+.panel a:hover { color: #212121; }
+
+#slidemenu .search-bar { margin-bottom: 40px; border-bottom: 1px solid #e6e3db; line-height: 40px; width: 218px; }
+#slidemenu .search-bar input[type=text] { height: 16px; font-size: 11px; width: 180px; color: #212121; background: transparent; border: none; font-family: helvetica, 'Noto Sans KR', sans-serif; outline: none; }
+#slidemenu .search-bar button { background: none; border: none; cursor: pointer; }
+
+#slidemenu #cscenter { line-height: 18px; }
+#slidemenu #cscenter #customer .cs1 { font-size: 13px; padding-bottom: 3px; }
+#slidemenu #cscenter #customer .cs2 { font-size: 10px; }
+#slidemenu #cscenter #bank { margin-top: 20px; font-size: 11px; }
+#slidemenu #sns { margin-top: 25px; margin-bottom: 50px; text-align: left; }
+#slidemenu #sns span { font-size: 10px; color: #bbb; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* 스크롤 탑 */
+.scrollTop { position: fixed; right: 20px; bottom: 20px; font-size: 20px; z-index: 90; opacity: 0.7; }
+.scrollTop a { background: rgba(33,33,33,0.1); color: #212121; border-radius: 0; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+
+/* 콘텐츠 영역 */
+#contents2 { margin-top: 80px; margin-bottom: 50px; }
+
+/* 프리뷰 애니메이션 */
+@keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+body { animation: pageIn 0.6s ease-out; }
+</style>
+</head>
+<body>
+<div id="wrap">
+
+    <!-- ===== 프로모션 마키 바 (layout.html 그대로) ===== -->
+    <div class="m-promo-bar">
+        <div class="m-promo-track">
+            <span class="m-promo-item"><a href="#">회원가입 시 3,000 포인트 지급</a></span>
+            <span class="m-promo-item"><a href="#">매주 새로운 스타일링을 확인해 보세요</a></span>
+            <span class="m-promo-item"><a href="#">회원가입 시 3,000 포인트 지급</a></span>
+            <span class="m-promo-item"><a href="#">매주 새로운 스타일링을 확인해 보세요</a></span>
+        </div>
+    </div>
+
+    <!-- ===== 사이드바 (sidebar.html 구조 그대로) ===== -->
+    <aside id="aside">
+        <a href="#" class="btnClose" onclick="toggleSidebar(); return false;"><i class="fas fa-times"></i></a>
+        <div id="slidemenu">
+            <div class="inner">
+                <div id="slidemenutop">
+                    <div class="logo"><a href="preview-mobile.html"><img src="../skin1/logo-C-refined.svg" alt="SHOP YOUTHTORY"></a></div>
+                    <div id="loginfobox">
+                        <div>고객님은 현재 <b>로그아웃</b> 상태입니다.<br>로그인을 하시면 더 많은 정보를 확인하실 수 있습니다.</div>
+                        <a href="../skin1/preview-login.html" class="btnSubmit2">LOGIN</a>
+                        <a href="../skin1/preview-register.html" class="btnEm2">REGISTER</a>
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+
+                <div id="menulist">
+                    <button class="accordionmenu">BRAND</button>
+                    <div class="panel">
+                        <ul><li><a href="#">ABOUT</a></li></ul>
+                    </div>
+
+                    <button class="accordionmenu active">SHOP</button>
+                    <div class="panel" style="max-height: 200px;">
+                        <ul><li><a href="../skin1/preview-list.html">NEW</a></li></ul>
+                        <ul>
+                            <li><a href="../skin1/preview-list.html">MEN</a></li>
+                            <li><a href="../skin1/preview-list.html">WOMEN</a></li>
+                            <li><a href="../skin1/preview-list.html">EXCLUSIVE</a></li>
+                            <li><a href="../skin1/preview-list.html">SALE</a></li>
+                        </ul>
+                    </div>
+
+                    <button class="accordionmenu">BOARD</button>
+                    <div class="panel">
+                        <ul>
+                            <li><a href="../skin1/preview-board.html">NOTICE</a></li>
+                            <li><a href="../skin1/preview-board.html">Q&amp;A</a></li>
+                            <li><a href="../skin1/preview-board.html">REVIEW</a></li>
+                        </ul>
+                    </div>
+
+                    <button class="accordionmenu">MY PAGE</button>
+                    <div class="panel">
+                        <ul>
+                            <li><a href="../skin1/preview-mypage.html">MY PAGE</a></li>
+                            <li><a href="../skin1/preview-mypage.html">ORDER</a></li>
+                            <li><a href="../skin1/preview-mypage.html">MILEAGE</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Search">
+                    <button><i class="fas fa-search" style="font-size:14px; color:#212121;"></i></button>
+                </div>
+
+                <div id="cscenter">
+                    <div id="customer">
+                        <ul>
+                            <li class="cs1">Tel 070-8673-7558<br>H.P 010-5648-7558</li>
+                            <li class="cs2">Opening hours. am11-pm17</li>
+                            <li class="cs2">Lunch break. pm13-pm14</li>
+                            <li class="cs2">Sat, Sun, Holiday Off</li>
+                        </ul>
+                    </div>
+                    <div id="bank">
+                        <ul>
+                            <li class="bank1">신한은행 110-398-259805</li>
+                            <li class="bank2">예금주 : 한유승</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="sns">
+                    <ul>
+                        <li><span style="margin-right:10px">Follow us</span> <a href="#">Instagram</a></li>
+                        <div style="clear:both"></div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ===== 모바일 헤더 (top.html 구조 그대로) ===== -->
+    <header id="header">
+        <div id="top">
+            <div style="margin:0 15px;">
+                <div id="menuicon" onclick="toggleSidebar()"><i class="fas fa-bars" style="font-size:18px; color:#212121;"></i></div>
+                <div id="logo"><a href="preview-mobile.html"><img src="../skin1/logo-C-refined-header.svg" alt="SHOP YOUTHTORY"></a></div>
+                <div id="cart"><a href="../skin1/preview-cart.html"><div class="cartcount"><span>2</span></div><i class="fas fa-shopping-bag" style="font-size:18px; color:#212121;"></i></a></div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+    </header>
+
+    <div id="container">
+        <div id="contents2">
+
+            <!-- ===== index.html 히어로 (fullpage → 슬라이더 프리뷰) ===== -->
+            <div id="fullpage" style="position:relative;">
+                <div class="section hero-section active" id="section1" style="background-image: url(https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=1200&fit=crop&q=80); background-size: cover; background-position: center;" onclick="location.href='../skin1/preview-list.html'">
+                    <div class="overlay"></div>
+                </div>
+                <div class="section hero-section" id="section2" style="background-image: url(https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&h=1200&fit=crop&q=80); background-size: cover; background-position: center;">
+                    <div class="overlay"></div>
+                    <div class="intro" onclick="location.href='../skin1/preview-list.html'" style="cursor:pointer;">
+                        <p class="title">OFFLINE CLUB SERVICE</p>
+                        <p class="sub"><br>FIND YOUR STYLE , FIND YOUR VALUE , FIND YOUR LIFE<br></p>
+                    </div>
+                </div>
+                <div class="section hero-section" id="section4" style="background-image: url(https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&h=1200&fit=crop&q=80); background-size: cover; background-position: center;" onclick="location.href='../skin1/preview-list.html'">
+                    <div class="overlay"></div>
+                </div>
+                <div class="hero-indicators">
+                    <span class="active" onclick="goSlide(0)"></span>
+                    <span onclick="goSlide(1)"></span>
+                    <span onclick="goSlide(2)"></span>
+                </div>
+            </div>
+
+            <!-- ===== MEN SECTION (index.html product_listmain_1 → 샘플 데이터) ===== -->
+            <div class="m-section-title"><h2>Men</h2><p>New arrivals for him</p></div>
+            <div class="prdlistmain">
+                <ul class="grid2">
+                    <li>
+                        <div class="thumbnail"><a href="../skin1/preview-detail.html"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=530&fit=crop&q=80" alt="워셔블 오버핏 블레이저"></a></div>
+                        <div class="prd-info">
+                            <div class="prd-name"><a href="../skin1/preview-detail.html">워셔블 오버핏 블레이저</a></div>
+                            <div class="prd-colors"><span class="chips" style="background:#222;"></span><span class="chips" style="background:#1a2744;"></span></div>
+                            <div class="prd-price">&#8361;89,000</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="thumbnail"><a href="../skin1/preview-detail.html"><img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=530&fit=crop&q=80" alt="세미와이드 슬랙스"></a></div>
+                        <div class="prd-info">
+                            <div class="prd-name"><a href="../skin1/preview-detail.html">세미와이드 슬랙스</a></div>
+                            <div class="prd-colors"><span class="chips" style="background:#222;"></span><span class="chips" style="background:#888;"></span><span class="chips" style="background:#c8b99a;"></span></div>
+                            <div class="prd-price"><span class="sale-pct">20%</span><span class="original">&#8361;49,000</span>&#8361;39,000</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="thumbnail"><a href="../skin1/preview-detail.html"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=530&fit=crop&q=80" alt="프리미엄 코튼 티셔츠"></a></div>
+                        <div class="prd-info">
+                            <div class="prd-name"><a href="../skin1/preview-detail.html">프리미엄 코튼 티셔츠</a></div>
+                            <div class="prd-colors"><span class="chips" style="background:#fff; border:1px solid #ddd;"></span><span class="chips" style="background:#222;"></span></div>
+                            <div class="prd-price">&#8361;29,000</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="thumbnail"><a href="../skin1/preview-detail.html"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=530&fit=crop&q=80" alt="레더 크로스백"></a></div>
+                        <div class="prd-info">
+                            <div class="prd-name"><a href="../skin1/preview-detail.html">레더 크로스백</a></div>
+                            <div class="prd-colors"><span class="chips" style="background:#222;"></span><span class="chips" style="background:#6b4226;"></span></div>
+                            <div class="prd-price">&#8361;69,000</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ===== WOMEN SECTION (index.html product_listmain_2) ===== -->
+            <div class="m-section-title"><h2>Women</h2><p>New arrivals for her</p></div>
+            <div class="prdlistmain">
+                <ul class="grid2">
+                    <li>
+                        <div class="thumbnail"><a href="../skin1/preview-detail.html"><img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=530&fit=crop&q=80" alt="크롭 트위드 자켓"></a></div>
+                        <div class="prd-info">
+                            <div class="prd-name"><a href="../skin1/preview-detail.html">크롭 트위드 자켓</a></div>
+                            <div class="prd-colors"><span class="chips" style="background:#f5f0e8;"></span><span class="chips" style="background:#e8b4b8;"></span></div>
+                            <div class="prd-price">&#8361;119,000</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="thumbnail"><a href="../skin1/preview-detail.html"><img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=530&fit=crop&q=80" alt="플리츠 롱 스커트"></a></div>
+                        <div class="prd-info">
+                            <div class="prd-name"><a href="../skin1/preview-detail.html">플리츠 롱 스커트</a></div>
+                            <div class="prd-colors"><span class="chips" style="background:#222;"></span><span class="chips" style="background:#f5f0e0;"></span></div>
+                            <div class="prd-price">&#8361;59,000</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="thumbnail"><a href="../skin1/preview-detail.html"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=530&fit=crop&q=80" alt="캐시미어 니트 탑"></a></div>
+                        <div class="prd-info">
+                            <div class="prd-name"><a href="../skin1/preview-detail.html">캐시미어 니트 탑</a></div>
+                            <div class="prd-colors"><span class="chips" style="background:#c8b99a;"></span><span class="chips" style="background:#888;"></span></div>
+                            <div class="prd-price"><span class="sale-pct">30%</span><span class="original">&#8361;79,000</span>&#8361;55,300</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="thumbnail"><a href="../skin1/preview-detail.html"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=530&fit=crop&q=80" alt="미니 숄더백"></a></div>
+                        <div class="prd-info">
+                            <div class="prd-name"><a href="../skin1/preview-detail.html">미니 숄더백</a></div>
+                            <div class="prd-colors"><span class="chips" style="background:#222;"></span><span class="chips" style="background:#f5f0e8;"></span></div>
+                            <div class="prd-price">&#8361;89,000</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ===== NEW ARRIVALS (index.html product_listmain_3) ===== -->
+            <div class="m-section-title"><h2>New</h2><p>Just dropped</p></div>
+            <div class="prdlistmain">
+                <ul class="grid2">
+                    <li>
+                        <div class="thumbnail"><a href="../skin1/preview-detail.html"><img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&h=530&fit=crop&q=80" alt="유틸리티 카고 팬츠"></a></div>
+                        <div class="prd-info">
+                            <div class="prd-name"><a href="../skin1/preview-detail.html">유틸리티 카고 팬츠</a></div>
+                            <div class="prd-colors"><span class="chips" style="background:#6b6b4e;"></span><span class="chips" style="background:#222;"></span></div>
+                            <div class="prd-price">&#8361;59,000</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="thumbnail"><a href="../skin1/preview-detail.html"><img src="https://images.unsplash.com/photo-1495105787522-5334e3ffa0ef?w=400&h=530&fit=crop&q=80" alt="오버사이즈 데님 자켓"></a></div>
+                        <div class="prd-info">
+                            <div class="prd-name"><a href="../skin1/preview-detail.html">오버사이즈 데님 자켓</a></div>
+                            <div class="prd-colors"><span class="chips" style="background:#4a6fa5;"></span></div>
+                            <div class="prd-price">&#8361;99,000</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="thumbnail"><a href="../skin1/preview-detail.html"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=530&fit=crop&q=80" alt="리넨 블렌드 셔츠"></a></div>
+                        <div class="prd-info">
+                            <div class="prd-name"><a href="../skin1/preview-detail.html">리넨 블렌드 셔츠</a></div>
+                            <div class="prd-colors"><span class="chips" style="background:#fff; border:1px solid #ddd;"></span><span class="chips" style="background:#87ceeb;"></span></div>
+                            <div class="prd-price">&#8361;45,000</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="thumbnail"><a href="../skin1/preview-detail.html"><img src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a7a?w=400&h=530&fit=crop&q=80" alt="스트라이프 니트 베스트"></a></div>
+                        <div class="prd-info">
+                            <div class="prd-name"><a href="../skin1/preview-detail.html">스트라이프 니트 베스트</a></div>
+                            <div class="prd-colors"><span class="chips" style="background:#1a2744;"></span><span class="chips" style="background:#f5f0e0;"></span></div>
+                            <div class="prd-price">&#8361;39,000</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div><!-- contents2 -->
+
+        <!-- ===== 푸터 (bottom.html 내용 그대로) ===== -->
+        <div id="bottom">
+            <div class="inner">
+                <div>
+                    <div class="logo"><a href="preview-mobile.html"><img src="../skin1/logo-C-refined.svg" alt="SHOP YOUTHTORY"></a></div>
+                    <div class="joinbt" onclick="location.href='../skin1/preview-register.html'">Register</div>
+                    <div style="clear:both"></div>
+                </div>
+                <div id="cscenter">
+                    <div id="customer">
+                        <ul>
+                            <li class="cs1">H.P 010-5648-7558</li>
+                            <li class="cs2">Opening hours. am11-pm17</li>
+                            <li class="cs2">Lunch break. pm13-pm14</li>
+                            <li class="cs2">Sat, Sun, Holiday Off</li>
+                        </ul>
+                    </div>
+                    <div id="bank">
+                        <ul>
+                            <li class="bank1">신한은행 110-398-259805</li>
+                            <li class="bank2">예금주 : 한유승(유스컴퍼니)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="sns">
+                    <ul>
+                        <li>
+                            <span style="margin-right:10px">Follow us</span>
+                            <a href="#">Instagram</a>
+                        </li>
+                        <div style="clear:both"></div>
+                    </ul>
+                </div>
+                <div id="link">
+                    <ul>
+                        <li><a href="../skin1/preview-index.html"><b>PC ver.</b></a></li>
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Agreement</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                        <div style="clear:both"></div>
+                    </ul>
+                </div>
+                <div id="company">
+                    <ul>
+                        <li class="copytext">
+                            <span>Company</span> 유스컴퍼니<br>
+                            <span>Owner &amp; Admin</span> 한유승<br>
+                            <span>Business no.</span> 595-38-00307<br>
+                            <span>Online-order no.</span> 제2019-서울마포-1897호<br>
+                            <span>Address</span> 서울시 마포구 망원동 421-10<br>
+                            <span>Tel</span> 070-8673-7558<br>
+                            <span>E.mail</span> Contact@youthtory.kr
+                        </li>
+                    </ul>
+                </div>
+                <div style="clear:both"></div>
+                <div id="bottomcopyright">
+                    Copyright (C) 2019 <b>유스컴퍼니</b> all rights reserved<br><a href="#">designed by GA09 DESIGN</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="scrollTop"><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;"><i class="fas fa-arrow-up"></i></a></div>
+    </div>
+
+</div>
+
+<script>
+// 사이드바 토글 (slide_menu.js 대체)
+function toggleSidebar() {
+    document.documentElement.classList.toggle('expand');
+    var aside = document.getElementById('aside');
+    if (document.documentElement.classList.contains('expand')) {
+        aside.style.visibility = 'visible';
+        aside.style.zIndex = '0';
+    } else {
+        setTimeout(function(){ aside.style.visibility = 'hidden'; aside.style.zIndex = '-1'; }, 300);
+    }
+}
+
+// 아코디언 메뉴
+document.querySelectorAll('.accordionmenu').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        this.classList.toggle('active');
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight && panel.style.maxHeight !== '0px') {
+            panel.style.maxHeight = '0';
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+    });
+});
+
+// 히어로 슬라이더 (fullpage.js 프리뷰 대체)
+(function(){
+    var slides = document.querySelectorAll('.hero-section');
+    var dots = document.querySelectorAll('.hero-indicators span');
+    var current = 0;
+    var total = slides.length;
+    window.goSlide = function(n) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = n;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+    };
+    setInterval(function(){ window.goSlide((current + 1) % total); }, 5000);
+})();
+</script>
+</body>
+</html>

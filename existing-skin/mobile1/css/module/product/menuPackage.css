@@ -1,0 +1,52 @@
+.xans-product-menupackage #subcate {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    margin:-10px 0 20px 0;
+}
+
+
+.xans-product-menupackage #subcate ul {
+    overflow: hidden;
+    display: inline-block;
+    font-size: 0;
+    text-align: left;
+    line-height: 0;
+}
+
+
+
+.xans-product-menupackage #subcate ul > li {
+    position: relative;
+    display: inline-block;
+    padding: 3px 5px;
+    margin:0 5px;
+    background: #fff;
+    color: #000;
+    border:1px solid #fff;
+    font-size: 10px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 20px;
+    -webkit-transition-duration: 0.3; transition-duration: 0.3s;
+}
+
+
+
+.xans-product-menupackage #subcate ul > li.selected {
+    background: #fff;
+    color: #000;
+    border-bottom:1px solid #000;
+}
+
+
+.xans-product-menupackage #subcate a { text-decoration:none;}
+.xans-product-menupackage #subcate a:hover { text-decoration:none; color:#fff}
+.xans-product-menupackage #subcate ul > li:hover {
+    background: #fff;
+    color: #000;
+    cursor:pointer;
+    border-bottom:1px solid #000;
+    -webkit-transition-duration: 0.3; transition-duration: 0.3s;
+}
+
+.xans-product-menupackage #subcate ul > li:hover a {color:#000}

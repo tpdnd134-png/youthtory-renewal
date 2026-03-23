@@ -1,0 +1,88 @@
+<!--@layout(/layout/basic/layout.html)-->
+
+<!--@css(/board/review/ga09css/photoreviewbutton.css)-->
+<!--@css(/board/review/ga09css/review.css)-->
+<!--@js(/board/review/ga09js/review.js)-->
+<!--@js(/board/review/ga09js/ga09.review.js)-->
+<div id="review_popup">
+    <div class="content"></div>
+</div>
+
+<div style="clear:both"></div>
+
+<!--@js(/board/review/ga09js/ga09.masorny.js)-->
+<!--@js(/board/review/ga09js/executepin.js)--> 
+    <div id="titleArea" module="board_title_4">
+        <h2>{$board_name}</h2>
+    </div>
+<div style="padding:0 6px 0 8px;">
+    <div module="Board_ListPackage_4" class="ga09 ga09photoreview">
+        <ul  module="board_list_4">  
+        <!--
+            $count = 100
+        -->
+            <li class="product-item">
+                <div class="listinner">
+                    <div class="thumbnail">
+                        <img src="{$img_src|replace:/gallery,}" href="/board/review/review_pop.html{$param_read}" onclick="ga09review.popReview(this);" />
+                    </div>
+                    <div class="infobox">
+                        <div class="info1">
+                            <span class="subject">{$subject}</span>
+                            <span class="writer">{$member_icon}{$writer}</span>
+                        </div>
+                        <div class="info2">
+                            <span class="date {$date_display|display}">{$write_date}</span>
+                            <span class="point {$point_display|display}"><img src="/board/review/img/star_mobile/ico_point{$point_count}.png" alt="{$point_count}점" ></span>
+                            <div style="clear:both"></div>
+                        </div>
+                    </div>   
+                </div>
+            </li>
+            <li class="product-item">
+                <div class="listinner">
+                    <div class="thumbnail">
+                        <img src="{$img_src|replace:/gallery,}" href="/board/review/review_pop.html{$param_read}" onclick="ga09review.popReview(this);" />
+                    </div>
+                    <div class="infobox">
+                        <div class="info1">
+                            <span class="subject">{$subject}</span>
+                            <span class="writer">{$member_icon}{$writer}</span>
+                        </div>
+                        <div class="info2">
+                            <span class="date {$date_display|display}">{$write_date}</span>
+                            <span class="point {$point_display|display}"><img src="/board/review/img/star_mobile/ico_point{$point_count}.png" alt="{$point_count}점" ></span>
+                            <div style="clear:both"></div>
+                        </div>
+                    </div>   
+                </div>
+            </li>
+            <div style="clear:both"></div>
+        </ul>
+    
+    
+        <div module="board_empty_4" class="empty {$empty_display|display}">{$empty_message}</div>
+    </div>
+</div>
+<div id="licensetext" style="text-align:center;">Photoreview skin designed by <a href=http://ga09design.com target="_blank">GA09 DESIGN</a></div>
+
+<div module="board_paging_4" class="paginate typeList">
+    <!--
+        $count = 5
+    -->
+    <p class="prev"><a href="{$param_prev}"><span>이전 페이지</span></a></p>
+    <ol>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+    </ol>
+    <p class="next"><a href="{$param_next}"><span>다음 페이지</span></a></p>
+</div>
+
+<div module="board_search_4">
+    <!--@css(/board/review/ga09css/search.css)-->
+    <fieldset class="boardSearch">
+        <legend>게시물 검색</legend>
+        <div class="category">{$form.search_date} {$form.search_key}</div>
+        <div class="keyword">{$form.search} <button class="btnStrong" onclick="{$action_search}">검색</button></div>
+    </fieldset>
+</div>
