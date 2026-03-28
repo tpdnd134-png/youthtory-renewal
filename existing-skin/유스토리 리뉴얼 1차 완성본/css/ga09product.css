@@ -77,6 +77,25 @@
 .badge-sale { background: rgba(254, 83, 86, 0.7) !important; color: #fff !important; }
 .badge-soldout { background: rgba(0, 0, 0, 0.7) !important; color: #fff !important; }
 
+/* 품절 오버레이 */
+.soldout-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.15em !important;
+    color: #999 !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
 /* 할인율 */
 .discount-rate { font-size: 14px !important; color: #db7e7e !important; margin-left: 4px !important; }
 

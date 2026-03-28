@@ -46,6 +46,76 @@
     #left, #right, #toggle-right { display: none !important; }
 }
 
+/* ===== 로그인 페이지 리디자인 ===== */
+.memberloginbox { border: none !important; background: none !important; max-width: 380px !important; margin: 0 auto !important; padding: 60px 20px !important; display: block !important; }
+.memberloginbox .login { width: 100% !important; float: none !important; border: none !important; background: none !important; padding: 0 !important; }
+.memberloginbox h2, .titleArea { display: none !important; }
+/* LOGIN 타이틀 */
+.memberloginbox .login fieldset::before { content: 'LOGIN' !important; display: block !important; font-size: 22px !important; font-weight: 700 !important; letter-spacing: 0.15em !important; text-align: center !important; margin-bottom: 40px !important; color: #111 !important; font-family: helvetica, 'Noto Sans KR', sans-serif !important; }
+/* 설명 텍스트 숨김 */
+.memberloginbox .login fieldset > legend,
+.memberloginbox .login .ec-base-label { display: none !important; }
+/* 입력필드 래퍼 */
+.memberloginbox .login .check { display: block !important; width: 100% !important; }
+.memberloginbox .login .check span { display: block !important; margin-bottom: 0 !important; }
+.memberloginbox .login .check span label { display: none !important; }
+/* 입력필드 */
+.memberloginbox .login #member_id,
+.memberloginbox .login #member_passwd { width: 100% !important; height: auto !important; padding: 14px 0 !important; border: none !important; border-bottom: 1px solid #e0e0e0 !important; background: none !important; background-image: none !important; font-size: 14px !important; color: #111 !important; outline: none !important; box-sizing: border-box !important; font-family: helvetica, 'Noto Sans KR', sans-serif !important; -webkit-appearance: none !important; border-radius: 0 !important; }
+.memberloginbox .login #member_id:focus,
+.memberloginbox .login #member_passwd:focus { border-bottom-color: #111 !important; }
+/* 로그인 버튼 */
+.memberloginbox .login .button { display: block !important; margin: 24px 0 0 !important; float: none !important; width: 100% !important; }
+.memberloginbox .login .button a,
+.memberloginbox .login .button input[type="image"] { display: block !important; width: 100% !important; height: 48px !important; background: #111 !important; color: #fff !important; font-size: 13px !important; font-weight: 500 !important; letter-spacing: 0.1em !important; border: none !important; border-radius: 0 !important; cursor: pointer !important; text-align: center !important; line-height: 48px !important; font-family: helvetica, 'Noto Sans KR', sans-serif !important; }
+/* 보안접속 완전 숨김 */
+.memberloginbox .login .security { display: block !important; text-align: center !important; margin: 16px 0 0 !important; padding: 0 !important; }
+.memberloginbox .login .security * { font-size: 12px !important; color: #999 !important; }
+.memberloginbox .login .security img,
+.memberloginbox .login .security input[name="check_secret_connect"],
+.memberloginbox .login .security label[for="check_secret_connect"] { display: none !important; }
+.memberloginbox .login p.security { font-size: 0 !important; }
+.memberloginbox .login p.security input[name="check_save_id"] { margin-right: 4px !important; vertical-align: middle !important; }
+/* "보안접속" 텍스트 숨김 — CSS로 텍스트노드 제거 */
+.memberloginbox .login .security { font-size: 0 !important; line-height: 0 !important; }
+.memberloginbox .login .security input[type="checkbox"],
+.memberloginbox .login .security label { font-size: 12px !important; line-height: 1.4 !important; }
+/* 아이디찾기 / 비밀번호찾기 */
+.memberloginbox .login ul { display: flex !important; justify-content: center !important; gap: 24px !important; margin: 20px 0 !important; padding: 0 !important; list-style: none !important; border: none !important; }
+.memberloginbox .login ul li { float: none !important; margin: 0 !important; padding: 0 !important; }
+.memberloginbox .login ul li a { font-size: 12px !important; color: #999 !important; text-decoration: none !important; letter-spacing: 0.02em !important; }
+.memberloginbox .login ul li a:hover { color: #111 !important; }
+.memberloginbox .login ul li img,
+.memberloginbox .login ul li a img { display: none !important; }
+/* 아이디 저장 체크박스 중앙 정렬 */
+.memberloginbox .login ul li:last-child { display: flex !important; align-items: center !important; gap: 4px !important; }
+.memberloginbox .login ul li:last-child p { margin: 0 !important; font-size: 12px !important; color: #999 !important; }
+/* 회원가입 영역 */
+.memberloginbox .login p { text-align: center !important; margin: 0 !important; padding: 0 !important; font-size: 12px !important; color: #999 !important; }
+.memberloginbox .login fieldset ~ p { margin-top: 32px !important; padding-top: 32px !important; border-top: 1px solid #f0f0f0 !important; }
+.memberloginbox .login p a[href*="join"] { display: block !important; width: 100% !important; height: 48px !important; margin: 16px 0 0 !important; background: #fff !important; color: #111 !important; font-size: 13px !important; font-weight: 500 !important; letter-spacing: 0.1em !important; border: 1px solid #ddd !important; border-radius: 0 !important; cursor: pointer !important; text-align: center !important; line-height: 48px !important; text-decoration: none !important; font-family: helvetica, 'Noto Sans KR', sans-serif !important; box-sizing: border-box !important; }
+.memberloginbox .login p a[href*="join"]:hover { border-color: #111 !important; }
+.memberloginbox .login p a[href*="join"] img { display: none !important; }
+.memberloginbox .login p a[href*="join"]::after { content: '회원가입' !important; }
+/* 비회원 구매 */
+.memberloginbox .guest { width: 100% !important; max-width: 380px !important; margin: 0 auto !important; padding: 0 20px 40px !important; border: none !important; background: none !important; float: none !important; box-sizing: border-box !important; border-top: 1px solid #f0f0f0 !important; padding-top: 32px !important; }
+.memberloginbox .guest h2 { display: none !important; }
+.memberloginbox .guest p { text-align: center !important; font-size: 12px !important; color: #999 !important; margin: 0 !important; line-height: 1.6 !important; }
+.memberloginbox .guest p a { display: block !important; width: 100% !important; height: 48px !important; margin: 20px 0 0 !important; background: #fff !important; color: #111 !important; font-size: 13px !important; font-weight: 500 !important; letter-spacing: 0.1em !important; border: 1px solid #ddd !important; border-radius: 0 !important; cursor: pointer !important; text-align: center !important; line-height: 48px !important; text-decoration: none !important; font-family: helvetica, 'Noto Sans KR', sans-serif !important; box-sizing: border-box !important; }
+.memberloginbox .guest p a:hover { border-color: #111 !important; color: #111 !important; }
+.memberloginbox .guest p a img { display: none !important; }
+.memberloginbox .guest p a::after { content: '비회원 주문하기' !important; }
+/* 불필요 요소 숨김 */
+.memberloginbox .path { display: none !important; }
+
+@media (max-width: 768px) {
+    .memberloginbox { padding: 40px 24px !important; }
+}
+
+@media (max-width: 768px) {
+    .memberloginbox { padding: 40px 24px !important; }
+}
+
 /* ===== 장바구니 디자인 ===== */
 .path { display: none !important; }
 .titleArea { border: none !important; padding: 16px 20px !important; margin: 0 !important; }
@@ -194,6 +264,14 @@
 
 </head>
 <body>
+<script>
+/* jQuery 1.4.4 .on() 폴리필 + 페이드인 */
+(function(){
+    function p(j){if(!j||!j.fn)return;if(!j.fn.on){j.fn.on=function(e,s,d,h){if(typeof s==='function'){h=s;s=void 0}if(typeof d==='function'){h=d;d=void 0}return s?this.delegate(s,e,h):this.bind(e,h)};};if(!j.fn.off){j.fn.off=function(e,s,h){if(typeof s==='function'){h=s;s=void 0}return s?this.undelegate(s,e,h):this.unbind(e,h)};}}
+    if(typeof jQuery!=='undefined')p(jQuery);if(typeof $!=='undefined')p($);
+    document.addEventListener('DOMContentLoaded',function(){if(typeof jQuery!=='undefined')p(jQuery);if(typeof $!=='undefined')p($);document.body.classList.add('yt-loaded');},false);
+})();
+</script>
 
 <div id="toparea"></div>
 <div id="loginpopup"><!--@import(/loginpopup.html)--></div>
@@ -221,7 +299,7 @@
       <a href="#" onclick="toggleMobileSearch(); return false;"><i class="fas fa-search"></i></a>
       <span module="Layout_stateLogoff"><a href="/member/login.html"><i class="fas fa-sign-in-alt"></i></a></span>
       <span module="Layout_stateLogon"><a href="/myshop/index.html"><i class="fas fa-user"></i></a></span>
-      <a href="/order/basket.html"><i class="fas fa-shopping-cart"></i></a>
+      <a href="/order/basket.html" style="position:relative;"><i class="fas fa-shopping-cart"></i><span module="Layout_orderBasketcount" class="mobile-cart-count">{$basket_count}</span></a>
     </div>
   </div>
 
@@ -232,14 +310,19 @@
       <button class="menu-overlay-close" onclick="toggleMenuOverlay()">✕</button>
       <ul class="menu-overlay-nav" module="Layout_category">
         <li>
-          <button class="menu-sub-toggle" onclick="toggleSubMenu(this)">{$name} <span class="toggle-arrow">&#9662;</span></button>
+          <button class="menu-sub-toggle" onclick="toggleSubMenu(this)">
+            {$name} <span class="toggle-arrow">+</span>
+          </button>
           <ul class="menu-overlay-sub" data-cate-href="/product/list.html{$param}">
           </ul>
         </li>
       </ul>
-      <ul class="menu-overlay-nav">
+      <!-- COMMUNITY (모듈에 없을 때만 표시) -->
+      <ul class="menu-overlay-nav" id="communityFallback">
         <li>
-          <button class="menu-sub-toggle" onclick="toggleSubMenu(this)">COMMUNITY <span class="toggle-arrow">&#9662;</span></button>
+          <button class="menu-sub-toggle" onclick="toggleSubMenu(this)">
+            COMMUNITY <span class="toggle-arrow">+</span>
+          </button>
           <ul class="menu-overlay-sub">
             <li><a href="/board/free/list.html?board_no=1">Notice</a></li>
             <li><a href="/board/product/list.html?board_no=6">Q&A</a></li>
@@ -247,6 +330,22 @@
           </ul>
         </li>
       </ul>
+      <script>
+      (function(){
+        var nav = document.querySelector('.menu-overlay-nav[module]');
+        if(nav && nav.textContent.indexOf('COMMUNITY') > -1){
+          var fb = document.getElementById('communityFallback');
+          if(fb) fb.style.display = 'none';
+        }
+      })();
+      </script>
+      <div class="menu-overlay-footer">
+        <a href="https://www.instagram.com/shop_youthtory/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <span module="Layout_stateLogoff"><a href="/member/login.html">Login</a></span>
+        <span module="Layout_stateLogoff"><a href="/member/join.html">Register</a></span>
+        <span module="Layout_stateLogon"><a href="/myshop/index.html">My Page</a></span>
+        <span module="Layout_stateLogon"><a href="{$action_logout}">Logout</a></span>
+      </div>
     </div>
   </div>
 

@@ -1,0 +1,390 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - heading "스마트디자인 편집창" [level=1] [ref=e4]:
+        - link "스마트디자인 편집창":
+          - /url: ./main?skin_no=14&skin_code=skin9&shop_no=1
+          - img "스마트디자인 편집창" [ref=e5] [cursor=pointer]
+      - paragraph [ref=e6]:
+        - link [ref=e7] [cursor=pointer]:
+          - /url: https://d.cafe24.com/category/?display=PTDM
+          - img [ref=e8]
+      - paragraph [ref=e9]:
+        - text: 편집중인 디자인
+        - strong [ref=e10]: 수정 4
+      - list [ref=e11]:
+        - listitem [ref=e12] [cursor=pointer]: 자주쓰는화면
+        - listitem [ref=e13] [cursor=pointer]: 전체화면보기
+      - list [ref=e16]:
+        - listitem [ref=e17]:
+          - strong [ref=e18]: 레이아웃 화면
+          - list
+        - listitem [ref=e19]:
+          - strong [ref=e20]: 주요화면
+          - list [ref=e21]:
+            - listitem [ref=e22]:
+              - generic [ref=e23]:
+                - link "메인화면" [ref=e24] [cursor=pointer]:
+                  - /url: /skin-skin9/index.html
+                - generic [ref=e25]:
+                  - button "수정" [ref=e26] [cursor=pointer]
+                  - button "삭제" [ref=e27] [cursor=pointer]
+            - listitem [ref=e28]:
+              - generic [ref=e29]:
+                - link "상품분류" [ref=e30] [cursor=pointer]:
+                  - /url: /skin-skin9/product/list.html
+                - generic [ref=e31]:
+                  - button "수정" [ref=e32] [cursor=pointer]
+                  - button "삭제" [ref=e33] [cursor=pointer]
+            - listitem [ref=e34]:
+              - generic [ref=e35]:
+                - link "상품상세" [ref=e36] [cursor=pointer]:
+                  - /url: /skin-skin9/product/detail.html
+                - generic [ref=e37]:
+                  - button "수정" [ref=e38] [cursor=pointer]
+                  - button "삭제" [ref=e39] [cursor=pointer]
+            - listitem [ref=e40]:
+              - generic [ref=e41]:
+                - link "장바구니" [ref=e42] [cursor=pointer]:
+                  - /url: /skin-skin9/order/basket.html
+                - generic [ref=e43]:
+                  - button "수정" [ref=e44] [cursor=pointer]
+                  - button "삭제" [ref=e45] [cursor=pointer]
+            - listitem [ref=e46]:
+              - generic [ref=e47]:
+                - link "주문서작성" [ref=e48] [cursor=pointer]:
+                  - /url: /skin-skin9/order/orderform.html
+                - generic [ref=e49]:
+                  - button "수정" [ref=e50] [cursor=pointer]
+                  - button "삭제" [ref=e51] [cursor=pointer]
+            - listitem [ref=e52]:
+              - generic [ref=e53]:
+                - link "주문완료" [ref=e54] [cursor=pointer]:
+                  - /url: /skin-skin9/order/order_result.html
+                - generic [ref=e55]:
+                  - button "수정" [ref=e56] [cursor=pointer]
+                  - button "삭제" [ref=e57] [cursor=pointer]
+            - listitem [ref=e58]:
+              - generic [ref=e59]:
+                - link "회원가입" [ref=e60] [cursor=pointer]:
+                  - /url: /skin-skin9/member/join.html
+                - generic [ref=e61]:
+                  - button "수정" [ref=e62] [cursor=pointer]
+                  - button "삭제" [ref=e63] [cursor=pointer]
+            - listitem [ref=e64]:
+              - generic [ref=e65]:
+                - link "마이쇼핑" [ref=e66] [cursor=pointer]:
+                  - /url: /skin-skin9/myshop/index.html
+                - generic [ref=e67]:
+                  - button "수정" [ref=e68] [cursor=pointer]
+                  - button "삭제" [ref=e69] [cursor=pointer]
+            - listitem [ref=e70]:
+              - generic [ref=e71]:
+                - link "로그인" [ref=e72] [cursor=pointer]:
+                  - /url: /skin-skin9/member/login.html
+                - generic [ref=e73]:
+                  - button "수정" [ref=e74] [cursor=pointer]
+                  - button "삭제" [ref=e75] [cursor=pointer]
+      - paragraph [ref=e76]:
+        - link "폴더추가" [ref=e77] [cursor=pointer]:
+          - /url: "#none"
+        - link "화면추가" [ref=e78] [cursor=pointer]:
+          - /url: "#none"
+      - group "화면명 검색" [ref=e80]:
+        - generic [ref=e81]:
+          - generic [ref=e82]: 화면명 검색
+          - textbox "화면명 검색" [ref=e83]
+        - button "검색" [ref=e84] [cursor=pointer]
+      - link "매뉴얼 바로가기" [ref=e85] [cursor=pointer]:
+        - /url: https://support.cafe24.com/hc/ko/articles/7749165125401
+      - link "스마트디자인서포트" [ref=e86] [cursor=pointer]:
+        - /url: https://sdsupport.cafe24.com
+    - button "메뉴 숨김" [ref=e89] [cursor=pointer]
+    - generic [ref=e90]:
+      - generic [ref=e91]:
+        - generic [ref=e92]:
+          - button "수정중인 리스트 보기" [ref=e93] [cursor=pointer]
+          - list [ref=e94]:
+            - listitem [ref=e95] [cursor=pointer]:
+              - generic [ref=e96]:
+                - link "쇼핑몰 메인(index.html)" [ref=e97]:
+                  - /url: /index.html
+                - button "닫기" [ref=e98]
+            - listitem [ref=e306] [cursor=pointer]:
+              - generic [ref=e307]:
+                - link "faq.html" [ref=e308]:
+                  - /url: /board/free/faq.html
+                - button "닫기" [ref=e309]
+          - paragraph [ref=e99]:
+            - button "이전" [ref=e100] [cursor=pointer]
+            - button "다음" [ref=e101] [cursor=pointer]
+          - paragraph [ref=e102]:
+            - button "소스 찾기/바꾸기" [ref=e103] [cursor=pointer]
+            - button "모두저장" [ref=e104] [cursor=pointer]
+            - button "모두닫기" [ref=e105] [cursor=pointer]
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - link "디자인 유지보수가 필요하다면?!" [ref=e108] [cursor=pointer]:
+              - /url: https://d.cafe24.com/category/?display=PTDM
+            - button "https:// 변경" [ref=e109] [cursor=pointer]
+            - paragraph [ref=e110]:
+              - button "로그인 전" [ref=e111] [cursor=pointer]
+              - button "로그인 후" [ref=e112] [cursor=pointer]
+          - generic [ref=e113]:
+            - paragraph [ref=e114]:
+              - button "저장" [active] [ref=e115] [cursor=pointer]
+              - button "새이름 저장" [ref=e116] [cursor=pointer]
+              - button "삭제" [ref=e117] [cursor=pointer]
+              - button "닫기" [ref=e118] [cursor=pointer]
+            - list [ref=e119]:
+              - listitem [ref=e120]:
+                - button "미리보기" [ref=e121] [cursor=pointer]
+              - listitem [ref=e122]:
+                - button "모듈추가" [ref=e123] [cursor=pointer]
+              - listitem [ref=e124]:
+                - button "최신소스" [ref=e125]
+              - listitem [ref=e126]:
+                - button "히스토리" [ref=e127] [cursor=pointer]
+      - generic [ref=e128]:
+        - iframe [ref=e480]:
+          - generic [active] [ref=f9e1]:
+            - generic:
+              - generic [ref=f9e4]:
+                - link "회원가입 시 즉시 사용 가능한 3,000 포인트가 지급됩니다." [ref=f9e6] [cursor=pointer]:
+                  - /url: /skin-skin9/member/join.html
+                - link "매주 선보이는 트렌디한 뉴 아이템과 스타일링을 확인해 보세요." [ref=f9e8] [cursor=pointer]:
+                  - /url: /skin-skin9/product/list.html
+                - link "회원가입 시 즉시 사용 가능한 3,000 포인트가 지급됩니다." [ref=f9e10] [cursor=pointer]:
+                  - /url: /skin-skin9/member/join.html
+                - link "매주 선보이는 트렌디한 뉴 아이템과 스타일링을 확인해 보세요." [ref=f9e12] [cursor=pointer]:
+                  - /url: /skin-skin9/product/list.html
+              - generic [ref=f9e13]:
+                - button "☰" [ref=f9e14] [cursor=pointer]
+                - link "YOUTHTORY" [ref=f9e15] [cursor=pointer]:
+                  - /url: /skin-skin9/
+                  - img "YOUTHTORY" [ref=f9e16]
+                - generic [ref=f9e17]:
+                  - link "" [ref=f9e18] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=f9e19]: 
+                  - link "" [ref=f9e21] [cursor=pointer]:
+                    - /url: /skin-skin9/member/login.html
+                    - generic [ref=f9e22]: 
+                  - link " 7" [ref=f9e23] [cursor=pointer]:
+                    - /url: /skin-skin9/order/basket.html
+                    - generic [ref=f9e24]: 
+                    - generic [ref=f9e25]: "7"
+              - text:  
+            - generic [ref=f9e26]:
+              - text: 
+              - generic [ref=f9e28]:
+                - generic [ref=f9e29]:
+                  - heading "FAQ" [level=2] [ref=f9e30]
+                  - paragraph [ref=f9e31]: 자주 묻는 질문을 확인해 보세요.
+                - generic [ref=f9e32]:
+                  - button "전체" [ref=f9e33] [cursor=pointer]
+                  - button "주문/결제" [ref=f9e34] [cursor=pointer]
+                  - button "배송" [ref=f9e35] [cursor=pointer]
+                  - button "교환/반품" [ref=f9e36] [cursor=pointer]
+                  - button "회원/적립금" [ref=f9e37] [cursor=pointer]
+                  - button "기타" [ref=f9e38] [cursor=pointer]
+                - generic [ref=f9e39]:
+                  - generic [ref=f9e40]:
+                    - button "Q 주문 후 결제 수단을 변경할 수 있나요?" [ref=f9e41] [cursor=pointer]:
+                      - generic [ref=f9e42]: Q
+                      - generic [ref=f9e43]: 주문 후 결제 수단을 변경할 수 있나요?
+                    - paragraph [ref=f9e45]: 결제 전 주문 취소 후 재주문이 필요합니다. 결제 완료된 주문은 취소 후 재주문 부탁드립니다.
+                  - generic [ref=f9e46]:
+                    - button "Q 무통장 입금 기한은 얼마인가요?" [ref=f9e47] [cursor=pointer]:
+                      - generic [ref=f9e48]: Q
+                      - generic [ref=f9e49]: 무통장 입금 기한은 얼마인가요?
+                    - paragraph [ref=f9e51]: 주문일로부터 3일(72시간) 이내 입금해 주셔야 하며, 기한 초과 시 자동 취소됩니다.
+                  - generic [ref=f9e52]:
+                    - button "Q 여러 상품을 따로 주문했는데 합배송 가능한가요?" [ref=f9e53] [cursor=pointer]:
+                      - generic [ref=f9e54]: Q
+                      - generic [ref=f9e55]: 여러 상품을 따로 주문했는데 합배송 가능한가요?
+                    - paragraph [ref=f9e57]: 배송 준비 전이라면 고객센터로 연락 주시면 합배송 처리 도와드리겠습니다.
+                  - generic [ref=f9e58]:
+                    - button "Q 배송은 얼마나 걸리나요?" [ref=f9e59] [cursor=pointer]:
+                      - generic [ref=f9e60]: Q
+                      - generic [ref=f9e61]: 배송은 얼마나 걸리나요?
+                    - paragraph [ref=f9e63]: 결제 확인 후 1-3일 이내 출고되며, 출고 후 1-2일 내 수령 가능합니다. (주말/공휴일 제외)
+                  - generic [ref=f9e64]:
+                    - button "Q 배송 조회는 어디서 하나요?" [ref=f9e65] [cursor=pointer]:
+                      - generic [ref=f9e66]: Q
+                      - generic [ref=f9e67]: 배송 조회는 어디서 하나요?
+                    - paragraph [ref=f9e69]: 마이페이지 > 주문조회에서 송장번호 확인 후 택배사 사이트에서 조회 가능합니다.
+                  - generic [ref=f9e70]:
+                    - button "Q 도서산간 지역은 배송비가 추가되나요?" [ref=f9e71] [cursor=pointer]:
+                      - generic [ref=f9e72]: Q
+                      - generic [ref=f9e73]: 도서산간 지역은 배송비가 추가되나요?
+                    - paragraph [ref=f9e75]: 네, 도서산간 지역은 기본 배송비 외 추가 배송비가 발생합니다.
+                  - generic [ref=f9e76]:
+                    - button "Q 교환/반품은 어떻게 신청하나요?" [ref=f9e77] [cursor=pointer]:
+                      - generic [ref=f9e78]: Q
+                      - generic [ref=f9e79]: 교환/반품은 어떻게 신청하나요?
+                    - paragraph [ref=f9e81]: 마이페이지 > 주문조회에서 교환/반품 신청이 가능합니다. 상품 수령 후 7일 이내 신청해 주세요.
+                  - generic [ref=f9e82]:
+                    - button "Q 교환/반품 배송비는 누가 부담하나요?" [ref=f9e83] [cursor=pointer]:
+                      - generic [ref=f9e84]: Q
+                      - generic [ref=f9e85]: 교환/반품 배송비는 누가 부담하나요?
+                    - paragraph [ref=f9e87]: 단순 변심의 경우 왕복 배송비 고객 부담, 상품 불량/오배송의 경우 무료입니다.
+                  - generic [ref=f9e88]:
+                    - button "Q 교환/반품이 불가한 경우가 있나요?" [ref=f9e89] [cursor=pointer]:
+                      - generic [ref=f9e90]: Q
+                      - generic [ref=f9e91]: 교환/반품이 불가한 경우가 있나요?
+                    - paragraph [ref=f9e93]: 착용 흔적이 있거나, 택을 제거한 경우, 세탁/수선한 경우 교환/반품이 불가합니다.
+                  - generic [ref=f9e94]:
+                    - button "Q 회원 등급은 어떻게 결정되나요?" [ref=f9e95] [cursor=pointer]:
+                      - generic [ref=f9e96]: Q
+                      - generic [ref=f9e97]: 회원 등급은 어떻게 결정되나요?
+                    - paragraph [ref=f9e99]: 최근 12개월 총 실결제 금액 기준으로 매일 자동 변경됩니다. 멤버십 페이지에서 등급별 혜택을 확인하세요.
+                  - generic [ref=f9e100]:
+                    - button "Q 적립금은 언제 사용 가능한가요?" [ref=f9e101] [cursor=pointer]:
+                      - generic [ref=f9e102]: Q
+                      - generic [ref=f9e103]: 적립금은 언제 사용 가능한가요?
+                    - paragraph [ref=f9e105]: 구매 확정 후 지급되며, 1,000원 이상 보유 시 사용 가능합니다.
+                  - generic [ref=f9e106]:
+                    - button "Q 쿠폰은 어디서 확인하나요?" [ref=f9e107] [cursor=pointer]:
+                      - generic [ref=f9e108]: Q
+                      - generic [ref=f9e109]: 쿠폰은 어디서 확인하나요?
+                    - paragraph [ref=f9e111]: 마이페이지 > 쿠폰에서 보유 쿠폰과 사용 가능 기간을 확인하실 수 있습니다.
+                  - generic [ref=f9e112]:
+                    - button "Q 고객센터 운영 시간은 언제인가요?" [ref=f9e113] [cursor=pointer]:
+                      - generic [ref=f9e114]: Q
+                      - generic [ref=f9e115]: 고객센터 운영 시간은 언제인가요?
+                    - paragraph [ref=f9e117]: 평일 10:00 - 18:00 (점심시간 12:00 - 13:00 제외, 주말/공휴일 휴무)
+                  - generic [ref=f9e118]:
+                    - button "Q 카카오톡 상담은 가능한가요?" [ref=f9e119] [cursor=pointer]:
+                      - generic [ref=f9e120]: Q
+                      - generic [ref=f9e121]: 카카오톡 상담은 가능한가요?
+                    - paragraph [ref=f9e123]: 네, 카카오톡 채널 "YOUTHTORY"를 추가하시면 채팅 상담이 가능합니다.
+                  - generic [ref=f9e124]:
+                    - button "Q 매장 방문 구매가 가능한가요?" [ref=f9e125] [cursor=pointer]:
+                      - generic [ref=f9e126]: Q
+                      - generic [ref=f9e127]: 매장 방문 구매가 가능한가요?
+                    - paragraph [ref=f9e129]: 현재 온라인 전용 쇼핑몰로 운영 중이며, 오프라인 매장은 없습니다.
+              - generic [ref=f9e134]:
+                - generic [ref=f9e135]:
+                  - img "SHOP YOUTHTORY" [ref=f9e138]
+                  - generic [ref=f9e139]:
+                    - link "TERMS OF USE" [ref=f9e140] [cursor=pointer]:
+                      - /url: /skin-skin9/member/agreement.html
+                    - link "PRIVACY POLICY" [ref=f9e141] [cursor=pointer]:
+                      - /url: /skin-skin9/member/privacy.html
+                  - generic [ref=f9e142]:
+                    - link "Instagram" [ref=f9e143] [cursor=pointer]:
+                      - /url: javascript:gogoNew(2)
+                      - generic [ref=f9e144]: 
+                    - link "Facebook" [ref=f9e145] [cursor=pointer]:
+                      - /url: javascript:gogoNew(1)
+                      - generic [ref=f9e146]: 
+                - generic [ref=f9e147]:
+                  - text: "© SHOP YOUTHTORY | CEO: 한유승 | EMAIL: Contact@youthtory.kr | TEL: 070-8673-7558"
+                  - text: "ADDRESS: 서울시 마포구 망원동 421-10 | BUSINESS LICENSE: 595-38-00307"
+                  - text: "BUSINESS REGISTRATION: 제2019-서울마포-1897호"
+                  - link "[사업자 정보 확인]" [ref=f9e148] [cursor=pointer]:
+                    - /url: http://www.ftc.go.kr/info/bizinfo/communicationList.jsp
+            - text: 
+            - generic:
+              - link:
+                - /url: https://www.instagram.com/shop_youthtory/
+        - generic [ref=e132]: 높이 영역 조절
+        - generic [ref=e133]:
+          - generic [ref=e134]:
+            - strong [ref=e135]: HTML
+            - listitem
+            - list [ref=e136]:
+              - listitem [ref=e137]:
+                - link "축소하기" [ref=e138] [cursor=pointer]:
+                  - /url: "#none"
+                  - generic: 축소하기
+              - listitem [ref=e139]:
+                - link "확대보기" [ref=e140] [cursor=pointer]:
+                  - /url: "#none"
+                  - generic: 확대보기
+          - generic [ref=e313]:
+            - textbox [ref=e314]
+            - generic [ref=e317]:
+              - generic [ref=e427]:
+                - generic [ref=e428]: "1"
+                - text: <!--@layout(/layout/basic/layout.html)-->
+              - generic [ref=e429]:
+                - generic [ref=e430]: "2"
+                - text: <div id="faq">
+              - generic [ref=e432]: "3"
+              - generic [ref=e433]:
+                - generic [ref=e434]: "4"
+                - text: <style>
+              - generic [ref=e435]:
+                - generic [ref=e436]: "5"
+                - text: "#faq, #faq * { margin:0; padding:0; border:0; box-sizing:border-box; font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:12px; line-height:1.6; color:#111; letter-spacing:0; text-decoration:none; list-style:none; background:transparent; outline:none; -webkit-font-smoothing:antialiased; }"
+              - generic [ref=e437]:
+                - generic [ref=e438]: "6"
+                - text: "#faq { max-width:720px; margin:0 auto; padding:80px 20px 120px; background:#fff; }"
+              - generic [ref=e439]:
+                - generic [ref=e440]: "7"
+                - text: "#faq .faq-header { text-align:center; margin-bottom:52px; }"
+              - generic [ref=e441]:
+                - generic [ref=e442]: "8"
+                - text: "#faq .faq-header h2 { font-size:22px; font-weight:600; letter-spacing:0.12em; margin-bottom:10px; }"
+              - generic [ref=e443]:
+                - generic [ref=e444]: "9"
+                - text: "#faq .faq-header p { font-size:12px; font-weight:400; color:#888; }"
+              - generic [ref=e445]:
+                - generic [ref=e446]: "10"
+                - text: "#faq .faq-tabs { display:flex; gap:0; border-bottom:1px solid #e8e8e8; margin-bottom:0; }"
+              - generic [ref=e447]:
+                - generic [ref=e448]: "11"
+                - text: "#faq .faq-tabs button { flex:1; padding:13px 0; font-size:11px; font-weight:500; color:#999; background:none; cursor:pointer; transition:color .2s,border-color .2s; border-bottom:2px solid transparent; position:relative; bottom:-1px; letter-spacing:.02em; }"
+              - generic [ref=e449]:
+                - generic [ref=e450]: "12"
+                - text: "#faq .faq-tabs button:hover { color:#555; }"
+              - generic [ref=e451]:
+                - generic [ref=e452]: "13"
+                - text: "#faq .faq-tabs button.is-active { color:#111; font-weight:600; border-bottom-color:#111; }"
+              - generic [ref=e453]:
+                - generic [ref=e454]: "14"
+                - text: "#faq .faq-item { border-bottom:1px solid #f0f0f0; }"
+              - generic [ref=e455]:
+                - generic [ref=e456]: "15"
+                - text: "#faq .faq-item:last-child { border-bottom:1px solid #e8e8e8; }"
+              - generic [ref=e457]:
+                - generic [ref=e458]: "16"
+                - text: "#faq .faq-question { display:flex; align-items:center; width:100%; padding:18px 0; cursor:pointer; background:none; text-align:left; transition:opacity .2s; }"
+              - generic [ref=e459]:
+                - generic [ref=e460]: "17"
+                - text: "#faq .faq-question:hover { opacity:.6; }"
+              - generic [ref=e461]:
+                - generic [ref=e462]: "18"
+                - text: "#faq .faq-question .q-label { font-size:11px; font-weight:600; color:#111; margin-right:14px; flex-shrink:0; width:18px; }"
+              - generic [ref=e463]:
+                - generic [ref=e464]: "19"
+                - text: "#faq .faq-question .q-text { flex:1; font-size:12px; font-weight:500; color:#222; letter-spacing:.01em; }"
+              - generic [ref=e465]:
+                - generic [ref=e466]: "20"
+                - text: "#faq .faq-question .q-icon { flex-shrink:0; width:20px; height:20px; position:relative; margin-left:16px; }"
+              - generic [ref=e467]:
+                - generic [ref=e468]: "21"
+                - text: "#faq .faq-question .q-icon::before, #faq .faq-question .q-icon::after { content:''; position:absolute; background:#999; transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .3s; top:50%; left:50%; }"
+              - generic [ref=e469]:
+                - generic [ref=e470]: "22"
+                - text: "#faq .faq-question .q-icon::before { width:11px; height:1px; transform:translate(-50%,-50%); }"
+              - generic [ref=e471]:
+                - generic [ref=e472]: "23"
+                - text: "#faq .faq-question .q-icon::after { width:1px; height:11px; transform:translate(-50%,-50%); }"
+              - generic [ref=e473]:
+                - generic [ref=e474]: "24"
+                - text: "#faq .faq-item.is-open .faq-question .q-icon::after { transform:translate(-50%,-50%) rotate(90deg); opacity:0; }"
+              - generic [ref=e475]:
+                - generic [ref=e476]: "25"
+                - text: "#faq .faq-answer { max-height:0; overflow:hidden; transition:max-height .35s cubic-bezier(.16,1,.3,1),padding .35s cubic-bezier(.16,1,.3,1); padding:0 0 0 32px; }"
+              - generic [ref=e477]:
+                - generic [ref=e478]: "26"
+                - text: "#faq .faq-item.is-open .faq-answer { max-height:200px; padding:0 0 20px 32px; }"
+      - paragraph [ref=e203]:
+        - button "화면보기" [ref=e204] [cursor=pointer]
+        - button "분할보기" [ref=e205] [cursor=pointer]
+        - button "HTML" [ref=e206] [cursor=pointer]
+  - paragraph [ref=e208]:
+    - img "Copyrightⓒ Simplex Internet Inc. All Rights Reserved." [ref=e209]

@@ -1,0 +1,230 @@
+/* =====================================================
+   MYSHOP — la-room 스타일 마이페이지
+   ===================================================== */
+
+/* 기본 리셋 & 레이아웃 */
+.path { display: none !important; }
+.titleArea { display: none !important; }
+
+/* ===== 회원 정보 배너 숨김 (간결한 UI) ===== */
+.ec-base-box.typeMember { display: none !important; }
+.ec-base-box.typeThinBg { display: none !important; }
+
+/* ===== 적립금/예치금/쿠폰 리스트 ===== */
+.ec-base-box.gHalf {
+    background: none !important;
+    border: none !important;
+    padding: 20px 0 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+.ec-base-box.gHalf ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.ec-base-box.gHalf ul li {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 14px 0 !important;
+    border-bottom: 1px solid #f1f1f1 !important;
+    font-family: 'Noto Sans KR', sans-serif !important;
+}
+.ec-base-box.gHalf ul li:first-child {
+    border-top: 1px solid #111 !important;
+}
+.ec-base-box.gHalf ul li .title {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color: #333 !important;
+    flex: 1 !important;
+    padding-left: 12px !important;
+}
+.ec-base-box.gHalf ul li .title::before {
+    content: '›' !important;
+    margin-right: 8px !important;
+    color: #999 !important;
+}
+.ec-base-box.gHalf ul li .data {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #111 !important;
+    text-align: right !important;
+    flex: 1 !important;
+}
+.ec-base-box.gHalf ul li .button {
+    margin-left: 12px !important;
+}
+.ec-base-box.gHalf ul li .button img {
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    padding: 4px 12px !important;
+    height: auto !important;
+}
+
+/* ===== 주문처리 현황 ===== */
+#orderstate {
+    margin: 32px 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+}
+#orderstate .title {
+    padding: 0 0 16px !important;
+    border: none !important;
+    margin: 0 !important;
+}
+#orderstate .title h3 {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #111 !important;
+    font-family: 'Noto Sans KR', sans-serif !important;
+    letter-spacing: -0.02em !important;
+}
+#orderstate .title h3 .desc {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #999 !important;
+}
+#orderstate .state {
+    border: 1px solid #e8e8e8 !important;
+    border-radius: 0 !important;
+    padding: 24px 0 !important;
+    background: #fff !important;
+}
+#orderstate .state ul.order {
+    display: flex !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+#orderstate .state ul.order li {
+    flex: 1 !important;
+    text-align: center !important;
+    border-right: 1px solid #e8e8e8 !important;
+    padding: 8px 0 !important;
+}
+#orderstate .state ul.order li:last-child {
+    border-right: none !important;
+}
+#orderstate .state ul.order li strong {
+    display: block !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #666 !important;
+    margin-bottom: 8px !important;
+    font-family: 'Noto Sans KR', sans-serif !important;
+}
+#orderstate .state ul.order li .count {
+    display: block !important;
+    font-size: 24px !important;
+    font-weight: 300 !important;
+    color: #111 !important;
+    text-decoration: none !important;
+    font-family: helvetica, sans-serif !important;
+}
+#orderstate .state ul.cs {
+    display: flex !important;
+    list-style: none !important;
+    padding: 16px 24px 0 !important;
+    margin: 16px 0 0 !important;
+    border-top: 1px solid #f1f1f1 !important;
+    gap: 24px !important;
+}
+#orderstate .state ul.cs li {
+    font-size: 13px !important;
+    color: #666 !important;
+    font-family: 'Noto Sans KR', sans-serif !important;
+}
+#orderstate .state ul.cs li .icoDot {
+    display: inline-block !important;
+    width: 6px !important;
+    height: 6px !important;
+    background: #ccc !important;
+    border-radius: 50% !important;
+    margin-right: 6px !important;
+    vertical-align: middle !important;
+}
+#orderstate .state ul.cs li strong {
+    font-weight: 400 !important;
+    color: #666 !important;
+    font-size: 13px !important;
+}
+#orderstate .state ul.cs li .count {
+    color: #111 !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+}
+
+/* ===== 메뉴 카드 (ORDER, PROFILE 등) ===== */
+#myshopMain {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+#myshopMain .shoplist {
+    float: none !important;
+    width: 100% !important;
+    padding: 24px 0 !important;
+    margin: 0 !important;
+    border-bottom: 1px solid #f1f1f1 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+#myshopMain .shoplist:first-child {
+    border-top: 4px solid #f5f5f5 !important;
+    margin-top: 8px !important;
+    padding-top: 24px !important;
+}
+#myshopMain .shoplist h3 {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #111 !important;
+    margin: 0 0 8px !important;
+    padding: 0 !important;
+    font-family: 'Noto Sans KR', sans-serif !important;
+    letter-spacing: -0.02em !important;
+}
+#myshopMain .shoplist h3 a {
+    color: #111 !important;
+    text-decoration: none !important;
+}
+#myshopMain .shoplist h3 strong {
+    font-family: helvetica, sans-serif !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    margin-right: 8px !important;
+    font-size: 14px !important;
+    letter-spacing: 0.03em !important;
+}
+#myshopMain .shoplist p {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+#myshopMain .shoplist p a {
+    font-size: 12px !important;
+    color: #999 !important;
+    text-decoration: none !important;
+    line-height: 1.6 !important;
+    font-family: 'Noto Sans KR', sans-serif !important;
+}
+
+/* ===== 모바일 반응형 ===== */
+@media (max-width: 768px) {
+    .ec-base-box.gHalf ul li .title {
+        font-size: 12px !important;
+    }
+    .ec-base-box.gHalf ul li .data {
+        font-size: 13px !important;
+    }
+    #orderstate .state ul.order li .count {
+        font-size: 20px !important;
+    }
+    #orderstate .state ul.cs {
+        flex-wrap: wrap !important;
+        gap: 8px 24px !important;
+    }
+}

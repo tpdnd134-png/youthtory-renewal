@@ -55,6 +55,14 @@
 
 </head>
 <body>
+<script>
+/* jQuery 1.4.4 .on() 폴리필 + 페이드인 */
+(function(){
+    function p(j){if(!j||!j.fn)return;if(!j.fn.on){j.fn.on=function(e,s,d,h){if(typeof s==='function'){h=s;s=void 0}if(typeof d==='function'){h=d;d=void 0}return s?this.delegate(s,e,h):this.bind(e,h)};};if(!j.fn.off){j.fn.off=function(e,s,h){if(typeof s==='function'){h=s;s=void 0}return s?this.undelegate(s,e,h):this.unbind(e,h)};}}
+    if(typeof jQuery!=='undefined')p(jQuery);if(typeof $!=='undefined')p($);
+    document.addEventListener('DOMContentLoaded',function(){if(typeof jQuery!=='undefined')p(jQuery);if(typeof $!=='undefined')p($);document.body.classList.add('yt-loaded');},false);
+})();
+</script>
 
 <div id="toparea"></div>
 <div id="loginpopup"><!--@import(/loginpopup.html)--></div>
@@ -82,7 +90,7 @@
       <a href="#" onclick="toggleMobileSearch(); return false;"><i class="fas fa-search"></i></a>
       <span module="Layout_stateLogoff"><a href="/member/login.html"><i class="fas fa-sign-in-alt"></i></a></span>
       <span module="Layout_stateLogon"><a href="/myshop/index.html"><i class="fas fa-user"></i></a></span>
-      <a href="/order/basket.html"><i class="fas fa-shopping-cart"></i></a>
+      <a href="/order/basket.html" style="position:relative;"><i class="fas fa-shopping-cart"></i><span module="Layout_orderBasketcount" class="mobile-cart-count">{$basket_count}</span></a>
     </div>
   </div>
 

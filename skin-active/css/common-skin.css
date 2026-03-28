@@ -7,6 +7,17 @@
  */
 
 /* ==========================================================
+   0. Page Transition — 부드러운 페이드인
+   ========================================================== */
+body {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+body.yt-loaded {
+    opacity: 1;
+}
+
+/* ==========================================================
    1. Global Resets & Typography
    ========================================================== */
 * { box-sizing: border-box !important; }
@@ -774,6 +785,27 @@ input[type=text], select, textarea {
         width: 32px !important;
         height: 32px !important;
     }
+
+    /* 모바일 장바구니 카운트 뱃지 */
+    .mobile-cart-count {
+        position: absolute !important;
+        top: -4px !important;
+        right: -6px !important;
+        min-width: 16px !important;
+        height: 16px !important;
+        background: #111 !important;
+        color: #fff !important;
+        font-size: 9px !important;
+        font-weight: 600 !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        line-height: 1 !important;
+        padding: 0 3px !important;
+        font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+    }
+    .mobile-cart-count:empty { display: none !important; }
 
     /* Menu Overlay — mobile: full width sidebar */
     .menu-overlay-card {

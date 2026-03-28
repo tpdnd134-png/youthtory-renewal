@@ -1,0 +1,482 @@
+<div id="faq">
+
+<style>
+/* ── Hard Reset ── */
+#faq,
+#faq * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #111111;
+  letter-spacing: 0;
+  text-decoration: none;
+  list-style: none;
+  background: transparent;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ── */
+#faq {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 20px 120px;
+  background: #ffffff;
+}
+
+/* ── Header ── */
+#faq .faq-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+#faq .faq-header h2 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+
+#faq .faq-header p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #888888;
+}
+
+/* ── Category Tabs ── */
+#faq .faq-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 0;
+}
+
+#faq .faq-tabs button {
+  flex: 1;
+  padding: 13px 0;
+  font-size: 11px;
+  font-weight: 500;
+  color: #999999;
+  background: none;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  border-bottom: 2px solid transparent;
+  position: relative;
+  bottom: -1px;
+  letter-spacing: 0.02em;
+}
+
+#faq .faq-tabs button:hover {
+  color: #555555;
+}
+
+#faq .faq-tabs button.is-active {
+  color: #111111;
+  font-weight: 600;
+  border-bottom-color: #111111;
+}
+
+/* ── Accordion List ── */
+#faq .faq-list {
+  /* container */
+}
+
+#faq .faq-item {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+#faq .faq-item:last-child {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+/* ── Question Row ── */
+#faq .faq-question {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 18px 0;
+  cursor: pointer;
+  background: none;
+  text-align: left;
+  transition: opacity 0.2s;
+}
+
+#faq .faq-question:hover {
+  opacity: 0.6;
+}
+
+#faq .faq-question .q-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #111111;
+  margin-right: 14px;
+  flex-shrink: 0;
+  width: 18px;
+}
+
+#faq .faq-question .q-text {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 500;
+  color: #222222;
+  letter-spacing: 0.01em;
+}
+
+#faq .faq-question .q-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  margin-left: 16px;
+}
+
+#faq .faq-question .q-icon::before,
+#faq .faq-question .q-icon::after {
+  content: '';
+  position: absolute;
+  background: #999999;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+  top: 50%;
+  left: 50%;
+}
+
+#faq .faq-question .q-icon::before {
+  width: 11px;
+  height: 1px;
+  transform: translate(-50%, -50%);
+}
+
+#faq .faq-question .q-icon::after {
+  width: 1px;
+  height: 11px;
+  transform: translate(-50%, -50%);
+}
+
+#faq .faq-item.is-open .faq-question .q-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+/* ── Answer Panel ── */
+#faq .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0 0 0 32px;
+}
+
+#faq .faq-item.is-open .faq-answer {
+  max-height: 200px;
+  padding: 0 0 20px 32px;
+}
+
+#faq .faq-answer p {
+  font-size: 11.5px;
+  font-weight: 400;
+  color: #666666;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+
+/* ── Empty State ── */
+#faq .faq-empty {
+  text-align: center;
+  padding: 60px 0;
+  color: #bbbbbb;
+  font-size: 12px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  #faq {
+    padding: 52px 16px 80px;
+  }
+
+  #faq .faq-header {
+    margin-bottom: 36px;
+  }
+
+  #faq .faq-header h2 {
+    font-size: 18px;
+  }
+
+  #faq .faq-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #faq .faq-tabs button {
+    flex: none;
+    padding: 12px 14px;
+    white-space: nowrap;
+    font-size: 11px;
+  }
+
+  #faq .faq-question {
+    padding: 16px 0;
+  }
+
+  #faq .faq-question .q-text {
+    font-size: 11.5px;
+  }
+
+  #faq .faq-item.is-open .faq-answer {
+    padding: 0 0 16px 32px;
+  }
+}
+</style>
+
+<!-- Header -->
+<div class="faq-header">
+  <h2>FAQ</h2>
+  <p>자주 묻는 질문을 확인해 보세요.</p>
+</div>
+
+<!-- Category Tabs -->
+<div class="faq-tabs">
+  <button type="button" class="is-active" data-cat="all">전체</button>
+  <button type="button" data-cat="order">주문/결제</button>
+  <button type="button" data-cat="delivery">배송</button>
+  <button type="button" data-cat="exchange">교환/반품</button>
+  <button type="button" data-cat="member">회원/적립금</button>
+  <button type="button" data-cat="etc">기타</button>
+</div>
+
+<!-- FAQ List -->
+<div class="faq-list">
+
+  <!-- 주문/결제 -->
+  <div class="faq-item" data-cat="order">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">주문 후 결제 수단을 변경할 수 있나요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>결제 전 주문 취소 후 재주문이 필요합니다. 결제 완료된 주문은 취소 후 재주문 부탁드립니다.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="order">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">무통장 입금 기한은 얼마인가요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>주문일로부터 3일(72시간) 이내 입금해 주셔야 하며, 기한 초과 시 자동 취소됩니다.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="order">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">여러 상품을 따로 주문했는데 합배송 가능한가요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>배송 준비 전이라면 고객센터로 연락 주시면 합배송 처리 도와드리겠습니다.</p>
+    </div>
+  </div>
+
+  <!-- 배송 -->
+  <div class="faq-item" data-cat="delivery">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">배송은 얼마나 걸리나요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>결제 확인 후 1-3일 이내 출고되며, 출고 후 1-2일 내 수령 가능합니다. (주말/공휴일 제외)</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="delivery">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">배송 조회는 어디서 하나요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>마이페이지 > 주문조회에서 송장번호 확인 후 택배사 사이트에서 조회 가능합니다.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="delivery">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">도서산간 지역은 배송비가 추가되나요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>네, 도서산간 지역은 기본 배송비 외 추가 배송비가 발생합니다.</p>
+    </div>
+  </div>
+
+  <!-- 교환/반품 -->
+  <div class="faq-item" data-cat="exchange">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">교환/반품은 어떻게 신청하나요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>마이페이지 > 주문조회에서 교환/반품 신청이 가능합니다. 상품 수령 후 7일 이내 신청해 주세요.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="exchange">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">교환/반품 배송비는 누가 부담하나요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>단순 변심의 경우 왕복 배송비 고객 부담, 상품 불량/오배송의 경우 무료입니다.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="exchange">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">교환/반품이 불가한 경우가 있나요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>착용 흔적이 있거나, 택을 제거한 경우, 세탁/수선한 경우 교환/반품이 불가합니다.</p>
+    </div>
+  </div>
+
+  <!-- 회원/적립금 -->
+  <div class="faq-item" data-cat="member">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">회원 등급은 어떻게 결정되나요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>최근 12개월 총 실결제 금액 기준으로 매일 자동 변경됩니다. 멤버십 페이지에서 등급별 혜택을 확인하세요.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="member">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">적립금은 언제 사용 가능한가요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>구매 확정 후 지급되며, 1,000원 이상 보유 시 사용 가능합니다.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="member">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">쿠폰은 어디서 확인하나요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>마이페이지 > 쿠폰에서 보유 쿠폰과 사용 가능 기간을 확인하실 수 있습니다.</p>
+    </div>
+  </div>
+
+  <!-- 기타 -->
+  <div class="faq-item" data-cat="etc">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">고객센터 운영 시간은 언제인가요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>평일 10:00 - 18:00 (점심시간 12:00 - 13:00 제외, 주말/공휴일 휴무)</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="etc">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">카카오톡 상담은 가능한가요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>네, 카카오톡 채널 "YOUTHTORY"를 추가하시면 채팅 상담이 가능합니다.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="etc">
+    <button type="button" class="faq-question">
+      <span class="q-label">Q</span>
+      <span class="q-text">매장 방문 구매가 가능한가요?</span>
+      <span class="q-icon"></span>
+    </button>
+    <div class="faq-answer">
+      <p>현재 온라인 전용 쇼핑몰로 운영 중이며, 오프라인 매장은 없습니다.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var root = document.getElementById('faq');
+  if (!root) return;
+
+  var tabs = root.querySelectorAll('.faq-tabs button');
+  var items = root.querySelectorAll('.faq-item');
+
+  /* ── Tab filtering ── */
+  for (var t = 0; t < tabs.length; t++) {
+    tabs[t].addEventListener('click', function() {
+      for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('is-active');
+      this.classList.add('is-active');
+
+      var cat = this.getAttribute('data-cat');
+
+      for (var j = 0; j < items.length; j++) {
+        var item = items[j];
+        item.classList.remove('is-open');
+        item.querySelector('.faq-answer').style.maxHeight = '0';
+        item.querySelector('.faq-answer').style.padding = '0 0 0 32px';
+
+        if (cat === 'all' || item.getAttribute('data-cat') === cat) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      }
+    });
+  }
+
+  /* ── Accordion toggle ── */
+  var questions = root.querySelectorAll('.faq-question');
+  for (var q = 0; q < questions.length; q++) {
+    questions[q].addEventListener('click', function() {
+      var item = this.parentElement;
+      var answer = item.querySelector('.faq-answer');
+      var isOpen = item.classList.contains('is-open');
+
+      /* Close all siblings */
+      for (var s = 0; s < items.length; s++) {
+        items[s].classList.remove('is-open');
+        items[s].querySelector('.faq-answer').style.maxHeight = '0';
+        items[s].querySelector('.faq-answer').style.padding = '0 0 0 32px';
+      }
+
+      /* Open clicked (if was closed) */
+      if (!isOpen) {
+        item.classList.add('is-open');
+        answer.style.maxHeight = answer.scrollHeight + 20 + 'px';
+        answer.style.padding = '0 0 20px 32px';
+      }
+    });
+  }
+})();
+</script>
+
+</div>
