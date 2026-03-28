@@ -1,4 +1,597 @@
 <!--@layout(/layout/basic/layout.html)-->
+<style>
+/* ============================================
+   YOUTHTORY Join Page Override
+   pickysociety / la-room editorial style
+   ============================================ */
+
+/* -- Font -- */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+
+/* -- Page container -- */
+.path { display: none !important; }
+
+.titleArea {
+    text-align: center;
+    padding: 60px 0 40px;
+    border-bottom: none;
+}
+.titleArea h2 {
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: #111;
+    text-transform: uppercase;
+}
+
+/* -- Section titles (h3) -- */
+.xans-member-join > h3 {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 48px 0 12px;
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid #111;
+}
+
+/* -- Required notice -- */
+.xans-member-join .required {
+    max-width: 520px;
+    margin: 0 auto 0;
+    padding: 8px 0;
+    font-size: 11px;
+    color: #999;
+}
+
+/* -- Table wrapper -- */
+.xans-member-join .ec-base-table.typeWrite {
+    max-width: 520px;
+    margin: 0 auto;
+    border: none;
+}
+.xans-member-join .ec-base-table.typeWrite table {
+    border: none;
+    border-collapse: collapse;
+}
+.xans-member-join .ec-base-table.typeWrite table caption {
+    display: none;
+}
+
+/* -- colgroup override -- */
+.xans-member-join .ec-base-table.typeWrite col:first-child {
+    width: 130px !important;
+}
+
+/* -- Table rows -- */
+.xans-member-join .ec-base-table.typeWrite tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+}
+.xans-member-join .ec-base-table.typeWrite tbody tr:last-child {
+    border-bottom: 1px solid #e8e8e8;
+}
+
+/* -- TH cells -- */
+.xans-member-join .ec-base-table.typeWrite th {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    letter-spacing: 0.02em;
+    vertical-align: top;
+    padding: 16px 10px 16px 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+    line-height: 1.6;
+    white-space: nowrap;
+}
+.xans-member-join .ec-base-table.typeWrite th img[alt="필수"] {
+    width: 5px;
+    height: 5px;
+    object-fit: none;
+    vertical-align: super;
+    margin-left: 2px;
+    opacity: 0.6;
+}
+
+/* -- TD cells -- */
+.xans-member-join .ec-base-table.typeWrite td {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 13px;
+    color: #333;
+    padding: 14px 0;
+    border: none;
+    line-height: 1.6;
+    vertical-align: middle;
+    word-break: keep-all;
+}
+
+/* -- Input fields -- */
+.xans-member-join input[type="text"],
+.xans-member-join input[type="password"],
+.xans-member-join input[type="email"],
+.xans-member-join input[type="tel"],
+.xans-member-join input[type="number"] {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 13px;
+    color: #111;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+    outline: none;
+    -webkit-appearance: none;
+}
+.xans-member-join input[type="text"]:focus,
+.xans-member-join input[type="password"]:focus,
+.xans-member-join input[type="email"]:focus,
+.xans-member-join input[type="tel"]:focus,
+.xans-member-join input[type="number"]:focus {
+    border-color: #111;
+}
+
+/* -- Autofill override -- */
+.xans-member-join input:-webkit-autofill,
+.xans-member-join input:-webkit-autofill:hover,
+.xans-member-join input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #111;
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+    box-shadow: 0 0 0 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+}
+
+/* -- Select elements -- */
+.xans-member-join select {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 13px;
+    color: #111;
+    height: 44px;
+    padding: 0 32px 0 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+.xans-member-join select:focus {
+    border-color: #111;
+    outline: none;
+}
+
+/* -- Textarea -- */
+.xans-member-join textarea {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 13px;
+    color: #111;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+    resize: vertical;
+}
+.xans-member-join textarea:focus {
+    border-color: #111;
+    outline: none;
+}
+
+/* -- Radio & Checkbox -- */
+.xans-member-join input[type="radio"],
+.xans-member-join input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0 4px 0 0;
+    accent-color: #111;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.xans-member-join label {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 13px;
+    color: #333;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* -- ID input width -- */
+.xans-member-join #member_id {
+    width: 100%;
+    max-width: 280px;
+}
+.xans-member-join #passwd,
+.xans-member-join #user_passwd_confirm {
+    width: 100%;
+    max-width: 280px;
+}
+.xans-member-join #hint_answer {
+    width: 100%;
+    max-width: 340px;
+}
+
+/* -- Address fields -- */
+.xans-member-join #postcode1,
+.xans-member-join #postcode2 {
+    width: 80px;
+    text-align: center;
+}
+.xans-member-join #addr1,
+.xans-member-join #addr2 {
+    width: 100%;
+    max-width: 340px;
+    margin-top: 8px;
+}
+
+/* -- Phone fields -- */
+.xans-member-join #phone1,
+.xans-member-join #mobile1 {
+    width: 70px;
+}
+.xans-member-join #phone2,
+.xans-member-join #phone3,
+.xans-member-join #mobile2,
+.xans-member-join #mobile3 {
+    width: 70px;
+}
+
+/* -- Email fields -- */
+.xans-member-join #email1 {
+    width: 140px;
+}
+.xans-member-join #email2 {
+    width: 140px;
+}
+
+/* -- Cafe24 image buttons (zipcode, check etc) -- */
+.xans-member-join td a > img[src*="btn_zipcode"],
+.xans-member-join td a > img[src*="btn_check"] {
+    display: inline-block;
+    width: auto;
+    height: 44px;
+    border-radius: 6px;
+    vertical-align: middle;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+.xans-member-join td a > img[src*="btn_zipcode"]:hover,
+.xans-member-join td a > img[src*="btn_check"]:hover {
+    opacity: 1;
+}
+
+/* -- Auth section (ipin/mobile) -- */
+#authWrap {
+    padding: 8px 0;
+}
+#ipinWrap,
+#mobileWrap,
+#emailWrap {
+    padding: 12px 0;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.7;
+}
+#ipinWrap img,
+#mobileWrap img {
+    display: inline-block;
+    height: 40px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+}
+#ipinWrap img:hover,
+#mobileWrap img:hover {
+    opacity: 1;
+}
+#personalTypeWrap {
+    padding-bottom: 8px;
+}
+
+/* -- Business / Foreigner auth -- */
+#businessAuth .grid li,
+#foreignerAuth .grid li {
+    padding: 6px 0;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.8;
+}
+
+/* -- Full agree box -- */
+.xans-member-join .ec-base-box.typeThinBg.gStrong {
+    max-width: 520px;
+    margin: 48px auto 0;
+    padding: 18px 20px;
+    background: #f8f8f8;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+}
+.xans-member-join .ec-base-box.typeThinBg.gStrong p {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 14px;
+    color: #111;
+    line-height: 1.6;
+}
+
+/* -- Agree area boxes -- */
+.xans-member-join .ec-base-box.typeThinBg.agreeArea {
+    max-width: 520px;
+    margin: -1px auto 0;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 0;
+}
+.xans-member-join .ec-base-box.typeThinBg.agreeArea:first-of-type {
+    border-radius: 8px 8px 0 0;
+    margin-top: 12px;
+}
+.xans-member-join .ec-base-box.typeThinBg.agreeArea:last-of-type {
+    border-radius: 0 0 8px 8px;
+}
+.xans-member-join .agreeArea h3 {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+    margin: 0 0 10px;
+    padding: 0;
+    border: none;
+    max-width: none;
+}
+.xans-member-join .agreeArea .content {
+    height: 100px;
+    padding: 16px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background: #fafafa;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.7;
+    overflow-y: auto;
+}
+.xans-member-join .agreeArea .content::-webkit-scrollbar {
+    width: 4px;
+}
+.xans-member-join .agreeArea .content::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+.xans-member-join .agreeArea .content::-webkit-scrollbar-track {
+    background: transparent;
+}
+.xans-member-join .agreeArea .check {
+    padding: 10px 0 0;
+    font-size: 13px;
+    color: #333;
+}
+.xans-member-join .agreeArea .check li {
+    padding: 4px 0;
+}
+.xans-member-join .agreeArea .check span {
+    font-size: 13px;
+    color: #333;
+}
+
+/* -- Submit button area -- */
+.xans-member-join .ec-base-button {
+    max-width: 520px;
+    margin: 40px auto 80px;
+    text-align: center;
+}
+.xans-member-join .ec-base-button a {
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+/* Hide original gif button, show CSS button */
+.xans-member-join .ec-base-button a img {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+.xans-member-join .ec-base-button a::after {
+    content: '회원가입';
+    display: block;
+    width: 100%;
+    height: 52px;
+    line-height: 52px;
+    background: #111;
+    color: #fff;
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-align: center;
+    border-radius: 8px;
+    transition: background-color 0.25s ease, letter-spacing 0.3s ease;
+    cursor: pointer;
+}
+.xans-member-join .ec-base-button a:hover::after {
+    background: #333;
+    letter-spacing: 0.25em;
+}
+
+/* -- Helper text styling -- */
+.xans-member-join td span[id*="Msg"],
+.xans-member-join td > span:not([class]) {
+    font-size: 11px;
+    color: #999;
+    margin-left: 4px;
+}
+
+/* -- Description lists (refund account) -- */
+.xans-member-join .ec-base-desc.typeBullet dt {
+    font-size: 12px;
+    font-weight: 500;
+    color: #555;
+    padding: 4px 0 2px;
+}
+.xans-member-join .ec-base-desc.typeBullet dd {
+    padding: 0 0 8px;
+}
+
+/* -- Interest area -- */
+.xans-member-join .interest {
+    line-height: 32px;
+}
+.xans-member-join .interest label {
+    font-size: 13px;
+    padding-right: 16px;
+}
+
+/* -- Lifetime member desc -- */
+.xans-member-join ul.txtDesc li {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.6;
+    padding-left: 10px;
+}
+.xans-member-join ul.txtDesc li::before {
+    top: 8px;
+    background: #bbb;
+}
+
+/* =====================
+   Responsive (768px)
+   ===================== */
+@media (max-width: 768px) {
+    .titleArea {
+        padding: 40px 20px 28px;
+    }
+    .titleArea h2 {
+        font-size: 18px;
+    }
+
+    .xans-member-join > h3 {
+        max-width: none;
+        margin: 0 16px;
+        padding: 36px 0 10px;
+        font-size: 14px;
+    }
+    .xans-member-join .required {
+        max-width: none;
+        margin: 0 16px;
+    }
+
+    .xans-member-join .ec-base-table.typeWrite {
+        max-width: none;
+        margin: 0 16px;
+    }
+    .xans-member-join .ec-base-table.typeWrite col:first-child {
+        width: 100% !important;
+    }
+    .xans-member-join .ec-base-table.typeWrite col {
+        width: 100% !important;
+    }
+    .xans-member-join .ec-base-table.typeWrite th,
+    .xans-member-join .ec-base-table.typeWrite td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .xans-member-join .ec-base-table.typeWrite th {
+        padding: 14px 0 4px;
+        font-size: 12px;
+    }
+    .xans-member-join .ec-base-table.typeWrite td {
+        padding: 4px 0 14px;
+    }
+
+    .xans-member-join input[type="text"],
+    .xans-member-join input[type="password"],
+    .xans-member-join input[type="email"],
+    .xans-member-join input[type="tel"],
+    .xans-member-join input[type="number"] {
+        height: 42px;
+        font-size: 14px;
+        padding: 0 12px;
+    }
+    .xans-member-join select {
+        height: 42px;
+        font-size: 14px;
+    }
+
+    .xans-member-join #member_id,
+    .xans-member-join #passwd,
+    .xans-member-join #user_passwd_confirm,
+    .xans-member-join #hint_answer {
+        width: 100%;
+        max-width: 100%;
+    }
+    .xans-member-join #addr1,
+    .xans-member-join #addr2 {
+        max-width: 100%;
+    }
+    .xans-member-join #email1,
+    .xans-member-join #email2 {
+        width: 120px;
+    }
+
+    /* Agree area */
+    .xans-member-join .ec-base-box.typeThinBg.gStrong,
+    .xans-member-join .ec-base-box.typeThinBg.agreeArea {
+        max-width: none;
+        margin-left: 16px;
+        margin-right: 16px;
+        border-radius: 8px;
+    }
+    .xans-member-join .ec-base-box.typeThinBg.agreeArea {
+        border-radius: 0;
+        margin-top: -1px;
+    }
+    .xans-member-join .ec-base-box.typeThinBg.agreeArea:first-of-type {
+        border-radius: 8px 8px 0 0;
+    }
+    .xans-member-join .ec-base-box.typeThinBg.agreeArea:last-of-type {
+        border-radius: 0 0 8px 8px;
+    }
+
+    /* Submit button */
+    .xans-member-join .ec-base-button {
+        max-width: none;
+        margin: 32px 16px 60px;
+    }
+    .xans-member-join .ec-base-button a::after {
+        height: 48px;
+        line-height: 48px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .xans-member-join #phone1,
+    .xans-member-join #phone2,
+    .xans-member-join #phone3,
+    .xans-member-join #mobile1,
+    .xans-member-join #mobile2,
+    .xans-member-join #mobile3 {
+        width: 60px;
+    }
+    .xans-member-join #email1,
+    .xans-member-join #email2 {
+        width: 100px;
+    }
+    .xans-member-join #birth_year,
+    .xans-member-join #marry_year,
+    .xans-member-join #partner_year {
+        width: 56px;
+    }
+}
+</style>
 <div class="path">
     <span>현재 위치</span>
     <ol>
