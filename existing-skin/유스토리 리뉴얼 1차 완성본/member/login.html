@@ -3,7 +3,8 @@
 <style>
 /* ============================================
    YOUTHTORY LOGIN PAGE
-   Reference: pickysociety.com login
+   Reference: pickysociety.com — pill buttons, clean card UI
+   Design tokens extracted 2026-03-27
    ============================================ */
 
 /* -- Font -- */
@@ -19,39 +20,41 @@
     flex-direction: column;
     align-items: center;
     min-height: calc(100vh - 200px);
-    padding: 60px 20px 100px;
+    padding: 64px 20px 100px;
     font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
     background: #fff;
+    color: #212121;
 }
 
 /* -- Benefits banner -- */
 .login-benefits {
     width: 100%;
-    max-width: 440px;
+    max-width: 470px;
     margin-bottom: 40px;
-    padding: 16px 20px;
-    background: #f8f8f8;
-    border-radius: 10px;
+    padding: 18px 24px;
+    background: #fafafa;
+    border: 1px solid #f0f0f0;
+    border-radius: 30px;
     text-align: center;
 }
 .login-benefits p {
     margin: 0;
     font-size: 13px;
     font-weight: 400;
-    color: #555;
+    color: #666;
     line-height: 1.6;
     letter-spacing: -0.01em;
 }
 .login-benefits strong {
     font-weight: 600;
-    color: #111;
+    color: #212121;
 }
 
 /* -- Page title -- */
 .login-page-title {
     font-size: 26px;
     font-weight: 700;
-    color: #111;
+    color: #212121;
     letter-spacing: -0.03em;
     margin-bottom: 8px;
     text-align: center;
@@ -66,11 +69,11 @@
 }
 
 /* ============================================
-   SNS LOGIN AREA (moved to top visually)
+   LOGIN MODULE WRAPPER
    ============================================ */
 #login-wrap {
     width: 100%;
-    max-width: 440px;
+    max-width: 470px;
     margin: 0 auto !important;
     border: none !important;
     padding: 0 !important;
@@ -85,14 +88,14 @@
 #login-wrap .login {
     border: none !important;
     width: 100% !important;
-    max-width: 440px !important;
+    max-width: 470px !important;
     margin: 0 auto !important;
     padding: 0 !important;
 }
 
 #login-wrap .login fieldset {
     width: 100% !important;
-    max-width: 440px !important;
+    max-width: 470px !important;
     margin: 0 !important;
     padding: 0 !important;
     border: none !important;
@@ -108,18 +111,18 @@
 }
 
 /* ============================================
-   SNS BUTTONS — full width, brand colors
+   SNS BUTTONS — pill shape, brand colors
+   pickysociety tokens: h42, r30, f14, fw400
    ============================================ */
 #login-wrap .snsArea {
     display: flex !important;
     flex-direction: column !important;
     gap: 10px !important;
     padding: 0 !important;
-    margin: 0 0 32px 0 !important;
+    margin: 0 0 28px 0 !important;
     border: none !important;
     overflow: visible !important;
     list-style: none !important;
-    /* Reorder: naver first, kakao second */
     order: -1 !important;
 }
 
@@ -137,16 +140,17 @@
     align-items: center !important;
     justify-content: center !important;
     width: 100% !important;
-    height: 52px !important;
-    border-radius: 8px !important;
-    font-size: 15px !important;
-    font-weight: 500 !important;
+    height: 42px !important;
+    border-radius: 30px !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
     letter-spacing: -0.01em !important;
     text-decoration: none !important;
     cursor: pointer !important;
     transition: opacity 0.2s ease !important;
     box-sizing: border-box !important;
     position: relative !important;
+    padding: 10px 25px !important;
 }
 #login-wrap .snsArea li a:hover {
     opacity: 0.85 !important;
@@ -157,17 +161,18 @@
     display: none !important;
 }
 
-/* -- Naver -- */
+/* -- Naver (pickysociety: #27D34A) -- */
 #login-wrap .snsArea li:nth-child(1) a {
-    background: #03C75A !important;
+    background: #27D34A !important;
     color: #fff !important;
 }
 #login-wrap .snsArea li:nth-child(1) a::before {
     content: '';
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    flex-shrink: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M13.56 10.7L6.17 0H0v20h6.44V9.3L13.83 20H20V0h-6.44v10.7z' fill='white'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
@@ -177,49 +182,65 @@
     content: '네이버로 시작하기' !important;
 }
 
-/* -- Facebook (usually hidden, but styled just in case) -- */
+/* -- Facebook -- */
 #login-wrap .snsArea li:nth-child(2) a {
     background: #1877F2 !important;
     color: #fff !important;
+}
+#login-wrap .snsArea li:nth-child(2) a::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' fill='white'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 #login-wrap .snsArea li:nth-child(2) a::after {
     content: 'Facebook으로 시작하기' !important;
 }
 
-/* -- Google -- */
+/* -- Google (pickysociety: white bg, #000 text, 1px #ddd border) -- */
 #login-wrap .snsArea li:nth-child(3) a {
     background: #fff !important;
-    color: #333 !important;
+    color: #000 !important;
     border: 1px solid #ddd !important;
 }
 #login-wrap .snsArea li:nth-child(3) a::before {
     content: '';
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    flex-shrink: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23EA4335' d='M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z'/%3E%3Cpath fill='%234285F4' d='M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z'/%3E%3Cpath fill='%2334A853' d='M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z'/%3E%3Cpath fill='%23FBBC05' d='M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
 }
 #login-wrap .snsArea li:nth-child(3) a::after {
     content: 'Google로 시작하기' !important;
 }
 
-/* -- Kakao -- */
+/* -- Kakao (pickysociety: #FFEB00, color rgb(60,30,30)) -- */
 #login-wrap .snsArea li:nth-child(4) a {
-    background: #FEE500 !important;
-    color: #191919 !important;
+    background: #FFEB00 !important;
+    color: rgb(60, 30, 30) !important;
 }
 #login-wrap .snsArea li:nth-child(4) a::before {
     content: '';
     display: inline-block;
-    width: 22px;
-    height: 22px;
-    margin-right: 10px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3C6.48 3 2 6.48 2 10.5c0 2.58 1.71 4.84 4.27 6.14l-1.1 4.04c-.08.3.26.53.52.35l4.78-3.18c.51.06 1.03.1 1.53.1 5.52 0 10-3.48 10-7.95S17.52 3 12 3z' fill='%23191919'/%3E%3C/svg%3E");
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3C6.48 3 2 6.48 2 10.5c0 2.58 1.71 4.84 4.27 6.14l-1.1 4.04c-.08.3.26.53.52.35l4.78-3.18c.51.06 1.03.1 1.53.1 5.52 0 10-3.48 10-7.95S17.52 3 12 3z' fill='%233C1E1E'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
 }
 #login-wrap .snsArea li:nth-child(4) a::after {
     content: '카카오로 시작하기' !important;
@@ -230,19 +251,32 @@
     background: #06C755 !important;
     color: #fff !important;
 }
+#login-wrap .snsArea li:nth-child(5) a::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 5.82 2 10.5c0 4.21 3.74 7.74 8.8 8.4.34.07.81.23.93.52.1.27.07.68.03.95l-.15.89c-.05.27-.21 1.07.94.58s6.24-3.67 8.52-6.28C23.04 13.38 22 11.5 22 10.5 22 5.82 17.52 2 12 2z' fill='white'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 #login-wrap .snsArea li:nth-child(5) a::after {
     content: 'LINE으로 시작하기' !important;
 }
 
 /* ============================================
-   DIVIDER — "또는"
+   DIVIDER — "또는 이메일로 로그인"
+   pickysociety: 12px, 1px #e5e7eb lines
    ============================================ */
 .login-divider {
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 440px;
-    margin: 0 0 32px;
+    max-width: 470px;
+    margin: 0 0 28px;
     gap: 16px;
 }
 .login-divider::before,
@@ -250,21 +284,19 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: #e0e0e0;
+    background: #e5e7eb;
 }
 .login-divider span {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
-    color: #999;
+    color: #888;
     white-space: nowrap;
     letter-spacing: -0.01em;
 }
 
 /* ============================================
-   EMAIL LOGIN — inputs + button
+   FIELDSET FLEX ORDERING
    ============================================ */
-
-/* Fieldset acts as flex column for reordering */
 #login-wrap .login fieldset {
     display: flex !important;
     flex-direction: column !important;
@@ -304,7 +336,10 @@
     order: 8 !important;
 }
 
-/* -- Input styling -- */
+/* ============================================
+   INPUT FIELDS — card-style wrapper
+   pickysociety: h43, f16, border 1px #e0e0e0, r8
+   ============================================ */
 #login-wrap .idbox,
 #login-wrap .pwbox {
     display: block !important;
@@ -316,13 +351,13 @@
 #login-wrap .pwbox input {
     display: block !important;
     width: 100% !important;
-    height: 52px !important;
-    padding: 0 18px !important;
-    border: 1px solid #ddd !important;
+    height: 43px !important;
+    padding: 12px 16px !important;
+    border: 1px solid #e0e0e0 !important;
     border-radius: 8px !important;
-    font-size: 15px !important;
+    font-size: 16px !important;
     font-family: 'Pretendard Variable', sans-serif !important;
-    color: #111 !important;
+    color: #212121 !important;
     background: #fff !important;
     background-image: none !important;
     box-sizing: border-box !important;
@@ -333,7 +368,7 @@
 
 #login-wrap .idbox input:focus,
 #login-wrap .pwbox input:focus {
-    border-color: #111 !important;
+    border-color: #212121 !important;
 }
 
 #login-wrap .idbox input::placeholder,
@@ -349,29 +384,33 @@
 #login-wrap input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 60px #fff inset !important;
     box-shadow: 0 0 0 60px #fff inset !important;
-    -webkit-text-fill-color: #111 !important;
-    font-size: 15px !important;
+    -webkit-text-fill-color: #212121 !important;
+    font-size: 16px !important;
     transition: background-color 5000s ease-in-out 0s !important;
 }
 
-/* -- Login button -- */
+/* ============================================
+   LOGIN BUTTON — pill shape, light gray
+   pickysociety: bg #f1f1f1, color #212121, r30, h40, f14
+   ============================================ */
 #login-wrap .login fieldset > a {
     position: static !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     width: 100% !important;
-    height: 52px !important;
-    margin-top: 6px !important;
-    background: #111 !important;
-    border-radius: 8px !important;
+    height: 40px !important;
+    margin-top: 8px !important;
+    background: #f1f1f1 !important;
+    border: none !important;
+    border-radius: 30px !important;
     text-decoration: none !important;
     cursor: pointer !important;
-    transition: background 0.2s ease !important;
+    transition: background 0.2s ease, opacity 0.2s ease !important;
     box-sizing: border-box !important;
 }
 #login-wrap .login fieldset > a:hover {
-    background: #333 !important;
+    background: #e4e4e4 !important;
 }
 
 /* Hide gif image */
@@ -382,21 +421,22 @@
 /* CSS text replacement */
 #login-wrap .login fieldset > a::after {
     content: '로그인' !important;
-    font-size: 16px !important;
-    font-weight: 600 !important;
-    color: #fff !important;
-    letter-spacing: 0.02em !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #212121 !important;
+    letter-spacing: 0 !important;
     font-family: 'Pretendard Variable', sans-serif !important;
 }
 
 /* ============================================
    FIND ID/PW + SAVE ID
+   pickysociety: 12px, #212121, weight 400, space-between
    ============================================ */
 #login-wrap .login fieldset > ul:not(.snsArea) {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 14px 0 0 !important;
+    padding: 16px 0 0 !important;
     margin: 0 !important;
     border: none !important;
     overflow: visible !important;
@@ -411,15 +451,15 @@
 }
 
 #login-wrap .login fieldset > ul:not(.snsArea) li a {
-    font-size: 13px !important;
+    font-size: 12px !important;
     font-weight: 400 !important;
-    color: #888 !important;
+    color: #212121 !important;
     text-decoration: none !important;
     font-family: 'Pretendard Variable', sans-serif !important;
     transition: color 0.15s ease !important;
 }
 #login-wrap .login fieldset > ul:not(.snsArea) li a:hover {
-    color: #111 !important;
+    color: #888 !important;
 }
 
 /* FA icons before find links */
@@ -431,8 +471,8 @@
 #login-wrap .login fieldset > ul:not(.snsArea) li:nth-child(2)::before {
     content: '|';
     margin: 0 8px 0 0;
-    font-size: 11px;
-    color: #ddd;
+    font-size: 10px;
+    color: #e0e0e0;
 }
 
 /* Save ID / secure connect area */
@@ -446,7 +486,7 @@
     gap: 4px !important;
     font-size: 12px !important;
     font-weight: 400 !important;
-    color: #999 !important;
+    color: #888 !important;
 }
 #login-wrap .login fieldset .security i {
     display: none !important;
@@ -458,7 +498,7 @@
 }
 
 /* ============================================
-   JOIN + NONMEMBER LINKS
+   JOIN LINK — pill outline button
    ============================================ */
 #login-wrap .login fieldset .link {
     position: static !important;
@@ -468,7 +508,7 @@
     margin-top: 28px !important;
     padding-top: 28px !important;
     border-top: 1px solid #f0f0f0 !important;
-    font-size: 14px !important;
+    font-size: 13px !important;
     font-weight: 400 !important;
     color: #888 !important;
     line-height: 1.6 !important;
@@ -481,7 +521,7 @@
     display: none !important;
 }
 
-/* Hide gif button images */
+/* Hide gif button images, pill shape */
 #login-wrap .login fieldset .link a {
     position: static !important;
     display: inline-flex !important;
@@ -489,16 +529,16 @@
     justify-content: center !important;
     margin-top: 14px !important;
     width: 100% !important;
-    height: 48px !important;
-    border: 1px solid #ddd !important;
-    border-radius: 8px !important;
+    height: 40px !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 30px !important;
     text-decoration: none !important;
     transition: all 0.2s ease !important;
     box-sizing: border-box !important;
     background: #fff !important;
 }
 #login-wrap .login fieldset .link a:hover {
-    border-color: #111 !important;
+    border-color: #212121 !important;
     background: #fafafa !important;
 }
 #login-wrap .login fieldset .link a img {
@@ -508,44 +548,49 @@
 /* Join button text */
 #login-wrap .login fieldset .link:not(#noMemberWrap) a::after {
     content: '회원가입' !important;
-    font-size: 15px !important;
-    font-weight: 500 !important;
-    color: #111 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #212121 !important;
     letter-spacing: 0 !important;
     font-family: 'Pretendard Variable', sans-serif !important;
 }
 
-/* Nonmember section */
+/* ============================================
+   NONMEMBER BUTTON — blue-gray pill
+   pickysociety: bg #8393A7, color #fff, r30
+   ============================================ */
 #login-wrap .login fieldset #noMemberWrap {
     border-top: none !important;
     margin-top: 10px !important;
     padding-top: 0 !important;
 }
 
+#login-wrap .login fieldset #noMemberWrap a {
+    background: #8393A7 !important;
+    border: none !important;
+    border-radius: 30px !important;
+}
+#login-wrap .login fieldset #noMemberWrap a:hover {
+    background: #728294 !important;
+    border: none !important;
+}
+
 #login-wrap .login fieldset #noMemberWrap a::after {
     content: '비회원 주문조회' !important;
     font-size: 14px !important;
-    font-weight: 500 !important;
-    color: #666 !important;
+    font-weight: 400 !important;
+    color: #fff !important;
     letter-spacing: 0 !important;
     font-family: 'Pretendard Variable', sans-serif !important;
 }
 
 /* ============================================
-   NONMEMBER ORDER CHECK
+   NONMEMBER ORDER CHECK MODULE
    ============================================ */
-.nonmember-order-section {
-    width: 100%;
-    max-width: 440px;
-    margin-top: 48px;
-    padding-top: 48px;
-    border-top: 1px solid #e8e8e8;
-}
-
 div[module="MyShop_OrderHistoryNologin"] {
     border: none !important;
     width: 100% !important;
-    max-width: 440px !important;
+    max-width: 470px !important;
     margin: 48px auto 0 !important;
     padding: 0 !important;
 }
@@ -559,7 +604,7 @@ div[module="MyShop_OrderHistoryNologin"] #logintitle {
 div[module="MyShop_OrderHistoryNologin"] #logintitle h2 {
     font-size: 20px !important;
     font-weight: 700 !important;
-    color: #111 !important;
+    color: #212121 !important;
     letter-spacing: -0.03em !important;
     font-family: 'Pretendard Variable', sans-serif !important;
     margin-bottom: 6px !important;
@@ -568,7 +613,7 @@ div[module="MyShop_OrderHistoryNologin"] #logintitle h2 {
 div[module="MyShop_OrderHistoryNologin"] #logintitle span {
     font-size: 13px !important;
     font-weight: 400 !important;
-    color: #999 !important;
+    color: #888 !important;
     line-height: 1.5 !important;
     font-family: 'Pretendard Variable', sans-serif !important;
 }
@@ -576,7 +621,7 @@ div[module="MyShop_OrderHistoryNologin"] #logintitle span {
 /* Order check inputs */
 #ordercheck {
     width: 100% !important;
-    max-width: 440px !important;
+    max-width: 470px !important;
     margin: 0 auto !important;
 }
 
@@ -594,13 +639,13 @@ div[module="MyShop_OrderHistoryNologin"] #logintitle span {
 #ordercheck .pwbox input {
     display: block !important;
     width: 100% !important;
-    height: 50px !important;
-    padding: 0 18px !important;
-    border: 1px solid #ddd !important;
+    height: 43px !important;
+    padding: 12px 16px !important;
+    border: 1px solid #e0e0e0 !important;
     border-radius: 8px !important;
     font-size: 14px !important;
     font-family: 'Pretendard Variable', sans-serif !important;
-    color: #111 !important;
+    color: #212121 !important;
     background: #fff !important;
     background-image: none !important;
     box-sizing: border-box !important;
@@ -611,7 +656,7 @@ div[module="MyShop_OrderHistoryNologin"] #logintitle span {
 #ordercheck .namebox input:focus,
 #ordercheck .nobox input:focus,
 #ordercheck .pwbox input:focus {
-    border-color: #111 !important;
+    border-color: #212121 !important;
 }
 
 /* Autofill for order check */
@@ -619,16 +664,16 @@ div[module="MyShop_OrderHistoryNologin"] #logintitle span {
 #ordercheck input:-webkit-autofill:hover,
 #ordercheck input:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 60px #fff inset !important;
-    -webkit-text-fill-color: #111 !important;
+    -webkit-text-fill-color: #212121 !important;
     transition: background-color 5000s ease-in-out 0s !important;
 }
 
-/* Order number — wider */
+/* Order number */
 #ordercheck .nobox input {
     width: 100% !important;
 }
 
-/* Submit button */
+/* Submit button — pill shape */
 #ordercheck .bt {
     margin-top: 14px !important;
 }
@@ -639,26 +684,22 @@ div[module="MyShop_OrderHistoryNologin"] #logintitle span {
 }
 #ordercheck .bt li {
     margin-top: 0 !important;
+    position: relative !important;
 }
 
-/* Hide the image submit, replace with styled button */
 #ordercheck .bt li input[type="image"] {
     display: block !important;
     width: 100% !important;
-    height: 48px !important;
-    background: #fff !important;
-    border: 1px solid #ddd !important;
-    border-radius: 8px !important;
+    height: 40px !important;
+    background: #f1f1f1 !important;
+    border: none !important;
+    border-radius: 30px !important;
     cursor: pointer !important;
     font-size: 0 !important;
-    transition: all 0.2s ease !important;
-    /* We can't fully hide type="image", but we can make it seamless */
+    transition: background 0.2s ease !important;
     object-fit: none !important;
     object-position: -9999px !important;
     padding: 0 !important;
-}
-#ordercheck .bt li {
-    position: relative !important;
 }
 #ordercheck .bt li::after {
     content: '주문조회';
@@ -667,28 +708,46 @@ div[module="MyShop_OrderHistoryNologin"] #logintitle span {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 14px;
-    font-weight: 500;
-    color: #111;
+    font-weight: 400;
+    color: #212121;
     font-family: 'Pretendard Variable', sans-serif;
     pointer-events: none;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
 }
 #ordercheck .bt li:hover input[type="image"] {
-    border-color: #111 !important;
-    background: #fafafa !important;
+    background: #e4e4e4 !important;
 }
 
 /* ============================================
-   RESPONSIVE (mobile)
+   CHECKBOX STYLING
+   ============================================ */
+#login-wrap .login fieldset input[type="checkbox"] {
+    width: 15px !important;
+    height: 15px !important;
+    accent-color: #212121 !important;
+    margin-right: 4px !important;
+    vertical-align: middle !important;
+}
+
+#login-wrap .login fieldset label[for] {
+    font-size: 12px !important;
+    color: #888 !important;
+    font-weight: 400 !important;
+    cursor: pointer !important;
+}
+
+/* ============================================
+   RESPONSIVE (mobile < 768px)
    ============================================ */
 @media (max-width: 768px) {
     .login-page-wrap {
-        padding: 40px 16px 80px;
+        padding: 48px 16px 80px;
     }
 
     .login-benefits {
         max-width: 100%;
         margin-bottom: 32px;
+        padding: 14px 18px;
     }
 
     .login-page-title {
@@ -709,22 +768,27 @@ div[module="MyShop_OrderHistoryNologin"] #logintitle span {
     }
 
     #login-wrap .snsArea li a {
-        height: 48px !important;
-        font-size: 14px !important;
+        height: 40px !important;
+        font-size: 13px !important;
     }
 
     #login-wrap .idbox input,
     #login-wrap .pwbox input {
-        height: 48px !important;
-        font-size: 14px !important;
+        height: 42px !important;
+        font-size: 15px !important;
     }
 
     #login-wrap .login fieldset > a {
-        height: 48px !important;
+        height: 38px !important;
+    }
+
+    #login-wrap .login fieldset .link a {
+        height: 38px !important;
     }
 
     div[module="MyShop_OrderHistoryNologin"] {
-        width: calc(100% - 32px) !important;
+        width: 100% !important;
+        max-width: 100% !important;
         margin-top: 40px !important;
         padding: 0 !important;
     }
@@ -732,31 +796,17 @@ div[module="MyShop_OrderHistoryNologin"] #logintitle span {
     #ordercheck .namebox input,
     #ordercheck .nobox input,
     #ordercheck .pwbox input {
-        height: 46px !important;
+        height: 42px !important;
         font-size: 13px !important;
+    }
+
+    #ordercheck .bt li input[type="image"] {
+        height: 38px !important;
     }
 }
 
 /* ============================================
-   CHECKBOX STYLING
-   ============================================ */
-#login-wrap .login fieldset input[type="checkbox"] {
-    width: 16px !important;
-    height: 16px !important;
-    accent-color: #111 !important;
-    margin-right: 4px !important;
-    vertical-align: middle !important;
-}
-
-#login-wrap .login fieldset label[for] {
-    font-size: 12px !important;
-    color: #999 !important;
-    font-weight: 400 !important;
-    cursor: pointer !important;
-}
-
-/* ============================================
-   ANIMATION
+   ANIMATION — fade in
    ============================================ */
 .login-page-wrap {
     animation: loginFadeIn 0.4s ease-out;
