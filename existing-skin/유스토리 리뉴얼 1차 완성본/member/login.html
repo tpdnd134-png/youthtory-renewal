@@ -828,6 +828,12 @@ div[module="MyShop_OrderHistoryNologin"] #logintitle span {
         transform: translateY(0);
     }
 }
+
+/* !! FINAL OVERRIDE — SNS 미연동 상태 숨김 !! */
+#login-wrap .snsArea,
+#login-wrap .login fieldset .snsArea,
+.login-page-wrap .snsArea { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; }
+.login-divider { display: none !important; }
 </style>
 
 <div class="login-page-wrap">
