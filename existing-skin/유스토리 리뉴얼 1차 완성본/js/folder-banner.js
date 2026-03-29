@@ -32,13 +32,13 @@
         label: 'MEN',
         shopNo: 42,
         bestNo: 120,
-        emoji: '<svg viewBox="0 0 120 100" width="100%" height="100%"><defs><linearGradient id="gm1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5EC5F7"/><stop offset="100%" stop-color="#3DAEE9"/></linearGradient><linearGradient id="gm2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#73D0FA"/><stop offset="100%" stop-color="#5EC5F7"/></linearGradient></defs><rect x="3" y="28" width="114" height="68" rx="10" fill="url(#gm1)"/><rect x="3" y="28" width="114" height="8" rx="0" fill="url(#gm2)" opacity="0.6"/><rect x="3" y="14" width="48" height="20" rx="8" fill="url(#gm2)"/></svg>'
+        emoji: '<svg viewBox="0 0 120 100" width="100%" height="100%"><defs><linearGradient id="gm1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2C3E6B"/><stop offset="100%" stop-color="#1E2D50"/></linearGradient><linearGradient id="gm2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3A4F7A"/><stop offset="100%" stop-color="#2C3E6B"/></linearGradient></defs><rect x="3" y="28" width="114" height="68" rx="10" fill="url(#gm1)"/><rect x="3" y="28" width="114" height="8" rx="0" fill="url(#gm2)" opacity="0.6"/><rect x="3" y="14" width="48" height="20" rx="8" fill="url(#gm2)"/></svg>'
       },
       WOMEN: {
         label: 'WOMEN',
         shopNo: 138,
         bestNo: 150,
-        emoji: '<svg viewBox="0 0 120 100" width="100%" height="100%"><defs><linearGradient id="gw1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5EC5F7"/><stop offset="100%" stop-color="#3DAEE9"/></linearGradient><linearGradient id="gw2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#73D0FA"/><stop offset="100%" stop-color="#5EC5F7"/></linearGradient></defs><rect x="3" y="28" width="114" height="68" rx="10" fill="url(#gw1)"/><rect x="3" y="28" width="114" height="8" rx="0" fill="url(#gw2)" opacity="0.6"/><rect x="3" y="14" width="48" height="20" rx="8" fill="url(#gw2)"/></svg>'
+        emoji: '<svg viewBox="0 0 120 100" width="100%" height="100%"><defs><linearGradient id="gw1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C9B99A"/><stop offset="100%" stop-color="#B5A484"/></linearGradient><linearGradient id="gw2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#D4C4A5"/><stop offset="100%" stop-color="#C9B99A"/></linearGradient></defs><rect x="3" y="28" width="114" height="68" rx="10" fill="url(#gw1)"/><rect x="3" y="28" width="114" height="8" rx="0" fill="url(#gw2)" opacity="0.6"/><rect x="3" y="14" width="48" height="20" rx="8" fill="url(#gw2)"/></svg>'
       }
     },
     containerSelector: '#folder-banner-root',
