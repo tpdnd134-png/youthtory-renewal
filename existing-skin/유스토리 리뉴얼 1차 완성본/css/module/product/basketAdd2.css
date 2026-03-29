@@ -221,8 +221,8 @@
 }
 
 .yt-cart-btn-fill {
-    background: #111;
-    color: #fff;
+    background: #111 !important;
+    color: #fff !important;
 }
 
 .yt-cart-btn-fill:hover {
