@@ -52,20 +52,20 @@
   // 6개 카드가 폴더 주변으로 산발적으로 배치됨
   const SCATTER_POSITIONS = {
     desktop: [
-      { x: -300, y: -120, rotate: -6 },
-      { x: -100, y: -160, rotate: 4 },
-      { x: 120,  y: -130, rotate: -3 },
-      { x: -260, y: 40,   rotate: 5 },
-      { x: -50,  y: 60,   rotate: -5 },
-      { x: 160,  y: 30,   rotate: 3 },
+      { x: -320, y: -100, rotate: -6 },
+      { x: -110, y: -150, rotate: 4 },
+      { x: 130,  y: -120, rotate: -3 },
+      { x: -280, y: 30,   rotate: 5 },
+      { x: -40,  y: 50,   rotate: -5 },
+      { x: 180,  y: 20,   rotate: 3 },
     ],
     mobile: [
-      { x: -100, y: -110, rotate: -5 },
-      { x: 20,   y: -130, rotate: 4 },
-      { x: 110,  y: -90,  rotate: -3 },
-      { x: -110, y: 20,   rotate: 3 },
-      { x: 10,   y: 50,   rotate: -4 },
-      { x: 110,  y: 30,   rotate: 2 },
+      { x: -110, y: -100, rotate: -5 },
+      { x: 20,   y: -120, rotate: 4 },
+      { x: 100,  y: -80,  rotate: -3 },
+      { x: -100, y: 10,   rotate: 3 },
+      { x: 15,   y: 30,   rotate: -4 },
+      { x: 100,  y: 15,   rotate: 2 },
     ]
   };
 
@@ -341,10 +341,10 @@
       const targetX = folderCenterX + pos.x - cardWidth / 2;
       const targetY = folderCenterY + pos.y - 60;
 
-      // 배너 영역 내로 클램핑 (상단 60px ~ 하단 카드높이+40px 여유)
-      const cardHeight = isMobile() ? 140 : 190;
-      const clampedX = Math.max(8, Math.min(bannerRect.width - cardWidth - 8, targetX));
-      const clampedY = Math.max(40, Math.min(bannerRect.height - cardHeight - 40, targetY));
+      // 배너 영역 내로 엄격 클램핑
+      const cardHeight = isMobile() ? 150 : 200;
+      const clampedX = Math.max(10, Math.min(bannerRect.width - cardWidth - 10, targetX));
+      const clampedY = Math.max(30, Math.min(bannerRect.height - cardHeight - 20, targetY));
 
       card.style.left = `${clampedX}px`;
       card.style.top = `${clampedY}px`;
