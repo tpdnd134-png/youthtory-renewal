@@ -247,10 +247,30 @@
 }
 
 /* 폴더 배너 리디자인 */
+/* 모바일 폴더 배너 높이 */
+@media (max-width: 768px) {
+    #section-folder-banner .folder-banner-wrap {
+        min-height: 70vh !important;
+    }
+}
+
+/* 시계 강제 숨김 */
+#section-folder-banner .folder-banner-time,
+#section-folder-banner #folderTime,
+#section-folder-banner [id='folderTime'] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
 #section-folder-banner .folder-banner-wrap {
     background: none !important;
     position: relative !important;
+    overflow: hidden !important;
 }
+#section-folder-banner #folder-banner-root .folder-banner-wrap {
+    overflow: hidden !important;
+}
+
 /* 배경 이미지 */
 #section-folder-banner .folder-banner-wrap::before {
     content: '' !important;
@@ -296,8 +316,23 @@
 #section-folder-banner .folder-banner-brand-text,
 #section-folder-banner .folder-banner-subtext,
 #section-folder-banner .folder-banner-cta,
-#section-folder-banner .folder-icon {
-    display: none !important;
+#section-folder-banner #folder-banner-root .folder-icon,
+#section-folder-banner .folder-banner-wrap .folder-icon {
+    display: flex !important;
+    width: 100px !important;
+    height: 90px !important;
+    border-radius: 0 !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    filter: drop-shadow(0 6px 16px rgba(0,0,0,0.3)) !important;
+    font-size: unset !important;
+}
+#section-folder-banner .folder-item.active .folder-icon {
+    transform: scale(1.15) !important;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35)) !important;
 }
 /* 헤드라인: 정중앙 */
 #section-folder-banner .folder-banner-brand {
@@ -340,33 +375,35 @@
     gap: 0 !important;
 }
 #section-folder-banner .folder-label {
-    font-size: 14px !important;
-    font-weight: 400 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
     color: #fff !important;
-    letter-spacing: 0.2em !important;
-    padding: 14px 40px !important;
-    border: 1px solid rgba(255,255,255,0.5) !important;
-    background: rgba(0,0,0,0.1) !important;
-    backdrop-filter: blur(4px) !important;
-    -webkit-backdrop-filter: blur(4px) !important;
+    letter-spacing: 0.15em !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     transition: all 0.3s ease !important;
     cursor: pointer !important;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.3) !important;
-}
-#section-folder-banner .folder-item:hover .folder-label {
-    background: rgba(255,255,255,0.95) !important;
-    color: #111 !important;
-    border-color: #fff !important;
-    text-shadow: none !important;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.4) !important;
+    margin-top: 8px !important;
 }
 /* 오버레이 상태 */
 #section-folder-banner .folder-overlay {
     z-index: 20 !important;
 }
 @media (max-width: 768px) {
+    #section-folder-banner .folder-icon {
+        width: 80px !important;
+        height: 72px !important;
+    }
     #section-folder-banner .folder-label {
-        font-size: 12px !important;
-        padding: 12px 28px !important;
+        font-size: 11px !important;
+        padding: 0 !important;
+    }
+    #section-folder-banner .folder-container {
+        gap: 32px !important;
     }
     #section-folder-banner .folder-banner-headline {
         font-size: clamp(28px, 8vw, 48px) !important;
@@ -380,7 +417,7 @@
     <!-- Folder Banner -->
     <div class="section fp-auto-height" id="section-folder-banner">
         <div id="folder-banner-root"></div>
-        <script src="/js/folder-banner.js?v=20260330d"></script>
+        <script src="/js/folder-banner.js?v=20260330m"></script>
     </div>
         <script src="/js/folder-banner.js?v=20260330b"></script>
         <script>
@@ -408,7 +445,8 @@
         </script>
     </div>
 
-    <!-- 메인 배너 — PC: 2분할 / 모바일: 1장 -->
+    <!-- 메인 배너 — 폴더 배너로 대체하여 숨김 -->
+    <style>#section1.hero-section { display: none !important; }</style>
     <div class="section hero-section" id="section1">
         <!-- PC: 2분할 이미지 -->
         <div class="hero-split">

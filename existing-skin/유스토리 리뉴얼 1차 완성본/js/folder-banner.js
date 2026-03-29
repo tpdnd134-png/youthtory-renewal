@@ -32,13 +32,13 @@
         label: 'MEN',
         shopNo: 42,
         bestNo: 120,
-        emoji: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="44" fill="#4A90D9" opacity="0.15"/><circle cx="50" cy="50" r="38" fill="none" stroke="#4A90D9" stroke-width="2.5"/><circle cx="37" cy="42" r="3.5" fill="#1d1d1f"/><circle cx="63" cy="42" r="3.5" fill="#1d1d1f"/><path d="M35 60 Q50 72 65 60" fill="none" stroke="#1d1d1f" stroke-width="2.8" stroke-linecap="round"/><path d="M30 28 Q50 18 70 28" fill="none" stroke="#4A90D9" stroke-width="3" stroke-linecap="round"/></svg>'
+        emoji: '<svg viewBox="0 0 120 100" width="100%" height="100%"><defs><linearGradient id="gm1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5EC5F7"/><stop offset="100%" stop-color="#3DAEE9"/></linearGradient><linearGradient id="gm2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#73D0FA"/><stop offset="100%" stop-color="#5EC5F7"/></linearGradient></defs><rect x="3" y="28" width="114" height="68" rx="10" fill="url(#gm1)"/><rect x="3" y="28" width="114" height="8" rx="0" fill="url(#gm2)" opacity="0.6"/><rect x="3" y="14" width="48" height="20" rx="8" fill="url(#gm2)"/></svg>'
       },
       WOMEN: {
         label: 'WOMEN',
         shopNo: 138,
         bestNo: 150,
-        emoji: '<svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="44" fill="#FF6B8A" opacity="0.15"/><circle cx="50" cy="50" r="38" fill="none" stroke="#FF6B8A" stroke-width="2.5"/><circle cx="37" cy="42" r="3.5" fill="#1d1d1f"/><circle cx="63" cy="42" r="3.5" fill="#1d1d1f"/><path d="M35 58 Q50 70 65 58" fill="none" stroke="#1d1d1f" stroke-width="2.8" stroke-linecap="round"/><circle cx="28" cy="54" r="6" fill="#FF6B8A" opacity="0.3"/><circle cx="72" cy="54" r="6" fill="#FF6B8A" opacity="0.3"/><path d="M26 26 Q36 16 46 24 Q50 14 54 24 Q64 16 74 26" fill="none" stroke="#FF6B8A" stroke-width="2.5" stroke-linecap="round"/></svg>'
+        emoji: '<svg viewBox="0 0 120 100" width="100%" height="100%"><defs><linearGradient id="gw1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5EC5F7"/><stop offset="100%" stop-color="#3DAEE9"/></linearGradient><linearGradient id="gw2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#73D0FA"/><stop offset="100%" stop-color="#5EC5F7"/></linearGradient></defs><rect x="3" y="28" width="114" height="68" rx="10" fill="url(#gw1)"/><rect x="3" y="28" width="114" height="8" rx="0" fill="url(#gw2)" opacity="0.6"/><rect x="3" y="14" width="48" height="20" rx="8" fill="url(#gw2)"/></svg>'
       }
     },
     containerSelector: '#folder-banner-root',
@@ -52,20 +52,20 @@
   // 6개 카드가 폴더 주변으로 산발적으로 배치됨
   const SCATTER_POSITIONS = {
     desktop: [
-      { x: -280, y: -160, rotate: -8 },
-      { x: -90,  y: -200, rotate: 5 },
-      { x: 120,  y: -170, rotate: -4 },
-      { x: -240, y: 60,   rotate: 6 },
-      { x: -40,  y: 100,  rotate: -7 },
-      { x: 180,  y: 50,   rotate: 3 },
+      { x: -300, y: -120, rotate: -6 },
+      { x: -100, y: -160, rotate: 4 },
+      { x: 120,  y: -130, rotate: -3 },
+      { x: -260, y: 40,   rotate: 5 },
+      { x: -50,  y: 60,   rotate: -5 },
+      { x: 160,  y: 30,   rotate: 3 },
     ],
     mobile: [
-      { x: -120, y: -150, rotate: -6 },
-      { x: 20,   y: -170, rotate: 5 },
-      { x: 130,  y: -120, rotate: -3 },
-      { x: -130, y: 30,   rotate: 4 },
-      { x: 10,   y: 80,   rotate: -5 },
-      { x: 130,  y: 50,   rotate: 3 },
+      { x: -100, y: -110, rotate: -5 },
+      { x: 20,   y: -130, rotate: 4 },
+      { x: 110,  y: -90,  rotate: -3 },
+      { x: -110, y: 20,   rotate: 3 },
+      { x: 10,   y: 50,   rotate: -4 },
+      { x: 110,  y: 30,   rotate: 2 },
     ]
   };
 
@@ -200,16 +200,11 @@
     if (!container) return;
 
     container.innerHTML = `
-      <div class="folder-banner-wrap" id="folderBannerWrap">
-        <div class="folder-banner-topbar">
-          <span class="folder-banner-time" id="folderTime">${getCurrentTime()}</span>
+      <div class="folder-banner-wrap" id="folderBannerWrap" style="overflow:hidden;">
+        <div class="folder-banner-brand" style="position:absolute;top:35%;left:0;right:0;text-align:center;z-index:5;transform:translateY(-50%);">
+          <div class="folder-banner-headline" style="font-size:clamp(36px,8vw,72px);font-weight:800;color:#fff;letter-spacing:0.06em;text-transform:uppercase;font-family:helvetica,sans-serif;text-shadow:0 2px 20px rgba(0,0,0,0.4);line-height:1.1;">${CONFIG.headline}</div>
         </div>
-        <div class="folder-banner-brand">
-          <div class="folder-banner-brand-text">${CONFIG.brandName}</div>
-          <div class="folder-banner-headline">${CONFIG.headline}</div>
-          <div class="folder-banner-subtext">${CONFIG.subtext}</div>
-        </div>
-        <div class="folder-container" id="folderContainer">
+        <div class="folder-container" id="folderContainer" style="position:absolute;bottom:15%;left:50%;transform:translateX(-50%);z-index:5;gap:48px;">
           ${renderFolder('MEN')}
           ${renderFolder('WOMEN')}
         </div>
@@ -218,18 +213,10 @@
           <div class="folder-overlay-title" id="folderOverlayTitle"></div>
           <div class="folder-product-scatter" id="folderProductScatter"></div>
         </div>
-        <div class="folder-banner-cta" id="folderCta">
-          <div class="folder-banner-cta-text">폴더를 탭하세요</div>
-          <div class="folder-banner-cta-arrow">↓</div>
-        </div>
       </div>
     `;
 
     bindEvents();
-    setInterval(() => {
-      const t = document.getElementById('folderTime');
-      if (t) t.textContent = getCurrentTime();
-    }, 30000);
   }
 
   function renderFolder(gender) {
@@ -315,12 +302,11 @@
     scatter.innerHTML = '';
     overlay.classList.add('visible');
 
-    // 폴더 아이콘의 중심 좌표 계산
+    // 배너 중앙을 scatter 기준점으로 사용
     const banner = document.getElementById('folderBannerWrap');
     const bannerRect = banner.getBoundingClientRect();
-    const folderRect = folderEl.getBoundingClientRect();
-    const folderCenterX = folderRect.left + folderRect.width / 2 - bannerRect.left;
-    const folderCenterY = folderRect.top + folderRect.height / 2 - bannerRect.top;
+    const folderCenterX = bannerRect.width / 2;
+    const folderCenterY = bannerRect.height * 0.42;
 
     // 상품 데이터 로드
     let products = tryGetProductsFromPage(gender, CONFIG.productsPerFolder);
@@ -355,9 +341,10 @@
       const targetX = folderCenterX + pos.x - cardWidth / 2;
       const targetY = folderCenterY + pos.y - 60;
 
-      // 배너 영역 내로 클램핑
+      // 배너 영역 내로 클램핑 (상단 60px ~ 하단 카드높이+40px 여유)
+      const cardHeight = isMobile() ? 140 : 190;
       const clampedX = Math.max(8, Math.min(bannerRect.width - cardWidth - 8, targetX));
-      const clampedY = Math.max(60, Math.min(bannerRect.height - 200, targetY));
+      const clampedY = Math.max(40, Math.min(bannerRect.height - cardHeight - 40, targetY));
 
       card.style.left = `${clampedX}px`;
       card.style.top = `${clampedY}px`;
