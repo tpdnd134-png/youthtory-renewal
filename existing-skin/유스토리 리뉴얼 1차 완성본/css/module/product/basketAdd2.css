@@ -1,21 +1,275 @@
-.xans-order-layerbasketpackage { position:fixed; top:50%; left:50%; z-index:1000; width:687px; margin:-300px 0 0 -252px; }
-.xans-order-layerbasketpackage .content p { font-weight:bold; color:#2e2e2e; }
+/* ===== YOUTHTORY Cart Drawer — la-room style ===== */
 
-/* 장바구니 담긴 상품 구매 */
-.xans-order-layerbasket.content { padding:0; }
-.xans-order-layerbasket.content .totalCount { padding:15px 0 10px; margin:0 20px 15px; border-bottom:1px solid #ececec; font-size:14px; font-weight:bold; }
-.xans-order-layerbasket.content .totalCount strong { color:#008bcc; }
-.xans-order-layerbasket.content ul.prdList { display:table; width:658px; margin:0 auto 20px; font-size:0; line-height:0; }
-.xans-order-layerbasket.content ul.prdList li.item { display:inline-block; vertical-align:top; }
-.xans-order-layerbasket.content ul.prdList li.item .box { margin:0 auto; font-size:12px; color:#2e2e2e; line-height:18px; }
-.xans-order-layerbasket.content ul.prdList li.item .box p { font-weight:normal; word-break:break-all; }
-.xans-order-layerbasket.content ul.prdList .thumb { margin:0 0 10px; border:1px solid #ececec; width:150px; height:150px; }
-.xans-order-layerbasket.content ul.prdList .name a { color:#2e2e2e; }
-.xans-order-layerbasket.content ul.prdList .name .ec-set-product-name { display:block; }
-.xans-order-layerbasket.content ul.column4 li.item { width:25%; }
-.xans-order-layerbasket.content ul.column4 li.item .box { width:150px; }
-.xans-order-layerbasket.content ul.prdList ul { margin:0; }
-.xans-order-layerbasket.content ul.prdList ul li { color:#757575; }
-.xans-order-layerbasket.content ul.prdList ul li.price { margin:5px 0; font-weight:bold; color:#000; }
-.xans-order-layerbasket.content ul.prdList .strike { text-decoration:line-through; }
-.xans-order-layerbasket.content ul.prdList .strike strong { font-weight:normal; }
+/* #confirmLayer를 우측 슬라이드 드로어로 전환 */
+#confirmLayer {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: auto !important;
+    width: 420px !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 10001 !important;
+    background: #fff !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: -4px 0 24px rgba(0,0,0,0.1) !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+#confirmLayer.yt-cart-open {
+    transform: translateX(0) !important;
+}
+
+/* dimmed 배경 */
+#confirmLayer ~ .dimmed,
+.dimmed {
+    background: rgba(0,0,0,0.35) !important;
+    z-index: 10000 !important;
+    transition: opacity 0.3s !important;
+}
+
+/* 카페24 기본 레이어 스타일 초기화 */
+.yt-cart-drawer-layer.ec-base-layer {
+    position: static !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* 카페24 기본 요소 숨김 */
+.yt-cart-drawer-layer > .header,
+.yt-cart-drawer-layer > .ec-base-button,
+.yt-cart-drawer-layer > .close,
+.yt-cart-drawer-layer .ec-base-paginate {
+    display: none !important;
+}
+
+/* ── 드로어 헤더 ── */
+.yt-cart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e8e8e8;
+    flex-shrink: 0;
+}
+
+.yt-cart-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+    letter-spacing: 0.02em;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.yt-cart-close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: opacity 0.2s;
+}
+
+.yt-cart-close:hover {
+    opacity: 0.5;
+}
+
+/* ── 상품 목록 (스크롤 영역) ── */
+.yt-cart-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+}
+
+.yt-cart-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── 상품 아이템 ── */
+.yt-cart-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.yt-cart-item-img {
+    flex-shrink: 0;
+    width: 90px;
+    height: 120px;
+    display: block;
+    overflow: hidden;
+    background: #f9f9f9;
+}
+
+.yt-cart-item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.yt-cart-item-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 2px;
+}
+
+.yt-cart-item-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #111;
+    margin: 0;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    word-break: break-word;
+}
+
+.yt-cart-item-name a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.yt-cart-item-option {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.yt-cart-item-price {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+    margin: 4px 0 0;
+}
+
+.yt-cart-item-price.strike {
+    text-decoration: line-through;
+    color: #bbb;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.yt-cart-item-price-sale {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+    margin: 0;
+}
+
+.yt-cart-item-price-sale strong {
+    font-weight: 600;
+}
+
+.yt-cart-item-qty {
+    font-size: 12px;
+    color: #999;
+    margin: 4px 0 0;
+}
+
+/* ── 하단 버튼 ── */
+.yt-cart-footer {
+    flex-shrink: 0;
+    padding: 16px 24px 24px;
+    border-top: 1px solid #e8e8e8;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #fff;
+}
+
+.yt-cart-btn {
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+    box-sizing: border-box;
+}
+
+.yt-cart-btn-fill {
+    background: #111;
+    color: #fff;
+}
+
+.yt-cart-btn-fill:hover {
+    background: #333;
+}
+
+.yt-cart-btn-outline {
+    background: #fff;
+    color: #111;
+    border: 1px solid #ddd;
+}
+
+.yt-cart-btn-outline:hover {
+    border-color: #111;
+}
+
+/* ── 모바일 대응 ── */
+@media screen and (max-width: 767px) {
+    #confirmLayer {
+        width: 100vw !important;
+    }
+
+    .yt-cart-header {
+        padding: 16px 20px;
+    }
+
+    .yt-cart-item {
+        padding: 16px 20px;
+        gap: 14px;
+    }
+
+    .yt-cart-item-img {
+        width: 80px;
+        height: 106px;
+    }
+
+    .yt-cart-footer {
+        padding: 14px 20px 20px;
+    }
+
+    /* iOS safe area */
+    .yt-cart-footer {
+        padding-bottom: calc(20px + env(safe-area-inset-bottom));
+    }
+}
+
+/* display:none 클래스 — 카페24 모듈 조건 처리용 */
+.displaynone {
+    display: none !important;
+}

@@ -35,20 +35,73 @@
         var params = new URLSearchParams(window.location.search);
         var cateNo = params.get('cate_no');
         if(!cateNo) return;
-        // 카테고리 매핑 (left.html 기준)
+        // 카테고리 매핑 (카페24 API 기준 2026-03-29)
         var cateMap = {
-            '42': {name:'NEW', link:'/product/list.html?cate_no=42'},
-            '176': {name:'MEN', link:'/product/list.html?cate_no=176', sub:'All'},
-            '177': {name:'MEN', link:'/product/list.html?cate_no=176', sub:'Top'},
-            '178': {name:'MEN', link:'/product/list.html?cate_no=176', sub:'Bottom'},
-            '179': {name:'MEN', link:'/product/list.html?cate_no=176', sub:'Accessories'},
-            '180': {name:'WOMEN', link:'/product/list.html?cate_no=180', sub:'All'},
-            '181': {name:'WOMEN', link:'/product/list.html?cate_no=180', sub:'Top'},
-            '182': {name:'WOMEN', link:'/product/list.html?cate_no=180', sub:'Bottom'},
-            '183': {name:'WOMEN', link:'/product/list.html?cate_no=180', sub:'Dress'},
-            '184': {name:'WOMEN', link:'/product/list.html?cate_no=180', sub:'Accessories'},
-            '50': {name:'EXCLUSIVE', link:'/product/list.html?cate_no=50'},
-            '185': {name:'SALE', link:'/product/list.html?cate_no=185'}
+            // ── MEN (Mens SHOP) ──
+            '42':  {name:'MEN', link:'/product/list.html?cate_no=42'},
+            '128': {name:'MEN', link:'/product/list.html?cate_no=42', sub:'New'},
+            '120': {name:'MEN', link:'/product/list.html?cate_no=42', sub:'Best'},
+            '44':  {name:'MEN', link:'/product/list.html?cate_no=42', sub:'Outer'},
+            '45':  {name:'MEN', link:'/product/list.html?cate_no=42', sub:'Top'},
+            '46':  {name:'MEN', link:'/product/list.html?cate_no=42', sub:'Bottom'},
+            '47':  {name:'MEN', link:'/product/list.html?cate_no=42', sub:'Shoes'},
+            '48':  {name:'MEN', link:'/product/list.html?cate_no=42', sub:'Accessories'},
+            // MEN > Outer 하위
+            '143': {name:'MEN', link:'/product/list.html?cate_no=44', sub:'Outer New'},
+            '173': {name:'MEN', link:'/product/list.html?cate_no=44', sub:'Outer Best'},
+            '146': {name:'MEN', link:'/product/list.html?cate_no=44', sub:'Jacket'},
+            '106': {name:'MEN', link:'/product/list.html?cate_no=44', sub:'Jumper'},
+            '86':  {name:'MEN', link:'/product/list.html?cate_no=44', sub:'Cardigan'},
+            '82':  {name:'MEN', link:'/product/list.html?cate_no=44', sub:'Coat'},
+            // MEN > Top 하위
+            '144': {name:'MEN', link:'/product/list.html?cate_no=45', sub:'Top New'},
+            '174': {name:'MEN', link:'/product/list.html?cate_no=45', sub:'Top Best'},
+            '55':  {name:'MEN', link:'/product/list.html?cate_no=45', sub:'T-shirt'},
+            '54':  {name:'MEN', link:'/product/list.html?cate_no=45', sub:'Shirt'},
+            '57':  {name:'MEN', link:'/product/list.html?cate_no=45', sub:'Knit'},
+            // MEN > Bottom 하위
+            '142': {name:'MEN', link:'/product/list.html?cate_no=46', sub:'Bottom New'},
+            '175': {name:'MEN', link:'/product/list.html?cate_no=46', sub:'Bottom Best'},
+            '58':  {name:'MEN', link:'/product/list.html?cate_no=46', sub:'Slacks'},
+            '62':  {name:'MEN', link:'/product/list.html?cate_no=46', sub:'Denim'},
+            '61':  {name:'MEN', link:'/product/list.html?cate_no=46', sub:'Cotton Pants'},
+            '60':  {name:'MEN', link:'/product/list.html?cate_no=46', sub:'Short'},
+            '147': {name:'MEN', link:'/product/list.html?cate_no=46', sub:'Nylon Pants'},
+            '145': {name:'MEN', link:'/product/list.html?cate_no=46', sub:'Sweat Pants'},
+            // MEN > Best 하위
+            '181': {name:'MEN', link:'/product/list.html?cate_no=120', sub:'Outer Best'},
+            '182': {name:'MEN', link:'/product/list.html?cate_no=120', sub:'Top Best'},
+            '183': {name:'MEN', link:'/product/list.html?cate_no=120', sub:'Bottom Best'},
+            '184': {name:'MEN', link:'/product/list.html?cate_no=120', sub:'Acc Best'},
+
+            // ── WOMEN (Womens SHOP) ──
+            '138': {name:'WOMEN', link:'/product/list.html?cate_no=138'},
+            '149': {name:'WOMEN', link:'/product/list.html?cate_no=138', sub:'New'},
+            '150': {name:'WOMEN', link:'/product/list.html?cate_no=138', sub:'Best'},
+            '141': {name:'WOMEN', link:'/product/list.html?cate_no=138', sub:'Outer'},
+            '140': {name:'WOMEN', link:'/product/list.html?cate_no=138', sub:'Top'},
+            '155': {name:'WOMEN', link:'/product/list.html?cate_no=138', sub:'Dress'},
+            '139': {name:'WOMEN', link:'/product/list.html?cate_no=138', sub:'Bottom'},
+            '148': {name:'WOMEN', link:'/product/list.html?cate_no=138', sub:'Bag&Shoes'},
+            '169': {name:'WOMEN', link:'/product/list.html?cate_no=138', sub:'Accessories'},
+
+            // ── UNISEX ──
+            '185': {name:'UNISEX', link:'/product/list.html?cate_no=185'},
+            '186': {name:'UNISEX', link:'/product/list.html?cate_no=185', sub:'Outer'},
+            '187': {name:'UNISEX', link:'/product/list.html?cate_no=185', sub:'Top'},
+            '188': {name:'UNISEX', link:'/product/list.html?cate_no=185', sub:'Bottom'},
+            '189': {name:'UNISEX', link:'/product/list.html?cate_no=185', sub:'Best'},
+            '190': {name:'UNISEX', link:'/product/list.html?cate_no=185', sub:'New'},
+
+            // ── YOUTHTORY MADE ──
+            '151': {name:'YOUTHTORY MADE', link:'/product/list.html?cate_no=151'},
+            '116': {name:'YOUTHTORY MADE', link:'/product/list.html?cate_no=151', sub:'Outer'},
+            '117': {name:'YOUTHTORY MADE', link:'/product/list.html?cate_no=151', sub:'Top'},
+            '118': {name:'YOUTHTORY MADE', link:'/product/list.html?cate_no=151', sub:'Bottom'},
+            '126': {name:'YOUTHTORY MADE', link:'/product/list.html?cate_no=151', sub:'Accessories'},
+
+            // ── COLLECTION ──
+            '50':  {name:'COLLECTION', link:'/product/list.html?cate_no=50'}
         };
         var nav = document.getElementById('detailBreadcrumb');
         var info = cateMap[cateNo];
