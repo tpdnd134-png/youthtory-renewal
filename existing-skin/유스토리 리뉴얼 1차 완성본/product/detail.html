@@ -2,6 +2,7 @@
 <!--@css(/css/ga09product.css)-->
 <!--@js(/js/jquery-ui.min.js)-->
 <!--@js(/js/detail-scroll.js)-->
+<script>function img_error(o){o.style.display="none";}function img_error2(o){o.style.display="none";o.parentElement.style.display="none";}function img_error3(o){o.style.display="none";o.parentElement.parentElement.parentElement.style.display="none";}</script>
 
 <!--
     $category_page = /product/list.html
@@ -118,7 +119,6 @@
 
         <!-- 이미지 영역 (좌측) -->
         <div class="imgArea" module="product_image">
-
             <!-- 추가이미지 처리 -->
             <div class="listImg" module="product_addimage">
                 <ul>
@@ -134,6 +134,21 @@
             <!-- 추가이미지 처리 -->
 
         </div><!-- 이미지 영역닫기 -->
+
+        <!-- 이미지 고화질 치환 -->
+        <script src="/js/img-hq-map.js"></script>
+        <script>
+        (function(){
+            if(typeof YOUTHTORY_IMG_MAP==='undefined') return;
+            document.querySelectorAll('.imgArea img, .listImg img').forEach(function(img){
+                if(!img.src) return;
+                var fname = img.src.split('/').pop();
+                if(YOUTHTORY_IMG_MAP[fname]){
+                    img.src = YOUTHTORY_IMG_MAP[fname];
+                }
+            });
+        })();
+        </script>
 
         <!-- 상세정보 (우측) -->
         <div id="detail-right">
@@ -546,12 +561,33 @@ function mobRf() {
             });
         }
 
+        // ===== 옵션 선택 시 라벨 업데이트 =====
+        var optionSelects = document.querySelectorAll('.xans-product-option select');
+        optionSelects.forEach(function(sel){
+            sel.addEventListener('change', function(){
+                var th = this.closest('tr') ? this.closest('tr').querySelector('th') : null;
+                if(!th) return;
+                var origLabel = th.getAttribute('data-orig');
+                if(!origLabel){
+                    origLabel = th.textContent.trim();
+                    th.setAttribute('data-orig', origLabel);
+                }
+                var val = this.options[this.selectedIndex];
+                if(val && val.value && !val.disabled && this.selectedIndex > 0){
+                    th.textContent = val.textContent.trim();
+                } else {
+                    th.textContent = origLabel;
+                }
+            });
+        });
+
         // ===== TASK 3: Mobile image slider =====
         var listImgUl = document.querySelector('.listImg ul');
         var sliderPrev = document.querySelector('.img-slider-prev');
         var sliderNext = document.querySelector('.img-slider-next');
         var sliderCurrent = document.querySelector('.img-slider-current');
         var sliderTotal = document.querySelector('.img-slider-total');
+        var sliderCounter = document.querySelector('.img-slider-counter');
 
         if(listImgUl){
             // Count visible images
@@ -566,11 +602,23 @@ function mobRf() {
                 return visible;
             };
 
+            // Show/hide counter and arrows based on slide count (CSS class 방식 — !important 충돌 방지)
+            var toggleSliderUI = function(count){
+                var show = count >= 2;
+                if(sliderCounter){ show ? sliderCounter.classList.add('is-visible') : sliderCounter.classList.remove('is-visible'); }
+                if(sliderPrev){ show ? sliderPrev.classList.add('is-visible') : sliderPrev.classList.remove('is-visible'); }
+                if(sliderNext){ show ? sliderNext.classList.add('is-visible') : sliderNext.classList.remove('is-visible'); }
+            };
+
+            // Hide by default until we confirm multiple slides
+            toggleSliderUI(0);
+
             var updateCounter = function(){
                 if(!sliderCurrent || !sliderTotal) return;
                 var slides = getVisibleSlides();
+                toggleSliderUI(slides.length);
                 sliderTotal.textContent = slides.length;
-                if(slides.length === 0) return;
+                if(slides.length <= 1) return;
                 var scrollLeft = listImgUl.scrollLeft;
                 var slideWidth = listImgUl.offsetWidth;
                 var idx = Math.round(scrollLeft / slideWidth) + 1;
@@ -605,8 +653,17 @@ function mobRf() {
                 requestAnimationFrame(updateCounter);
             });
 
-            // Initial counter update (delay for images to render)
-            setTimeout(updateCounter, 500);
+            // Poll until images are rendered (cafe24 may inject images after load)
+            var counterCheckCount = 0;
+            var counterCheckInterval = setInterval(function(){
+                updateCounter();
+                counterCheckCount++;
+                var slides = getVisibleSlides();
+                // Stop polling after images found or after 5 seconds
+                if(slides.length >= 2 || counterCheckCount >= 10){
+                    clearInterval(counterCheckInterval);
+                }
+            }, 500);
         }
     });
 })();

@@ -23,11 +23,11 @@
     object-fit: cover !important;
     display: block !important;
     transform: scale(1) !important;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s !important;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease !important;
 }
 .hoverimg:hover img {
-    transform: scale(1.03) !important;
-    opacity: 0.94 !important;
+    transform: scale(1.06) !important;
+    opacity: 0.92 !important;
 }
 
 /* 상품명 — 이미지 바로 아래 */
@@ -42,10 +42,38 @@
 .ga09list .chips { width: 9px !important; height: 9px !important; border-radius: 50% !important; margin-left: 0 !important; font-size: 0 !important; line-height: 0 !important; display: inline-block !important; }
 
 /* 가격 — 맨 아래 */
-.ga09list .prices { line-height: 1.4 !important; color: #212121 !important; font-size: 14px !important; margin-top: 4px !important; }
-.ga09list .price { font-size: 11px !important; color: #999 !important; margin-right: 5px !important; text-decoration: line-through !important; opacity: 0.7 !important; }
-.ga09list .normal { font-size: 14px !important; color: #212121 !important; font-weight: 400 !important; text-decoration: none !important; }
-.ga09list .sale-pct { font-size: 14px !important; color: #db7e7e !important; margin-right: 5px !important; font-weight: 400 !important; }
+.ga09list .prices { line-height: 1.4 !important; color: #212121 !important; font-size: 12px !important; margin-top: 4px !important; }
+/* 원가 (할인 시 취소선) */
+.ga09list .price { font-size: 12px !important; color: #bbb !important; margin-right: 4px !important; text-decoration: line-through !important; font-weight: 400 !important; }
+/* 판매가 */
+.ga09list .normal { font-size: 12px !important; color: #212121 !important; font-weight: 500 !important; text-decoration: none !important; }
+/* 할인율 */
+.ga09list .sale-pct { font-size: 12px !important; color: #c0392b !important; margin-left: 4px !important; font-weight: 600 !important; }
+.ga09list .sale-pct:empty { display: none !important; }
+
+/* 할인 타이머 */
+.ga09list .discount-timer { margin-top: 4px !important; font-size: 11px !important; color: #999 !important; display: flex !important; align-items: center !important; gap: 3px !important; }
+.ga09list .discount-timer .timer-icon { font-size: 11px !important; }
+.ga09list .discount-timer .timer-text { font-size: 11px !important; color: #999 !important; }
+.ga09list .discount-timer.displaynone { display: none !important; }
+
+/* NEW / SALE / HOT 뱃지 */
+.ga09list .prd-badges { display: flex !important; gap: 4px !important; margin-top: 8px !important; flex-wrap: wrap !important; }
+.ga09list .prd-badges .badge { display: inline-flex !important; align-items: center !important; justify-content: center !important; padding: 3px 10px !important; font-size: 10px !important; font-weight: 600 !important; letter-spacing: 0.04em !important; border-radius: 2px !important; line-height: 1 !important; }
+.ga09list .prd-badges .badge:empty { display: none !important; }
+.ga09list .prd-badges .badge img { display: none !important; }
+/* NEW — 테두리만 */
+.ga09list .prd-badges .badge-new { border: 1px solid #212121 !important; color: #212121 !important; background: #fff !important; font-size: 0 !important; }
+.ga09list .prd-badges .badge-new:not(:empty)::after { content: 'NEW' !important; font-size: 10px !important; font-weight: 600 !important; }
+/* SALE — 포인트 컬러 */
+.ga09list .prd-badges .badge-sale { border: 1px solid #c0392b !important; color: #fff !important; background: #c0392b !important; }
+.ga09list .prd-badges .badge-sale.displaynone { display: none !important; }
+/* HOT — 따뜻한 톤 */
+.ga09list .prd-badges .badge-hot { border: 1px solid #d4a574 !important; color: #fff !important; background: #d4a574 !important; font-size: 0 !important; }
+.ga09list .prd-badges .badge-hot:not(:empty)::after { content: 'HOT' !important; font-size: 10px !important; font-weight: 600 !important; }
+
+/* 뱃지 fade-in */
+@keyframes badgeFadeIn { from { opacity: 0; transform: translateY(2px); } to { opacity: 1; transform: translateY(0); } }
 
 /* 상품 정보 */
 .ga09list .info { margin-top: 4px !important; line-height: 1.6 !important; font-size: 11px !important; color: #999 !important; }
@@ -77,8 +105,9 @@
 .badge-sale { background: rgba(254, 83, 86, 0.7) !important; color: #fff !important; }
 .badge-soldout { background: rgba(0, 0, 0, 0.7) !important; color: #fff !important; }
 
-/* 품절 오버레이 */
-.soldout-overlay {
+/* 품절 배지 — {$soldout_icon} 직접 삽입, :empty 시 숨김 */
+.soldout-badge { display: none !important; }
+.soldout-badge:not(:empty) {
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
@@ -88,16 +117,28 @@
     align-items: center !important;
     justify-content: center !important;
     background: rgba(255, 255, 255, 0.6) !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+}
+.soldout-badge * ,
+.soldout-badge img,
+.soldout-badge > img,
+.hoverimg .soldout-badge img { display: none !important; width: 0 !important; height: 0 !important; overflow: hidden !important; visibility: hidden !important; opacity: 0 !important; position: absolute !important; left: -9999px !important; }
+.soldout-badge:not(:empty)::after {
+    content: 'SOLD OUT' !important;
+    display: block !important;
     font-size: 13px !important;
     font-weight: 600 !important;
     letter-spacing: 0.15em !important;
     color: #999 !important;
-    z-index: 1 !important;
-    pointer-events: none !important;
+    line-height: 1 !important;
 }
 
 /* 할인율 */
-.discount-rate { font-size: 14px !important; color: #db7e7e !important; margin-left: 4px !important; }
+.discount-rate { font-size: 12px !important; color: #db7e7e !important; margin-left: 4px !important; }
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
@@ -107,6 +148,8 @@
     .prdline.hoverimg { border-radius: 8px !important; }
     .prdpadding .name { font-size: 12px !important; }
     .prdpadding .prices { font-size: 12px !important; }
+    .prdpadding .price { font-size: 12px !important; }
+    .prdpadding .normal { font-size: 12px !important; }
     .section-area { padding: 30px 0 !important; }
     .section-title h2 { font-size: 20px !important; }
     .section-title p { font-size: 11px !important; }

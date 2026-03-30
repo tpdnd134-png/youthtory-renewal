@@ -15,7 +15,16 @@
 .titleArea { display: none !important; }
 
 /* -- SNS 로그인 숨김 (카페24 관리자에서 미연동) -- */
-#login-wrap .snsArea { display: none !important; }
+#login-wrap .snsArea,
+#login-wrap .login fieldset .snsArea,
+.login-page-wrap .snsArea {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
 /* -- "또는 이메일로 로그인" 구분선 숨김 -- */
 .login-divider { display: none !important; }
@@ -117,188 +126,10 @@
 }
 
 /* ============================================
-   SNS BUTTONS — pill shape, brand colors
-   pickysociety tokens: h42, r30, f14, fw400
+   SNS BUTTONS — 현재 미연동으로 위에서 숨김 처리됨
+   카페24 관리자에서 SNS 연동 시 위의 숨김 CSS를 제거하면
+   아래 스타일이 자동 적용됩니다.
    ============================================ */
-#login-wrap .snsArea {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
-    padding: 0 !important;
-    margin: 0 0 28px 0 !important;
-    border: none !important;
-    overflow: visible !important;
-    list-style: none !important;
-    order: -1 !important;
-}
-
-#login-wrap .snsArea li {
-    float: none !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: none !important;
-    list-style: none !important;
-}
-
-#login-wrap .snsArea li a {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    height: 42px !important;
-    border-radius: 30px !important;
-    font-size: 14px !important;
-    font-weight: 400 !important;
-    letter-spacing: -0.01em !important;
-    text-decoration: none !important;
-    cursor: pointer !important;
-    transition: opacity 0.2s ease !important;
-    box-sizing: border-box !important;
-    position: relative !important;
-    padding: 10px 25px !important;
-}
-#login-wrap .snsArea li a:hover {
-    opacity: 0.85 !important;
-}
-
-/* Hide all SNS gif images */
-#login-wrap .snsArea li a img {
-    display: none !important;
-}
-
-/* -- Naver (pickysociety: #27D34A) -- */
-#login-wrap .snsArea li:nth-child(1) a {
-    background: #27D34A !important;
-    color: #fff !important;
-}
-#login-wrap .snsArea li:nth-child(1) a::before {
-    content: '';
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
-    flex-shrink: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M13.56 10.7L6.17 0H0v20h6.44V9.3L13.83 20H20V0h-6.44v10.7z' fill='white'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-#login-wrap .snsArea li:nth-child(1) a::after {
-    content: '네이버로 시작하기' !important;
-}
-
-/* -- Facebook -- */
-#login-wrap .snsArea li:nth-child(2) a {
-    background: #1877F2 !important;
-    color: #fff !important;
-}
-#login-wrap .snsArea li:nth-child(2) a::before {
-    content: '';
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
-    flex-shrink: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' fill='white'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-#login-wrap .snsArea li:nth-child(2) a::after {
-    content: 'Facebook으로 시작하기' !important;
-}
-
-/* -- Google (pickysociety: white bg, #000 text, 1px #ddd border) -- */
-#login-wrap .snsArea li:nth-child(3) a {
-    background: #fff !important;
-    color: #000 !important;
-    border: 1px solid #ddd !important;
-}
-#login-wrap .snsArea li:nth-child(3) a::before {
-    content: '';
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
-    flex-shrink: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23EA4335' d='M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z'/%3E%3Cpath fill='%234285F4' d='M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z'/%3E%3Cpath fill='%2334A853' d='M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z'/%3E%3Cpath fill='%23FBBC05' d='M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-#login-wrap .snsArea li:nth-child(3) a::after {
-    content: 'Google로 시작하기' !important;
-}
-
-/* -- Kakao (pickysociety: #FFEB00, color rgb(60,30,30)) -- */
-#login-wrap .snsArea li:nth-child(4) a {
-    background: #FFEB00 !important;
-    color: rgb(60, 30, 30) !important;
-}
-#login-wrap .snsArea li:nth-child(4) a::before {
-    content: '';
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
-    flex-shrink: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3C6.48 3 2 6.48 2 10.5c0 2.58 1.71 4.84 4.27 6.14l-1.1 4.04c-.08.3.26.53.52.35l4.78-3.18c.51.06 1.03.1 1.53.1 5.52 0 10-3.48 10-7.95S17.52 3 12 3z' fill='%233C1E1E'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-#login-wrap .snsArea li:nth-child(4) a::after {
-    content: '카카오로 시작하기' !important;
-}
-
-/* -- LINE -- */
-#login-wrap .snsArea li:nth-child(5) a {
-    background: #06C755 !important;
-    color: #fff !important;
-}
-#login-wrap .snsArea li:nth-child(5) a::before {
-    content: '';
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
-    flex-shrink: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 5.82 2 10.5c0 4.21 3.74 7.74 8.8 8.4.34.07.81.23.93.52.1.27.07.68.03.95l-.15.89c-.05.27-.21 1.07.94.58s6.24-3.67 8.52-6.28C23.04 13.38 22 11.5 22 10.5 22 5.82 17.52 2 12 2z' fill='white'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-#login-wrap .snsArea li:nth-child(5) a::after {
-    content: 'LINE으로 시작하기' !important;
-}
-
-/* ============================================
-   DIVIDER — "또는 이메일로 로그인"
-   pickysociety: 12px, 1px #e5e7eb lines
-   ============================================ */
-.login-divider {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 470px;
-    margin: 0 0 28px;
-    gap: 16px;
-}
-.login-divider::before,
-.login-divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: #e5e7eb;
-}
-.login-divider span {
-    font-size: 12px;
-    font-weight: 400;
-    color: #888;
-    white-space: nowrap;
-    letter-spacing: -0.01em;
-}
 
 /* ============================================
    FIELDSET FLEX ORDERING
@@ -306,11 +137,6 @@
 #login-wrap .login fieldset {
     display: flex !important;
     flex-direction: column !important;
-}
-
-/* SNS area goes first */
-#login-wrap .login fieldset .snsArea {
-    order: 1 !important;
 }
 
 /* ID/PW inputs */
@@ -565,12 +391,16 @@
    NONMEMBER BUTTON — blue-gray pill
    pickysociety: bg #8393A7, color #fff, r30
    ============================================ */
+/* 비회원 구매 버튼 — 기본 숨김, noMember=1 시 JS로 표시 */
 #login-wrap .login fieldset #noMemberWrap {
+    display: none !important;
     border-top: none !important;
     margin-top: 10px !important;
     padding-top: 0 !important;
 }
-
+#login-wrap .login fieldset #noMemberWrap.is-visible {
+    display: flex !important;
+}
 #login-wrap .login fieldset #noMemberWrap a {
     background: #8393A7 !important;
     border: none !important;
@@ -580,9 +410,8 @@
     background: #728294 !important;
     border: none !important;
 }
-
 #login-wrap .login fieldset #noMemberWrap a::after {
-    content: '비회원 주문조회' !important;
+    content: '비회원 구매하기' !important;
     font-size: 14px !important;
     font-weight: 400 !important;
     color: #fff !important;
@@ -591,38 +420,153 @@
 }
 
 /* ============================================
-   NONMEMBER ORDER CHECK MODULE
+   NONMEMBER ORDER CHECK LINK (standalone)
+   pickysociety style: dark pill button
    ============================================ */
-div[module="MyShop_OrderHistoryNologin"] {
+.login-page-wrap .nomember-ordercheck-link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 470px;
+    margin: 28px auto 0;
+    gap: 16px;
+}
+.login-page-wrap .nomember-ordercheck-link::before,
+.login-page-wrap .nomember-ordercheck-link::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e5e7eb;
+}
+.login-page-wrap .nomember-ordercheck-link span {
+    font-size: 12px;
+    font-weight: 400;
+    color: #888;
+    white-space: nowrap;
+}
+.login-page-wrap .nomember-ordercheck-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 470px;
+    height: 40px;
+    margin: 14px auto 0;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 30px;
+    color: #212121;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Pretendard Variable', sans-serif;
+    letter-spacing: 0;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    box-sizing: border-box;
+}
+.login-page-wrap .nomember-ordercheck-btn:hover {
+    border-color: #212121;
+    background: #fafafa;
+}
+
+/* ============================================
+   NONMEMBER ORDER CHECK — TOGGLE PANEL
+   ============================================ */
+.ordercheck-panel {
+    width: 100%;
+    max-width: 470px;
+    margin: 0 auto;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.35s ease;
+}
+.ordercheck-panel.is-open {
+    max-height: 400px;
+    opacity: 1;
+    margin-top: 20px;
+}
+.ordercheck-panel-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #212121;
+    text-align: center;
+    margin-bottom: 16px;
+    font-family: 'Pretendard Variable', sans-serif;
+}
+.ordercheck-panel-sub {
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 카페24 모듈 — 토글 패널 안에서 표시 */
+.ordercheck-panel div[module="MyShop_OrderHistoryNologin"],
+.ordercheck-panel .xans-myshop-orderhistorynologin {
     border: none !important;
     width: 100% !important;
-    max-width: 470px !important;
-    margin: 48px auto 0 !important;
     padding: 0 !important;
+    margin: 0 !important;
 }
-
-div[module="MyShop_OrderHistoryNologin"] #logintitle {
+.ordercheck-panel #logintitle {
     display: block !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 20px !important;
     text-align: center !important;
 }
-
-div[module="MyShop_OrderHistoryNologin"] #logintitle h2 {
-    font-size: 20px !important;
-    font-weight: 700 !important;
+.ordercheck-panel #logintitle h2 {
+    font-size: 15px !important;
+    font-weight: 600 !important;
     color: #212121 !important;
-    letter-spacing: -0.03em !important;
     font-family: 'Pretendard Variable', sans-serif !important;
     margin-bottom: 6px !important;
 }
-
-div[module="MyShop_OrderHistoryNologin"] #logintitle span {
-    font-size: 13px !important;
-    font-weight: 400 !important;
+.ordercheck-panel #logintitle span {
+    font-size: 12px !important;
     color: #888 !important;
-    line-height: 1.5 !important;
     font-family: 'Pretendard Variable', sans-serif !important;
 }
+/* 폴백 조회 버튼 */
+.ordercheck-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    background: #f1f1f1;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    font-family: 'Pretendard Variable', sans-serif;
+    color: #212121;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.ordercheck-submit-btn:hover { background: #e4e4e4; }
+
+/* 비회원 구매 독립 버튼 (모듈 밖) */
+.login-page-wrap .nomember-purchase-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 470px;
+    height: 40px;
+    margin: 16px auto 0;
+    background: #8393A7;
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Pretendard Variable', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.login-page-wrap .nomember-purchase-btn:hover { background: #728294; }
 
 /* Order check inputs */
 #ordercheck {
@@ -773,11 +717,6 @@ div[module="MyShop_OrderHistoryNologin"] #logintitle span {
         width: 100% !important;
     }
 
-    #login-wrap .snsArea li a {
-        height: 40px !important;
-        font-size: 13px !important;
-    }
-
     #login-wrap .idbox input,
     #login-wrap .pwbox input {
         height: 42px !important;
@@ -829,12 +768,43 @@ div[module="MyShop_OrderHistoryNologin"] #logintitle span {
     }
 }
 
-/* !! FINAL OVERRIDE — SNS 미연동 상태 숨김 !! */
-#login-wrap .snsArea,
-#login-wrap .login fieldset .snsArea,
-.login-page-wrap .snsArea { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; }
-.login-divider { display: none !important; }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var isNoMember = location.search.indexOf('noMember=1') > -1 || location.search.indexOf('noMemberOrder') > -1;
+    if (isNoMember) {
+        // 카페24 모듈 버튼 (있으면)
+        var wrap = document.getElementById('noMemberWrap');
+        if (wrap) wrap.style.setProperty('display', 'flex', 'important');
+        // 독립 구매 버튼 표시 + returnUrl 연결
+        var purchaseBtn = document.querySelector('.nomember-purchase-btn');
+        if (purchaseBtn) {
+            purchaseBtn.style.setProperty('display', 'flex', 'important');
+            var params = new URLSearchParams(location.search);
+            var returnUrl = params.get('returnUrl') || '/order/orderform.html';
+            var checkedProduct = params.get('checked_product') || '';
+            var href = returnUrl + (checkedProduct ? (returnUrl.indexOf('?')>-1?'&':'?') + 'checked_product=' + checkedProduct : '');
+            purchaseBtn.href = href;
+            purchaseBtn.onclick = null;
+        }
+        // 주문조회 숨김
+        var link = document.querySelector('.nomember-ordercheck-link');
+        var btn = document.querySelector('.nomember-ordercheck-btn');
+        var panel = document.querySelector('.ordercheck-panel');
+        if (link) link.style.display = 'none';
+        if (btn) btn.style.display = 'none';
+        if (panel) panel.style.display = 'none';
+        // 제목 변경
+        var title = document.querySelector('.login-page-title');
+        var subtitle = document.querySelector('.login-page-subtitle');
+        var benefits = document.querySelector('.login-benefits');
+        if (title) title.textContent = '비회원 주문';
+        if (subtitle) subtitle.textContent = '주문 정보를 입력해 주세요';
+        if (benefits) benefits.style.display = 'none';
+    }
+});
+</script>
 
 <div class="login-page-wrap">
 
@@ -912,31 +882,58 @@ div[module="MyShop_OrderHistoryNologin"] #logintitle span {
         </div>
     </div>
 
-    <!-- Divider (between SNS and email, rendered outside module for guaranteed display) -->
-    <div class="login-divider" style="max-width:440px; margin-top:-20px; margin-bottom:24px;">
-        <span>또는 이메일로 로그인</span>
-    </div>
+    <!-- 비회원 구매 버튼 (noMember=1 시 JS로 표시) -->
+    <a href="#none" class="nomember-purchase-btn" style="display:none;" onclick="return false;">비회원 구매하기</a>
 
-    <!-- Nonmember Order Check -->
-    <div module="MyShop_OrderHistoryNologin">
-        <!--
-            $orderDetailUrl = /myshop/order/detail.html
-        -->
-        <div id="logintitle">
-            <h2>비회원 주문조회</h2>
-            <span>주문 시 입력한 정보로 주문내역을 확인할 수 있습니다.</span>
+    <!-- Nonmember Order Check — Toggle -->
+    <div class="nomember-ordercheck-link"><span>또는</span></div>
+    <a href="#none" class="nomember-ordercheck-btn" onclick="document.querySelector('.ordercheck-panel').classList.toggle('is-open');return false;">비회원 주문조회</a>
+
+    <div class="ordercheck-panel">
+        <!-- 카페24 모듈 (스킨 적용 시 렌더링) -->
+        <div module="MyShop_OrderHistoryNologin">
+            <!--
+                $orderDetailUrl = /myshop/order/detail.html
+            -->
+            <div id="logintitle">
+                <h2>비회원 주문조회</h2>
+                <span>주문 시 입력한 정보로 주문내역을 확인할 수 있습니다.</span>
+            </div>
+            <div id="ordercheck">
+                <div class="namebox" title="주문자성함">{$form.order_name}</div>
+                <div class="nobox" title="주문번호">{$form.order_id}</div>
+                <div class="pwbox" title="주문비밀번호">{$form.order_password}</div>
+                <div class="bt">
+                    <ul>
+                        <li><input type="image" alt="주문조회" src="/web/upload/ga09/login/check.gif"/></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
-        <div id="ordercheck">
-            <div class="namebox" title="주문자성함">{$form.order_name}</div>
-            <div class="nobox" title="주문번호">{$form.order_id}</div>
-            <div class="pwbox" title="주문비밀번호">{$form.order_password}</div>
-            <div class="bt">
-                <ul>
-                    <li><input type="image" alt="주문조회" src="/web/upload/ga09/login/check.gif"/></li>
-                </ul>
+        <!-- 폴백 폼 (모듈 미렌더링 시 표시) -->
+        <div class="ordercheck-fallback">
+            <p class="ordercheck-panel-title">비회원 주문조회</p>
+            <p class="ordercheck-panel-sub">주문 시 입력한 정보로 주문내역을 확인하세요</p>
+            <div id="ordercheck">
+                <div class="namebox"><input type="text" placeholder="주문자 이름" /></div>
+                <div class="nobox"><input type="text" placeholder="주문번호" /></div>
+                <div class="pwbox"><input type="password" placeholder="주문 비밀번호" /></div>
+                <div class="bt"><ul><li>
+                    <a href="/member/login.html?noMemberOrder&returnUrl=%2Fmyshop%2Forder%2Flist.html" class="ordercheck-submit-btn">조회하기</a>
+                </li></ul></div>
             </div>
         </div>
     </div>
+    <script>
+    // 카페24 모듈 렌더링 시 폴백 숨김
+    document.addEventListener('DOMContentLoaded', function() {
+        var module = document.querySelector('.ordercheck-panel .xans-myshop-orderhistorynologin');
+        if (!module) module = document.querySelector('.ordercheck-panel [module="MyShop_OrderHistoryNologin"]');
+        var fallback = document.querySelector('.ordercheck-fallback');
+        if (module && module.children.length > 0 && fallback) {
+            fallback.style.display = 'none';
+        }
+    });
+    </script>
 
 </div>

@@ -4,13 +4,32 @@
 <style>
 /* ===== Utility pages (login, cart, etc) ===== */
 #contentsWrap { margin: 0 !important; padding: 0 !important; position: relative !important; z-index: 1 !important; }
-#content { margin-top: 80px !important; }
+#content { margin-top: 0 !important; }
 
 @media (max-width: 768px) {
     #contentsWrap { margin-top: 92px !important; }
     #content { margin-top: 0 !important; }
     #left, #right, #toggle-right { display: none !important; }
 }
+
+/* ===== 하단 주문 버튼 (bttop 내 전체/선택/쇼핑 숨김) ===== */
+.ec-base-button.bttop .totalbt { display: none !important; }
+.ec-base-button.bttop { margin: 0 !important; padding: 0 !important; border: none !important; }
+
+/* ===== PC 2컬럼 레이아웃 (la-room 스타일) ===== */
+@media (min-width: 769px) {
+    .yt-cart-flex { display: flex !important; gap: 40px !important; padding: 80px 20px 0 !important; align-items: flex-start !important; }
+    .yt-cart-flex .xans-order-basketpackage { flex: 1 !important; min-width: 0 !important; }
+    .yt-cart-flex .yt-order-summary { width: 340px !important; flex-shrink: 0 !important; position: sticky !important; top: 80px !important; }
+    .yt-rec { margin: 60px 0 40px !important; padding: 0 !important; border-top: 1px solid #f0f0f0 !important; padding-top: 40px !important; max-width: 100% !important; }
+}
+@media (max-width: 768px) {
+    .yt-order-summary { padding: 0 20px 20px !important; }
+}
+
+/* ===== 장바구니 초기 숨김 (FOUC 방지) ===== */
+.xans-order-basketpackage { opacity: 0 !important; transition: opacity 0.3s ease !important; }
+.xans-order-basketpackage.yt-styled { opacity: 1 !important; }
 
 /* ===== 장바구니 디자인 ===== */
 .path { display: none !important; }
@@ -36,22 +55,9 @@
 /* 합계 tfoot */
 .yt-styled .ec-base-table.typeList tfoot { display: none !important; }
 
-/* 총합계 테이블 */
-.yt-styled .ec-base-table.total { margin: 0 20px !important; border: none !important; }
-.yt-styled .ec-base-table.total table { border: none !important; width: 100% !important; }
-.yt-styled .ec-base-table.total table th,
-.yt-styled .ec-base-table.total table td { border: none !important; border-bottom: 1px solid #f0f0f0 !important; padding: 14px 0 !important; font-size: 13px !important; font-weight: 400 !important; color: #111 !important; }
-.yt-styled .ec-base-table.total table td { text-align: right !important; }
-.yt-styled .ec-base-table.total table td .txt23 { font-size: 14px !important; font-weight: 500 !important; letter-spacing: -0.01em !important; }
-
-/* 주문 버튼 — 풀와이드 다크 라운드 */
-.yt-styled .xans-order-totalorder { margin: 20px 20px 8px !important; }
-.yt-styled .xans-order-totalorder .ec-base-button { text-align: center !important; }
-.yt-styled .xans-order-totalorder .ec-base-button a,
-.yt-styled .xans-order-totalorder .ec-base-button img { display: none !important; }
-.yt-styled .xans-order-totalorder .ec-base-button a:first-child { display: block !important; width: 100% !important; padding: 16px 0 !important; background: #222 !important; color: #fff !important; font-size: 13px !important; font-weight: 400 !important; letter-spacing: 0.08em !important; text-align: center !important; text-decoration: none !important; border: none !important; border-radius: 30px !important; box-sizing: border-box !important; }
-/* 계속 쇼핑하기 텍스트 링크 */
-.yt-styled .xans-order-totalorder .ec-base-button a:last-child { display: block !important; background: none !important; border: none !important; color: #999 !important; font-size: 12px !important; text-decoration: underline !important; padding: 12px 0 !important; text-align: center !important; border-radius: 0 !important; }
+/* 총합계/버튼 — JS에서 숨기고 커스텀으로 대체 */
+.yt-styled .ec-base-table.total { display: none !important; }
+.yt-styled .xans-order-totalorder .ec-base-button { display: none !important; }
 .orderListArea .title { display: none !important; }
 .yt-styled .engName { display: none !important; }
 .yt-styled .ec-base-table td.thumb { width: 70px !important; max-width: 70px !important; }
@@ -96,7 +102,7 @@
 .optionModify .ec-base-button a:first-child { background: #111 !important; color: #fff !important; }
 .optionModify .ec-base-button a:first-child::after { content: '\CD94\AC00' !important; }
 .optionModify .ec-base-button a:last-child::after { content: '\D655\C778' !important; }
-#NaverChk_Button { text-align: center !important; margin: 8px 20px !important; }
+#NaverChk_Button { text-align: center !important; margin: 16px 20px 0 !important; order: 99 !important; width: 100% !important; flex-basis: 100% !important; }
 
 /* ===== Cart recommend styles ===== */
 .yt-rec{max-width:1200px;margin:60px auto 40px;padding:0 24px;font-family:helvetica,"Noto Sans KR",sans-serif}
@@ -1904,9 +1910,9 @@
 
     <!-- 주문 버튼 -->
     <div module="Order_TotalOrder" class="ec-base-button justify bttop">
-        <div href="#none" onclick="{$action_order_all}" class="{$buy_display|display} totalbt btfontsize2 btsize1 btbold btst1" link-order="/order/orderform.html{$param}" link-login="/member/login.html">전체상품주문</div>
-        <div href="#none" onclick="{$action_order_select}" link-order="/order/orderform.html{$param}" link-login="/member/login.html" class="totalbt btfontsize2 btsize1 btbold btst2">선택상품주문</div>
-        <div onclick="location.href='/'" class="totalbt btfontsize2 btsize1 btbold btst2">쇼핑계속하기</div>
+        <div href="#none" onclick="{$action_order_all}" class="{$buy_display|display} totalbt btfontsize2 btsize1 btbold btst1" link-order="/order/orderform.html{$param}" link-login="/member/login.html">전체 상품 주문</div>
+        <div href="#none" onclick="{$action_order_select}" link-order="/order/orderform.html{$param}" link-login="/member/login.html" class="totalbt btfontsize2 btsize1 btbold btst2">선택 상품 주문</div>
+        <div onclick="location.href='/'" class="totalbt btfontsize2 btsize1 btbold btst2">쇼핑 계속하기</div>
         <!-- 네이버 체크아웃 구매 버튼  -->
         <div id="{$naver_checkout_button_id}"></div>
     </div>
@@ -2164,10 +2170,11 @@
         var allChk = pkg.querySelector('thead input[type="checkbox"]');
         var header = document.createElement('div');
         header.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid #f0f0f0;';
-        header.innerHTML = '<span style="font-size:15px;font-weight:400;color:#111;">장바구니</span>';
+        // PC margin-top은 .yt-cart-flex padding-top에서 처리
+        header.innerHTML = '<span style="font-size:12px;font-weight:500;color:#111;">장바구니</span>';
         if(allChk){
             var label = document.createElement('label');
-            label.style.cssText = 'display:flex;align-items:center;gap:6px;font-size:13px;color:#111;cursor:pointer;';
+            label.style.cssText = 'display:flex;align-items:center;gap:6px;font-size:12px;color:#111;cursor:pointer;';
             label.appendChild(allChk);
             label.appendChild(document.createTextNode('전체선택'));
             header.appendChild(label);
@@ -2305,63 +2312,121 @@
         pkg.classList.add('yt-styled');
     }
     function styleBottom(){
-        if(document.querySelector('.yt-bottom-done')) return;
+        if(document.querySelector('.yt-order-summary')) return;
         var pkg = document.querySelector('.xans-order-basketpackage');
         if(!pkg) return;
-        var rows = pkg.querySelectorAll('.ec-base-table.typeList tbody.center tr');
-        if(!rows.length) return;
-
-        // tfoot에서 가격 정보 추출
         var tfoot = pkg.querySelector('tfoot');
-        var tfText = tfoot ? tfoot.textContent : '';
+        if(!tfoot) return;
+
+        // tfoot에서 가격 추출
+        var tfText = tfoot.textContent || '';
         var prices = tfText.match(/[\d,]+/g) || [];
-        var productTotal = prices[0] ? prices[0]+'원' : '0원';
+        if(!prices.length) return;
+        var productTotal = prices[0]+'원';
         var shippingFee = '+ 0원';
-        var finalTotal = prices[prices.length-1] ? prices[prices.length-1]+'원' : productTotal;
+        var discountMatch = tfText.match(/상품할인금액\s*([\d,]+)/);
+        var discountAmount = discountMatch ? discountMatch[1]+'원' : '';
+        var finalTotal = prices[prices.length-1]+'원';
 
-        // tfoot, 총합계, 기존 버튼 숨김
-        if(tfoot) tfoot.style.display = 'none';
-        pkg.querySelectorAll('.ec-base-table.total').forEach(function(t){ t.style.display = 'none'; });
-        pkg.querySelectorAll('.ec-base-button').forEach(function(b){ b.style.display = 'none'; });
+        // 원본 숨김
+        tfoot.style.display = 'none';
+        pkg.querySelectorAll('.ec-base-table.total').forEach(function(t){ t.style.display='none'; });
+        pkg.querySelectorAll('.ec-base-button').forEach(function(b){ b.style.display='none'; });
 
-        // 주문하기 onclick + 삭제 onclick 찾기
-        var allBtns = pkg.querySelectorAll('.ec-base-button a');
-        var orderClick = '';
-        var deleteClick = '';
-        allBtns.forEach(function(a){
-            var oc = a.getAttribute('onclick') || '';
-            var txt = a.textContent || (a.querySelector('img') ? a.querySelector('img').alt : '');
-            if(oc.indexOf('order') > -1 || txt.indexOf('주문') > -1){
-                if(!orderClick) orderClick = oc || "location.href='"+a.href+"'";
-            }
-            if(oc.indexOf('del') > -1 || txt.indexOf('삭제') > -1){
-                if(!deleteClick) deleteClick = oc;
-            }
+        // 할인 행
+        var discountRow = discountAmount ?
+            '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #f0f0f0;font-size:12px;color:#db7e7e;">'+
+            '<span>할인 금액</span><span>- '+discountAmount+'</span></div>' : '';
+
+        // 요약 HTML
+        var sidebar = document.createElement('div');
+        sidebar.className = 'yt-order-summary';
+        sidebar.innerHTML =
+            '<div style="padding:0 20px 20px;">'+
+            '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #f0f0f0;font-size:12px;color:#111;">'+
+                '<span>총 상품 금액</span><span>'+productTotal+'</span></div>'+
+            discountRow+
+            '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #f0f0f0;font-size:12px;color:#111;">'+
+                '<span>총 배송비</span><span>'+shippingFee+'</span></div>'+
+            '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:2px solid #111;font-size:12px;">'+
+                '<span style="font-weight:500;">총 결제 예정 금액</span><span style="font-weight:500;">'+finalTotal+'</span></div>'+
+            '<div style="margin:16px 0 8px;"><button class="yt-order-btn" style="display:block;width:100%;padding:15px 0;background:#222;color:#fff;font-size:12px;letter-spacing:0.08em;border:none;border-radius:30px;cursor:pointer;">주문하기</button></div>'+
+            '<div class="yt-naver-dest" style="margin-top:12px;text-align:center;"></div>'+
+            '</div>';
+
+        // 선택삭제 — 상품 리스트 아래
+        var delRow = document.createElement('div');
+        delRow.style.cssText = 'padding:8px 20px;border-bottom:1px solid #f0f0f0;';
+        delRow.innerHTML = '<a href="#" class="yt-del-btn" style="font-size:11px;color:#999;text-decoration:none;">선택삭제</a>';
+        pkg.appendChild(delRow);
+
+        // PC: flex 2컬럼 / 모바일: 하단 삽입
+        if(window.innerWidth > 768){
+            var flexWrap = document.createElement('div');
+            flexWrap.className = 'yt-cart-flex';
+            pkg.parentNode.insertBefore(flexWrap, pkg);
+            flexWrap.appendChild(pkg);
+            flexWrap.appendChild(sidebar);
+        } else {
+            var rec = document.querySelector('.yt-rec');
+            if(rec) rec.parentNode.insertBefore(sidebar, rec);
+            else pkg.parentNode.insertBefore(sidebar, pkg.nextSibling);
+        }
+
+        // 주문하기 — 원본 카페24 버튼 클릭
+        sidebar.querySelector('.yt-order-btn').addEventListener('click', function(){
+            var orig = document.querySelector('.ec-base-button .totalbt.btst1[onclick*="order"]') ||
+                       document.querySelector('.ec-base-button div[onclick*="order"]') ||
+                       document.querySelector('.ec-base-button a[onclick*="order"]');
+            if(orig) orig.click();
+            else location.href='/order/orderform.html';
         });
 
-        // 새 하단
-        var bottom = document.createElement('div');
-        bottom.className = 'yt-bottom-done';
-        bottom.style.cssText = 'padding:0 20px 20px;';
-        bottom.innerHTML = '' +
-            '<div style="padding:8px 0;margin-bottom:20px;"><a href="#" onclick="'+deleteClick.replace(/"/g,'&quot;')+';return false;" style="font-size:11px;color:#999;text-decoration:none;cursor:pointer;">선택삭제</a></div>' +
-            '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #f0f0f0;font-size:13px;color:#111;">'+
-                '<span>총 상품 금액</span><span>'+productTotal+'</span></div>' +
-            '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #f0f0f0;font-size:13px;color:#111;">'+
-                '<span>총 배송비</span><span>'+shippingFee+'</span></div>' +
-            '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:2px solid #111;font-size:13px;">'+
-                '<span style="font-weight:500;">총 결제 예정 금액</span><span style="font-weight:500;">'+finalTotal+'</span></div>' +
-            '<div style="margin:16px 0 8px;"><button onclick="'+orderClick.replace(/"/g,'&quot;')+'" style="display:block;width:100%;padding:15px 0;background:#222;color:#fff;font-size:13px;letter-spacing:0.08em;border:none;border-radius:30px;cursor:pointer;">주문하기</button></div>' +
-            '<div style="text-align:center;"><a href="/" style="font-size:12px;color:#999;text-decoration:underline;">계속 쇼핑하기</a></div>';
+        // 선택삭제 — 원본 버튼 클릭
+        var delBtn = document.querySelector('.yt-del-btn');
+        if(delBtn) delBtn.addEventListener('click', function(e){
+            e.preventDefault();
+            var orig = document.querySelector('.ec-base-button a[onclick*="del"]') ||
+                       document.querySelector('a[onclick*="basket_del"]');
+            if(orig) orig.click();
+        });
 
-        var recSection = document.querySelector('.yt-rec');
-        if(recSection) recSection.parentNode.insertBefore(bottom, recSection);
-        else pkg.appendChild(bottom);
+        // 네이버페이 이동
+        var npay = document.querySelector('[id^="NaverChk_"]');
+        var dest = sidebar.querySelector('.yt-naver-dest');
+        if(npay && dest && npay.innerHTML.trim()) dest.appendChild(npay);
     }
 
     setTimeout(function(){ styleCart(); styleBottom(); }, 800);
     setTimeout(function(){ styleCart(); styleBottom(); }, 2000);
     setTimeout(function(){ styleCart(); styleBottom(); }, 4000);
+    // FOUC fallback
+    setTimeout(function(){ document.querySelectorAll('.xans-order-basketpackage').forEach(function(el){ el.style.opacity='1'; }); }, 3000);
+})();
+</script>
+
+<!-- ===== 장바구니 체크박스 기본 전체선택 ===== -->
+<script>
+(function(){
+    var maxTries = 20;
+    var tried = 0;
+    var timer = setInterval(function(){
+        tried++;
+        var checkboxes = document.querySelectorAll('.xans-order-basketpackage input[type="checkbox"]');
+        if(checkboxes.length > 0){
+            var allChecked = true;
+            checkboxes.forEach(function(cb){
+                if(!cb.checked){
+                    allChecked = false;
+                    cb.checked = true;
+                }
+            });
+            if(allChecked || tried >= maxTries){
+                clearInterval(timer);
+            }
+        }
+        if(tried >= maxTries) clearInterval(timer);
+    }, 500);
 })();
 </script>
 

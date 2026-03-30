@@ -44,28 +44,27 @@
     containerSelector: '#folder-banner-root',
     cacheExpiry: 5 * 60 * 1000,
     headline: 'FIND YOUR STYLE',
-    subtext: '',
+    subtext: '폴더를 터치해 새로운 스타일을 발견하세요',
     brandName: 'SHOP YOUTHTORY'
   };
 
-  // ============ 산발적 위치 프리셋 (폴더 중심 기준 상대 좌표) ============
-  // 6개 카드가 폴더 주변으로 산발적으로 배치됨
+  // ============ 산발적 위치 프리셋 (3상단 + 3하단, 전체적으로 위로) ============
   const SCATTER_POSITIONS = {
     desktop: [
-      { x: -320, y: -100, rotate: -6 },
-      { x: -110, y: -150, rotate: 4 },
-      { x: 130,  y: -120, rotate: -3 },
-      { x: -280, y: 30,   rotate: 5 },
-      { x: -40,  y: 50,   rotate: -5 },
-      { x: 180,  y: 20,   rotate: 3 },
+      { x: -300, y: -200, rotate: -8 },   // 상단 좌
+      { x: 0,    y: -240, rotate: 3 },    // 상단 중
+      { x: 280,  y: -180, rotate: 6 },    // 상단 우
+      { x: -260, y: 40,   rotate: -5 },   // 하단 좌
+      { x: 40,   y: 80,   rotate: 4 },    // 하단 중
+      { x: 260,  y: 20,   rotate: -7 },   // 하단 우
     ],
     mobile: [
-      { x: -110, y: -100, rotate: -5 },
-      { x: 20,   y: -120, rotate: 4 },
-      { x: 100,  y: -80,  rotate: -3 },
-      { x: -100, y: 10,   rotate: 3 },
-      { x: 15,   y: 30,   rotate: -4 },
-      { x: 100,  y: 15,   rotate: 2 },
+      { x: -110, y: -170, rotate: -7 },   // 상단 좌
+      { x: 20,   y: -200, rotate: 3 },    // 상단 중
+      { x: 120,  y: -150, rotate: 6 },    // 상단 우
+      { x: -100, y: 20,   rotate: -5 },   // 하단 좌
+      { x: 30,   y: 60,   rotate: 4 },    // 하단 중
+      { x: 110,  y: 10,   rotate: -6 },   // 하단 우
     ]
   };
 
@@ -188,8 +187,8 @@
     const base = isMobile() ? SCATTER_POSITIONS.mobile : SCATTER_POSITIONS.desktop;
     // 약간의 랜덤 오프셋 추가
     return base.map(pos => ({
-      x: pos.x + (Math.random() - 0.5) * 40,
-      y: pos.y + (Math.random() - 0.5) * 30,
+      x: pos.x + (Math.random() - 0.5) * 30,
+      y: pos.y + (Math.random() - 0.5) * 24,
       rotate: pos.rotate + (Math.random() - 0.5) * 6
     }));
   }
@@ -200,18 +199,20 @@
     if (!container) return;
 
     container.innerHTML = `
-      <div class="folder-banner-wrap" id="folderBannerWrap" style="overflow:hidden;">
+      <div class="folder-banner-wrap" id="folderBannerWrap" style="overflow:hidden;height:100vh;min-height:600px;max-height:none;">
         <div class="folder-banner-brand" style="position:absolute;top:35%;left:0;right:0;text-align:center;z-index:5;transform:translateY(-50%);">
           <div class="folder-banner-headline" style="font-size:clamp(36px,8vw,72px);font-weight:800;color:#fff;letter-spacing:0.06em;text-transform:uppercase;font-family:helvetica,sans-serif;text-shadow:0 2px 20px rgba(0,0,0,0.4);line-height:1.1;">${CONFIG.headline}</div>
+          <div class="folder-banner-sub" style="font-size:14px;color:rgba(255,255,255,0.75);margin-top:12px;font-weight:300;letter-spacing:0.02em;font-family:'Noto Sans KR',sans-serif;text-shadow:0 1px 8px rgba(0,0,0,0.3);">${CONFIG.subtext}</div>
         </div>
         <div class="folder-container" id="folderContainer" style="position:absolute;bottom:15%;left:50%;transform:translateX(-50%);z-index:5;gap:48px;">
           ${renderFolder('MEN')}
           ${renderFolder('WOMEN')}
         </div>
-        <div class="folder-overlay" id="folderOverlay">
+        <div class="folder-overlay" id="folderOverlay" style="position:absolute!important;top:0;left:0;right:0;bottom:0;width:100%;height:100%;">
           <div class="folder-overlay-bg" id="folderOverlayBg"></div>
-          <div class="folder-overlay-title" id="folderOverlayTitle"></div>
+          <div class="folder-overlay-title" id="folderOverlayTitle" style="position:absolute;top:100px;left:0;right:0;text-align:center;z-index:5;font-size:22px;font-weight:700;color:#fff;letter-spacing:4px;text-shadow:0 2px 12px rgba(0,0,0,0.6);"></div>
           <div class="folder-product-scatter" id="folderProductScatter"></div>
+          <a id="folderViewAll" href="#" style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:10;display:none;padding:8px 24px;background:rgba(255,255,255,0.92);color:#111;font-size:11px;font-weight:600;letter-spacing:0.1em;text-decoration:none;border-radius:50px;border:none;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:all 0.3s ease;font-family:helvetica,'Noto Sans KR',sans-serif;white-space:nowrap;box-shadow:0 2px 12px rgba(0,0,0,0.1);">VIEW ALL →</a>
         </div>
       </div>
     `;
@@ -230,24 +231,34 @@
   }
 
   function renderProductCard(product, index) {
-    const discountHtml = product.discount > 0
-      ? `<span class="product-card-discount">${product.discount}%</span>` : '';
-    const originalPriceHtml = product.originalPrice
-      ? `<span class="product-card-original-price">${product.originalPrice}</span>` : '';
     const imageHtml = product.image
       ? `<img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.style.display='none'">` : '';
+
+    const cw = isMobile() ? (window.innerWidth <= 480 ? 110 : 125) : 150;
+    const ch = Math.round(cw * 1.6);
+
+    // 할인 정보
+    const hasDiscount = product.discount > 0;
+    const discountLine = hasDiscount
+      ? `<span style="color:#e53935;font-weight:700;font-size:10px;margin-right:3px;">${product.discount}%</span>`
+      : '';
+    const originalLine = product.originalPrice
+      ? `<span style="font-size:9px;color:#999;text-decoration:line-through;margin-left:2px;">${product.originalPrice}</span>`
+      : '';
 
     return `
       <a href="${product.url}" class="product-card" target="_self"
          data-product-id="${product.id}" data-index="${index}"
-         style="z-index:${6 - index}">
-        <div class="product-card-img ${!product.image ? '' : ''}">
+         style="z-index:${6 - index};width:${cw}px;height:${ch}px;border-radius:14px;background:#fff;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,0.1),0 2px 6px rgba(0,0,0,0.05);">
+        <div style="flex:1;overflow:hidden;background:#f5f5f5;position:relative;">
           ${imageHtml}
         </div>
-        <div class="product-card-info">
-          <div class="product-card-name">${product.name}</div>
-          <div class="product-card-price">
-            ${discountHtml}${product.price}${originalPriceHtml}
+        <div style="padding:8px 10px 10px;background:#fff;">
+          <div style="font-size:11px;font-weight:500;color:#1d1d1f;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:3px;">${product.name}</div>
+          <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:1px;">
+            ${discountLine}
+            <span style="font-size:13px;font-weight:700;color:#1d1d1f;">${product.price}</span>
+            ${originalLine}
           </div>
         </div>
       </a>
@@ -272,6 +283,8 @@
         trackProductClick(card.dataset.productId, state.openFolder);
         return;
       }
+      // VIEW ALL 버튼 클릭 시 링크 이동 허용 (닫기 방지)
+      if (e.target.closest('#folderViewAll')) return;
       closeFolder();
     });
 
@@ -302,11 +315,32 @@
     scatter.innerHTML = '';
     overlay.classList.add('visible');
 
-    // 배너 중앙을 scatter 기준점으로 사용
+    // 오버레이 블러 배경 강제 활성화 (CSS 우선순위 문제 우회)
+    const overlayBg = document.getElementById('folderOverlayBg');
+    if (overlayBg) {
+      overlayBg.style.cssText = 'position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);opacity:1;z-index:0;';
+    }
+
+    // VIEW ALL CTA 버튼 표시
+    const viewAllBtn = document.getElementById('folderViewAll');
+    if (viewAllBtn) {
+      const skinPrefix = (location.pathname.match(/^\/skin-[^\/]+/) || [''])[0];
+      viewAllBtn.href = `${skinPrefix}/product/list.html?cate_no=${cat.shopNo}`;
+      viewAllBtn.textContent = `${cat.label} 전체보기 →`;
+      viewAllBtn.style.display = 'block';
+      viewAllBtn.style.opacity = '0';
+      setTimeout(() => { viewAllBtn.style.opacity = '1'; }, 400);
+    }
+
+    // 배너 중심을 scatter 기준점으로 사용 (화면 전체에 고르게 분산)
     const banner = document.getElementById('folderBannerWrap');
     const bannerRect = banner.getBoundingClientRect();
-    const folderCenterX = bannerRect.width / 2;
-    const folderCenterY = bannerRect.height * 0.42;
+    const folderRect = folderEl.getBoundingClientRect();
+    const folderCenterX = folderRect.left + folderRect.width / 2 - bannerRect.left;
+    const folderCenterY = folderRect.top + folderRect.height / 2 - bannerRect.top;
+    // 산발 기준점: 배너 중심 (폴더 위치가 아닌 화면 중심에서 퍼짐)
+    const scatterCenterX = bannerRect.width / 2;
+    const scatterCenterY = bannerRect.height / 2;
 
     // 상품 데이터 로드
     let products = tryGetProductsFromPage(gender, CONFIG.productsPerFolder);
@@ -319,7 +353,7 @@
 
     // 산발적 위치 계산
     const positions = getScatterPositions();
-    const cardWidth = isMobile() ? (window.innerWidth <= 480 ? 100 : 115) : 140;
+    const cardWidth = isMobile() ? (window.innerWidth <= 480 ? 110 : 125) : 150;
 
     // 카드 생성 + 초기 위치(폴더 중심)에 배치
     scatter.innerHTML = products.map((p, i) => renderProductCard(p, i)).join('');
@@ -338,11 +372,11 @@
 
     cards.forEach((card, i) => {
       const pos = positions[i] || positions[0];
-      const targetX = folderCenterX + pos.x - cardWidth / 2;
-      const targetY = folderCenterY + pos.y - 60;
+      const targetX = scatterCenterX + pos.x - cardWidth / 2;
+      const targetY = scatterCenterY + pos.y;
 
       // 배너 영역 내로 엄격 클램핑
-      const cardHeight = isMobile() ? 150 : 200;
+      const cardHeight = Math.round(cardWidth * 1.6);
       const clampedX = Math.max(10, Math.min(bannerRect.width - cardWidth - 10, targetX));
       const clampedY = Math.max(30, Math.min(bannerRect.height - cardHeight - 20, targetY));
 
@@ -379,7 +413,7 @@
         const folderRect = folderEl.getBoundingClientRect();
         const cx = folderRect.left + folderRect.width / 2 - bannerRect.left;
         const cy = folderRect.top + folderRect.height / 2 - bannerRect.top;
-        const cardWidth = isMobile() ? (window.innerWidth <= 480 ? 100 : 115) : 140;
+        const cardWidth = isMobile() ? (window.innerWidth <= 480 ? 110 : 125) : 150;
 
         scatter.querySelectorAll('.product-card').forEach((card, i) => {
           card.style.transitionDelay = `${i * 0.03}s`;
@@ -393,12 +427,20 @@
 
     document.querySelectorAll('.folder-item').forEach(el => el.classList.remove('active'));
 
+    // 오버레이 블러 배경 + CTA 버튼 페이드아웃
+    const overlayBg = document.getElementById('folderOverlayBg');
+    if (overlayBg) overlayBg.style.opacity = '0';
+    const viewAllBtn = document.getElementById('folderViewAll');
+    if (viewAllBtn) { viewAllBtn.style.opacity = '0'; }
+
     setTimeout(() => {
       overlay.classList.remove('visible');
     }, 200);
 
     setTimeout(() => {
       scatter.innerHTML = '';
+      if (overlayBg) overlayBg.style.cssText = '';
+      if (viewAllBtn) viewAllBtn.style.display = 'none';
       state.openFolder = null;
       state.isAnimating = false;
       if (cta) cta.style.opacity = '1';

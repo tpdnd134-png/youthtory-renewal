@@ -368,7 +368,59 @@
 })();
 </script>
 
-<script type="text/javascript" src="/js/ga09.js"></script>
+<script type="text/javascript" src="/js/ga09.js?v=20260331"></script>
+
+<!-- NEW 뱃지 자동 표시 (인라인 백업) -->
+<script>
+(function(){
+    var CK='yt_new_prd',TL=600000;
+    var U='https://cdn.jsdelivr.net/gh/tpdnd134-png/youthtory-renewal@main/new-products.json';
+    function apply(nos){
+        if(!nos||!nos.length)return;
+        var items=document.querySelectorAll('li');
+        for(var i=0;i<items.length;i++){
+            var a=items[i].querySelector('a[href*="product_no="]');
+            if(!a)continue;
+            var m=a.href.match(/product_no=(\d+)/);
+            if(!m)continue;
+            var no=parseInt(m[1],10);
+            if(nos.indexOf(no)===-1)continue;
+            var bw=items[i].querySelector('.prd-badges');
+            if(bw){
+                var ex=bw.querySelector('.badge-new');
+                if(ex&&ex.textContent.trim())continue;
+                if(ex){ex.textContent='NEW';continue;}
+                var b=document.createElement('span');
+                b.className='badge badge-new';b.textContent='NEW';
+                bw.insertBefore(b,bw.firstChild);continue;
+            }
+            var iw=items[i].querySelector('.hoverimg')||items[i].querySelector('.prdline');
+            if(iw&&!iw.querySelector('.prd-badge.badge-new')){
+                var b2=document.createElement('span');
+                b2.className='prd-badge badge-new';b2.textContent='NEW';
+                iw.appendChild(b2);
+            }
+        }
+    }
+    function run(){
+        try{var c=JSON.parse(sessionStorage.getItem(CK));
+            if(c&&Date.now()-c.ts<TL){apply(c.nos);return;}
+        }catch(e){}
+        setTimeout(function(){
+            fetch(U+'?t='+Math.floor(Date.now()/60000))
+            .then(function(r){return r.ok?r.json():null})
+            .then(function(d){
+                if(!d||!d.new_products)return;
+                sessionStorage.setItem(CK,JSON.stringify({ts:Date.now(),nos:d.new_products}));
+                apply(d.new_products);
+            }).catch(function(){});
+        },300);
+    }
+    if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(run,500)});}
+    else{setTimeout(run,500);}
+    setInterval(function(){try{var c=JSON.parse(sessionStorage.getItem(CK));if(c)apply(c.nos);}catch(e){}},3000);
+})();
+</script>
 
 <!-- Enliple Common Tracker v3.6 — userid is the Enliple tracking account ID, not admin credentials -->
 <script type="text/javascript">

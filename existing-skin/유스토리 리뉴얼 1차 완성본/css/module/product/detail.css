@@ -1374,9 +1374,9 @@ div[class*="totalPrice"],
         transform: translateY(-50%) scale(0.95) !important;
     }
 
-    /* Image counter (1/9 style) */
+    /* Image counter (1/9 style) — 기본 숨김, JS에서 .is-visible 추가 시 표시 */
     .img-slider-counter {
-        display: block !important;
+        display: none !important;
         position: absolute !important;
         bottom: 12px !important;
         right: 12px !important;
@@ -1390,5 +1390,11 @@ div[class*="totalPrice"],
         font-family: helvetica, 'Noto Sans KR', sans-serif !important;
         letter-spacing: 0.03em !important;
         line-height: 1 !important;
+    }
+    .img-slider-counter.is-visible {
+        display: block !important;
+    }
+    .img-slider-arrow.is-visible {
+        display: flex !important;
     }
 }

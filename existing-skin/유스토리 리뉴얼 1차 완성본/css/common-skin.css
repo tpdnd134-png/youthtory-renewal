@@ -1938,3 +1938,565 @@ table td.subject a {
         padding: 16px;
     }
 }
+
+/* ============================================
+   검색 오버레이 — 인기상품
+   ============================================ */
+.search-rec{width:100%;max-width:600px;margin-top:40px;padding:0 16px;box-sizing:border-box}
+.search-rec-title{font-size:12px;font-weight:400;color:#999;letter-spacing:0.1em;margin:0 0 16px}
+.search-rec-grid{display:flex;overflow-x:auto;gap:12px;padding:0 0 8px;margin:0;list-style:none;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.search-rec-grid::-webkit-scrollbar{display:none}
+.search-rec-grid>li{flex:0 0 120px;overflow:hidden}
+.search-rec-grid>li .prdpadding{padding:0}
+.search-rec-grid>li .prdline{width:120px;height:160px;overflow:hidden}
+.search-rec-grid>li .prdline img{width:100%;height:100%;object-fit:cover;display:block}
+.search-rec-grid>li .hoverimg{width:100%;height:100%}
+.search-rec-grid>li .hoverimg a{display:block;width:100%;height:100%}
+.search-rec-grid>li .name{font-size:11px;font-weight:400;color:#212121;margin:6px 0 2px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.search-rec-grid>li .name a{text-decoration:none;color:#212121}
+.search-rec-grid>li .prices,.search-rec-grid>li .price{font-size:11px;color:#999}
+.search-rec-grid>li .colorWrap,.search-rec-grid>li .info,.search-rec-grid>li .prd-keywords{display:none}
+@media(max-width:768px){.search-rec-grid>li{flex:0 0 100px}.search-rec-grid>li .prdline{width:100px;height:133px}}
+
+
+/* ==========================================================
+   30. 주문내역 / 마이페이지 리디자인 (라룸 참고)
+   ========================================================== */
+
+/* --- 탭 네비게이션 (주문내역/취소/반품) --- */
+.ec-base-tab {
+    border: none !important;
+    border-bottom: 1px solid #e8e8e8 !important;
+    margin: 0 0 32px !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+.ec-base-tab ul.menu {
+    display: flex !important;
+    gap: 0 !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.ec-base-tab li {
+    display: inline-block !important;
+}
+.ec-base-tab li a {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 0 24px !important;
+    height: 44px !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color: #999 !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    background: transparent !important;
+    transition: color 0.2s !important;
+    letter-spacing: -0.02em !important;
+    white-space: nowrap !important;
+}
+.ec-base-tab li a:hover {
+    color: #212121 !important;
+}
+.ec-base-tab li.selected a,
+.ec-base-tab li a.selected,
+.ec-base-tab li.tab_class a {
+    color: #212121 !important;
+    font-weight: 600 !important;
+    border-bottom-color: #212121 !important;
+}
+
+/* --- 검색 필터 (라룸 스타일) --- */
+.xans-myshop-orderhistoryhead {
+    margin: 0 0 32px !important;
+    padding: 24px !important;
+    background: #fafafa !important;
+    border: none !important;
+}
+.xans-myshop-orderhistoryhead fieldset {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 12px !important;
+    color: #666 !important;
+}
+.xans-myshop-orderhistoryhead fieldset legend {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0,0,0,0) !important;
+}
+/* 상태 셀렉트 */
+.xans-myshop-orderhistoryhead .stateSelect {
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.xans-myshop-orderhistoryhead .fSelect,
+.xans-myshop-orderhistoryhead select {
+    height: 34px !important;
+    padding: 0 28px 0 12px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 0 !important;
+    font-size: 12px !important;
+    color: #333 !important;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E") no-repeat right 10px center !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    cursor: pointer !important;
+}
+/* 기간 버튼 — 이미지 숨기고 CSS 텍스트 삽입 */
+.xans-myshop-orderhistoryhead .period {
+    display: inline-flex !important;
+    gap: 4px !important;
+    margin: 0 !important;
+}
+.xans-myshop-orderhistoryhead .period a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 7px 14px !important;
+    font-size: 0 !important;
+    color: #666 !important;
+    border: 1px solid #ddd !important;
+    background: #fff !important;
+    text-decoration: none !important;
+    margin: 0 !important;
+    transition: all 0.15s !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    overflow: hidden !important;
+}
+.xans-myshop-orderhistoryhead .period a img {
+    display: none !important;
+}
+.xans-myshop-orderhistoryhead .period a::after {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.02em !important;
+}
+.xans-myshop-orderhistoryhead .period a[days="00"]::after { content: '오늘' !important; }
+.xans-myshop-orderhistoryhead .period a[days="07"]::after { content: '1주일' !important; }
+.xans-myshop-orderhistoryhead .period a[days="15"]::after { content: '15일' !important; }
+.xans-myshop-orderhistoryhead .period a[days="30"]::after { content: '1개월' !important; }
+.xans-myshop-orderhistoryhead .period a[days="90"]::after { content: '3개월' !important; }
+.xans-myshop-orderhistoryhead .period a[days="180"]::after { content: '6개월' !important; }
+.xans-myshop-orderhistoryhead .period a:hover,
+.xans-myshop-orderhistoryhead .period a.selected {
+    background: #212121 !important;
+    color: #fff !important;
+    border-color: #212121 !important;
+}
+.xans-myshop-orderhistoryhead .period a:hover::after,
+.xans-myshop-orderhistoryhead .period a.selected::after {
+    color: #fff !important;
+}
+/* 날짜 인풋 */
+.xans-myshop-orderhistoryhead .fText {
+    height: 34px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 0 !important;
+    font-size: 12px !important;
+    padding: 0 10px !important;
+    background: #fff !important;
+    color: #333 !important;
+    text-align: center !important;
+    width: 100px !important;
+    box-sizing: border-box !important;
+}
+/* 캘린더 버튼 숨김 */
+.xans-myshop-orderhistoryhead fieldset button {
+    display: none !important;
+}
+/* 검색 버튼 — 이미지를 조회 텍스트 버튼으로 */
+.xans-myshop-orderhistoryhead input[type="image"] {
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    opacity: 0 !important;
+}
+.xans-myshop-orderhistoryhead .order-search-btn,
+.xans-myshop-orderhistoryhead fieldset > span:last-of-type {
+    display: inline-flex !important;
+    align-items: center !important;
+}
+.xans-myshop-orderhistoryhead .btnNormal[alt="조회"],
+.xans-myshop-orderhistoryhead input[alt="조회"] + a,
+.xans-myshop-orderhistoryhead .ec-base-button a {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 7px 20px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #fff !important;
+    background: #212121 !important;
+    border: 1px solid #212121 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: opacity 0.15s !important;
+}
+.xans-myshop-orderhistoryhead a:hover {
+    opacity: 0.85 !important;
+}
+/* 안내 텍스트 */
+.xans-myshop-orderhistoryhead ul {
+    width: 100% !important;
+    margin-top: 16px !important;
+    font-size: 11px !important;
+    color: #999 !important;
+    line-height: 1.6 !important;
+}
+.xans-myshop-orderhistoryhead ul li {
+    background: none !important;
+    padding-left: 0 !important;
+}
+
+/* --- 주문상태 요약 박스 --- */
+#orderstate {
+    margin: 0 0 32px !important;
+    border: 1px solid #e8e8e8 !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+}
+#orderstate .title {
+    padding: 18px 24px !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    background: transparent !important;
+    margin: 0 !important;
+}
+#orderstate .title h3 {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+    padding: 0 !important;
+}
+#orderstate .desc {
+    font-size: 11px !important;
+    color: #999 !important;
+}
+#orderstate .state {
+    padding: 20px 0 !important;
+}
+#orderstate .order li {
+    border-right: 1px dotted #ddd !important;
+}
+#orderstate .order li strong {
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    color: #999 !important;
+}
+#orderstate .order .count,
+#orderstate .cs .count {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+}
+#orderstate .cs strong {
+    font-size: 11px !important;
+    color: #999 !important;
+    font-weight: 400 !important;
+}
+
+/* --- 주문내역 리스트 아이템 --- */
+.xans-myshop-orderhistorylistitem {
+    border: none !important;
+}
+.xans-myshop-orderhistorylistitem .title {
+    margin: 28px 0 0 0 !important;
+    padding: 16px 0 12px !important;
+    border-bottom: 1px solid #212121 !important;
+}
+.xans-myshop-orderhistorylistitem .title h3 {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+}
+/* 테이블 헤더 */
+.xans-myshop-orderhistorylistitem.ec-base-table th {
+    background: #fff !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    color: #999 !important;
+    padding: 14px 10px !important;
+    border-bottom: 1px solid #e8e8e8 !important;
+    text-align: center !important;
+    letter-spacing: -0.02em !important;
+}
+/* 테이블 셀 */
+.xans-myshop-orderhistorylistitem.ec-base-table td {
+    padding: 20px 10px !important;
+    border-bottom: 1px solid #f2f2f2 !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+    font-size: 12px !important;
+    color: #333 !important;
+}
+.xans-myshop-orderhistorylistitem.ec-base-table td.thumb img {
+    width: 72px !important;
+    height: auto !important;
+    object-fit: cover !important;
+    border-radius: 0 !important;
+}
+.xans-myshop-orderhistorylistitem.ec-base-table td a {
+    color: #212121 !important;
+    text-decoration: none !important;
+}
+.xans-myshop-orderhistorylistitem.ec-base-table td a:hover {
+    text-decoration: underline !important;
+}
+.xans-myshop-orderhistorylistitem.ec-base-table td.product {
+    text-align: left !important;
+}
+.xans-myshop-orderhistorylistitem.ec-base-table .name {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color: #212121 !important;
+    line-height: 1.5 !important;
+}
+.xans-myshop-orderhistorylistitem.ec-base-table td.product div.option,
+.xans-myshop-orderhistorylistitem.ec-base-table td.product ul.option > li {
+    font-size: 11px !important;
+    color: #999 !important;
+    margin-top: 4px !important;
+}
+.xans-myshop-orderhistorylistitem.ec-base-table td.number {
+    font-size: 11px !important;
+    color: #999 !important;
+    line-height: 1.5 !important;
+}
+.xans-myshop-orderhistorylistitem.ec-base-table td .line {
+    text-decoration: underline !important;
+    color: #212121 !important;
+}
+/* 가격 */
+.xans-myshop-orderhistorylistitem.ec-base-table td.price {
+    font-weight: 600 !important;
+    color: #212121 !important;
+    font-size: 13px !important;
+}
+/* 주문 상태 */
+.xans-myshop-orderhistorylistitem.ec-base-table td.state {
+    font-size: 12px !important;
+    color: #666 !important;
+}
+/* 주문 상태/버튼 */
+.xans-myshop-orderhistorylistitem .btnNormal,
+.xans-myshop-orderhistorylistitem .btnSubmit {
+    display: inline-block !important;
+    padding: 5px 12px !important;
+    font-size: 11px !important;
+    color: #666 !important;
+    border: 1px solid #ddd !important;
+    background: #fff !important;
+    text-decoration: none !important;
+    margin-top: 4px !important;
+    cursor: pointer !important;
+    transition: all 0.15s !important;
+}
+.xans-myshop-orderhistorylistitem .btnNormal:hover,
+.xans-myshop-orderhistorylistitem .btnSubmit:hover {
+    background: #212121 !important;
+    color: #fff !important;
+    border-color: #212121 !important;
+}
+
+/* --- 주문 상세 --- */
+.xans-myshop-orderhistorydetail .title {
+    margin: 28px 0 0 0 !important;
+    padding: 16px 0 12px !important;
+    border-bottom: 1px solid #212121 !important;
+}
+.xans-myshop-orderhistorydetail .title h3 {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+}
+.xans-myshop-orderhistorydetail .ec-base-table .thumb img {
+    width: 80px !important;
+    height: 80px !important;
+    object-fit: cover !important;
+}
+.xans-myshop-orderhistorydetail .ec-base-table.total table {
+    border: 1px solid #212121 !important;
+}
+
+/* --- 빈 상태 메시지 --- */
+.xans-myshop-orderhistorylistitem .empty,
+.xans-myshop-orderhistorylistitem .message,
+.ec-base-table .empty {
+    padding: 80px 0 !important;
+    text-align: center !important;
+    font-size: 13px !important;
+    color: #999 !important;
+    letter-spacing: -0.02em !important;
+    border: none !important;
+}
+
+/* --- 페이지네이션 --- */
+.xans-myshop-orderhistorypaging {
+    margin: 40px 0 !important;
+}
+.xans-myshop-orderhistorypaging img {
+    opacity: 0.4 !important;
+    transition: opacity 0.15s !important;
+}
+.xans-myshop-orderhistorypaging img:hover {
+    opacity: 1 !important;
+}
+.xans-myshop-orderhistorypaging .this {
+    font-weight: 600 !important;
+    color: #212121 !important;
+}
+
+/* --- 마이페이지 메인 --- */
+#myshopMain {
+    border: none !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+#myshopMain .shoplist {
+    border-bottom: 1px solid #f0f0f0 !important;
+    padding: 28px 0 !important;
+    height: auto !important;
+}
+#myshopMain .shoplist h3 {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #212121 !important;
+    padding: 0 0 8px 20px !important;
+}
+#myshopMain .shoplist p a {
+    font-size: 12px !important;
+    color: #999 !important;
+    transition: color 0.2s !important;
+}
+#myshopMain .shoplist p a:hover {
+    color: #212121 !important;
+}
+
+/* --- 공통 버튼 (마이페이지) --- */
+#contents .ec-base-button {
+    margin: 24px 0 !important;
+}
+#contents .ec-base-button a,
+#contents .ec-base-button button {
+    border: 1px solid #ddd !important;
+    background: #fff !important;
+    color: #212121 !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    padding: 9px 24px !important;
+    border-radius: 0 !important;
+    cursor: pointer !important;
+    transition: all 0.15s !important;
+    text-decoration: none !important;
+}
+#contents .ec-base-button a:hover,
+#contents .ec-base-button button:hover {
+    background: #212121 !important;
+    color: #fff !important;
+    border-color: #212121 !important;
+}
+#contents .ec-base-button .btnStrong a,
+#contents .ec-base-button .btnStrong button,
+#contents .ec-base-button a.btnStrong,
+#contents .ec-base-button button.btnStrong {
+    background: #212121 !important;
+    color: #fff !important;
+    border-color: #212121 !important;
+}
+#contents .ec-base-button .btnStrong a:hover,
+#contents .ec-base-button .btnStrong button:hover,
+#contents .ec-base-button a.btnStrong:hover,
+#contents .ec-base-button button.btnStrong:hover {
+    background: #000 !important;
+}
+
+/* ==========================================================
+   30-M. 주문내역 모바일
+   ========================================================== */
+@media (max-width: 768px) {
+    .ec-base-tab li a {
+        padding: 0 14px !important;
+        font-size: 12px !important;
+        height: 40px !important;
+    }
+
+    .xans-myshop-orderhistoryhead {
+        padding: 16px !important;
+    }
+    .xans-myshop-orderhistoryhead fieldset {
+        gap: 6px !important;
+    }
+    .xans-myshop-orderhistoryhead .period a {
+        padding: 6px 10px !important;
+        font-size: 11px !important;
+    }
+    .xans-myshop-orderhistoryhead .fText {
+        width: 80px !important;
+        font-size: 11px !important;
+    }
+    .xans-myshop-orderhistoryhead .fSelect,
+    .xans-myshop-orderhistoryhead select {
+        font-size: 11px !important;
+    }
+
+    #orderstate {
+        margin: 0 0 24px !important;
+    }
+    #orderstate .state {
+        padding: 16px 0 !important;
+    }
+    #orderstate .order {
+        width: 100% !important;
+        float: none !important;
+    }
+    #orderstate .order li {
+        width: 25% !important;
+        padding: 8px 0 !important;
+    }
+    #orderstate .order li strong {
+        font-size: 10px !important;
+    }
+    #orderstate .order .count {
+        font-size: 16px !important;
+    }
+    #orderstate .cs {
+        float: none !important;
+        width: 100% !important;
+        padding: 12px 20px 0 !important;
+        border-top: 1px solid #f0f0f0 !important;
+    }
+    #orderstate .cs li {
+        margin: 0 12px 0 0 !important;
+        display: inline-block !important;
+    }
+
+    .xans-myshop-orderhistorylistitem.ec-base-table td.thumb img {
+        width: 64px !important;
+        height: 64px !important;
+    }
+
+    .xans-myshop-orderhistorylistitem .empty,
+    .xans-myshop-orderhistorylistitem .message {
+        padding: 60px 0 !important;
+    }
+
+    #myshopMain .shoplist {
+        width: 50% !important;
+        padding: 20px 0 !important;
+    }
+    #myshopMain .shoplist h3 {
+        font-size: 12px !important;
+        padding-left: 16px !important;
+    }
+    #myshopMain .shoplist p {
+        padding-left: 16px !important;
+    }
+}
