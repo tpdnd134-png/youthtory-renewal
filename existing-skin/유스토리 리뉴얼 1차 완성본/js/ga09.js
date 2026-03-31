@@ -245,14 +245,18 @@ var IsSlidesScroll = false;
                 return;
             }
 
-            // 방법2: 이미지 위에 오버레이 뱃지 (메인 페이지 등)
-            var imgWrap = li.querySelector('.hoverimg') || li.querySelector('.prdline');
-            if (!imgWrap || imgWrap.querySelector('.badge-new')) return;
-            var badge2 = document.createElement('span');
-            badge2.className = 'prd-badge badge-new';
-            badge2.textContent = 'NEW';
-            badge2.style.animation = 'badgeFadeIn 0.3s ease';
-            imgWrap.appendChild(badge2);
+            // 방법2: .prd-badges가 없으면 .name 뒤에 생성 (상품목록 스타일 통일)
+            var nameEl = li.querySelector('.name');
+            if (nameEl && !li.querySelector('.prd-badges')) {
+                var wrap = document.createElement('div');
+                wrap.className = 'prd-badges';
+                var badge2 = document.createElement('span');
+                badge2.className = 'badge badge-new';
+                badge2.textContent = 'NEW';
+                badge2.style.animation = 'badgeFadeIn 0.3s ease';
+                wrap.appendChild(badge2);
+                nameEl.parentNode.insertBefore(wrap, nameEl.nextSibling);
+            }
         });
     }
 

@@ -394,11 +394,11 @@
                 b.className='badge badge-new';b.textContent='NEW';
                 bw.insertBefore(b,bw.firstChild);continue;
             }
-            var iw=items[i].querySelector('.hoverimg')||items[i].querySelector('.prdline');
-            if(iw&&!iw.querySelector('.prd-badge.badge-new')){
-                var b2=document.createElement('span');
-                b2.className='prd-badge badge-new';b2.textContent='NEW';
-                iw.appendChild(b2);
+            var name=items[i].querySelector('.name');
+            if(name&&!items[i].querySelector('.prd-badges')){
+                var wrap=document.createElement('div');wrap.className='prd-badges';
+                var b2=document.createElement('span');b2.className='badge badge-new';b2.textContent='NEW';
+                wrap.appendChild(b2);name.parentNode.insertBefore(wrap,name.nextSibling);
             }
         }
     }
