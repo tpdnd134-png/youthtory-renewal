@@ -14,7 +14,8 @@
         </div>
 
         <p class="name"><a href="/product/detail.html{$param}">{$product_name}</a></p>
-    	<p class="prices"><span class="price normal{$prd_price_sale}">{$disp_product_price}</span><span class="price normal {$prd_price_sale|display}">{$prd_price_sale}</span></p>
+    	<p class="prices"><span class="sale">{$prd_price_sale}</span><span class="normal">{$disp_product_price}</span></p>
+    	<p class="discount-timer">{$product_promotion_date}</p>
     	<p class="info {$summary_desc|display}">{$summary_desc}</p>
 
     	<div class="prd-keywords">{$soldout_icon}{$stock_icon}{$recommend_icon}{$new_icon}{$product_icons}{$benefit_icons}</div>

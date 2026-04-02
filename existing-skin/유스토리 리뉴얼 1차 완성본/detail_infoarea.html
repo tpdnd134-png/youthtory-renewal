@@ -16,6 +16,59 @@
             </div>
 
             <!-- 4. Product info fields (from product_detaildesign module) -->
+            <style>
+            /* 폰트 통일 */
+            .infoArea, .infoArea *, .prd-option-wrap *, .xans-product-option *, #totalProducts * {
+                font-family: helvetica, 'Noto Sans KR', sans-serif !important;
+            }
+            /* 상품 정보 통일 — 라룸 참고 */
+            .prd-brand-label { font-size:11px!important; color:#999!important; letter-spacing:0.15em!important; margin-bottom:4px!important; }
+            .prd-detail-fields table, .prd-detail-fields table[border="1"] { border:none!important; }
+            .prd-detail-fields th { display:none!important; }
+            .prd-detail-fields td { display:block!important; padding:2px 0!important; border:none!important; background:none!important; font-size:14px!important; color:#212121!important; line-height:1.5!important; }
+            .prd-detail-fields tr:first-child td { font-size:16px!important; font-weight:500!important; margin-bottom:8px!important; letter-spacing:-0.02em!important; }
+            .prd-detail-fields td .strike, .prd-detail-fields td del, .prd-detail-fields td s { font-size:13px!important; color:#bbb!important; }
+            .prd-discount-timer { font-size:12px!important; color:#c0392b!important; margin-top:2px!important; font-weight:500!important; }
+            /* 옵션 select — 레퍼런스 스타일 (라벨 숨김, select만 표시) */
+            .prd-option-wrap th, .xans-product-option th { display:none!important; }
+            .prd-option-wrap select, .xans-product-option select, .infoArea select {
+                font-size:14px!important; height:48px!important; width:100%!important;
+                padding:12px 36px 12px 16px!important;
+                border:1px solid #ddd!important; border-radius:0!important;
+                background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E") no-repeat right 14px center!important;
+                background-size:10px 6px!important;
+                -webkit-appearance:none!important; appearance:none!important;
+                color:#212121!important;
+            }
+            /* ── 선택 결과 — 레퍼런스 스타일 (한 줄: 상품명 | − 1 + | 가격) ── */
+            #totalProducts { margin-top:12px!important; }
+            #totalProducts table { width:100%!important; border-collapse:collapse!important; }
+            #totalProducts thead { display:none!important; }
+            #totalProducts tbody tr { display:flex!important; align-items:center!important; padding:14px 0!important; border-bottom:1px solid #eee!important; }
+            #totalProducts tbody td { display:inline-flex!important; align-items:center!important; padding:0!important; border:none!important; }
+            /* 상품명 — 왼쪽 */
+            #totalProducts tbody td:first-child { flex:1!important; min-width:0!important; overflow:hidden!important; }
+            #totalProducts tbody td:first-child p.product { font-size:13px!important; color:#212121!important; line-height:1.4!important; margin:0!important; white-space:nowrap!important; overflow:hidden!important; text-overflow:ellipsis!important; }
+            #totalProducts tbody td:first-child p.product span { font-size:11px!important; color:#999!important; display:inline!important; white-space:nowrap!important; float:left!important; clear:none!important; }
+            /* 수량 — 가운데: − 1 + (Pure CSS — JS 불필요) */
+            #totalProducts span.quantity { display:inline-flex!important; align-items:center!important; gap:0!important; vertical-align:middle!important; }
+            /* 이미지 강제 숨김 */
+            #totalProducts span.quantity img { display:none!important; width:0!important; height:0!important; position:absolute!important; visibility:hidden!important; }
+            /* input: 테두리 없이 숫자만 */
+            #totalProducts span.quantity input,
+            #totalProducts input.quantity_opt,
+            #totalProducts input#quantity { width:28px!important; height:20px!important; border:0!important; border:none!important; border-width:0!important; border-style:none!important; border-radius:0!important; background:transparent!important; box-shadow:none!important; outline:none!important; text-align:center!important; font-size:13px!important; color:#212121!important; padding:0!important; margin:0!important; -webkit-appearance:none!important; appearance:none!important; }
+            /* +/- <a> 태그: 크기 초기화 + 텍스트로 대체 */
+            #totalProducts span.quantity a { display:inline-flex!important; align-items:center!important; justify-content:center!important; width:auto!important; height:auto!important; min-width:0!important; min-height:0!important; max-width:24px!important; max-height:24px!important; padding:2px 6px!important; background:none!important; background-image:none!important; border:none!important; box-shadow:none!important; cursor:pointer!important; text-decoration:none!important; font-size:0!important; color:#212121!important; line-height:1!important; overflow:hidden!important; }
+            /* 첫번째 a = 증가(+), 마지막 a = 감소(−) — ::after로 텍스트 */
+            #totalProducts span.quantity a:first-of-type::after { content:'+'!important; font-size:14px!important; font-weight:400!important; color:#212121!important; }
+            #totalProducts span.quantity a:last-of-type::after { content:'\2212'!important; font-size:14px!important; font-weight:400!important; color:#212121!important; }
+            /* 가격 — 오른쪽 */
+            #totalProducts tbody td:last-child { margin-left:auto!important; font-size:14px!important; font-weight:500!important; white-space:nowrap!important; text-align:right!important; }
+            /* X 삭제 버튼 */
+            #totalProducts tbody td img[alt*="삭제"],
+            #totalProducts tbody td a[href*="remove"] { width:14px!important; height:14px!important; opacity:0.3!important; }
+            </style>
             <div module="product_detaildesign" class="prd-detail-fields">
                 <!--
                     출력 갯수 지정 변수, 없으면 설정된 전체가 나옵니다.
@@ -35,6 +88,62 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- 4-1. 할인 마감 타이머 -->
+            <p class="prd-discount-timer" id="ytDiscountTimer"></p>
+            <script>
+            (function(){
+                function findEndDate(){
+                    // 방법1: schema.org priceValidUntil
+                    var schema = document.querySelector('script[type="application/ld+json"]');
+                    if(schema){
+                        try{
+                            var d = JSON.parse(schema.textContent);
+                            var offers = d.offers || (d[0] && d[0].offers);
+                            var pvu = null;
+                            if(Array.isArray(offers) && offers.length) pvu = offers[0].priceValidUntil;
+                            else if(offers) pvu = offers.priceValidUntil;
+                            if(pvu) return new Date(pvu.replace(' ','T'));
+                        }catch(e){}
+                    }
+                    // 방법2: discountPeriod 모듈
+                    var dp = document.querySelector('.discountPeriod .timeleft, .layerDiscountPeriod .timeleft');
+                    if(dp && dp.textContent.trim()){
+                        var el = document.getElementById('ytDiscountTimer');
+                        if(el) el.textContent = '⏱ ' + dp.textContent.trim();
+                        return null;
+                    }
+                    return null;
+                }
+                function updateTimer(){
+                    var end = findEndDate();
+                    if(!end) return;
+                    var el = document.getElementById('ytDiscountTimer');
+                    if(!el) return;
+                    // 할인가 행 바로 밑으로 이동
+                    var rows = document.querySelectorAll('.prd-detail-fields tr');
+                    var lastRow = rows[rows.length - 1];
+                    if(lastRow) lastRow.closest('td') ? lastRow.closest('td').appendChild(el) : lastRow.parentNode.insertBefore(el, lastRow.nextSibling);
+                    function tick(){
+                        var now = new Date();
+                        var diff = end - now;
+                        if(diff <= 0){ el.textContent = '할인 종료'; return; }
+                        var days = Math.floor(diff / 86400000);
+                        var hrs = Math.floor((diff % 86400000) / 3600000);
+                        var mins = Math.floor((diff % 3600000) / 60000);
+                        var secs = Math.floor((diff % 60000) / 1000);
+                        el.textContent = '⏱ 할인 종료까지 ' + days + '일 ' +
+                            String(hrs).padStart(2,'0') + ':' +
+                            String(mins).padStart(2,'0') + ':' +
+                            String(secs).padStart(2,'0');
+                    }
+                    tick();
+                    setInterval(tick, 1000);
+                }
+                if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',function(){setTimeout(updateTimer,500);});
+                else setTimeout(updateTimer,500);
+            })();
+            </script>
 
             <!-- 5. Naver mileage -->
             <p class="{$naver_mileage_exception_display|display}"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/txt_naver.gif" alt="개인결제창을 통한 결제 시 네이버 마일리지 적립 및 사용이 가능합니다." /></p>
@@ -542,36 +651,128 @@ function mobRfShop() {
         </div>
 
 
-<!-- 17. Related products -->
+<!-- 17. 함께 착용한 상품 (관련 상품 슬라이드) -->
+<style>
+.yt-relation { max-width:1200px; margin:60px auto 40px; padding:0 24px; font-family:helvetica,'Noto Sans KR',sans-serif; }
+.yt-relation-title { font-size:15px; font-weight:600; color:#111; margin:0 0 20px; letter-spacing:-0.02em; }
+.yt-relation-grid { display:flex; overflow-x:auto; gap:12px; padding:0 0 8px; margin:0; list-style:none; -webkit-overflow-scrolling:touch; scrollbar-width:none; scroll-snap-type:x mandatory; }
+.yt-relation-grid::-webkit-scrollbar { display:none; }
+.yt-relation-grid > li { flex:0 0 calc(33.333% - 8px); scroll-snap-align:start; overflow:hidden; }
+.yt-relation-grid > li .rel-img { position:relative; width:100%; aspect-ratio:3/4; overflow:hidden; border-radius:8px; background:#f5f5f5; }
+.yt-relation-grid > li .rel-img img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease; }
+.yt-relation-grid > li .rel-img:hover img { transform:scale(1.05); }
+.yt-relation-grid > li .rel-img a { display:block; width:100%; height:100%; }
+.yt-relation-grid > li .rel-info { padding:10px 0 0; }
+.yt-relation-grid > li .rel-name { font-size:12px; font-weight:400; color:#212121; line-height:1.4; margin:0 0 4px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.yt-relation-grid > li .rel-name a { color:inherit; text-decoration:none; }
+.yt-relation-grid > li .rel-price { font-size:12px; font-weight:500; color:#212121; }
+.yt-relation-grid > li .rel-price-sale { font-size:12px; font-weight:600; color:#c0392b; }
+.yt-relation-grid > li .rel-price-original { font-size:11px; font-weight:400; color:#bbb; text-decoration:line-through; margin-left:4px; }
+@media (max-width:768px) {
+    .yt-relation { margin:40px auto 30px; padding:0 16px; }
+    .yt-relation-title { font-size:14px; margin-bottom:16px; }
+    .yt-relation-grid > li { flex:0 0 calc(50% - 6px); }
+    .yt-relation-grid > li .rel-name { font-size:11px; }
+    .yt-relation-grid > li .rel-price, .yt-relation-grid > li .rel-price-sale { font-size:11px; }
+}
+</style>
 <div id="prdRelative">
-    <div module="product_relation" class="rollingprd ga09swipe" style="visibility:hidden; margin-top:50px">
-        <!--@js(/js/swipe.js)-->
-        <!--@js(/js/mainProductSwipe.js)-->
-        <!--@js(/js/execute_swipe.js)-->
-        <!--
-        $count = 12
-        $swipe = yes
-        $line = 1
-        $grid = 3
-        -->
-        <ul class="grid3" module="product_relationlist">
+    <div module="product_relation">
+    <!--
+    $count = 12
+    $swipe = yes
+    $line = 1
+    $grid = 3
+    -->
+    <div class="yt-relation">
+        <p class="yt-relation-title">함께 착용한 상품</p>
+        <ul class="yt-relation-grid" module="product_relationlist">
             <li>
-                <div class="thumbnail"><a href="/product/detail.html{$param}"><img src="{$img_medium}" alt="" /></a></div>
-                <!--<div class="information">
-                <p class="name"><a href="/product/detail.html{$param}">{$name}</a>{$soldout_icon}</p>
-                <p class="price {$product_sale_strike}" style="line-height:15px">{$disp_product_price}</p>
-                <p class="price {$sale_price_display|display}" style="line-height:12px">{$disp_sale_price}</p>
-                </div>-->
+                <div class="rel-img"><a href="/product/detail.html{$param}"><img src="{$img_medium}" alt="{$name}" /></a></div>
+                <div class="rel-info">
+                    <p class="rel-name"><a href="/product/detail.html{$param}">{$name}</a></p>
+                    <p class="rel-price">{$disp_product_price}</p>
+                </div>
             </li>
             <li>
-                <div class="thumbnail"><a href="/product/detail.html{$param}"><img src="{$img_medium}" alt="" /></a></div>
-                <!--<div class="information">
-                <p class="name"><a href="/product/detail.html{$param}">{$name}</a>{$soldout_icon}</p>
-                <p class="price {$product_sale_strike}" style="line-height:15px">{$disp_product_price}</p>
-                <p class="price {$sale_price_display|display}" style="line-height:12px">{$disp_sale_price}</p>
-                </div>-->
+                <div class="rel-img"><a href="/product/detail.html{$param}"><img src="{$img_medium}" alt="{$name}" /></a></div>
+                <div class="rel-info">
+                    <p class="rel-name"><a href="/product/detail.html{$param}">{$name}</a></p>
+                    <p class="rel-price">{$disp_product_price}</p>
+                </div>
+            </li>
+            <li>
+                <div class="rel-img"><a href="/product/detail.html{$param}"><img src="{$img_medium}" alt="{$name}" /></a></div>
+                <div class="rel-info">
+                    <p class="rel-name"><a href="/product/detail.html{$param}">{$name}</a></p>
+                    <p class="rel-price">{$disp_product_price}</p>
+                </div>
+            </li>
+            <li>
+                <div class="rel-img"><a href="/product/detail.html{$param}"><img src="{$img_medium}" alt="{$name}" /></a></div>
+                <div class="rel-info">
+                    <p class="rel-name"><a href="/product/detail.html{$param}">{$name}</a></p>
+                    <p class="rel-price">{$disp_product_price}</p>
+                </div>
+            </li>
+            <li>
+                <div class="rel-img"><a href="/product/detail.html{$param}"><img src="{$img_medium}" alt="{$name}" /></a></div>
+                <div class="rel-info">
+                    <p class="rel-name"><a href="/product/detail.html{$param}">{$name}</a></p>
+                    <p class="rel-price">{$disp_product_price}</p>
+                </div>
+            </li>
+            <li>
+                <div class="rel-img"><a href="/product/detail.html{$param}"><img src="{$img_medium}" alt="{$name}" /></a></div>
+                <div class="rel-info">
+                    <p class="rel-name"><a href="/product/detail.html{$param}">{$name}</a></p>
+                    <p class="rel-price">{$disp_product_price}</p>
+                </div>
+            </li>
+            <li>
+                <div class="rel-img"><a href="/product/detail.html{$param}"><img src="{$img_medium}" alt="{$name}" /></a></div>
+                <div class="rel-info">
+                    <p class="rel-name"><a href="/product/detail.html{$param}">{$name}</a></p>
+                    <p class="rel-price">{$disp_product_price}</p>
+                </div>
+            </li>
+            <li>
+                <div class="rel-img"><a href="/product/detail.html{$param}"><img src="{$img_medium}" alt="{$name}" /></a></div>
+                <div class="rel-info">
+                    <p class="rel-name"><a href="/product/detail.html{$param}">{$name}</a></p>
+                    <p class="rel-price">{$disp_product_price}</p>
+                </div>
+            </li>
+            <li>
+                <div class="rel-img"><a href="/product/detail.html{$param}"><img src="{$img_medium}" alt="{$name}" /></a></div>
+                <div class="rel-info">
+                    <p class="rel-name"><a href="/product/detail.html{$param}">{$name}</a></p>
+                    <p class="rel-price">{$disp_product_price}</p>
+                </div>
+            </li>
+            <li>
+                <div class="rel-img"><a href="/product/detail.html{$param}"><img src="{$img_medium}" alt="{$name}" /></a></div>
+                <div class="rel-info">
+                    <p class="rel-name"><a href="/product/detail.html{$param}">{$name}</a></p>
+                    <p class="rel-price">{$disp_product_price}</p>
+                </div>
+            </li>
+            <li>
+                <div class="rel-img"><a href="/product/detail.html{$param}"><img src="{$img_medium}" alt="{$name}" /></a></div>
+                <div class="rel-info">
+                    <p class="rel-name"><a href="/product/detail.html{$param}">{$name}</a></p>
+                    <p class="rel-price">{$disp_product_price}</p>
+                </div>
+            </li>
+            <li>
+                <div class="rel-img"><a href="/product/detail.html{$param}"><img src="{$img_medium}" alt="{$name}" /></a></div>
+                <div class="rel-info">
+                    <p class="rel-name"><a href="/product/detail.html{$param}">{$name}</a></p>
+                    <p class="rel-price">{$disp_product_price}</p>
+                </div>
             </li>
         </ul>
+    </div>
     </div>
 </div>
 <!-- 관련상품 -->

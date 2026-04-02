@@ -82,7 +82,7 @@
       <a href="#" onclick="toggleMobileSearch(); return false;"><i class="fas fa-search"></i></a>
       <span module="Layout_stateLogoff"><a href="/member/login.html"><i class="fas fa-sign-in-alt"></i></a></span>
       <span module="Layout_stateLogon"><a href="/myshop/index.html"><i class="fas fa-user"></i></a></span>
-      <a href="/order/basket.html"><i class="fas fa-shopping-cart"></i></a>
+      <a href="/order/basket.html" class="mobile-cart-link"><i class="fas fa-shopping-cart"></i><span module="Layout_orderBasketcount" class="mobile-cart-count">{$basket_count}</span></a>
     </div>
   </div>
 
@@ -97,6 +97,16 @@
             {$name} <span class="toggle-arrow">+</span>
           </button>
           <ul class="menu-overlay-sub" data-cate-href="/product/list.html{$param}">
+          </ul>
+        </li>
+      </ul>
+      <ul class="menu-overlay-nav">
+        <li>
+          <button class="menu-sub-toggle" onclick="toggleSubMenu(this)">COMMUNITY <span class="toggle-arrow">+</span></button>
+          <ul class="menu-overlay-sub">
+            <li><a href="/board/free/list.html?board_no=1">Notice</a></li>
+            <li><a href="/board/product/list.html?board_no=6">Q&A</a></li>
+            <li><a href="/board/review/list.html?board_no=4">Review</a></li>
           </ul>
         </li>
       </ul>
@@ -173,34 +183,49 @@
       <button type="submit" class="search-submit"><i class="fas fa-search"></i></button>
     </form>
     <div class="search-rec" id="searchRec">
-      <p class="search-rec-title">인기 상품</p>
+      <div class="search-rec-header">
+        <p class="search-rec-title">인기 상품</p>
+        <div class="search-rec-toggle" id="searchRecToggle">
+          <button class="srec-btn active" data-cate="42">MEN</button>
+          <button class="srec-btn" data-cate="138">WOMEN</button>
+          <button class="srec-btn" data-cate="185">UNISEX</button>
+        </div>
+      </div>
       <ul class="search-rec-grid" id="searchRecGrid"></ul>
     </div>
   </div>
   <style>
   .search-rec{width:100%;max-width:600px;margin-top:40px;padding:0 16px;box-sizing:border-box}
-  .search-rec-title{font-size:12px;font-weight:400;color:#999;letter-spacing:0.1em;margin:0 0 16px}
+  .search-rec-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .search-rec-title{font-size:12px;font-weight:400;color:#999;letter-spacing:0.1em;margin:0}
+  .search-rec-toggle{display:flex;gap:6px}
+  .srec-btn{padding:4px 12px;font-size:10px;font-weight:500;color:#999;background:none;border:1px solid #e8e8e8;border-radius:16px;cursor:pointer;transition:all 0.2s;font-family:inherit}
+  .srec-btn.active{color:#111;border-color:#111;font-weight:600}
+  .srec-btn:hover{color:#111;border-color:#bbb}
   .search-rec-grid{display:flex;overflow-x:auto;gap:12px;padding:0 0 8px;margin:0;list-style:none;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
   .search-rec-grid::-webkit-scrollbar{display:none}
   .search-rec-grid>li{flex:0 0 120px;overflow:hidden}
   .search-rec-grid>li .prdpadding{padding:0}
-  .search-rec-grid>li .prdline{width:120px;height:160px;overflow:hidden}
-  .search-rec-grid>li .prdline img{width:100%;height:100%;object-fit:cover;display:block}
+  .search-rec-grid>li .prdline{position:relative;width:120px;aspect-ratio:3/4;overflow:hidden;border-radius:6px}
+  .search-rec-grid>li .prdline img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block}
   .search-rec-grid>li .hoverimg{width:100%;height:100%}
   .search-rec-grid>li .hoverimg a{display:block;width:100%;height:100%}
   .search-rec-grid>li .name{font-size:11px;font-weight:400;color:#212121;margin:6px 0 2px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .search-rec-grid>li .name a{text-decoration:none;color:#212121}
   .search-rec-grid>li .prices,.search-rec-grid>li .price{font-size:11px;color:#999}
   .search-rec-grid>li .colorWrap,.search-rec-grid>li .info,.search-rec-grid>li .prd-keywords{display:none}
-  @media(max-width:768px){.search-rec-grid>li{flex:0 0 100px}.search-rec-grid>li .prdline{width:100px;height:133px}}
+  @media(max-width:768px){.search-rec-grid>li{flex:0 0 100px}.search-rec-grid>li .prdline{width:100px;aspect-ratio:3/4}.srec-btn{padding:3px 10px;font-size:9px}}
   </style>
   <script>
   (function(){
-    function loadSearchRec(){
+    var srecCache = {};
+    function loadSearchRec(cateNo){
       var grid = document.getElementById('searchRecGrid');
-      if(!grid || grid.children.length > 0) return;
+      if(!grid) return;
+      if(srecCache[cateNo]){ grid.innerHTML = ''; srecCache[cateNo].forEach(function(n){ grid.appendChild(n.cloneNode(true)); }); return; }
+      grid.innerHTML = '<li style="padding:20px;color:#999;font-size:11px;">로딩 중...</li>';
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', '/product/list.html?cate_no=42', true);
+      xhr.open('GET', '/product/list.html?cate_no=' + cateNo, true);
       xhr.timeout = 8000;
       xhr.onload = function(){
         if(xhr.status === 200){
@@ -209,27 +234,40 @@
             var ul = doc.querySelector('.xans-product-listnormal ul.grid4') || doc.querySelector('ul.grid4');
             if(ul){
               var items = ul.querySelectorAll('li');
-              var added = 0;
-              for(var i=0;i<items.length && added<8;i++){
+              var nodes = [];
+              for(var i=0;i<items.length && nodes.length<8;i++){
                 var img = items[i].querySelector('.prdline img, .hoverimg img');
                 if(!img || !img.src || img.src.indexOf('product') === -1) continue;
                 var clone = items[i].cloneNode(true);
-                var chips = clone.querySelector('.colorWrap');
-                if(chips) chips.style.display='none';
-                grid.appendChild(clone);
-                added++;
+                var chips = clone.querySelector('.colorWrap'); if(chips) chips.style.display='none';
+                nodes.push(clone);
               }
+              srecCache[cateNo] = nodes;
+              grid.innerHTML = '';
+              nodes.forEach(function(n){ grid.appendChild(n.cloneNode(true)); });
             }
           }catch(e){}
         }
       };
       xhr.send();
     }
+    // 토글 버튼
+    var btns = document.querySelectorAll('.srec-btn');
+    btns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        btns.forEach(function(b){ b.classList.remove('active'); });
+        this.classList.add('active');
+        loadSearchRec(this.getAttribute('data-cate'));
+      });
+    });
     var origToggle = window.toggleMobileSearch;
     window.toggleMobileSearch = function(){
       origToggle();
       var el = document.getElementById('mobileSearch');
-      if(el && el.classList.contains('open')) loadSearchRec();
+      if(el && el.classList.contains('open')){
+        var activeBtn = document.querySelector('.srec-btn.active');
+        loadSearchRec(activeBtn ? activeBtn.getAttribute('data-cate') : '42');
+      }
     };
   })();
   </script>
@@ -406,18 +444,16 @@
         try{var c=JSON.parse(sessionStorage.getItem(CK));
             if(c&&Date.now()-c.ts<TL){apply(c.nos);return;}
         }catch(e){}
-        setTimeout(function(){
-            fetch(U+'?t='+Math.floor(Date.now()/60000))
-            .then(function(r){return r.ok?r.json():null})
-            .then(function(d){
-                if(!d||!d.new_products)return;
-                sessionStorage.setItem(CK,JSON.stringify({ts:Date.now(),nos:d.new_products}));
-                apply(d.new_products);
-            }).catch(function(){});
-        },300);
+        fetch(U+'?t='+Math.floor(Date.now()/60000))
+        .then(function(r){return r.ok?r.json():null})
+        .then(function(d){
+            if(!d||!d.new_products)return;
+            sessionStorage.setItem(CK,JSON.stringify({ts:Date.now(),nos:d.new_products}));
+            apply(d.new_products);
+        }).catch(function(){});
     }
-    if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(run,500)});}
-    else{setTimeout(run,500);}
+    if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+    else{run();}
     setInterval(function(){try{var c=JSON.parse(sessionStorage.getItem(CK));if(c)apply(c.nos);}catch(e){}},3000);
 })();
 </script>

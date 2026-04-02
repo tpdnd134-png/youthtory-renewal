@@ -153,6 +153,10 @@ input[type=text], select, textarea {
 /* ==========================================================
    5. GNB Header (PC) — compact floating card
    ========================================================== */
+/* 모바일 헤더 — PC에서 숨김 */
+.mobile-header {
+    display: none !important;
+}
 .gnb-header {
     position: relative !important;
     overflow: visible !important;
@@ -771,6 +775,27 @@ input[type=text], select, textarea {
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
+    }
+    /* 모바일 장바구니 갯수 뱃지 */
+    .mobile-cart-link { position: relative !important; }
+    .mobile-cart-count {
+        position: absolute !important;
+        top: -6px !important;
+        right: -8px !important;
+        min-width: 16px !important;
+        height: 16px !important;
+        background: #212121 !important;
+        color: #fff !important;
+        font-size: 9px !important;
+        font-weight: 600 !important;
+        border-radius: 8px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 4px !important;
+        line-height: 1 !important;
+    }
+    .mobile-cart-count:empty { display: none !important; }
         width: 32px !important;
         height: 32px !important;
     }
@@ -1285,8 +1310,15 @@ table td.subject a {
    24. Login / Member Pages — pickysociety minimal
    ========================================================== */
 
-/* #top 영역 숨김 (LOGIN CART 텍스트 제거) */
+/* 카페24 기본 헤더/로고 숨김 (커스텀 GNB 사용) */
 #top {
+    display: none !important;
+}
+#header .logoArea,
+#header .logo_type,
+#header > .inner > h1,
+#header > h1,
+.logoArea {
     display: none !important;
 }
 

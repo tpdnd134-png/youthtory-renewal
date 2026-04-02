@@ -20,6 +20,7 @@
 .hoverimg { overflow: hidden !important; border-radius: 16px !important; position: relative !important; }
 .hoverimg img {
     width: 100% !important;
+    aspect-ratio: 3 / 4 !important;
     object-fit: cover !important;
     display: block !important;
     transform: scale(1) !important;
@@ -42,20 +43,25 @@
 .ga09list .chips { width: 9px !important; height: 9px !important; border-radius: 50% !important; margin-left: 0 !important; font-size: 0 !important; line-height: 0 !important; display: inline-block !important; }
 
 /* 가격 — 맨 아래 */
-.ga09list .prices { line-height: 1.4 !important; color: #212121 !important; font-size: 12px !important; margin-top: 4px !important; }
+.ga09list .prices { line-height: 1.4 !important; color: #212121 !important; font-size: 12px !important; margin-top: 4px !important; display: flex !important; flex-wrap: wrap !important; align-items: baseline !important; gap: 4px !important; }
 /* 원가 (할인 시 취소선) */
 .ga09list .price { font-size: 12px !important; color: #bbb !important; margin-right: 4px !important; text-decoration: line-through !important; font-weight: 400 !important; }
-/* 판매가 */
+/* 판매가 (기본) */
 .ga09list .normal { font-size: 12px !important; color: #212121 !important; font-weight: 500 !important; text-decoration: none !important; }
+/* 할인가 — :not(:empty) 패턴 */
+.ga09list .sale { display: none !important; }
+.ga09list .sale:not(:empty) { display: inline !important; font-size: 12px !important; color: #c0392b !important; font-weight: 600 !important; order: 1 !important; }
+.ga09list .sale:not(:empty) * { color: inherit !important; font-size: inherit !important; font-weight: inherit !important; }
+/* 할인 존재 시 원가에 취소선 */
+.ga09list .sale:not(:empty) + .normal { text-decoration: line-through !important; color: #bbb !important; font-weight: 400 !important; font-size: 11px !important; order: 2 !important; }
 /* 할인율 */
 .ga09list .sale-pct { font-size: 12px !important; color: #c0392b !important; margin-left: 4px !important; font-weight: 600 !important; }
 .ga09list .sale-pct:empty { display: none !important; }
 
-/* 할인 타이머 */
-.ga09list .discount-timer { margin-top: 4px !important; font-size: 11px !important; color: #999 !important; display: flex !important; align-items: center !important; gap: 3px !important; }
-.ga09list .discount-timer .timer-icon { font-size: 11px !important; }
-.ga09list .discount-timer .timer-text { font-size: 11px !important; color: #999 !important; }
-.ga09list .discount-timer.displaynone { display: none !important; }
+/* 할인 타이머 — :not(:empty) 패턴 */
+.ga09list .discount-timer { display: none !important; margin-top: 4px !important; font-size: 11px !important; color: #999 !important; align-items: center !important; gap: 3px !important; }
+.ga09list .discount-timer:not(:empty) { display: flex !important; }
+.ga09list .discount-timer:not(:empty)::before { content: '⏱' !important; font-size: 11px !important; }
 
 /* NEW / SALE / HOT 뱃지 */
 .ga09list .prd-badges { display: flex !important; gap: 4px !important; margin-top: 8px !important; flex-wrap: wrap !important; }
@@ -147,9 +153,11 @@
     .ga09list ul { gap: 0 !important; }
     .prdline.hoverimg { border-radius: 8px !important; }
     .prdpadding .name { font-size: 12px !important; }
-    .prdpadding .prices { font-size: 12px !important; }
+    .prdpadding .prices { font-size: 12px !important; display: flex !important; flex-wrap: wrap !important; align-items: baseline !important; gap: 4px !important; }
     .prdpadding .price { font-size: 12px !important; }
     .prdpadding .normal { font-size: 12px !important; }
+    .prdpadding .sale:not(:empty) { font-size: 12px !important; }
+    .prdpadding .sale:not(:empty) + .normal { font-size: 11px !important; }
     .section-area { padding: 30px 0 !important; }
     .section-title h2 { font-size: 20px !important; }
     .section-title p { font-size: 11px !important; }

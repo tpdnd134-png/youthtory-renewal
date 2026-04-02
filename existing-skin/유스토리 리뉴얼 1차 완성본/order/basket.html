@@ -30,6 +30,8 @@
 /* ===== 장바구니 초기 숨김 (FOUC 방지) ===== */
 .xans-order-basketpackage { opacity: 0 !important; transition: opacity 0.3s ease !important; }
 .xans-order-basketpackage.yt-styled { opacity: 1 !important; }
+/* 빈 장바구니일 때도 표시 */
+.xans-order-basketpackage:has(.xans-order-empty) { opacity: 1 !important; }
 
 /* ===== 장바구니 디자인 ===== */
 .path { display: none !important; }
@@ -42,7 +44,8 @@
 .ec-base-tab.typeLight .right { display: none !important; }
 .ec-base-box.typeMember { display: none !important; }
 .ec-base-help { display: none !important; }
-.xans-order-empty p { padding: 80px 0 !important; text-align: center !important; font-size: 13px !important; color: #999 !important; }
+.xans-order-empty { opacity: 1 !important; }
+.xans-order-empty p { padding: 80px 0 !important; text-align: center !important; font-size: 14px !important; color: #999 !important; letter-spacing: -0.02em !important; font-weight: 400 !important; }
 
 /* 초기 숨김 → JS 스타일 적용 후 보여줌 */
 .xans-order-basketpackage .orderListArea { opacity: 0 !important; transition: opacity 0.2s !important; }
@@ -113,8 +116,8 @@
 .yt-rec-grid::-webkit-scrollbar{display:none}
 .yt-rec-grid>li{flex:0 0 180px;overflow:hidden}
 .yt-rec-grid>li .prdpadding{padding:0}
-.yt-rec-grid>li .prdline{position:relative;width:180px;height:240px;overflow:hidden}
-.yt-rec-grid>li .prdline img{width:100%;height:100%;object-fit:cover;display:block}
+.yt-rec-grid>li .prdline{position:relative;width:180px;aspect-ratio:3/4;overflow:hidden;border-radius:8px}
+.yt-rec-grid>li .prdline img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block}
 .yt-rec-grid>li .hoverimg{width:100%;height:100%}
 .yt-rec-grid>li .hoverimg a{display:block;width:100%;height:100%}
 .yt-rec-grid>li .name{font-size:12px;font-weight:400;color:#212121;margin:8px 0 2px;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -123,7 +126,7 @@
 .yt-rec-grid>li .colorWrap,.yt-rec-grid>li .info,.yt-rec-grid>li .prd-keywords,.yt-rec-grid>li .soldout_icon,.yt-rec-grid>li .stock_icon{display:none}
 .yt-rec-link{display:inline-block;margin-top:20px;font-size:12px;color:#999;text-decoration:none}
 .yt-rec-link:hover{color:#111}
-@media(max-width:768px){.yt-rec{padding:0 16px;margin:40px auto 24px}.yt-rec-grid>li{flex:0 0 140px}.yt-rec-grid>li .prdline{width:140px;height:187px}}
+@media(max-width:768px){.yt-rec{padding:0 16px;margin:40px auto 24px}.yt-rec-grid>li{flex:0 0 140px}.yt-rec-grid>li .prdline{width:140px;aspect-ratio:3/4}}
 </style>
 
 <div class="path">
@@ -2430,59 +2433,73 @@
 })();
 </script>
 
-<!-- ===== Cart recommend products (extracted from layout/basic/layout.html) ===== -->
+<!-- ===== Cart recommend products with category toggle ===== -->
+<style>
+.yt-rec-toggle{display:flex;gap:6px;margin-top:8px}
+.yt-rec-btn{padding:5px 14px;font-size:11px;font-weight:500;color:#999;background:none;border:1px solid #e8e8e8;border-radius:20px;cursor:pointer;transition:all 0.2s;font-family:inherit;letter-spacing:0.02em}
+.yt-rec-btn.active{color:#111;border-color:#111;font-weight:600}
+.yt-rec-btn:hover{color:#111;border-color:#bbb}
+@media(max-width:768px){.yt-rec-btn{padding:4px 12px;font-size:10px}}
+</style>
 <script>
-/* 장바구니 추천 상품 — 가로 스크롤 */
+/* 장바구니 추천 상품 — 카테고리 토글 */
 (function(){
+    var cartRecCache = {};
     function init(){
         var anchor = document.querySelector('.ec-base-help') || document.getElementById('contents');
         if(!anchor) return;
         var d = document.createElement('div');
         d.className = 'yt-rec';
-        d.innerHTML = '<div class="yt-rec-header"><p class="yt-rec-title">추천 상품</p><p class="yt-rec-sub">이런 상품은 어떠세요?</p></div><ul class="yt-rec-grid" id="ytRecGrid"></ul><a href="/product/list.html?cate_no=42" class="yt-rec-link">더보기 →</a>';
+        d.innerHTML = '<div class="yt-rec-header"><p class="yt-rec-title">추천 상품</p><p class="yt-rec-sub">이런 상품은 어떠세요?</p><div class="yt-rec-toggle" id="cartRecToggle"><button class="yt-rec-btn active" data-cate="42">MEN</button><button class="yt-rec-btn" data-cate="138">WOMEN</button><button class="yt-rec-btn" data-cate="185">UNISEX</button></div></div><ul class="yt-rec-grid" id="ytRecGrid"></ul>';
         anchor.parentNode.insertBefore(d, anchor);
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/product/list.html?cate_no=42', true);
-        xhr.timeout = 8000;
-        xhr.onload = function(){
-            if(xhr.status === 200){
-                try{
-                    var doc = new DOMParser().parseFromString(xhr.responseText,'text/html');
-                    var ul = doc.querySelector('.xans-product-listnormal ul.grid4') || doc.querySelector('ul.grid4');
-                    if(ul){
-                        var items = ul.querySelectorAll('li');
-                        var grid = document.getElementById('ytRecGrid');
-                        var added = 0;
-                        for(var i=0;i<items.length && added<12;i++){
-                            var img = items[i].querySelector('.prdline img, .hoverimg img');
-                            if(!img || !img.src || img.src.indexOf('product') === -1) continue;
-                            var clone = items[i].cloneNode(true);
-                            var chips = clone.querySelector('.colorWrap');
-                            if(chips) chips.style.display='none';
-                            grid.appendChild(clone);
-                            added++;
+
+        function loadCartRec(cateNo){
+            var grid = document.getElementById('ytRecGrid');
+            if(!grid) return;
+            if(cartRecCache[cateNo]){ grid.innerHTML=''; cartRecCache[cateNo].forEach(function(n){ grid.appendChild(n.cloneNode(true)); }); return; }
+            grid.innerHTML = '<li style="padding:30px;color:#999;font-size:12px;">로딩 중...</li>';
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/product/list.html?cate_no=' + cateNo, true);
+            xhr.timeout = 8000;
+            xhr.onload = function(){
+                if(xhr.status === 200){
+                    try{
+                        var doc = new DOMParser().parseFromString(xhr.responseText,'text/html');
+                        var ul = doc.querySelector('.xans-product-listnormal ul.grid4') || doc.querySelector('ul.grid4');
+                        if(ul){
+                            var items = ul.querySelectorAll('li');
+                            var nodes = [];
+                            for(var i=0;i<items.length && nodes.length<12;i++){
+                                var img = items[i].querySelector('.prdline img, .hoverimg img');
+                                if(!img || !img.src || img.src.indexOf('product') === -1) continue;
+                                var clone = items[i].cloneNode(true);
+                                var chips = clone.querySelector('.colorWrap'); if(chips) chips.style.display='none';
+                                nodes.push(clone);
+                            }
+                            cartRecCache[cateNo] = nodes;
+                            grid.innerHTML='';
+                            nodes.forEach(function(n){ grid.appendChild(n.cloneNode(true)); });
                         }
-                    }
-                }catch(e){}
-            }
-        };
-        xhr.send();
+                    }catch(e){}
+                }
+            };
+            xhr.send();
+        }
+
+        // 토글 버튼
+        var btns = document.querySelectorAll('.yt-rec-btn');
+        btns.forEach(function(btn){
+            btn.addEventListener('click', function(){
+                btns.forEach(function(b){ b.classList.remove('active'); });
+                this.classList.add('active');
+                loadCartRec(this.getAttribute('data-cate'));
+            });
+        });
+
+        // 초기 로드
+        loadCartRec('42');
     }
     if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
     else init();
-
-    // 자동 스크롤
-    setTimeout(function(){
-        var grid = document.getElementById('ytRecGrid');
-        if(!grid || !grid.children.length) return;
-        var itemW = grid.children[0].offsetWidth + 12;
-        setInterval(function(){
-            if(grid.scrollLeft + grid.offsetWidth >= grid.scrollWidth - 10){
-                grid.scrollTo({left:0, behavior:'smooth'});
-            } else {
-                grid.scrollBy({left:itemW, behavior:'smooth'});
-            }
-        }, 3000);
-    }, 3000);
 })();
 </script>

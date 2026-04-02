@@ -41,28 +41,79 @@
     color: #212121;
 }
 
-/* -- Benefits banner -- */
+/* -- Benefits banner (웰컴 쿠폰팩) -- */
 .login-benefits {
     width: 100%;
     max-width: 470px;
     margin-bottom: 40px;
-    padding: 18px 24px;
-    background: #fafafa;
-    border: 1px solid #f0f0f0;
-    border-radius: 30px;
     text-align: center;
 }
-.login-benefits p {
+.login-benefits-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #212121;
+    letter-spacing: -0.03em;
+    line-height: 1.4;
+    margin: 0 0 20px;
+}
+.login-benefits-title span {
+    display: block;
+}
+.coupon-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: #212121;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+.coupon-cell {
+    background: #1a1a1a;
+    padding: 20px 12px;
+    text-align: center;
+}
+.coupon-cell .coupon-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+}
+.coupon-cell .coupon-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
     margin: 0;
-    font-size: 13px;
+    line-height: 1;
+}
+.coupon-cell .coupon-value small {
+    font-size: 14px;
     font-weight: 400;
-    color: #666;
+}
+.coupon-cell .coupon-condition {
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    margin: 6px 0 0;
+}
+.login-benefits-sub {
+    font-size: 12px;
+    color: #999;
     line-height: 1.6;
+    margin: 0;
     letter-spacing: -0.01em;
 }
-.login-benefits strong {
-    font-weight: 600;
+.login-benefits-sub strong {
     color: #212121;
+    font-weight: 600;
+}
+
+@media (max-width: 500px) {
+    .coupon-cell .coupon-value { font-size: 22px; }
+    .coupon-cell { padding: 16px 8px; }
+    .login-benefits-title { font-size: 18px; }
 }
 
 /* -- Page title -- */
@@ -568,6 +619,30 @@
 }
 .login-page-wrap .nomember-purchase-btn:hover { background: #728294; }
 
+/* 네이버페이 버튼 */
+.login-page-wrap .npay-purchase-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 470px;
+    height: 44px;
+    margin: 10px auto 0;
+    background: #03C75A;
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Pretendard Variable', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.login-page-wrap .npay-purchase-btn:hover { background: #02b350; }
+.login-page-wrap .npay-purchase-btn svg { flex-shrink: 0; }
+
 /* Order check inputs */
 #ordercheck {
     width: 100% !important;
@@ -772,6 +847,17 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // placeholder 추가 — 모든 input 탐색
+    var allInputs = document.querySelectorAll('#login-wrap input, .memberloginbox input');
+    allInputs.forEach(function(inp) {
+        if (inp.type === 'text' || inp.type === 'email' || inp.name === 'member_id' || inp.id === 'member_id') {
+            inp.setAttribute('placeholder', '아이디');
+        }
+        if (inp.type === 'password' || inp.name === 'member_passwd' || inp.id === 'member_passwd') {
+            inp.setAttribute('placeholder', '비밀번호');
+        }
+    });
+
     var isNoMember = location.search.indexOf('noMember=1') > -1 || location.search.indexOf('noMemberOrder') > -1;
     if (isNoMember) {
         // 카페24 모듈 버튼 (있으면)
@@ -787,6 +873,11 @@ document.addEventListener('DOMContentLoaded', function() {
             var href = returnUrl + (checkedProduct ? (returnUrl.indexOf('?')>-1?'&':'?') + 'checked_product=' + checkedProduct : '');
             purchaseBtn.href = href;
             purchaseBtn.onclick = null;
+        }
+        // 네이버페이 버튼 표시
+        var npayBtn = document.querySelector('.npay-purchase-btn');
+        if (npayBtn) {
+            npayBtn.style.setProperty('display', 'flex', 'important');
         }
         // 주문조회 숨김
         var link = document.querySelector('.nomember-ordercheck-link');
@@ -808,14 +899,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="login-page-wrap">
 
-    <!-- Benefits Banner -->
+    <!-- Benefits Banner — 웰컴 쿠폰팩 -->
     <div class="login-benefits">
-        <p><strong>YOUTHTORY 회원 혜택</strong> &mdash; 가입 즉시 <strong>10% 할인 쿠폰</strong> + 구매 적립금 2% + 생일 쿠폰</p>
+        <p class="login-benefits-title"><span>SHOP YOUTHTORY 신규 회원</span><span>웰컴 쿠폰팩 <strong>54,000원</strong> 지급</span></p>
+        <div class="coupon-grid">
+            <div class="coupon-cell">
+                <p class="coupon-label">WELCOME COUPON</p>
+                <p class="coupon-value">2,000<small>원</small></p>
+                <p class="coupon-condition">5만원 이상 구매 시</p>
+            </div>
+            <div class="coupon-cell">
+                <p class="coupon-label">WELCOME COUPON</p>
+                <p class="coupon-value">5,000<small>원</small></p>
+                <p class="coupon-condition">8만원 이상 구매 시</p>
+            </div>
+            <div class="coupon-cell">
+                <p class="coupon-label">WELCOME COUPON</p>
+                <p class="coupon-value">8,000<small>원</small></p>
+                <p class="coupon-condition">10만원 이상 구매 시</p>
+            </div>
+            <div class="coupon-cell">
+                <p class="coupon-label">WELCOME COUPON</p>
+                <p class="coupon-value">15,000<small>원</small></p>
+                <p class="coupon-condition">15만원 이상 구매 시</p>
+            </div>
+            <div class="coupon-cell" style="grid-column: 1 / -1;">
+                <p class="coupon-label">WELCOME COUPON</p>
+                <p class="coupon-value">24,000<small>원</small></p>
+                <p class="coupon-condition">20만원 이상 구매 시</p>
+            </div>
+        </div>
+        <p class="login-benefits-sub">신규 회원 전용 쿠폰 <strong>5종</strong> 즉시 발급<br>가입일로부터 <strong>14일간</strong> 사용 가능</p>
     </div>
 
     <!-- Title -->
     <h1 class="login-page-title">로그인</h1>
-    <p class="login-page-subtitle">YOUTHTORY에 오신 것을 환영합니다</p>
+    <p class="login-page-subtitle">SHOP YOUTHTORY에 오신 것을 환영합니다</p>
 
     <!-- Login Module (cafe24) -->
     <!--@css(/css/module/member/login.css)-->
@@ -884,6 +1003,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <!-- 비회원 구매 버튼 (noMember=1 시 JS로 표시) -->
     <a href="#none" class="nomember-purchase-btn" style="display:none;" onclick="return false;">비회원 구매하기</a>
+
+    <!-- 네이버페이 버튼 (noMember=1 시 JS로 표시) -->
+    <a href="/order/basket.html" class="npay-purchase-btn" style="display:none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M15.4 6H8.6v12h2.9v-4.5L15 18h3.4l-4.2-5.1L18 8.1h-3.2l-3.3 4V6h-.1z"/><rect width="24" height="24" fill="none"/></svg>
+        네이버페이로 구매하기
+    </a>
 
     <!-- Nonmember Order Check — Toggle -->
     <div class="nomember-ordercheck-link"><span>또는</span></div>

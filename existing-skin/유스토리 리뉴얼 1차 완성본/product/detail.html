@@ -37,7 +37,7 @@
         var cateNo = params.get('cate_no');
         if(!cateNo) return;
         // 카테고리 매핑 (카페24 API 기준 2026-03-29)
-        var cateMap = {
+        var cateMap = window.__ytCateMap = {
             // ── MEN (Mens SHOP) ──
             '42':  {name:'MEN', link:'/product/list.html?cate_no=42'},
             '128': {name:'MEN', link:'/product/list.html?cate_no=42', sub:'New'},
@@ -125,8 +125,25 @@
                     <li style="display:none">{$add_img}</li>
                     <li>{$add_img}</li>
                     <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
+                    <li>{$add_img}</li>
                 </ul>
-                <!-- Mobile slider controls -->
+                <!-- Slider controls (PC + Mobile) -->
                 <button class="img-slider-arrow img-slider-prev" aria-label="Previous image">&#8249;</button>
                 <button class="img-slider-arrow img-slider-next" aria-label="Next image">&#8250;</button>
                 <div class="img-slider-counter"><span class="img-slider-current">1</span> / <span class="img-slider-total">1</span></div>
@@ -159,11 +176,20 @@
 
     </div><!-- detailArea 영역 -->
 
+    <!-- sticky 앵커 바 — 상품 정보 바로 아래 -->
+    <nav class="prod-tab-nav" id="prodTabNav">
+        <ul>
+            <li><a href="#prdRelationSlot" data-tab="relation">함께 착용한 상품</a></li>
+            <li><a href="#prdRecommend" data-tab="recommend">추천 상품</a></li>
+            <li><a href="#prdReview" data-tab="review">REVIEW <span id="reviewCount"></span></a></li>
+            <li><a href="#prdQnA" data-tab="qna">Q&A</a></li>
+        </ul>
+    </nav>
+
     <!-- 상품상세/관련상품/후기/문의 게시판 (풀 너비, detailArea 바깥) -->
     <div class="detailBelowArea" module="product_additional">
         <!--@css(/css/module/product/additional.css)-->
         <!--@css(/board/review/ga09css/photoreviewbutton.css)-->
-
 
         <!-- 상품상세정보 -->
           <!--@import(/smart-banner/shop1/smart-banner-admin-MO00001.html)-->
@@ -172,18 +198,136 @@
         </div>
         <!-- 상품상세정보 -->
 
+        <!-- 함께 착용한 상품 (관련상품 → 리뷰 위로 이동) -->
+        <div id="prdRelationSlot"></div>
+        <script>
+        (function(){
+            function moveRelation(){
+                var src = document.getElementById('prdRelative');
+                var dest = document.getElementById('prdRelationSlot');
+                if(src && dest && src.offsetHeight > 0 && !dest.hasChildNodes()){
+                    dest.appendChild(src);
+                }
+            }
+            moveRelation();
+            var t = setInterval(function(){ moveRelation(); }, 500);
+            setTimeout(function(){ clearInterval(t); }, 5000);
+        })();
+        </script>
 
-        <!-- 탭 내비게이션 (pill tabs) -->
-        <nav class="prod-tab-nav" id="prodTabNav">
-            <ul>
-                <li><a href="#prdDetail" class="active" data-tab="detail">DETAIL</a></li>
-                <li><a href="#prdReview" data-tab="review">REVIEW</a></li>
-                <li><a href="#prdQnA" data-tab="qna">Q&A</a></li>
-            </ul>
-        </nav>
+        <!-- 추천 상품 (카테고리 자동감지 + 토글) -->
+        <div id="prdRecommend" class="yt-recommend">
+            <div class="yt-recommend-header">
+                <p class="yt-recommend-title">추천 상품</p>
+                <div class="yt-recommend-toggle" id="recToggle">
+                    <button class="rec-btn" data-cate="42">MEN</button>
+                    <button class="rec-btn" data-cate="138">WOMEN</button>
+                    <button class="rec-btn" data-cate="185">UNISEX</button>
+                </div>
+            </div>
+            <ul class="yt-recommend-grid" id="recGrid"></ul>
+        </div>
+        <style>
+        .yt-recommend { max-width:1200px; margin:48px auto; padding:0 24px; font-family:helvetica,'Noto Sans KR',sans-serif; }
+        .yt-recommend-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+        .yt-recommend-title { font-size:15px; font-weight:600; color:#111; margin:0; letter-spacing:-0.02em; }
+        .yt-recommend-toggle { display:flex; gap:6px; }
+        .rec-btn { padding:6px 14px; font-size:11px; font-weight:500; color:#999; background:none; border:1px solid #e8e8e8; border-radius:20px; cursor:pointer; transition:all 0.2s; font-family:inherit; letter-spacing:0.02em; }
+        .rec-btn.active { color:#111; border-color:#111; font-weight:600; }
+        .rec-btn:hover { color:#111; border-color:#bbb; }
+        .yt-recommend-grid { display:flex; overflow-x:auto; gap:12px; padding:0 0 8px; margin:0; list-style:none; -webkit-overflow-scrolling:touch; scrollbar-width:none; scroll-snap-type:x mandatory; }
+        .yt-recommend-grid::-webkit-scrollbar { display:none; }
+        .yt-recommend-grid > li { flex:0 0 calc(33.333% - 8px); scroll-snap-align:start; min-width:0; box-sizing:border-box; }
+        .yt-recommend-grid > li .rec-name { font-size:12px; font-weight:400; color:#212121; margin:10px 0 4px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+        .yt-recommend-grid > li .rec-name a { color:inherit; text-decoration:none; }
+        .yt-recommend-grid > li .rec-price { font-size:12px; font-weight:500; color:#212121; }
+        .yt-recommend-grid > li .rec-sale { font-size:12px; font-weight:600; color:#c0392b; }
+        .yt-recommend-grid > li .rec-original { font-size:11px; color:#bbb; text-decoration:line-through; margin-left:4px; }
+        @media (max-width:768px) {
+            .yt-recommend { margin:36px auto; padding:0 16px; }
+            .yt-recommend-title { font-size:14px; }
+            .yt-recommend-grid > li { flex:0 0 calc(50% - 6px); min-width:0; }
+            .rec-btn { padding:5px 12px; font-size:10px; }
+        }
+        </style>
+        <script>
+        (function(){
+            var recCache = {};
+            var recGrid = document.getElementById('recGrid');
+            var toggleBtns = document.querySelectorAll('.rec-btn');
+            function detectGender(){
+                var cateNo = new URLSearchParams(location.search).get('cate_no') || '';
+                var catMap = window.__ytCateMap || {};
+                if(catMap[cateNo]){
+                    var name = catMap[cateNo].name;
+                    if(name === 'MEN' || name === 'YOUTHTORY MADE') return '42';
+                    if(name === 'WOMEN') return '138';
+                    if(name === 'UNISEX') return '185';
+                }
+                if(cateNo == '42' || cateNo == '120') return '42';
+                if(cateNo == '138' || cateNo == '150') return '138';
+                if(cateNo == '185' || cateNo == '189') return '185';
+                return '42';
+            }
+            function fetchAndRender(cateNo){
+                if(recCache[cateNo]){ renderGrid(recCache[cateNo]); return; }
+                recGrid.innerHTML = '<li style="padding:40px;color:#999;font-size:12px;">로딩 중...</li>';
+                var skinPrefix = (location.pathname.match(/^\/skin-[^\/]+/) || [''])[0];
+                fetch(skinPrefix + '/product/list.html?cate_no=' + cateNo)
+                    .then(function(r){ return r.text(); })
+                    .then(function(html){
+                        var doc = new DOMParser().parseFromString(html, 'text/html');
+                        var items = doc.querySelectorAll('ul.grid4 > li, .xans-product-listnormal li');
+                        var products = [];
+                        items.forEach(function(li){
+                            var img = li.querySelector('.prdline img, .hoverimg img');
+                            var nameEl = li.querySelector('.name a');
+                            var pricesEl = li.querySelector('.prices');
+                            if(!img || !nameEl) return;
+                            var imgSrc = img.getAttribute('src') || '';
+                            if(!imgSrc || imgSrc.indexOf('product') === -1) return;
+                            var href = nameEl.getAttribute('href') || '';
+                            if(skinPrefix && href.startsWith('/') && !href.startsWith(skinPrefix)) href = skinPrefix + href;
+                            var salePrice = '', normalPrice = '';
+                            if(pricesEl){
+                                var saleEl = pricesEl.querySelector('.sale');
+                                var normalEl = pricesEl.querySelector('.normal');
+                                if(saleEl && saleEl.textContent.trim()){
+                                    salePrice = saleEl.textContent.trim().replace(/[^\d,원]/g,'');
+                                    normalPrice = normalEl ? normalEl.textContent.trim().replace(/[^\d,원]/g,'') : '';
+                                } else { normalPrice = pricesEl.textContent.trim().replace(/[^\d,원]/g,''); }
+                            }
+                            products.push({ name: nameEl.textContent.trim(), image: imgSrc, url: href, sale: salePrice, normal: normalPrice });
+                        });
+                        recCache[cateNo] = products.slice(0, 12);
+                        renderGrid(recCache[cateNo]);
+                    }).catch(function(){ recGrid.innerHTML = ''; });
+            }
+            function renderGrid(products){
+                if(!products.length){ recGrid.innerHTML = ''; return; }
+                recGrid.innerHTML = products.map(function(p){
+                    var priceHtml = p.sale ? '<p class="rec-sale">' + p.sale + ' <span class="rec-original">' + p.normal + '</span></p>' : '<p class="rec-price">' + p.normal + '</p>';
+                    return '<li><div style="position:relative;width:100%;padding-bottom:133.33%;overflow:hidden;border-radius:8px;background:#f5f5f5"><a href="' + p.url + '" style="position:absolute;top:0;left:0;width:100%;height:100%"><img src="' + p.image + '" alt="' + p.name + '" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></a></div><p class="rec-name"><a href="' + p.url + '">' + p.name + '</a></p>' + priceHtml + '</li>';
+                }).join('');
+            }
+            toggleBtns.forEach(function(btn){
+                btn.addEventListener('click', function(){
+                    toggleBtns.forEach(function(b){ b.classList.remove('active'); });
+                    this.classList.add('active');
+                    fetchAndRender(this.getAttribute('data-cate'));
+                });
+            });
+            var initInterval = setInterval(function(){
+                var detected = detectGender();
+                toggleBtns.forEach(function(b){ if(b.getAttribute('data-cate') === detected) b.classList.add('active'); });
+                fetchAndRender(detected);
+                clearInterval(initInterval);
+            }, 300);
+        })();
+        </script>
 
         <!-- 상품 사용 후기 -->
-        <div id="prdReview" style="margin-top:150px">
+        <div id="prdReview" style="margin-top:60px">
             <div id="detailboardtext" class="">
                 <div style="float:left;">Review</div>
                 <div style="float:right; text-align:right;" class="bt"><a href="{$review_write|replace:/product,/review}">Write</a><a href="{$review_list|replace:/product,/review}" style="margin-left:15px">View all</a></div>
@@ -361,6 +505,71 @@ function mobRf() {
 <script src="https://cdn.megadata.co.kr/js/en_script/3.6/enliple_min3.6.js" defer="defer" onload="mobRf()"></script>
 <!-- Enliple Common Tracker v3.6 [공용] end -->
 
+<!-- 하단 고정 바: 구매하기 버튼 + 스크롤 시 슬라이드 인 -->
+<script>
+(function(){
+    function initBar(){
+        var btnArea = document.querySelector('.btnArea') || document.querySelector('div[module="product_action"] .btnArea');
+        if(!btnArea) return;
+        // 구매하기 단일 버튼 생성
+        if(!btnArea.querySelector('.yt-buy-single-btn')){
+            var btn = document.createElement('button');
+            btn.className = 'yt-buy-single-btn';
+            btn.textContent = '구매하기';
+            btn.addEventListener('click', function(){
+                if(typeof window.__ytOpenSheet === 'function' && window.innerWidth <= 768){
+                    window.__ytOpenSheet();
+                } else {
+                    var orig = btnArea.querySelector('a:first-child');
+                    if(orig){ var onc = orig.getAttribute('onclick'); if(onc) eval(onc); }
+                }
+            });
+            btnArea.appendChild(btn);
+        }
+        // 스크롤 시 슬라이드 인
+        var shown = false;
+        function checkScroll(){
+            if(window.pageYOffset > 300){
+                if(!shown){ btnArea.classList.add('yt-bar-visible'); shown = true; }
+            } else {
+                if(shown){ btnArea.classList.remove('yt-bar-visible'); shown = false; }
+            }
+        }
+        window.addEventListener('scroll', checkScroll);
+        checkScroll();
+    }
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initBar);
+    else initBar();
+})();
+</script>
+
+<!-- Select 스타일 fix + 삭제 버튼 수정 -->
+<script>
+(function(){
+    function fix(){
+        document.querySelectorAll('.xans-product-option select, .prd-option-wrap select, .infoArea select').forEach(function(sel){
+            sel.style.cssText += 'font-size:14px!important;height:48px!important;padding:12px 0!important;border:none!important;border-bottom:1px solid #ddd!important;border-radius:0!important;-webkit-appearance:none!important;appearance:none!important;background:transparent url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'10\' height=\'6\'%3E%3Cpath d=\'M0 0l5 6 5-6z\' fill=\'%23999\'/%3E%3C/svg%3E") no-repeat right 0 center!important;background-size:10px 6px!important;color:#212121!important;';
+        });
+        // 삭제 버튼: 이미지 숨기고 × 텍스트 추가 (onclick 유지)
+        document.querySelectorAll('#totalProducts img[alt*="삭제"], #totalProducts .option_box_del').forEach(function(img){
+            if(img.getAttribute('data-del-fixed')) return;
+            img.setAttribute('data-del-fixed','1');
+            img.style.cssText = 'display:none!important';
+            var parent = img.parentElement;
+            if(parent && !parent.querySelector('.del-text')){
+                parent.style.cssText = 'display:inline-flex!important;align-items:center!important;justify-content:center!important;width:20px!important;height:20px!important;background:none!important;border:none!important;padding:0!important;cursor:pointer!important;vertical-align:middle!important;font-size:14px!important;color:#ccc!important;';
+                var txt = document.createElement('span');
+                txt.className = 'del-text';
+                txt.textContent = '×';
+                txt.style.cssText = 'pointer-events:none';
+                parent.appendChild(txt);
+            }
+        });
+    }
+    fix();
+    setInterval(fix, 500);
+})();
+</script>
 
 <!-- Bottom Sheet for mobile option selection -->
 <div id="optionBottomSheet" class="option-bottom-sheet">
@@ -373,8 +582,8 @@ function mobRf() {
         <div class="option-sheet-body" id="optionSheetBody">
         </div>
         <div class="option-sheet-footer">
-            <button type="button" class="option-sheet-buy" id="optionSheetCartBtn">CART</button>
-            <button type="button" class="option-sheet-buy option-sheet-buy-primary" id="optionSheetBuyBtn">BUY NOW</button>
+            <button type="button" class="option-sheet-buy" id="optionSheetCartBtn">장바구니 담기</button>
+            <button type="button" class="option-sheet-buy option-sheet-buy-primary" id="optionSheetBuyBtn">구매하기</button>
         </div>
     </div>
 </div>
@@ -422,8 +631,9 @@ function mobRf() {
             });
         });
 
-        // Tab nav smooth scroll
+        // ===== Sticky 앵커 바 =====
         var tabLinks = document.querySelectorAll('.prod-tab-nav a[data-tab]');
+        var tabSections = [];
         tabLinks.forEach(function(link){
             link.addEventListener('click', function(e){
                 e.preventDefault();
@@ -431,11 +641,30 @@ function mobRf() {
                 this.classList.add('active');
                 var target = document.querySelector(this.getAttribute('href'));
                 if(target){
-                    var top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+                    var top = target.getBoundingClientRect().top + window.pageYOffset - 120;
                     window.scrollTo({ top: top, behavior: 'smooth' });
                 }
             });
+            var sec = document.querySelector(link.getAttribute('href'));
+            if(sec) tabSections.push({ link: link, el: sec });
         });
+        var updateActiveTab = function(){
+            var scrollY = window.pageYOffset + 150;
+            var active = null;
+            tabSections.forEach(function(s){ if(s.el.offsetTop <= scrollY) active = s; });
+            if(active){ tabLinks.forEach(function(l){ l.classList.remove('active'); }); active.link.classList.add('active'); }
+        };
+        window.addEventListener('scroll', function(){ requestAnimationFrame(updateActiveTab); });
+        // 리뷰 건수 표시
+        (function(){
+            function countReviews(){
+                var rows = document.querySelectorAll('#ga09photoreview-detail tbody tr, .xans-product-review tbody tr');
+                var count = 0; rows.forEach(function(r){ if(r.offsetHeight > 0) count++; });
+                var el = document.getElementById('reviewCount');
+                if(el && count > 0) el.textContent = '(' + count + ')';
+            }
+            countReviews(); setTimeout(countReviews, 2000); setTimeout(countReviews, 5000);
+        })();
 
         // ===== TASK 2: Hide empty breadcrumb items =====
         var cateItems = document.querySelectorAll('.detail-cate-nav .cate-item');
@@ -464,28 +693,38 @@ function mobRf() {
         var _origParent = null;
         var _origNext = null;
 
+        var _savedOnce = false;
         function openBottomSheet(){
             if(!bottomSheet) return;
             var optWrap = document.querySelector('.prd-option-wrap');
+            var totalPrd = document.getElementById('totalProducts');
             if(optWrap && sheetBody){
-                _origParent = optWrap.parentNode;
-                _origNext = optWrap.nextSibling;
+                if(!_savedOnce){
+                    _origParent = optWrap.parentNode;
+                    _origNext = optWrap.nextSibling;
+                    if(_origNext && _origNext.id === 'totalProducts') _origNext = _origNext.nextSibling;
+                    _savedOnce = true;
+                }
+                sheetBody.innerHTML = '';
                 sheetBody.appendChild(optWrap);
+                if(totalPrd) sheetBody.appendChild(totalPrd);
             }
             bottomSheet.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
+        window.__ytOpenSheet = openBottomSheet;
 
         function closeBottomSheet(){
             if(!bottomSheet) return;
-            // 옵션 영역 원위치
             var optWrap = sheetBody ? sheetBody.querySelector('.prd-option-wrap') : null;
+            var totalPrd = sheetBody ? sheetBody.querySelector('#totalProducts') : null;
             if(optWrap && _origParent){
-                if(_origNext){
+                if(_origNext && _origNext.parentNode === _origParent){
                     _origParent.insertBefore(optWrap, _origNext);
                 } else {
                     _origParent.appendChild(optWrap);
                 }
+                if(totalPrd) optWrap.parentNode.insertBefore(totalPrd, optWrap.nextSibling);
             }
             bottomSheet.classList.remove('active');
             document.body.style.overflow = '';
@@ -561,25 +800,38 @@ function mobRf() {
             });
         }
 
-        // ===== 옵션 선택 시 라벨 업데이트 =====
-        var optionSelects = document.querySelectorAll('.xans-product-option select');
-        optionSelects.forEach(function(sel){
-            sel.addEventListener('change', function(){
-                var th = this.closest('tr') ? this.closest('tr').querySelector('th') : null;
-                if(!th) return;
-                var origLabel = th.getAttribute('data-orig');
-                if(!origLabel){
-                    origLabel = th.textContent.trim();
-                    th.setAttribute('data-orig', origLabel);
-                }
-                var val = this.options[this.selectedIndex];
-                if(val && val.value && !val.disabled && this.selectedIndex > 0){
-                    th.textContent = val.textContent.trim();
-                } else {
-                    th.textContent = origLabel;
+        // ===== 옵션 라벨 → select placeholder + th 제거 =====
+        function fixOptionLabels(){
+            var selects = document.querySelectorAll('.xans-product-option select, .prd-option-wrap select, .infoArea select');
+            selects.forEach(function(sel){
+                var tr = sel.closest('tr');
+                var th = tr ? tr.querySelector('th') : null;
+                if(th){
+                    var label = th.getAttribute('data-orig') || th.textContent.trim();
+                    if(!th.getAttribute('data-orig') && label) th.setAttribute('data-orig', label);
+                    // select placeholder 교체
+                    if(label && sel.options.length > 0){
+                        var first = sel.options[0].textContent;
+                        if(first.indexOf('필수') !== -1 || first.indexOf('선택') !== -1){
+                            sel.options[0].textContent = label;
+                        }
+                    }
+                    // th 완전 제거 (숨김이 안 먹히므로)
+                    th.style.display = 'none';
+                    th.style.height = '0';
+                    th.style.overflow = 'hidden';
+                    th.style.padding = '0';
+                    th.style.margin = '0';
+                    th.style.border = 'none';
+                    th.style.fontSize = '0';
+                    th.style.lineHeight = '0';
+                    th.style.visibility = 'hidden';
+                    th.style.position = 'absolute';
                 }
             });
-        });
+        }
+        fixOptionLabels();
+        setInterval(fixOptionLabels, 500);
 
         // ===== TASK 3: Mobile image slider =====
         var listImgUl = document.querySelector('.listImg ul');
@@ -633,11 +885,14 @@ function mobRf() {
                 listImgUl.scrollTo({ left: slideWidth * idx, behavior: 'smooth' });
             };
 
+            // 루프: 끝→처음, 처음→끝
             if(sliderPrev){
                 sliderPrev.addEventListener('click', function(){
+                    var slides = getVisibleSlides();
                     var slideWidth = listImgUl.offsetWidth;
                     var current = Math.round(listImgUl.scrollLeft / slideWidth);
-                    if(current > 0) scrollToSlide(current - 1);
+                    if(current > 0){ scrollToSlide(current - 1); }
+                    else { scrollToSlide(slides.length - 1); }
                 });
             }
             if(sliderNext){
@@ -645,7 +900,8 @@ function mobRf() {
                     var slides = getVisibleSlides();
                     var slideWidth = listImgUl.offsetWidth;
                     var current = Math.round(listImgUl.scrollLeft / slideWidth);
-                    if(current < slides.length - 1) scrollToSlide(current + 1);
+                    if(current < slides.length - 1){ scrollToSlide(current + 1); }
+                    else { scrollToSlide(0); }
                 });
             }
 
@@ -653,18 +909,97 @@ function mobRf() {
                 requestAnimationFrame(updateCounter);
             });
 
-            // Poll until images are rendered (cafe24 may inject images after load)
+            // 대표이미지 OG image로 교체 + 추가이미지 big 시도
+            var fixImages = function(){
+                var lis = listImgUl.querySelectorAll('li');
+                for(var i=0; i<lis.length; i++){
+                    var li = lis[i]; var img = li.querySelector('img');
+                    if(!img || img.getAttribute('data-img-fixed')) continue;
+                    var src = img.src; if(!src) continue;
+                    if(i === 0 || li.style.display === 'none'){
+                        var ogMeta = document.querySelector('meta[property="og:image"]');
+                        if(ogMeta && ogMeta.content){
+                            img.setAttribute('data-img-fixed','1');
+                            img.src = ogMeta.content;
+                            li.style.display = 'block';
+                        }
+                        continue;
+                    }
+                    if(src.indexOf('/extra/small/') !== -1){
+                        img.setAttribute('data-img-fixed','1');
+                        var origSrc = src;
+                        img.onerror = function(){ this.src = origSrc; };
+                        img.src = src.replace('/extra/small/', '/extra/big/');
+                    }
+                }
+            };
+
+            // Poll until images are rendered
             var counterCheckCount = 0;
             var counterCheckInterval = setInterval(function(){
+                fixImages();
                 updateCounter();
                 counterCheckCount++;
                 var slides = getVisibleSlides();
-                // Stop polling after images found or after 5 seconds
                 if(slides.length >= 2 || counterCheckCount >= 10){
                     clearInterval(counterCheckInterval);
                 }
             }, 500);
         }
+    });
+})();
+</script>
+
+<!-- GA4 전자상거래 이벤트 -->
+<script>
+(function(){
+    if(typeof gtag !== 'function') return;
+
+    // 상품 데이터 수집 (카페24 모듈 변수)
+    var productData = {
+        item_id: '{$product_no}',
+        item_name: '{$name}',
+        price: parseFloat('{$product_price}'.replace(/[^0-9]/g,'')) || 0,
+        currency: 'KRW'
+    };
+
+    // 1. view_item — 상품 페이지 진입
+    gtag('event', 'view_item', {
+        currency: 'KRW',
+        value: productData.price,
+        items: [productData]
+    });
+
+    document.addEventListener('DOMContentLoaded', function(){
+        // 2. add_to_cart — 장바구니 담기
+        var cartBtn = document.getElementById('cartBtn');
+        var sheetCartBtn = document.getElementById('optionSheetCartBtn');
+
+        function trackAddToCart(){
+            gtag('event', 'add_to_cart', {
+                currency: 'KRW',
+                value: productData.price,
+                items: [productData]
+            });
+        }
+
+        if(cartBtn) cartBtn.addEventListener('click', trackAddToCart);
+        if(sheetCartBtn) sheetCartBtn.addEventListener('click', trackAddToCart);
+
+        // 3. begin_checkout — 바로 구매
+        var buyBtn = document.querySelector('.btnArea a:first-child');
+        var sheetBuyBtn = document.getElementById('optionSheetBuyBtn');
+
+        function trackBeginCheckout(){
+            gtag('event', 'begin_checkout', {
+                currency: 'KRW',
+                value: productData.price,
+                items: [productData]
+            });
+        }
+
+        if(buyBtn) buyBtn.addEventListener('click', trackBeginCheckout);
+        if(sheetBuyBtn) sheetBuyBtn.addEventListener('click', trackBeginCheckout);
     });
 })();
 </script>

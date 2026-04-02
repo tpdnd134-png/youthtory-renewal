@@ -177,7 +177,7 @@ ul.menuCategory { border: none !important; display: inline-flex !important; flex
       <a href="#" onclick="toggleMobileSearch(); return false;"><i class="fas fa-search"></i></a>
       <span module="Layout_stateLogoff"><a href="/member/login.html"><i class="fas fa-sign-in-alt"></i></a></span>
       <span module="Layout_stateLogon"><a href="/myshop/index.html"><i class="fas fa-user"></i></a></span>
-      <a href="/order/basket.html"><i class="fas fa-shopping-cart"></i></a>
+      <a href="/order/basket.html" class="mobile-cart-link"><i class="fas fa-shopping-cart"></i><span module="Layout_orderBasketcount" class="mobile-cart-count">{$basket_count}</span></a>
     </div>
   </div>
 
@@ -195,6 +195,23 @@ ul.menuCategory { border: none !important; display: inline-flex !important; flex
           </ul>
         </li>
       </ul>
+      <ul class="menu-overlay-nav">
+        <li>
+          <button class="menu-sub-toggle" onclick="toggleSubMenu(this)">COMMUNITY <span class="toggle-arrow">+</span></button>
+          <ul class="menu-overlay-sub">
+            <li><a href="/board/free/list.html?board_no=1">Notice</a></li>
+            <li><a href="/board/product/list.html?board_no=6">Q&A</a></li>
+            <li><a href="/board/review/list.html?board_no=4">Review</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="menu-overlay-footer">
+        <a href="https://www.instagram.com/shop_youthtory/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <span module="Layout_stateLogoff"><a href="/member/login.html">Login</a></span>
+        <span module="Layout_stateLogoff"><a href="/member/join.html">Register</a></span>
+        <span module="Layout_stateLogon"><a href="/myshop/index.html">My Page</a></span>
+        <span module="Layout_stateLogon"><a href="{$action_logout}">Logout</a></span>
+      </div>
     </div>
   </div>
 

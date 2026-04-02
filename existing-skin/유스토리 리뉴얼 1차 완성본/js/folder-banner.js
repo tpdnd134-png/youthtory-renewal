@@ -39,6 +39,12 @@
         shopNo: 138,
         bestNo: 150,
         emoji: '<svg viewBox="0 0 120 100" width="100%" height="100%"><defs><linearGradient id="gw1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C9B99A"/><stop offset="100%" stop-color="#B5A484"/></linearGradient><linearGradient id="gw2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#D4C4A5"/><stop offset="100%" stop-color="#C9B99A"/></linearGradient></defs><rect x="3" y="28" width="114" height="68" rx="10" fill="url(#gw1)"/><rect x="3" y="28" width="114" height="8" rx="0" fill="url(#gw2)" opacity="0.6"/><rect x="3" y="14" width="48" height="20" rx="8" fill="url(#gw2)"/></svg>'
+      },
+      UNISEX: {
+        label: 'UNISEX',
+        shopNo: 185,
+        bestNo: 189,
+        emoji: '<svg viewBox="0 0 120 100" width="100%" height="100%"><defs><linearGradient id="gu1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F0F0F0"/></linearGradient><linearGradient id="gu2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F5F5F5"/><stop offset="100%" stop-color="#E8E8E8"/></linearGradient></defs><rect x="3" y="28" width="114" height="68" rx="10" fill="url(#gu1)" stroke="#E0E0E0" stroke-width="1"/><rect x="3" y="28" width="114" height="8" rx="0" fill="url(#gu2)" opacity="0.6"/><rect x="3" y="14" width="48" height="20" rx="8" fill="url(#gu2)" stroke="#E0E0E0" stroke-width="1"/></svg>'
       }
     },
     containerSelector: '#folder-banner-root',
@@ -94,18 +100,40 @@
       items.forEach(li => {
         const img = li.querySelector('.prdline img, .hoverimg img, .thumbnail img');
         const nameEl = li.querySelector('.name a');
-        const priceEl = li.querySelector('.price span, .price, .prices');
+        const pricesEl = li.querySelector('.prices');
         if (!img || !nameEl) return;
         const imgSrc = img.getAttribute('src') || '';
         if (!imgSrc || imgSrc.indexOf('product') === -1) return;
         let href = nameEl.getAttribute('href') || '';
         if (skinPrefix && href.startsWith('/') && !href.startsWith(skinPrefix)) href = skinPrefix + href;
+
+        // 할인가/원가 파싱 (.sale + .normal 구조)
+        let salePrice = '';
+        let normalPrice = '';
+        let discountPct = 0;
+        if (pricesEl) {
+          const saleEl = pricesEl.querySelector('.sale');
+          const normalEl = pricesEl.querySelector('.normal');
+          if (saleEl && saleEl.textContent.trim()) {
+            salePrice = saleEl.textContent.trim().replace(/[^\d,원]/g, '');
+            normalPrice = normalEl ? normalEl.textContent.trim().replace(/[^\d,원]/g, '') : '';
+            // 할인율 계산
+            const saleNum = parseInt(salePrice.replace(/[^\d]/g, ''));
+            const normalNum = parseInt(normalPrice.replace(/[^\d]/g, ''));
+            if (saleNum && normalNum && normalNum > saleNum) {
+              discountPct = Math.round((1 - saleNum / normalNum) * 100);
+            }
+          } else {
+            normalPrice = pricesEl.textContent.trim().replace(/[^\d,원]/g, '');
+          }
+        }
+
         products.push({
           id: products.length,
           name: nameEl.textContent.trim(),
-          price: priceEl ? priceEl.textContent.trim().replace(/[^\d,원]/g, '') : '',
-          originalPrice: null,
-          discount: 0,
+          price: salePrice || normalPrice,
+          originalPrice: salePrice ? normalPrice : null,
+          discount: discountPct,
           image: imgSrc,
           url: href
         });
@@ -204,9 +232,14 @@
           <div class="folder-banner-headline" style="font-size:clamp(36px,8vw,72px);font-weight:800;color:#fff;letter-spacing:0.06em;text-transform:uppercase;font-family:helvetica,sans-serif;text-shadow:0 2px 20px rgba(0,0,0,0.4);line-height:1.1;">${CONFIG.headline}</div>
           <div class="folder-banner-sub" style="font-size:14px;color:rgba(255,255,255,0.75);margin-top:12px;font-weight:300;letter-spacing:0.02em;font-family:'Noto Sans KR',sans-serif;text-shadow:0 1px 8px rgba(0,0,0,0.3);">${CONFIG.subtext}</div>
         </div>
-        <div class="folder-container" id="folderContainer" style="position:absolute;bottom:15%;left:50%;transform:translateX(-50%);z-index:5;gap:48px;">
-          ${renderFolder('MEN')}
-          ${renderFolder('WOMEN')}
+        <div class="folder-container" id="folderContainer" style="position:absolute;bottom:15%;left:50%;transform:translateX(-50%);z-index:5;gap:36px;display:flex;flex-direction:column;align-items:center;">
+          <div style="margin-bottom:8px;">
+            ${renderFolder('UNISEX')}
+          </div>
+          <div style="display:flex;gap:48px;">
+            ${renderFolder('MEN')}
+            ${renderFolder('WOMEN')}
+          </div>
         </div>
         <div class="folder-overlay" id="folderOverlay" style="position:absolute!important;top:0;left:0;right:0;bottom:0;width:100%;height:100%;">
           <div class="folder-overlay-bg" id="folderOverlayBg"></div>
@@ -238,13 +271,18 @@
     const ch = Math.round(cw * 1.6);
 
     // 할인 정보
-    const hasDiscount = product.discount > 0;
-    const discountLine = hasDiscount
-      ? `<span style="color:#e53935;font-weight:700;font-size:10px;margin-right:3px;">${product.discount}%</span>`
-      : '';
-    const originalLine = product.originalPrice
-      ? `<span style="font-size:9px;color:#999;text-decoration:line-through;margin-left:2px;">${product.originalPrice}</span>`
-      : '';
+    const hasDiscount = product.discount > 0 && product.originalPrice;
+    let priceHtml = '';
+    if (hasDiscount) {
+      priceHtml = `
+        <div style="display:flex;align-items:baseline;gap:3px;">
+          <span style="color:#c0392b;font-weight:700;font-size:11px;">${product.discount}%</span>
+          <span style="font-size:13px;font-weight:700;color:#c0392b;">${product.price}</span>
+        </div>
+        <div style="font-size:10px;color:#999;text-decoration:line-through;margin-top:1px;">${product.originalPrice}</div>`;
+    } else {
+      priceHtml = `<span style="font-size:13px;font-weight:700;color:#1d1d1f;">${product.price}</span>`;
+    }
 
     return `
       <a href="${product.url}" class="product-card" target="_self"
@@ -255,11 +293,7 @@
         </div>
         <div style="padding:8px 10px 10px;background:#fff;">
           <div style="font-size:11px;font-weight:500;color:#1d1d1f;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:3px;">${product.name}</div>
-          <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:1px;">
-            ${discountLine}
-            <span style="font-size:13px;font-weight:700;color:#1d1d1f;">${product.price}</span>
-            ${originalLine}
-          </div>
+          ${priceHtml}
         </div>
       </a>
     `;
