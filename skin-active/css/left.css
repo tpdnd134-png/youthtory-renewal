@@ -1,7 +1,0 @@
-/* YOUTHTORY Renewed - GNB Navigation */
-/* left.html이 .gnb-nav 안에 들어가므로 사이드바 스타일 제거 */
-
-/* 기존 사이드바 비활성화 */
-#left { display: none !important; }
-
-/* GNB 스타일은 layout.html 글로벌 스타일에서 처리 */
