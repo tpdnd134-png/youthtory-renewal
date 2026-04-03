@@ -83,21 +83,25 @@
   };
 
   // ============ API ============
-  async function fetchProducts(categoryNo, count) {
-    const cacheKey = `cat_${categoryNo}`;
+  async function fetchProducts(categoryNo, count, page) {
+    const pg = page || 1;
+    const cacheKey = `cat_${categoryNo}_p${pg}`;
     const now = Date.now();
     if (productCache[cacheKey] && (now - cacheTimestamp[cacheKey]) < CONFIG.cacheExpiry) {
       return shuffleArray([...productCache[cacheKey]]).slice(0, count);
     }
     try {
       const skinPrefix = (location.pathname.match(/^\/skin-[^\/]+/) || [''])[0];
-      const response = await fetch(`${skinPrefix}/product/list.html?cate_no=${categoryNo}`);
+      const response = await fetch(`${skinPrefix}/product/list.html?cate_no=${categoryNo}&page=${pg}`);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const html = await response.text();
       const doc = new DOMParser().parseFromString(html, 'text/html');
       const items = doc.querySelectorAll('ul.grid4 > li, .xans-product-listnormal li');
       const products = [];
       items.forEach(li => {
+        // 품절 상품 제외
+        const soldout = li.querySelector('.soldout-badge, .soldout_icon, .sold_out, [class*="soldout"]');
+        if (soldout && soldout.textContent.trim()) return;
         const img = li.querySelector('.prdline img, .hoverimg img, .thumbnail img');
         const nameEl = li.querySelector('.name a');
         const pricesEl = li.querySelector('.prices');
@@ -144,7 +148,7 @@
       return shuffleArray([...products]).slice(0, count);
     } catch (err) {
       console.warn('[FolderBanner] fetch failed:', err);
-      return getFallbackProducts(categoryNo, count);
+      return [];
     }
   }
 
@@ -166,26 +170,6 @@
     return null;
   }
 
-  function getFallbackProducts(categoryNo, count) {
-    const isMen = [42, 120].includes(categoryNo);
-    const prefix = isMen ? 'MEN' : 'WOMEN';
-    const items = [];
-    for (let i = 0; i < count; i++) {
-      const price = Math.floor(Math.random() * 80 + 20) * 1000;
-      const hasDiscount = Math.random() > 0.5;
-      const originalPrice = hasDiscount ? Math.floor(price * (1.2 + Math.random() * 0.5)) : null;
-      items.push({
-        id: `fallback_${categoryNo}_${i}`,
-        name: `${prefix} Style Item ${String(i + 1).padStart(2, '0')}`,
-        price: formatPrice(price),
-        originalPrice: originalPrice ? formatPrice(originalPrice) : null,
-        discount: originalPrice ? Math.round((1 - price / originalPrice) * 100) : 0,
-        image: '',
-        url: `/product/list.html?cate_no=${categoryNo}`
-      });
-    }
-    return items;
-  }
 
   // ============ 유틸 ============
   function formatPrice(price) {
@@ -376,13 +360,29 @@
     const scatterCenterX = bannerRect.width / 2;
     const scatterCenterY = bannerRect.height / 2;
 
-    // 상품 데이터 로드
+    // 상품 데이터 로드 (1~3페이지에서 모아서 랜덤 추출)
     let products = tryGetProductsFromPage(gender, CONFIG.productsPerFolder);
     if (!products || products.length === 0) {
-      products = await fetchProducts(cat.bestNo, CONFIG.productsPerFolder);
-    }
-    if (!products || products.length === 0) {
-      products = await fetchProducts(cat.shopNo, CONFIG.productsPerFolder);
+      const cacheKey = `multi_${cat.shopNo}`;
+      const now = Date.now();
+      if (productCache[cacheKey] && (now - cacheTimestamp[cacheKey]) < CONFIG.cacheExpiry) {
+        products = shuffleArray([...productCache[cacheKey]]).slice(0, CONFIG.productsPerFolder);
+      } else {
+        // 랜덤 3페이지 선택 (1~10 중)
+        const allPages = [1,2,3,4,5,6,7,8,9,10];
+        const pages = shuffleArray(allPages).slice(0, 3);
+        const allProducts = [];
+        const results = await Promise.allSettled(pages.map(p => fetchProducts(cat.shopNo, 50, p)));
+        results.forEach(r => { if (r.status === 'fulfilled' && r.value) allProducts.push(...r.value); });
+        // 중복 제거 (이름 기준)
+        const seen = new Set();
+        const unique = allProducts.filter(p => { if (seen.has(p.name)) return false; seen.add(p.name); return true; });
+        if (unique.length > 0) {
+          productCache[cacheKey] = unique;
+          cacheTimestamp[cacheKey] = now;
+          products = shuffleArray([...unique]).slice(0, CONFIG.productsPerFolder);
+        }
+      }
     }
 
     // 산발적 위치 계산
