@@ -1,135 +1,27 @@
 {
   "new_products": [
-    3090,
-    3089,
-    3088,
-    3087,
-    3086,
-    3085,
-    3084,
-    3083,
-    3082,
-    3081,
-    3080,
-    3079,
-    3078,
-    3077,
-    3076,
-    3075,
-    3074,
-    3073,
-    3072,
-    3071,
-    3070
+    3093,
+    3092,
+    3091
   ],
   "details": [
     {
-      "no": 3090,
-      "name": "스웻 팬츠",
-      "created": "2026-03-26T19:36:06+09:00"
+      "no": 3093,
+      "name": "Basic Belted Jogger Pants",
+      "created": "2026-04-10T18:30:40+09:00"
     },
     {
-      "no": 3089,
-      "name": "Slash Button Knit",
-      "created": "2026-03-26T19:35:59+09:00"
+      "no": 3092,
+      "name": "Crop Hood Zip-up",
+      "created": "2026-04-10T18:01:40+09:00"
     },
     {
-      "no": 3088,
-      "name": "Melan Side Zip-Up Knit",
-      "created": "2026-03-26T19:35:47+09:00"
-    },
-    {
-      "no": 3087,
-      "name": "Chrome Waffle Color Block Warmer Tee",
-      "created": "2026-03-26T19:35:40+09:00"
-    },
-    {
-      "no": 3086,
-      "name": "Chrome Layered Knit",
-      "created": "2026-03-26T19:35:31+09:00"
-    },
-    {
-      "no": 3085,
-      "name": "Stitch Knit Crop Tee",
-      "created": "2026-03-26T19:35:25+09:00"
-    },
-    {
-      "no": 3084,
-      "name": "Dangara Waffle Crop Tee",
-      "created": "2026-03-26T19:35:18+09:00"
-    },
-    {
-      "no": 3083,
-      "name": "Raw Edge Hood Zip-Up",
-      "created": "2026-03-26T19:35:12+09:00"
-    },
-    {
-      "no": 3082,
-      "name": "Layered Deki Henley Neck",
-      "created": "2026-03-26T19:35:07+09:00"
-    },
-    {
-      "no": 3081,
-      "name": "ST Layered Long Sleeve",
-      "created": "2026-03-26T19:35:01+09:00"
-    },
-    {
-      "no": 3080,
-      "name": "Stitch T-Shirt",
-      "created": "2026-03-26T19:34:54+09:00"
-    },
-    {
-      "no": 3079,
-      "name": "Crew Stitch Tee",
-      "created": "2026-03-26T19:34:47+09:00"
-    },
-    {
-      "no": 3078,
-      "name": "1345 Carved USA Coat Pants",
-      "created": "2026-03-26T19:34:40+09:00"
-    },
-    {
-      "no": 3077,
-      "name": "Henley Neck Double Layered Crop Tee",
-      "created": "2026-03-26T19:34:35+09:00"
-    },
-    {
-      "no": 3076,
-      "name": "Finger Hole Waffle Crop Hoodie",
-      "created": "2026-03-26T19:34:28+09:00"
-    },
-    {
-      "no": 3075,
-      "name": "Sage Crop MA-1 Jumper",
-      "created": "2026-03-26T19:34:21+09:00"
-    },
-    {
-      "no": 3074,
-      "name": "26SS Chrome Pigment Rivet Ringer Tee",
-      "created": "2026-03-26T19:34:14+09:00"
-    },
-    {
-      "no": 3073,
-      "name": "Damage Chrome Hoodie",
-      "created": "2026-03-26T19:34:06+09:00"
-    },
-    {
-      "no": 3072,
-      "name": "Pint Stripe Shirt",
-      "created": "2026-03-26T19:33:55+09:00"
-    },
-    {
-      "no": 3071,
-      "name": "Washed MA-1 Jacket",
-      "created": "2026-03-26T18:38:10+09:00"
-    },
-    {
-      "no": 3070,
-      "name": "Cropped Nylon Racer Jacket",
-      "created": "2026-03-25T17:40:37+09:00"
+      "no": 3091,
+      "name": "Button Cargo Banding Pants",
+      "created": "2026-04-09T14:44:40+09:00"
     }
   ],
-  "updated": "2026-03-30T23:53:48.202Z",
+  "updated": "2026-04-11T04:34:54.207Z",
   "days": 7,
-  "count": 21
+  "count": 3
 }
