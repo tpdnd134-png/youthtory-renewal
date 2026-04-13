@@ -1,5 +1,7 @@
 {
   "new_products": [
+    3097,
+    3096,
     3095,
     3094,
     3093,
@@ -7,6 +9,16 @@
     3091
   ],
   "details": [
+    {
+      "no": 3097,
+      "name": "Daily Crop Sweatshirt",
+      "created": "2026-04-13T17:26:12+09:00"
+    },
+    {
+      "no": 3096,
+      "name": "Boarders Crop Hood",
+      "created": "2026-04-13T15:38:53+09:00"
+    },
     {
       "no": 3095,
       "name": "Cation Over Blouson",
@@ -33,7 +45,7 @@
       "created": "2026-04-09T14:44:40+09:00"
     }
   ],
-  "updated": "2026-04-13T06:22:14.368Z",
+  "updated": "2026-04-13T10:02:41.199Z",
   "days": 7,
-  "count": 5
+  "count": 7
 }
