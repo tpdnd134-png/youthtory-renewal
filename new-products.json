@@ -1,10 +1,22 @@
 {
   "new_products": [
+    3095,
+    3094,
     3093,
     3092,
     3091
   ],
   "details": [
+    {
+      "no": 3095,
+      "name": "Cation Over Blouson",
+      "created": "2026-04-13T15:04:57+09:00"
+    },
+    {
+      "no": 3094,
+      "name": "Vintage Washing work jacket",
+      "created": "2026-04-13T13:48:03+09:00"
+    },
     {
       "no": 3093,
       "name": "Basic Belted Jogger Pants",
@@ -21,7 +33,7 @@
       "created": "2026-04-09T14:44:40+09:00"
     }
   ],
-  "updated": "2026-04-11T05:35:41.419Z",
+  "updated": "2026-04-13T06:22:14.368Z",
   "days": 7,
-  "count": 3
+  "count": 5
 }
