@@ -1,5 +1,8 @@
 {
   "new_products": [
+    3101,
+    3100,
+    3099,
     3098,
     3097,
     3096,
@@ -10,6 +13,21 @@
     3091
   ],
   "details": [
+    {
+      "no": 3101,
+      "name": "Geek Chic Metal Glasses",
+      "created": "2026-04-15T21:44:48+09:00"
+    },
+    {
+      "no": 3100,
+      "name": "Stripe Rugby Long Sleeve",
+      "created": "2026-04-15T21:36:30+09:00"
+    },
+    {
+      "no": 3099,
+      "name": "Point Triple-Stitch Curved Denim",
+      "created": "2026-04-15T20:42:03+09:00"
+    },
     {
       "no": 3098,
       "name": "Slub Cotton Crop Long Sleeve",
@@ -51,7 +69,7 @@
       "created": "2026-04-09T14:44:40+09:00"
     }
   ],
-  "updated": "2026-04-15T11:07:42.037Z",
+  "updated": "2026-04-15T13:55:22.089Z",
   "days": 7,
-  "count": 8
+  "count": 11
 }
