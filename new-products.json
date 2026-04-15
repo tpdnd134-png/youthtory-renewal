@@ -1,5 +1,6 @@
 {
   "new_products": [
+    3098,
     3097,
     3096,
     3095,
@@ -9,6 +10,11 @@
     3091
   ],
   "details": [
+    {
+      "no": 3098,
+      "name": "Slub Cotton Crop Long Sleeve",
+      "created": "2026-04-15T19:42:16+09:00"
+    },
     {
       "no": 3097,
       "name": "Daily Crop Sweatshirt",
@@ -45,7 +51,7 @@
       "created": "2026-04-09T14:44:40+09:00"
     }
   ],
-  "updated": "2026-04-13T10:02:41.199Z",
+  "updated": "2026-04-15T11:07:42.037Z",
   "days": 7,
-  "count": 7
+  "count": 8
 }
