@@ -8,11 +8,7 @@
     3101,
     3100,
     3099,
-    3098,
-    3097,
-    3096,
-    3095,
-    3094
+    3098
   ],
   "details": [
     {
@@ -59,29 +55,9 @@
       "no": 3098,
       "name": "Slub Cotton Crop Long Sleeve",
       "created": "2026-04-15T19:42:16+09:00"
-    },
-    {
-      "no": 3097,
-      "name": "Daily Crop Sweatshirt",
-      "created": "2026-04-13T17:26:12+09:00"
-    },
-    {
-      "no": 3096,
-      "name": "Boarders Crop Hood",
-      "created": "2026-04-13T15:38:53+09:00"
-    },
-    {
-      "no": 3095,
-      "name": "Cation Over Blouson",
-      "created": "2026-04-13T15:04:57+09:00"
-    },
-    {
-      "no": 3094,
-      "name": "Vintage Washing work jacket",
-      "created": "2026-04-13T13:48:03+09:00"
     }
   ],
-  "updated": "2026-04-20T03:38:29.265Z",
+  "updated": "2026-04-22T06:05:12.268Z",
   "days": 7,
-  "count": 13
+  "count": 9
 }
