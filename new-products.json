@@ -3,10 +3,7 @@
     3112,
     3111,
     3110,
-    3109,
-    3108,
-    3106,
-    3105
+    3109
   ],
   "details": [
     {
@@ -28,24 +25,9 @@
       "no": 3109,
       "name": "Slub Cotton Hoodie zip up",
       "created": "2026-04-18T17:49:03+09:00"
-    },
-    {
-      "no": 3108,
-      "name": "Lipstick Shoulder Bag",
-      "created": "2026-04-17T21:49:55+09:00"
-    },
-    {
-      "no": 3106,
-      "name": "Perez Slacks",
-      "created": "2026-04-17T18:53:38+09:00"
-    },
-    {
-      "no": 3105,
-      "name": "Slim Fit Ribbed Round Tee",
-      "created": "2026-04-17T18:53:00+09:00"
     }
   ],
-  "updated": "2026-04-23T06:11:33.228Z",
+  "updated": "2026-04-25T07:39:46.027Z",
   "days": 7,
-  "count": 7
+  "count": 4
 }
