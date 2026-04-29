@@ -1,11 +1,17 @@
 {
   "new_products": [
+    3116,
     3115,
     3113,
     3112,
     3111
   ],
   "details": [
+    {
+      "no": 3116,
+      "name": "Fatigue Wide Raw Denim",
+      "created": "2026-04-29T16:34:17+09:00"
+    },
     {
       "no": 3115,
       "name": "Notch Waffle Slim Tee",
@@ -27,7 +33,7 @@
       "created": "2026-04-22T21:20:26+09:00"
     }
   ],
-  "updated": "2026-04-29T06:29:37.279Z",
+  "updated": "2026-04-29T10:12:16.603Z",
   "days": 7,
-  "count": 4
+  "count": 5
 }
