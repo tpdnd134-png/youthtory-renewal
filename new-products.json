@@ -1,39 +1,15 @@
 {
   "new_products": [
-    3116,
-    3115,
-    3113,
-    3112,
-    3111
+    3117
   ],
   "details": [
     {
-      "no": 3116,
-      "name": "Fatigue Wide Raw Denim",
-      "created": "2026-04-29T16:34:17+09:00"
-    },
-    {
-      "no": 3115,
-      "name": "Notch Waffle Slim Tee",
-      "created": "2026-04-29T13:42:34+09:00"
-    },
-    {
-      "no": 3113,
-      "name": "Raglan Henley Slim Rib Long Sleeve",
-      "created": "2026-04-29T13:23:08+09:00"
-    },
-    {
-      "no": 3112,
-      "name": "Basic Round layered Long Sleeve / 2장 구매시 29,000원",
-      "created": "2026-04-23T13:07:16+09:00"
-    },
-    {
-      "no": 3111,
-      "name": "Curved Triple Stitch Cotton Pants",
-      "created": "2026-04-22T21:20:26+09:00"
+      "no": 3117,
+      "name": "Slab layered Slim T",
+      "created": "2026-05-26T16:54:38+09:00"
     }
   ],
-  "updated": "2026-04-29T10:12:16.603Z",
+  "updated": "2026-05-26T10:10:59.401Z",
   "days": 7,
-  "count": 5
+  "count": 1
 }
