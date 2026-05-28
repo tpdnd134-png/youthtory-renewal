@@ -1,9 +1,15 @@
 {
   "new_products": [
+    3119,
     3118,
     3117
   ],
   "details": [
+    {
+      "no": 3119,
+      "name": "Vintage Check Cotton Muffler",
+      "created": "2026-05-28T16:35:57+09:00"
+    },
     {
       "no": 3118,
       "name": "Regular Light Blue Denim",
@@ -15,7 +21,7 @@
       "created": "2026-05-26T16:54:38+09:00"
     }
   ],
-  "updated": "2026-05-27T10:08:40.373Z",
+  "updated": "2026-05-28T10:17:58.681Z",
   "days": 7,
-  "count": 2
+  "count": 3
 }
